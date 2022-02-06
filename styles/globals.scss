@@ -4,8 +4,16 @@
 
 @import url("http://fonts.cdnfonts.com/css/heavyweight");
 
+body {
+  background: black;
+}
+
 @responsive {
   .text-shadow-orange {
     text-shadow: 0 0 0.07em #d68c5c;
+  }
+
+  .text-shadow-red {
+    text-shadow: 0 0 0.07em #e04852;
   }
 }

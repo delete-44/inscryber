@@ -6,7 +6,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        orange: "#cc6f33",
+        orange: {
+          100: "#fff1e7",
+          400: "#cc6f33",
+        },
+        red: "#b72e38",
       },
       fontFamily: {
         title: ["Heavyweight"],
