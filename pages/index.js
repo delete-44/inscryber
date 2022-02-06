@@ -70,6 +70,53 @@ export default function Home() {
                 />
               </section>
             </section>
+
+            {/* Cost form fields */}
+            <section className="mb-14">
+              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
+                And every creature has a{" "}
+                <label htmlFor="power" className="text-red text-shadow-red">
+                  cost
+                </label>
+                ...
+              </p>
+
+              <section className="grid grid-cols-2 gap-10 mx-auto md:w-2/6 w-4/6">
+                <input
+                  className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
+                  type="number"
+                  min="0"
+                  aria-label="Cost"
+                  name="cost"
+                />
+
+                <div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-orange-400 checked:border-white focus:outline-none transition duration-200 mt-1 align-top float-left mr-2 cursor-pointer"
+                      type="radio"
+                      name="costRadio"
+                      id="blood"
+                      checked
+                    />
+                    <label class="text-white" for="blood">
+                      Blood
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-orange-400 checked:border-white focus:outline-none transition duration-200 mt-1 align-top float-left mr-2 cursor-pointer"
+                      type="radio"
+                      name="costRadio"
+                      id="bones"
+                    />
+                    <label class="text-white" for="bones">
+                      Bones
+                    </label>
+                  </div>
+                </div>
+              </section>
+            </section>
           </div>
 
           {/* Right column */}
