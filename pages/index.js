@@ -64,7 +64,7 @@ export default function Home() {
                 <input
                   className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
                   type="number"
-                  min="0"
+                  min="1"
                   aria-label="Health"
                   name="health"
                 />
@@ -91,31 +91,62 @@ export default function Home() {
                 />
 
                 <div>
-                  <div class="form-check">
+                  <div className="form-check">
                     <input
-                      class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-orange-400 checked:border-white focus:outline-none transition duration-200 mt-1 align-top float-left mr-2 cursor-pointer"
+                      className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-orange-400 checked:border-white focus:outline-none transition duration-200 mt-1 align-top float-left mr-2 cursor-pointer"
                       type="radio"
                       name="costRadio"
                       id="blood"
-                      checked
+                      defaultChecked
                     />
-                    <label class="text-white" for="blood">
+
+                    <label className="text-white" htmlFor="blood">
                       Blood
                     </label>
                   </div>
-                  <div class="form-check">
+
+                  <div className="form-check">
                     <input
-                      class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-orange-400 checked:border-white focus:outline-none transition duration-200 mt-1 align-top float-left mr-2 cursor-pointer"
+                      className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-orange-400 checked:border-white focus:outline-none transition duration-200 mt-1 align-top float-left mr-2 cursor-pointer"
                       type="radio"
                       name="costRadio"
                       id="bones"
                     />
-                    <label class="text-white" for="bones">
+
+                    <label className="text-white" htmlFor="bones">
                       Bones
                     </label>
                   </div>
                 </div>
               </section>
+            </section>
+
+            {/* Sigils form field */}
+            <section className="mb-14">
+              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
+                Does this creature have any{" "}
+                <label htmlFor="sigils" className="text-red text-shadow-red">
+                  sigils
+                </label>
+                ?
+              </p>
+            </section>
+
+            {/* Picture form field */}
+            <section className="mb-14">
+              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
+                Finally... a{" "}
+                <label htmlFor="portrait" className="text-red text-shadow-red">
+                  portrait
+                </label>
+                .
+              </p>
+
+              <input
+                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-orange-100 bg-clip-padding border border-solid border-gray-300 rounded"
+                type="file"
+                id="portrait"
+              />
             </section>
           </div>
 
