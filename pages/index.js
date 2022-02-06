@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import React, { useState } from 'react';
+import Name from "../components/name";
 
 export default function Home() {
-  const [name, setName] = useState("Stoat");
+  const [nameTF, setNameTF] = useState("");
 
   return (
     <div>
@@ -23,25 +24,7 @@ export default function Home() {
           {/* Left column */}
           <div>
             {/* Name form field */}
-            <section className="mb-14">
-              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
-                Tell me this creature&apos;s{" "}
-                <label htmlFor="name" className="text-red text-shadow-red">
-                  name
-                </label>
-                .
-              </p>
-
-              <input
-                className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
-                type="text"
-                placeholder="Stoat"
-                aria-label="Name"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </section>
+            <Name setNameTF={setNameTF} />
 
             {/* Attack & power form fields */}
             <section className="mb-14">
@@ -157,7 +140,7 @@ export default function Home() {
 
           {/* Right column */}
           <Image
-            src={`https://res.cloudinary.com/delete-44/image/upload/l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_72:${name},g_north,y_180/c_scale,l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_card.webp`}
+            src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_card.webp`}
             alt="A blank card with the 'Stinky' sigil"
             width={640}
             height={1048}
