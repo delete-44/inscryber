@@ -11,12 +11,12 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="text-7xl text-orange-400 font-title text-shadow-orange text-center my-5">
+        <h1 className="text-7xl text-orange-400 font-title text-shadow-orange text-center mt-5 mb-10">
           Inscryber
         </h1>
 
         {/* Full grid layout */}
-        <div className="md:grid md:grid-cols-2 md:gap-4 w-5/6 mx-auto text-center">
+        <div className="md:grid md:grid-cols-2 md:gap-4 w-5/6 mx-auto">
           {/* Left column */}
           <div>
             {/* Name form field */}
@@ -52,7 +52,7 @@ export default function Home() {
                 ?
               </p>
 
-              <section className="grid grid-cols-2 gap-10 mx-auto md:w-2/6 w-4/6">
+              <section className="grid grid-cols-2 gap-10 md:w-2/6 w-4/6">
                 <input
                   className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
                   type="number"
@@ -81,7 +81,7 @@ export default function Home() {
                 ...
               </p>
 
-              <section className="grid grid-cols-2 gap-10 mx-auto md:w-2/6 w-4/6">
+              <section className="grid grid-cols-2 gap-10 md:w-2/6 w-4/6">
                 <input
                   className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
                   type="number"
