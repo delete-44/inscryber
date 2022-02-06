@@ -1,7 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
+import React, { useState } from 'react';
 
 export default function Home() {
+  const [name, setName] = useState("Stoat");
+
   return (
     <div>
       <Head>
@@ -35,6 +38,8 @@ export default function Home() {
                 placeholder="Stoat"
                 aria-label="Name"
                 name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </section>
 
@@ -152,7 +157,7 @@ export default function Home() {
 
           {/* Right column */}
           <Image
-            src="https://res.cloudinary.com/delete-44/image/upload/l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_96:NAMEHERE,g_north,y_180/c_scale,l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_card.webp"
+            src={`https://res.cloudinary.com/delete-44/image/upload/l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_72:${name},g_north,y_180/c_scale,l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_card.webp`}
             alt="A blank card with the 'Stinky' sigil"
             width={640}
             height={1048}
