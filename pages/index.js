@@ -11,15 +11,31 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="text-7xl text-orange font-title text-shadow-orange text-center my-5">
+        <h1 className="text-7xl text-orange-400 font-title text-shadow-orange text-center my-5">
           Inscryber
         </h1>
 
-        <div class="md:grid md:grid-cols-3 md:gap-4 w-100 md:w-4/5 mx-auto text-center">
-          <section class="col-span-2">
-            <h2 className="text-5xl text-orange font-title text-shadow-orange">
-              Welcome, new Scrybe...
+        <div className="md:grid md:grid-cols-2 md:gap-4 w-100 md:w-5/6 mx-auto text-center">
+          <section>
+            <h2 className="text-5xl text-orange-400 font-title text-shadow-orange">
+              Welcome, Scrybe...
             </h2>
+
+            <p className="text-4xl text-orange-400 font-title text-shadow-orange mt-5">
+              Tell me this creature&apos;s{" "}
+              <label htmlFor="" className="text-red text-shadow-red">
+                name
+              </label>
+              .
+            </p>
+
+            <input
+              className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 mt-2 text-4xl focus:outline-none focus:bg-white text-black"
+              type="text"
+              placeholder="Stoat"
+              aria-label="Name"
+              name="name"
+            />
           </section>
 
           <section>
