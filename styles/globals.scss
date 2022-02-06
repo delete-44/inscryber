@@ -4,9 +4,8 @@
 
 @import url("http://fonts.cdnfonts.com/css/heavyweight");
 
-h1,
-h2 {
-  font-family: "Heavyweight";
-  text-shadow: 0 0 0.07em #d68c5c;
-  filter: blur(0.007em);
+@responsive {
+  .text-shadow-orange {
+    text-shadow: 0 0 0.07em #d68c5c;
+  }
 }

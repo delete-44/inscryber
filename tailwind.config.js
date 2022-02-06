@@ -7,6 +7,9 @@ module.exports = {
     colors: {
       orange: "#cc6f33",
     },
+    fontFamily: {
+      title: ["Heavyweight"],
+    },
     extend: {},
   },
   plugins: [],
