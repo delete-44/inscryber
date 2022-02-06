@@ -1,16 +1,11 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@import url("http://fonts.cdnfonts.com/css/heavyweight");
 
-* {
-  box-sizing: border-box;
+@responsive {
+  .text-shadow-orange {
+    text-shadow: 0 0 0.07em #d68c5c;
+  }
 }
