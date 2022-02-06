@@ -52,9 +52,9 @@ export default function Home() {
                 ?
               </p>
 
-              <section className="flex justify-around">
+              <section className="grid grid-cols-2 gap-10 mx-auto w-2/6">
                 <input
-                  className="bg-orange-100 border-b-2 border-orange-400 w-1/6 p-2 text-4xl focus:outline-none focus:bg-white text-black"
+                  className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
                   type="number"
                   min="0"
                   aria-label="Power"
@@ -62,7 +62,7 @@ export default function Home() {
                 />
 
                 <input
-                  className="bg-orange-100 border-b-2 border-orange-400 w-1/6 p-2 text-4xl focus:outline-none focus:bg-white text-black"
+                  className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
                   type="number"
                   min="0"
                   aria-label="Health"
