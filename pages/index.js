@@ -20,22 +20,55 @@ export default function Home() {
           {/* Left column */}
           <div>
             {/* Name form field */}
-            <section>
-              <p className="text-5xl text-orange-400 font-title text-shadow-orange mt-5">
+            <section className="mb-14">
+              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
                 Tell me this creature&apos;s{" "}
-                <label htmlFor="" className="text-red text-shadow-red">
+                <label htmlFor="name" className="text-red text-shadow-red">
                   name
                 </label>
                 .
               </p>
 
               <input
-                className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 mt-2 text-4xl focus:outline-none focus:bg-white text-black"
+                className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
                 type="text"
                 placeholder="Stoat"
                 aria-label="Name"
                 name="name"
               />
+            </section>
+
+            {/* Attack & power form fields */}
+            <section className="mb-14">
+              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
+                How about their{" "}
+                <label htmlFor="power" className="text-red text-shadow-red">
+                  power
+                </label>{" "}
+                and{" "}
+                <label htmlFor="health" className="text-red text-shadow-red">
+                  health
+                </label>
+                ?
+              </p>
+
+              <section className="flex justify-around">
+                <input
+                  className="bg-orange-100 border-b-2 border-orange-400 w-1/6 p-2 text-4xl focus:outline-none focus:bg-white text-black"
+                  type="number"
+                  min="0"
+                  aria-label="Power"
+                  name="power"
+                />
+
+                <input
+                  className="bg-orange-100 border-b-2 border-orange-400 w-1/6 p-2 text-4xl focus:outline-none focus:bg-white text-black"
+                  type="number"
+                  min="0"
+                  aria-label="Health"
+                  name="health"
+                />
+              </section>
             </section>
           </div>
 
