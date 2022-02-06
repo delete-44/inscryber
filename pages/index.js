@@ -15,13 +15,9 @@ export default function Home() {
           Inscryber
         </h1>
 
-        <div className="md:grid md:grid-cols-2 md:gap-4 w-100 md:w-5/6 mx-auto text-center">
+        <div className="md:grid md:grid-cols-2 md:gap-4 w-5/6 mx-auto text-center">
           <section>
-            <h2 className="text-5xl text-orange-400 font-title text-shadow-orange">
-              Welcome, Scrybe...
-            </h2>
-
-            <p className="text-4xl text-orange-400 font-title text-shadow-orange mt-5">
+            <p className="text-5xl text-orange-400 font-title text-shadow-orange mt-5">
               Tell me this creature&apos;s{" "}
               <label htmlFor="" className="text-red text-shadow-red">
                 name
