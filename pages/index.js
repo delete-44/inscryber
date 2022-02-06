@@ -152,7 +152,7 @@ export default function Home() {
 
           {/* Right column */}
           <Image
-            src="https://res.cloudinary.com/delete-44/image/upload/c_scale,l_v1644060029:Inscryption:rough_stinky_ijycvc.svg,w_248,y_340/v1644060066/Inscryption/blank_card_mvzub7.webp"
+            src="https://res.cloudinary.com/delete-44/image/upload/l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_96:NAMEHERE,g_north,y_180/c_scale,l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_card.webp"
             alt="A blank card with the 'Stinky' sigil"
             width={640}
             height={1048}
