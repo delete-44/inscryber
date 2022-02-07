@@ -144,8 +144,17 @@ export default function Home() {
           </div>
 
           {/* Right column */}
-          <div>
-            {busy ? <p className="text-white text-center">Loading</p> : <></>}
+          <div className="width-full flex justify-center items-center">
+            {busy ? (
+              <div
+                class="spinner-border animate-spin inline-block w-8 h-8 border-4 border-orange-400 rounded-full"
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            ) : (
+              <></>
+            )}
 
             <Image
               src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_card.webp`}
