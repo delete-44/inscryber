@@ -145,12 +145,12 @@ export default function Home() {
 
           {/* Right column */}
           <div>
-            {busy ? <p className="text-white">Loading</p> : <></>}
+            {busy ? <p className="text-white text-center">Loading</p> : <></>}
 
             <Image
               src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_card.webp`}
               alt="A blank card with the 'Stinky' sigil"
-              width={640}
+              width={busy ? 0 : 640}
               height={1048}
               onLoadingComplete={() => {
                 setBusy(false);
