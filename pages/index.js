@@ -147,10 +147,10 @@ export default function Home() {
           <div className="width-full flex justify-center items-center">
             {busy ? (
               <div
-                class="spinner-border animate-spin inline-block w-8 h-8 border-4 border-orange-400 rounded-full"
+                className="spinner-border animate-spin inline-block w-8 h-8 border-4 border-orange-400 rounded-full"
                 role="status"
               >
-                <span class="visually-hidden">Loading...</span>
+                <span className="visually-hidden">Loading...</span>
               </div>
             ) : (
               <></>
