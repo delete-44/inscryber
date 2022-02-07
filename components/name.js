@@ -8,7 +8,9 @@ export default function Name(props) {
     name === ""
       ? setNameTF("")
       : setNameTF(
-          `l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_72:${name},g_north,y_180/c_scale,`
+          `l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_72:${encodeURIComponent(
+            name
+          )},g_north,y_180/c_scale,`
         );
   }, [name]);
 
