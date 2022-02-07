@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export default function Name(props) {
-  const [name, setName] = useState("Stoat");
+  const [name, setName] = useState("");
   const { setNameTF } = props;
 
   useEffect(() => {
