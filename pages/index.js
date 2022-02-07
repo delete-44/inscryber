@@ -1,10 +1,15 @@
 import Head from "next/head";
 import Image from "next/image";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import Name from "../components/name";
 
 export default function Home() {
   const [nameTF, setNameTF] = useState("");
+  const [busy, setBusy] = useState(true);
+
+  useEffect(() => {
+    setBusy(true);
+  }, [nameTF]);
 
   return (
     <div>
@@ -139,12 +144,19 @@ export default function Home() {
           </div>
 
           {/* Right column */}
-          <Image
-            src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_card.webp`}
-            alt="A blank card with the 'Stinky' sigil"
-            width={640}
-            height={1048}
-          />
+          <div>
+            {busy ? <p className="text-white">Loading</p> : <></>}
+
+            <Image
+              src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_card.webp`}
+              alt="A blank card with the 'Stinky' sigil"
+              width={640}
+              height={1048}
+              onLoadingComplete={() => {
+                setBusy(false);
+              }}
+            />
+          </div>
         </div>
       </main>
 
