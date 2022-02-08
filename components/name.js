@@ -8,14 +8,14 @@ export default function Name(props) {
     name === ""
       ? setNameTF("")
       : setNameTF(
-          `l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_72:${encodeURIComponent(
+          `l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_84:${encodeURIComponent(
             name
-          )},g_north,y_180/c_scale,`
+          )},g_north,y_64/c_scale,`
         );
   }, [name]);
 
   return (
-    <section className="mb-14">
+    <section className="mb-10">
       <p className="mb-3">
         Tell me this creature&apos;s <label htmlFor="name">name</label>.
       </p>
