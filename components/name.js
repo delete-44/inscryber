@@ -16,7 +16,7 @@ export default function Name(props) {
 
   return (
     <section className="mb-14">
-      <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
+      <p className="mb-3">
         Tell me this creature&apos;s{" "}
         <label htmlFor="name" className="text-red text-shadow-red">
           name

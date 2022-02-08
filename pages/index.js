@@ -33,7 +33,7 @@ export default function Home() {
 
             {/* Attack & power form fields */}
             <section className="mb-14">
-              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
+              <p className="mb-3">
                 How about their{" "}
                 <label htmlFor="power" className="text-red text-shadow-red">
                   power
@@ -66,7 +66,7 @@ export default function Home() {
 
             {/* Cost form fields */}
             <section className="mb-14">
-              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
+              <p className="mb-3">
                 And every creature has a{" "}
                 <label htmlFor="power" className="text-red text-shadow-red">
                   cost
@@ -116,7 +116,7 @@ export default function Home() {
 
             {/* Sigils form field */}
             <section className="mb-14">
-              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
+              <p className="mb-3">
                 Does this creature have any{" "}
                 <label htmlFor="sigils" className="text-red text-shadow-red">
                   sigils
@@ -127,7 +127,7 @@ export default function Home() {
 
             {/* Picture form field */}
             <section className="mb-14">
-              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
+              <p className="mb-3">
                 Finally... a{" "}
                 <label htmlFor="portrait" className="text-red text-shadow-red">
                   portrait

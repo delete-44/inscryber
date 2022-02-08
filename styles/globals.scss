@@ -21,6 +21,10 @@
     @apply text-center;
   }
 
+  p {
+    @apply text-5xl;
+  }
+
   .text-shadow-orange {
     text-shadow: 0 0 0.07em #d68c5c;
   }
