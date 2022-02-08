@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="text-7xl text-orange-400 font-title text-shadow-orange text-center mt-5 mb-10">
+        <h1 className="mt-5 mb-10">
           Inscryber
         </h1>
 
