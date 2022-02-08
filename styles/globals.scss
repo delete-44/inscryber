@@ -25,6 +25,11 @@
     @apply text-5xl;
   }
 
+  label {
+   @apply text-red;
+   @apply text-shadow-red;
+  }
+
   .text-shadow-orange {
     text-shadow: 0 0 0.07em #d68c5c;
   }

@@ -17,11 +17,7 @@ export default function Name(props) {
   return (
     <section className="mb-14">
       <p className="mb-3">
-        Tell me this creature&apos;s{" "}
-        <label htmlFor="name" className="text-red text-shadow-red">
-          name
-        </label>
-        .
+        Tell me this creature&apos;s <label htmlFor="name">name</label>.
       </p>
 
       <input
