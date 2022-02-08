@@ -23,20 +23,20 @@ export default function Home() {
         <h1 className="mt-5 mb-10">Inscryber</h1>
 
         {/* Full grid layout */}
-        <div className="md:grid md:grid-cols-2 md:gap-4 w-5/6 mx-auto">
+        <div className="md:grid md:grid-cols-2 md:gap-4 w-11/12 md:w-5/6 mx-auto">
           {/* Left column */}
-          <div>
+          <div className="text-center md:text-left">
             {/* Name form field */}
             <Name setNameTF={setNameTF} />
 
-            {/* Attack & power form fields */}
+            {/* Power & health form fields */}
             <section className="mb-10">
               <p className="mb-3">
                 How about their <label htmlFor="power">power</label> and{" "}
                 <label htmlFor="health">health</label>?
               </p>
 
-              <section className="grid grid-cols-2 gap-10 md:w-2/6 w-4/6">
+              <section className="grid grid-cols-2 gap-10 md:w-2/6 w-full">
                 <input type="number" min="0" aria-label="Power" name="power" />
 
                 <input
@@ -51,11 +51,11 @@ export default function Home() {
             {/* Cost form fields */}
             <section className="mb-10">
               <p className="mb-3">
-                And every creature has a <label htmlFor="power">cost</label>
+                And every creature has a <label htmlFor="cost">cost</label>
                 ...
               </p>
 
-              <section className="grid grid-cols-2 gap-10 md:w-2/6 w-4/6">
+              <section className="grid grid-cols-2 gap-10 md:w-2/6 w-full">
                 <input type="number" min="0" aria-label="Cost" name="cost" />
 
                 <div>
@@ -95,10 +95,17 @@ export default function Home() {
                 Does this creature have any{" "}
                 <label htmlFor="sigils">sigils</label>?
               </p>
+
+              {/* THIS IS NOT FINAL, but a good indicator of size */}
+              <input
+                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-orange-100 bg-clip-padding border border-solid border-gray-300 rounded"
+                type="file"
+                id="portrait"
+              />
             </section>
 
             {/* Picture form field */}
-            <section className="mb-10">
+            <section>
               <p className="mb-3">
                 Finally... a <label htmlFor="portrait">portrait</label>.
               </p>
@@ -112,7 +119,7 @@ export default function Home() {
           </div>
 
           {/* Right column */}
-          <div className="width-full flex justify-center items-center relative h-screen md:h-auto">
+          <div className="width-full flex justify-center items-center relative mt-16 md:mt-0 h-80 md:h-auto">
             {busy ? (
               <div
                 className="spinner-border animate-spin inline-block w-8 h-8 border-4 border-orange-400 rounded-full"
