@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// FIXME: Make setNameTf required
 
 export default function Name(props) {
   const [name, setName] = useState("");
