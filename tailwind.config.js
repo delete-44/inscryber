@@ -15,7 +15,15 @@ module.exports = {
       fontFamily: {
         title: ["Heavyweight"],
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.orange.400'),
+            fontFamily: theme("fontFamily.title")
+          }
+        }
+      })
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
