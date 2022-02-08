@@ -125,7 +125,7 @@ export default function Home() {
             )}
 
             <Image
-              src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_card.webp`}
+              src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_vladde.webp`}
               alt="A blank card with the 'Stinky' sigil"
               width={busy ? 0 : 640}
               height={1048}
