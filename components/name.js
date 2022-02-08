@@ -16,16 +16,11 @@ export default function Name(props) {
 
   return (
     <section className="mb-14">
-      <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
-        Tell me this creature&apos;s{" "}
-        <label htmlFor="name" className="text-red text-shadow-red">
-          name
-        </label>
-        .
+      <p className="mb-3">
+        Tell me this creature&apos;s <label htmlFor="name">name</label>.
       </p>
 
       <input
-        className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
         type="text"
         placeholder="Stoat"
         aria-label="Name"

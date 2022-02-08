@@ -20,9 +20,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="text-7xl text-orange-400 font-title text-shadow-orange text-center mt-5 mb-10">
-          Inscryber
-        </h1>
+        <h1 className="mt-5 mb-10">Inscryber</h1>
 
         {/* Full grid layout */}
         <div className="md:grid md:grid-cols-2 md:gap-4 w-5/6 mx-auto">
@@ -33,29 +31,15 @@ export default function Home() {
 
             {/* Attack & power form fields */}
             <section className="mb-14">
-              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
-                How about their{" "}
-                <label htmlFor="power" className="text-red text-shadow-red">
-                  power
-                </label>{" "}
-                and{" "}
-                <label htmlFor="health" className="text-red text-shadow-red">
-                  health
-                </label>
-                ?
+              <p className="mb-3">
+                How about their <label htmlFor="power">power</label> and{" "}
+                <label htmlFor="health">health</label>?
               </p>
 
               <section className="grid grid-cols-2 gap-10 md:w-2/6 w-4/6">
-                <input
-                  className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
-                  type="number"
-                  min="0"
-                  aria-label="Power"
-                  name="power"
-                />
+                <input type="number" min="0" aria-label="Power" name="power" />
 
                 <input
-                  className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
                   type="number"
                   min="1"
                   aria-label="Health"
@@ -66,22 +50,13 @@ export default function Home() {
 
             {/* Cost form fields */}
             <section className="mb-14">
-              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
-                And every creature has a{" "}
-                <label htmlFor="power" className="text-red text-shadow-red">
-                  cost
-                </label>
+              <p className="mb-3">
+                And every creature has a <label htmlFor="power">cost</label>
                 ...
               </p>
 
               <section className="grid grid-cols-2 gap-10 md:w-2/6 w-4/6">
-                <input
-                  className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
-                  type="number"
-                  min="0"
-                  aria-label="Cost"
-                  name="cost"
-                />
+                <input type="number" min="0" aria-label="Cost" name="cost" />
 
                 <div>
                   <div className="form-check">
@@ -116,23 +91,16 @@ export default function Home() {
 
             {/* Sigils form field */}
             <section className="mb-14">
-              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
+              <p className="mb-3">
                 Does this creature have any{" "}
-                <label htmlFor="sigils" className="text-red text-shadow-red">
-                  sigils
-                </label>
-                ?
+                <label htmlFor="sigils">sigils</label>?
               </p>
             </section>
 
             {/* Picture form field */}
             <section className="mb-14">
-              <p className="text-5xl text-orange-400 font-title text-shadow-orange mb-3">
-                Finally... a{" "}
-                <label htmlFor="portrait" className="text-red text-shadow-red">
-                  portrait
-                </label>
-                .
+              <p className="mb-3">
+                Finally... a <label htmlFor="portrait">portrait</label>.
               </p>
 
               <input

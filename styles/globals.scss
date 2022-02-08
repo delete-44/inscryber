@@ -4,11 +4,46 @@
 
 @import url("https://fonts.cdnfonts.com/css/heavyweight");
 
-body {
-  background: black;
-}
+// Standard styles
+@layer components {
+  body {
+    @apply bg-black;
+  }
 
-@responsive {
+  h1,
+  p {
+    @apply text-orange-400;
+    @apply font-title;
+    @apply text-shadow-orange;
+  }
+
+  h1 {
+    @apply text-7xl;
+    @apply text-center;
+  }
+
+  p {
+    @apply text-5xl;
+  }
+
+  label {
+    @apply text-red;
+    @apply text-shadow-red;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    @apply bg-orange-100;
+    @apply border-b-2;
+    @apply border-orange-400;
+    @apply w-full;
+    @apply p-2;
+    @apply text-4xl;
+    @apply focus:outline-none;
+    @apply focus:bg-white;
+    @apply text-black;
+  }
+
   .text-shadow-orange {
     text-shadow: 0 0 0.07em #d68c5c;
   }
