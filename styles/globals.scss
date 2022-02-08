@@ -4,6 +4,7 @@
 
 @import url("https://fonts.cdnfonts.com/css/heavyweight");
 
+// Standard styles
 @layer components {
   body {
     @apply bg-black;
@@ -26,8 +27,21 @@
   }
 
   label {
-   @apply text-red;
-   @apply text-shadow-red;
+    @apply text-red;
+    @apply text-shadow-red;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    @apply bg-orange-100;
+    @apply border-b-2;
+    @apply border-orange-400;
+    @apply w-full;
+    @apply p-2;
+    @apply text-4xl;
+    @apply focus:outline-none;
+    @apply focus:bg-white;
+    @apply text-black;
   }
 
   .text-shadow-orange {

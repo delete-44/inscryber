@@ -37,16 +37,9 @@ export default function Home() {
               </p>
 
               <section className="grid grid-cols-2 gap-10 md:w-2/6 w-4/6">
-                <input
-                  className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
-                  type="number"
-                  min="0"
-                  aria-label="Power"
-                  name="power"
-                />
+                <input type="number" min="0" aria-label="Power" name="power" />
 
                 <input
-                  className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
                   type="number"
                   min="1"
                   aria-label="Health"
@@ -63,13 +56,7 @@ export default function Home() {
               </p>
 
               <section className="grid grid-cols-2 gap-10 md:w-2/6 w-4/6">
-                <input
-                  className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
-                  type="number"
-                  min="0"
-                  aria-label="Cost"
-                  name="cost"
-                />
+                <input type="number" min="0" aria-label="Cost" name="cost" />
 
                 <div>
                   <div className="form-check">

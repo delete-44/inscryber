@@ -21,7 +21,6 @@ export default function Name(props) {
       </p>
 
       <input
-        className="bg-orange-100 border-b-2 border-orange-400 w-full p-2 text-4xl focus:outline-none focus:bg-white text-black"
         type="text"
         placeholder="Stoat"
         aria-label="Name"
