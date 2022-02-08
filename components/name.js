@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-// FIXME: Make setNameTf required
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-export default function Name(props) {
+const Name = (props) => {
   const [name, setName] = useState("");
   const [timer, setTimer] = useState(null);
   const { setNameTF } = props;
@@ -42,4 +42,10 @@ export default function Name(props) {
       />
     </section>
   );
-}
+};
+
+Name.propTypes = {
+  setNameTF: PropTypes.func.isRequired,
+};
+
+export default Name;
