@@ -19,7 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="h-screen">
         <h1 className="mt-5 mb-10">Inscryber</h1>
 
         {/* Full grid layout */}
@@ -30,7 +30,7 @@ export default function Home() {
             <Name setNameTF={setNameTF} />
 
             {/* Attack & power form fields */}
-            <section className="mb-14">
+            <section className="mb-10">
               <p className="mb-3">
                 How about their <label htmlFor="power">power</label> and{" "}
                 <label htmlFor="health">health</label>?
@@ -49,7 +49,7 @@ export default function Home() {
             </section>
 
             {/* Cost form fields */}
-            <section className="mb-14">
+            <section className="mb-10">
               <p className="mb-3">
                 And every creature has a <label htmlFor="power">cost</label>
                 ...
@@ -90,7 +90,7 @@ export default function Home() {
             </section>
 
             {/* Sigils form field */}
-            <section className="mb-14">
+            <section className="mb-10">
               <p className="mb-3">
                 Does this creature have any{" "}
                 <label htmlFor="sigils">sigils</label>?
@@ -98,7 +98,7 @@ export default function Home() {
             </section>
 
             {/* Picture form field */}
-            <section className="mb-14">
+            <section className="mb-10">
               <p className="mb-3">
                 Finally... a <label htmlFor="portrait">portrait</label>.
               </p>
@@ -112,7 +112,7 @@ export default function Home() {
           </div>
 
           {/* Right column */}
-          <div className="width-full flex justify-center items-center relative">
+          <div className="width-full flex justify-center items-center relative h-screen md:h-auto">
             {busy ? (
               <div
                 className="spinner-border animate-spin inline-block w-8 h-8 border-4 border-orange-400 rounded-full"
@@ -138,8 +138,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-
-      <footer>&copy; delete44</footer>
     </div>
   );
 }

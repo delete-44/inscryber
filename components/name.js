@@ -15,7 +15,7 @@ export default function Name(props) {
   }, [name]);
 
   return (
-    <section className="mb-14">
+    <section className="mb-10">
       <p className="mb-3">
         Tell me this creature&apos;s <label htmlFor="name">name</label>.
       </p>
