@@ -112,7 +112,7 @@ export default function Home() {
           </div>
 
           {/* Right column */}
-          <div className="width-full flex justify-center items-center">
+          <div className="width-full flex justify-center items-center relative">
             {busy ? (
               <div
                 className="spinner-border animate-spin inline-block w-8 h-8 border-4 border-orange-400 rounded-full"
@@ -125,10 +125,12 @@ export default function Home() {
             )}
 
             <Image
-              src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_vladde.webp`}
+              src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_vladde`}
               alt="A blank card with the 'Stinky' sigil"
-              width={busy ? 0 : 640}
-              height={1048}
+              width={0}
+              height={0}
+              layout={busy ? 0 : "fill"}
+              objectFit="contain"
               onLoadingComplete={() => {
                 setBusy(false);
               }}
