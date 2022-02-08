@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="prose text-7xl text-shadow-orange text-center mt-5 mb-10">
+        <h1 className="prose text-center mt-5 mb-10">
           Inscryber
         </h1>
 

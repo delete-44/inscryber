@@ -18,11 +18,16 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.orange.400'),
-            fontFamily: theme("fontFamily.title")
-          }
-        }
-      })
+            color: theme("colors.orange.400"),
+            fontFamily: theme("fontFamily.title"),
+
+            h1: {
+              textShadow: "0 0 0.07em #d68c5c",
+              fontSize: theme("fontSize.7xl"),
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],
