@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { HEAVYWEIGHT } from "./constants";
 
 const Stats = (props) => {
@@ -47,6 +48,10 @@ const Stats = (props) => {
       </section>
     </section>
   );
+};
+
+Stats.propTypes = {
+  setPowerTF: PropTypes.func.isRequired,
 };
 
 export default Stats;
