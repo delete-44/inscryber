@@ -82,4 +82,6 @@ describe("Name", () => {
       expect(mockCallback).toHaveBeenCalledTimes(1);
     });
   });
+
+  it("completely removes the transformation when field is empty", async () => {});
 });

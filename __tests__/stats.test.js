@@ -66,5 +66,31 @@ describe("Stats", () => {
         );
       });
     });
+
+    it("ignores non-numerical characters", async () => {
+      const powerField = screen.getByRole("spinbutton", {
+        name: /Power/,
+      });
+
+      userEvent.type(powerField, "Text");
+
+      await waitFor(() => {
+        expect(mockCallback).toHaveBeenCalledTimes(0);
+      });
+    });
+
+    it("staggers requests to only fire after user stops typing", async () => {
+      const powerField = screen.getByRole("spinbutton", {
+        name: /Power/,
+      });
+
+      userEvent.type(powerField, "12345678901234567890");
+
+      await waitFor(() => {
+        expect(mockCallback).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    it("completely removes the transformation when field is empty", async () => {});
   });
 });
