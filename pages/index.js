@@ -6,11 +6,12 @@ import Stats from "../components/stats";
 
 export default function Home() {
   const [nameTF, setNameTF] = useState("");
+  const [powerTF, setPowerTF] = useState("");
   const [busy, setBusy] = useState(true);
 
   useEffect(() => {
     setBusy(true);
-  }, [nameTF]);
+  }, [nameTF, powerTF]);
 
   return (
     <div>
@@ -31,7 +32,7 @@ export default function Home() {
             <Name setNameTF={setNameTF} />
 
             {/* Power & health form fields */}
-            <Stats />
+            <Stats setPowerTF={setPowerTF} />
 
             {/* Cost form fields */}
             <section className="mb-10">
