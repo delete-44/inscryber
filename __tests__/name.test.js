@@ -83,5 +83,24 @@ describe("Name", () => {
     });
   });
 
-  it("completely removes the transformation when field is empty", async () => {});
+  it("completely removes the transformation when field is empty", async () => {
+    const nameField = screen.getByRole("textbox", {
+      name: /Name/,
+    });
+
+    userEvent.type(nameField, "123456789");
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledWith(
+        `l_text:${HEAVYWEIGHT}_128:123456789,g_north,y_48,w_600,h_116,c_fit/`
+      );
+    });
+
+    userEvent.type(nameField, "{selectall}{backspace}");
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledWith("");
+      expect(mockCallback).toHaveBeenCalledTimes(2);
+    });
+  });
 });

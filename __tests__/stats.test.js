@@ -91,6 +91,25 @@ describe("Stats", () => {
       });
     });
 
-    it("completely removes the transformation when field is empty", async () => {});
+    it("completely removes the transformation when field is empty", async () => {
+      const powerField = screen.getByRole("spinbutton", {
+        name: /Power/,
+      });
+
+      userEvent.type(powerField, "9");
+
+      await waitFor(() => {
+        expect(mockCallback).toHaveBeenCalledWith(
+          `l_text:${HEAVYWEIGHT}_156:9,g_south_west,x_64,y_164,w_100,h_156,c_fit/`
+        );
+      });
+
+      userEvent.type(powerField, "{selectall}{backspace}");
+
+      await waitFor(() => {
+        expect(mockCallback).toHaveBeenCalledWith("");
+        expect(mockCallback).toHaveBeenCalledTimes(2);
+      });
+    });
   });
 });
