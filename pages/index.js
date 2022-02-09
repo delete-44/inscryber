@@ -1,16 +1,23 @@
 import Head from "next/head";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { CARD_BASE, CLOUDINARY_BASE } from "../components/constants";
 import Name from "../components/name";
 import Stats from "../components/stats";
 
 export default function Home() {
+  // Transformations to be applied to the image
   const [nameTF, setNameTF] = useState("");
   const [powerTF, setPowerTF] = useState("");
+
+  // State management for this component
   const [busy, setBusy] = useState(true);
+  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}`);
 
   useEffect(() => {
     setBusy(true);
+
+    setUrl(`${CLOUDINARY_BASE}${nameTF}${powerTF}${CARD_BASE}`);
   }, [nameTF, powerTF]);
 
   return (
@@ -118,7 +125,7 @@ export default function Home() {
             )}
 
             <Image
-              src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}${powerTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_vladde`}
+              src={url}
               alt="A blank card with the 'Stinky' sigil"
               width={0}
               height={0}
