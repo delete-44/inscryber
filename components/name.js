@@ -17,7 +17,7 @@ const Name = (props) => {
     const newTimer = setTimeout(() => {
       // If name is empty, clear transformation to save load on API
       newName === ""
-        ? setNameTF("/")
+        ? setNameTF("")
         : setNameTF(
             `l_text:${HEAVYWEIGHT}_128:` +
               `${encodeURIComponent(newName)},` +

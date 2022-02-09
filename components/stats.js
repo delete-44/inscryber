@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HEAVYWEIGHT } from "./constants";
 
 const Stats = (props) => {
-  const [power, setPower] = useState();
+  const [power, setPower] = useState("");
   const [timer, setTimer] = useState(null);
   const { setPowerTF } = props;
 
