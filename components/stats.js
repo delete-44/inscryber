@@ -4,8 +4,9 @@ import { HEAVYWEIGHT } from "./constants";
 
 const Stats = (props) => {
   const [power, setPower] = useState("");
+  const [health, setHealth] = useState("");
   const [timer, setTimer] = useState(null);
-  const { setPowerTF } = props;
+  const { setPowerTF, setHealthTF } = props;
 
   // Stagger requests so they only send 500ms after user stops typing
   const powerChanged = (e) => {
@@ -28,6 +29,26 @@ const Stats = (props) => {
     setTimer(newTimer);
   };
 
+  const healthChanged = (e) => {
+    const newHealth = e.target.value;
+    setHealth(newHealth);
+
+    clearTimeout(timer);
+
+    const newTimer = setTimeout(() => {
+      newHealth === ""
+        ? setHealthTF("")
+        : setHealthTF(
+            `l_text:${HEAVYWEIGHT}_156:` +
+              `${encodeURIComponent(newHealth)},` +
+              `g_south_east,x_64,y_56,w_100,h_156,` +
+              `c_${newHealth.length < 2 ? "fit" : "scale"}/`
+          );
+    }, 500);
+
+    setTimer(newTimer);
+  };
+
   return (
     <section className="mb-10">
       <p className="mb-3">
@@ -44,7 +65,13 @@ const Stats = (props) => {
           onChange={powerChanged}
         />
 
-        <input type="number" min="1" aria-label="Health" name="health" />
+        <input
+          type="number"
+          aria-label="Health"
+          name="health"
+          value={health}
+          onChange={healthChanged}
+        />
       </section>
     </section>
   );

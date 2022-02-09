@@ -9,6 +9,7 @@ export default function Home() {
   // Transformations to be applied to the image
   const [nameTF, setNameTF] = useState("");
   const [powerTF, setPowerTF] = useState("");
+  const [healthTF, setHealthTF] = useState("");
 
   // State management for this component
   const [busy, setBusy] = useState(true);
@@ -17,8 +18,8 @@ export default function Home() {
   useEffect(() => {
     setBusy(true);
 
-    setUrl(`${CLOUDINARY_BASE}${nameTF}${powerTF}${CARD_BASE}`);
-  }, [nameTF, powerTF]);
+    setUrl(`${CLOUDINARY_BASE}${nameTF}${powerTF}${healthTF}${CARD_BASE}`);
+  }, [nameTF, powerTF, healthTF]);
 
   return (
     <div>
@@ -39,7 +40,7 @@ export default function Home() {
             <Name setNameTF={setNameTF} />
 
             {/* Power & health form fields */}
-            <Stats setPowerTF={setPowerTF} />
+            <Stats setPowerTF={setPowerTF} setHealthTF={setHealthTF} />
 
             {/* Cost form fields */}
             <section className="mb-10">
