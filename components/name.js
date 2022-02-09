@@ -12,21 +12,15 @@ const Name = (props) => {
     const newName = e.target.value;
 
     setName(newName);
-    clearTimeout(timer);
 
-    const newTimer = setTimeout(() => {
-      // If name is empty, clear transformation to save load on API
-      newName === ""
-        ? setNameTF("")
-        : setNameTF(
-            `l_text:${HEAVYWEIGHT}_128:` +
-              `${encodeURIComponent(newName)},` +
-              `g_north,y_48,w_600,h_116,` +
-              `c_${newName.length < 10 ? "fit" : "scale"}/`
-          );
-    }, 500);
-
-    setTimer(newTimer);
+    newName === ""
+      ? setNameTF("")
+      : setNameTF(
+          `l_text:${HEAVYWEIGHT}_128:` +
+            `${encodeURIComponent(newName)},` +
+            `g_north,y_48,w_600,h_116,` +
+            `c_${newName.length < 10 ? "fit" : "scale"}/`
+        );
   };
 
   return (
