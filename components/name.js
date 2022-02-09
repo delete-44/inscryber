@@ -20,9 +20,9 @@ const Name = (props) => {
         ? setNameTF("/")
         : setNameTF(
             `l_text:${HEAVYWEIGHT}_128:` +
-              `${encodeURIComponent(newName)}` +
-              `,g_north,y_48,w_600,h_116,c_` +
-              `${newName.length < 10 ? "fit" : "scale"}/`
+              `${encodeURIComponent(newName)},` +
+              `g_north,y_48,w_600,h_116,` +
+              `c_${newName.length < 10 ? "fit" : "scale"}/`
           );
     }, 500);
 

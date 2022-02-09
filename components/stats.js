@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { HEAVYWEIGHT } from "./constants";
 
 const Stats = (props) => {
   const [power, setPower] = useState();
@@ -7,13 +8,19 @@ const Stats = (props) => {
 
   // Stagger requests so they only send 500ms after user stops typing
   const powerChanged = (e) => {
-    console.log(e.target.value)
     setPower(e.target.value);
 
     clearTimeout(timer);
 
     const newTimer = setTimeout(() => {
-      power === "" ? setPowerTF("") : setPowerTF("");
+      e.target.value === ""
+        ? setPowerTF("")
+        : setPowerTF(
+            `l_text:${HEAVYWEIGHT}_156:` +
+              `${encodeURIComponent(e.target.value)},` +
+              `g_south_west,x_64,y_164,w_100,h_156,` +
+              `c_${e.target.value.length < 2 ? "fit" : "scale"}/`
+          );
     }, 500);
 
     setTimer(newTimer);
@@ -29,7 +36,6 @@ const Stats = (props) => {
       <section className="grid grid-cols-2 gap-10 md:w-2/6 w-full">
         <input
           type="number"
-          min="0"
           aria-label="Power"
           name="power"
           value={power}
