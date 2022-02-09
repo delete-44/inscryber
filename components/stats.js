@@ -8,18 +8,19 @@ const Stats = (props) => {
 
   // Stagger requests so they only send 500ms after user stops typing
   const powerChanged = (e) => {
-    setPower(e.target.value);
+    const newPower = e.target.value;
+    setPower(newPower);
 
     clearTimeout(timer);
 
     const newTimer = setTimeout(() => {
-      e.target.value === ""
+      newPower === ""
         ? setPowerTF("")
         : setPowerTF(
             `l_text:${HEAVYWEIGHT}_156:` +
-              `${encodeURIComponent(e.target.value)},` +
+              `${encodeURIComponent(newPower)},` +
               `g_south_west,x_64,y_164,w_100,h_156,` +
-              `c_${e.target.value.length < 2 ? "fit" : "scale"}/`
+              `c_${newPower.length < 2 ? "fit" : "scale"}/`
           );
     }, 500);
 
