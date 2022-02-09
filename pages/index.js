@@ -118,7 +118,7 @@ export default function Home() {
             )}
 
             <Image
-              src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_vladde`}
+              src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}${powerTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_vladde`}
               alt="A blank card with the 'Stinky' sigil"
               width={0}
               height={0}

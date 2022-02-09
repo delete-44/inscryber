@@ -19,7 +19,7 @@ const Name = (props) => {
         : setNameTF(
             `l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_84:${encodeURIComponent(
               e.target.value
-            )},g_north,y_64/c_scale,`
+            )},g_north,y_64,w_600,c_fit,h_80/`
           );
     }, 500);
 
