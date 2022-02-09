@@ -2,6 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import Name from "../components/name";
+import { HEAVYWEIGHT } from "../components/constants";
 
 describe("Name", () => {
   const mockCallback = jest.fn();
@@ -28,16 +29,30 @@ describe("Name", () => {
     expect(nameLabel).toBeInTheDocument();
   });
 
-  it("generates a specific transformation when text changes", async () => {
+  it("uses fit cropping for short strings", async () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
     });
 
-    userEvent.type(nameField, "Test");
+    userEvent.type(nameField, "123456789");
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        "l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_84:Test,g_north,y_64/c_scale,"
+        `l_text:${HEAVYWEIGHT}_128:123456789,g_north,y_48,w_600,h_116,c_fit/`
+      );
+    });
+  });
+
+  it("uses scale cropping for long strings", async () => {
+    const nameField = screen.getByRole("textbox", {
+      name: /Name/,
+    });
+
+    userEvent.type(nameField, "1234567890");
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledWith(
+        `l_text:${HEAVYWEIGHT}_128:1234567890,g_north,y_48,w_600,h_116,c_scale/`
       );
     });
   });
@@ -51,7 +66,7 @@ describe("Name", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        "l_text:v1644177732:Inscryption:HEAVYWEIGHT.ttf_84:Test%20String,g_north,y_64/c_scale,"
+        `l_text:${HEAVYWEIGHT}_128:Test%20String,g_north,y_48,w_600,h_116,c_scale/`
       );
     });
   });
@@ -65,6 +80,27 @@ describe("Name", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  it("completely removes the transformation when field is empty", async () => {
+    const nameField = screen.getByRole("textbox", {
+      name: /Name/,
+    });
+
+    userEvent.type(nameField, "123456789");
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledWith(
+        `l_text:${HEAVYWEIGHT}_128:123456789,g_north,y_48,w_600,h_116,c_fit/`
+      );
+    });
+
+    userEvent.type(nameField, "{selectall}{backspace}");
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledWith("");
+      expect(mockCallback).toHaveBeenCalledTimes(2);
     });
   });
 });

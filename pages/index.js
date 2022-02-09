@@ -1,15 +1,25 @@
 import Head from "next/head";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { CARD_BASE, CLOUDINARY_BASE } from "../components/constants";
 import Name from "../components/name";
+import Stats from "../components/stats";
 
 export default function Home() {
+  // Transformations to be applied to the image
   const [nameTF, setNameTF] = useState("");
+  const [powerTF, setPowerTF] = useState("");
+  const [healthTF, setHealthTF] = useState("");
+
+  // State management for this component
   const [busy, setBusy] = useState(true);
+  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}`);
 
   useEffect(() => {
     setBusy(true);
-  }, [nameTF]);
+
+    setUrl(`${CLOUDINARY_BASE}${nameTF}${powerTF}${healthTF}${CARD_BASE}`);
+  }, [nameTF, powerTF, healthTF]);
 
   return (
     <div>
@@ -30,23 +40,7 @@ export default function Home() {
             <Name setNameTF={setNameTF} />
 
             {/* Power & health form fields */}
-            <section className="mb-10">
-              <p className="mb-3">
-                How about their <label htmlFor="power">power</label> and{" "}
-                <label htmlFor="health">health</label>?
-              </p>
-
-              <section className="grid grid-cols-2 gap-10 md:w-2/6 w-full">
-                <input type="number" min="0" aria-label="Power" name="power" />
-
-                <input
-                  type="number"
-                  min="1"
-                  aria-label="Health"
-                  name="health"
-                />
-              </section>
-            </section>
+            <Stats setPowerTF={setPowerTF} setHealthTF={setHealthTF} />
 
             {/* Cost form fields */}
             <section className="mb-10">
@@ -132,7 +126,7 @@ export default function Home() {
             )}
 
             <Image
-              src={`https://res.cloudinary.com/delete-44/image/upload/${nameTF}l_v1644060029:Inscryption:stinky.svg,w_248,y_340/v1644060066/Inscryption/blank_vladde`}
+              src={url}
               alt="A blank card with the 'Stinky' sigil"
               width={0}
               height={0}
