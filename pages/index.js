@@ -19,7 +19,7 @@ export default function Home() {
     const timer = setTimeout(() => {
       setBusy(true);
       const transformations = [nameTF, powerTF, healthTF].join();
-      setUrl(`/${transformations}${CARD_BASE}`);
+      setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}`);
     }, 500);
     return () => clearTimeout(timer);
   }, [nameTF, powerTF, healthTF]);
@@ -135,6 +135,7 @@ export default function Home() {
               height={0}
               layout={busy ? 0 : "fill"}
               objectFit="contain"
+              priority
               onLoadingComplete={() => {
                 setBusy(false);
               }}
