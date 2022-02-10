@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { HEAVYWEIGHT } from "./constants";
 
@@ -7,19 +7,16 @@ const Stats = (props) => {
   const [health, setHealth] = useState("");
   const { setPowerTF, setHealthTF } = props;
 
-  const powerChanged = (e) => {
-    const newPower = e.target.value;
-    setPower(newPower);
-
-    newPower === ""
+  useEffect(() => {
+    power === ""
       ? setPowerTF("")
       : setPowerTF(
           `l_text:${HEAVYWEIGHT}_156:` +
-            `${encodeURIComponent(newPower)},` +
+            `${encodeURIComponent(power)},` +
             `g_south_west,x_64,y_164,w_100,h_156,` +
-            `c_${newPower.length < 2 ? "fit" : "scale"}/`
+            `c_${power.length < 2 ? "fit" : "scale"}/`
         );
-  };
+  }, [power]);
 
   const healthChanged = (e) => {
     const newHealth = e.target.value;
@@ -48,7 +45,9 @@ const Stats = (props) => {
           aria-label="Power"
           name="power"
           value={power}
-          onChange={powerChanged}
+          onChange={(e) => {
+            setPower(e.target.value);
+          }}
         />
 
         <input
