@@ -6,7 +6,6 @@ const Name = (props) => {
   const [name, setName] = useState("");
   const { setNameTF } = props;
 
-  // Stagger requests so they only send 500ms after user stops typing
   const nameChanged = (e) => {
     const newName = e.target.value;
     setName(newName);

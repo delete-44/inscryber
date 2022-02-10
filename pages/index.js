@@ -15,6 +15,7 @@ export default function Home() {
   const [powerTF, setPowerTF] = useState("");
   const [healthTF, setHealthTF] = useState("");
 
+  // Stagger requests so they only send 500ms after user stops typing
   useEffect(() => {
     const timer = setTimeout(() => {
       setBusy(true);

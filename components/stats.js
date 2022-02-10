@@ -7,7 +7,6 @@ const Stats = (props) => {
   const [health, setHealth] = useState("");
   const { setPowerTF, setHealthTF } = props;
 
-  // Stagger requests so they only send 500ms after user stops typing
   const powerChanged = (e) => {
     const newPower = e.target.value;
     setPower(newPower);
