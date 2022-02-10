@@ -18,7 +18,8 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setBusy(true);
-      setUrl(`${CLOUDINARY_BASE}${nameTF}${powerTF}${healthTF}${CARD_BASE}`);
+      const transformations = [nameTF, powerTF, healthTF].join();
+      setUrl(`/${transformations}${CARD_BASE}`);
     }, 500);
     return () => clearTimeout(timer);
   }, [nameTF, powerTF, healthTF]);
@@ -132,9 +133,12 @@ export default function Home() {
               alt="A blank card with the 'Stinky' sigil"
               width={0}
               height={0}
+              priority
               layout={busy ? 0 : "fill"}
               objectFit="contain"
-              onLoadingComplete={() => setBusy(false)}
+              onLoadingComplete={(e) => {
+                  setBusy(false)
+              }}
             />
           </div>
         </div>
