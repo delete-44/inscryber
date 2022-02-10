@@ -6,14 +6,14 @@ import Name from "../components/name";
 import Stats from "../components/stats";
 
 export default function Home() {
+  // State management for this component
+  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}`);
+  const [busy, setBusy] = useState(true);
+
   // Transformations to be applied to the image
   const [nameTF, setNameTF] = useState("");
   const [powerTF, setPowerTF] = useState("");
   const [healthTF, setHealthTF] = useState("");
-
-  // State management for this component
-  const [busy, setBusy] = useState(true);
-  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}`);
 
   useEffect(() => {
     const timer = setTimeout(() => {
