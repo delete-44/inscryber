@@ -16,9 +16,12 @@ export default function Home() {
   const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}`);
 
   useEffect(() => {
-    setBusy(true);
-
-    setUrl(`${CLOUDINARY_BASE}${nameTF}${powerTF}${healthTF}${CARD_BASE}`);
+    const timer = setTimeout(() => {
+      setBusy(true);
+      const transformations = [nameTF, powerTF, healthTF].join();
+      setUrl(`/${transformations}${CARD_BASE}`);
+    }, 500);
+    return () => clearTimeout(timer);
   }, [nameTF, powerTF, healthTF]);
 
   return (
