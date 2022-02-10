@@ -71,18 +71,6 @@ describe("Name", () => {
     });
   });
 
-  it("staggers requests to only fire after user stops typing", async () => {
-    const nameField = screen.getByRole("textbox", {
-      name: /Name/,
-    });
-
-    userEvent.type(nameField, "Test String LONG LONG LONG LONG LONG LONG");
-
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenCalledTimes(1);
-    });
-  });
-
   it("completely removes the transformation when field is empty", async () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
@@ -100,7 +88,6 @@ describe("Name", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith("");
-      expect(mockCallback).toHaveBeenCalledTimes(2);
     });
   });
 });
