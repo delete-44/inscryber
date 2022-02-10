@@ -48,7 +48,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_156:9,g_south_west,x_64,y_164,w_100,h_156,c_fit/`
+          `l_text:${HEAVYWEIGHT}_204:9,g_south_west,x_72,y_164,w_100,h_156,c_fit/`
         );
       });
     });
@@ -62,7 +62,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_156:10,g_south_west,x_64,y_164,w_100,h_156,c_scale/`
+          `l_text:${HEAVYWEIGHT}_204:10,g_south_west,x_72,y_164,w_100,h_156,c_scale/`
         );
       });
     });
@@ -88,7 +88,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_156:9,g_south_west,x_64,y_164,w_100,h_156,c_fit/`
+          `l_text:${HEAVYWEIGHT}_204:9,g_south_west,x_72,y_164,w_100,h_156,c_fit/`
         );
       });
 
@@ -110,7 +110,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_156:9,g_south_east,x_64,y_56,w_100,h_156,c_fit/`
+          `l_text:${HEAVYWEIGHT}_204:9,g_south_east,x_60,y_66,w_100,h_156,c_fit/`
         );
       });
     });
@@ -124,7 +124,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_156:10,g_south_east,x_64,y_56,w_100,h_156,c_scale/`
+          `l_text:${HEAVYWEIGHT}_204:10,g_south_east,x_60,y_66,w_100,h_156,c_scale/`
         );
       });
     });
@@ -150,7 +150,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_156:9,g_south_east,x_64,y_56,w_100,h_156,c_fit/`
+          `l_text:${HEAVYWEIGHT}_204:9,g_south_east,x_60,y_66,w_100,h_156,c_fit/`
         );
       });
 

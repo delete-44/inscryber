@@ -11,9 +11,9 @@ const Stats = (props) => {
     power === ""
       ? setPowerTF("")
       : setPowerTF(
-          `l_text:${HEAVYWEIGHT}_156:` +
+          `l_text:${HEAVYWEIGHT}_204:` +
             `${encodeURIComponent(power)},` +
-            `g_south_west,x_64,y_164,w_100,h_156,` +
+            `g_south_west,x_72,y_164,w_100,h_156,` +
             `c_${power.length < 2 ? "fit" : "scale"}/`
         );
   }, [power]);
@@ -22,9 +22,9 @@ const Stats = (props) => {
     health === ""
       ? setHealthTF("")
       : setHealthTF(
-          `l_text:${HEAVYWEIGHT}_156:` +
+          `l_text:${HEAVYWEIGHT}_204:` +
             `${encodeURIComponent(health)},` +
-            `g_south_east,x_64,y_56,w_100,h_156,` +
+            `g_south_east,x_60,y_66,w_100,h_156,` +
             `c_${health.length < 2 ? "fit" : "scale"}/`
         );
   }, [health]);
