@@ -5,7 +5,6 @@ import { HEAVYWEIGHT } from "./constants";
 const Stats = (props) => {
   const [power, setPower] = useState("");
   const [health, setHealth] = useState("");
-  const [timer, setTimer] = useState(null);
   const { setPowerTF, setHealthTF } = props;
 
   // Stagger requests so they only send 500ms after user stops typing
@@ -13,40 +12,28 @@ const Stats = (props) => {
     const newPower = e.target.value;
     setPower(newPower);
 
-    clearTimeout(timer);
-
-    const newTimer = setTimeout(() => {
-      newPower === ""
-        ? setPowerTF("")
-        : setPowerTF(
-            `l_text:${HEAVYWEIGHT}_156:` +
-              `${encodeURIComponent(newPower)},` +
-              `g_south_west,x_64,y_164,w_100,h_156,` +
-              `c_${newPower.length < 2 ? "fit" : "scale"}/`
-          );
-    }, 500);
-
-    setTimer(newTimer);
+    newPower === ""
+      ? setPowerTF("")
+      : setPowerTF(
+          `l_text:${HEAVYWEIGHT}_156:` +
+            `${encodeURIComponent(newPower)},` +
+            `g_south_west,x_64,y_164,w_100,h_156,` +
+            `c_${newPower.length < 2 ? "fit" : "scale"}/`
+        );
   };
 
   const healthChanged = (e) => {
     const newHealth = e.target.value;
     setHealth(newHealth);
 
-    clearTimeout(timer);
-
-    const newTimer = setTimeout(() => {
-      newHealth === ""
-        ? setHealthTF("")
-        : setHealthTF(
-            `l_text:${HEAVYWEIGHT}_156:` +
-              `${encodeURIComponent(newHealth)},` +
-              `g_south_east,x_64,y_56,w_100,h_156,` +
-              `c_${newHealth.length < 2 ? "fit" : "scale"}/`
-          );
-    }, 500);
-
-    setTimer(newTimer);
+    newHealth === ""
+      ? setHealthTF("")
+      : setHealthTF(
+          `l_text:${HEAVYWEIGHT}_156:` +
+            `${encodeURIComponent(newHealth)},` +
+            `g_south_east,x_64,y_56,w_100,h_156,` +
+            `c_${newHealth.length < 2 ? "fit" : "scale"}/`
+        );
   };
 
   return (
