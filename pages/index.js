@@ -13,7 +13,7 @@ export default function Home() {
 
   // State management for this component
   const [busy, setBusy] = useState(true);
-  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}`);
+  const [url, setUrl] = useState(`/${CARD_BASE}`);
 
   useEffect(() => {
     const timer = setTimeout(() => {
