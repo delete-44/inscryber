@@ -4,29 +4,21 @@ import { HEAVYWEIGHT } from "./constants";
 
 const Name = (props) => {
   const [name, setName] = useState("");
-  const [timer, setTimer] = useState(null);
   const { setNameTF } = props;
 
-  // Stagger requests so they only send 500ms after user stops typing
   const nameChanged = (e) => {
     const newName = e.target.value;
-
     setName(newName);
-    clearTimeout(timer);
 
-    const newTimer = setTimeout(() => {
-      // If name is empty, clear transformation to save load on API
-      newName === ""
-        ? setNameTF("")
-        : setNameTF(
-            `l_text:${HEAVYWEIGHT}_128:` +
-              `${encodeURIComponent(newName)},` +
-              `g_north,y_48,w_600,h_116,` +
-              `c_${newName.length < 10 ? "fit" : "scale"}/`
-          );
-    }, 500);
-
-    setTimer(newTimer);
+    // If name is empty, clear transformation to save load on API
+    newName === ""
+      ? setNameTF("")
+      : setNameTF(
+          `l_text:${HEAVYWEIGHT}_128:` +
+            `${encodeURIComponent(newName)},` +
+            `g_north,y_48,w_600,h_116,` +
+            `c_${newName.length < 10 ? "fit" : "scale"}/`
+        );
   };
 
   return (

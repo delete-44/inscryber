@@ -6,19 +6,23 @@ import Name from "../components/name";
 import Stats from "../components/stats";
 
 export default function Home() {
+  // State management for this component
+  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}`);
+  const [busy, setBusy] = useState(true);
+
   // Transformations to be applied to the image
   const [nameTF, setNameTF] = useState("");
   const [powerTF, setPowerTF] = useState("");
   const [healthTF, setHealthTF] = useState("");
 
-  // State management for this component
-  const [busy, setBusy] = useState(true);
-  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}`);
-
+  // Stagger requests so they only send 500ms after user stops typing
   useEffect(() => {
-    setBusy(true);
-
-    setUrl(`${CLOUDINARY_BASE}${nameTF}${powerTF}${healthTF}${CARD_BASE}`);
+    const timer = setTimeout(() => {
+      setBusy(true);
+      const transformations = [nameTF, powerTF, healthTF].join();
+      setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}`);
+    }, 500);
+    return () => clearTimeout(timer);
   }, [nameTF, powerTF, healthTF]);
 
   return (
@@ -132,6 +136,7 @@ export default function Home() {
               height={0}
               layout={busy ? 0 : "fill"}
               objectFit="contain"
+              priority
               onLoadingComplete={() => {
                 setBusy(false);
               }}

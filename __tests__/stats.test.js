@@ -79,18 +79,6 @@ describe("Stats", () => {
       });
     });
 
-    it("staggers requests to only fire after user stops typing", async () => {
-      const powerField = screen.getByRole("spinbutton", {
-        name: /Power/,
-      });
-
-      userEvent.type(powerField, "12345678901234567890");
-
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledTimes(1);
-      });
-    });
-
     it("completely removes the transformation when field is empty", async () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
@@ -108,7 +96,6 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith("");
-        expect(mockCallback).toHaveBeenCalledTimes(2);
       });
     });
   });
@@ -154,18 +141,6 @@ describe("Stats", () => {
       });
     });
 
-    it("staggers requests to only fire after user stops typing", async () => {
-      const healthField = screen.getByRole("spinbutton", {
-        name: /Health/,
-      });
-
-      userEvent.type(healthField, "12345678901234567890");
-
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledTimes(1);
-      });
-    });
-
     it("completely removes the transformation when field is empty", async () => {
       const healthField = screen.getByRole("spinbutton", {
         name: /Health/,
@@ -183,7 +158,6 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith("");
-        expect(mockCallback).toHaveBeenCalledTimes(2);
       });
     });
   });
