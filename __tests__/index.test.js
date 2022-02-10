@@ -28,78 +28,82 @@ describe("Name", () => {
     expect(image.src).toContain("test");
   });
 
-  it("staggers name changes to only fire request after user stops typing", async () => {
-    const image = await screen.findByAltText(
-      "A blank card with the 'Stinky' sigil"
-    );
+  it("staggers changes across multiple fields", async () => {});
 
-    expect(image.src).not.toContain("HEAVYWEIGHT.ttf_128");
+  describe("staggering individual form fields", () => {
+    it("when name", async () => {
+      const image = await screen.findByAltText(
+        "A blank card with the 'Stinky' sigil"
+      );
 
-    const nameField = screen.getByRole("textbox", {
-      name: /Name/,
+      expect(image.src).not.toContain("HEAVYWEIGHT.ttf_128");
+
+      const nameField = screen.getByRole("textbox", {
+        name: /Name/,
+      });
+
+      await act(async () => {
+        userEvent.type(nameField, "123456789");
+      });
+
+      jest.advanceTimersByTime(499);
+      expect(image.src).not.toContain("HEAVYWEIGHT.ttf_128");
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toContain("HEAVYWEIGHT.ttf_128");
     });
 
-    await act(async () => {
-      userEvent.type(nameField, "123456789");
+    it("when power", async () => {
+      const image = await screen.findByAltText(
+        "A blank card with the 'Stinky' sigil"
+      );
+
+      expect(image.src).not.toContain("HEAVYWEIGHT.ttf_156");
+
+      const powerField = screen.getByRole("spinbutton", {
+        name: /Power/,
+      });
+
+      await act(async () => {
+        userEvent.type(powerField, "123456789");
+      });
+
+      jest.advanceTimersByTime(499);
+      expect(image.src).not.toContain("HEAVYWEIGHT.ttf_156");
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toContain("HEAVYWEIGHT.ttf_156");
     });
 
-    jest.advanceTimersByTime(499);
-    expect(image.src).not.toContain("HEAVYWEIGHT.ttf_128");
+    it("when health", async () => {
+      const image = await screen.findByAltText(
+        "A blank card with the 'Stinky' sigil"
+      );
 
-    await act(async () => {
-      jest.advanceTimersByTime(2);
+      expect(image.src).not.toContain("HEAVYWEIGHT.ttf_156");
+
+      const healthField = screen.getByRole("spinbutton", {
+        name: /Health/,
+      });
+
+      await act(async () => {
+        userEvent.type(healthField, "123456789");
+      });
+
+      jest.advanceTimersByTime(499);
+      expect(image.src).not.toContain("HEAVYWEIGHT.ttf_156");
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toContain("HEAVYWEIGHT.ttf_156");
     });
-
-    expect(image.src).toContain("HEAVYWEIGHT.ttf_128");
-  });
-
-  it("staggers power changes to only fire request after user stops typing", async () => {
-    const image = await screen.findByAltText(
-      "A blank card with the 'Stinky' sigil"
-    );
-
-    expect(image.src).not.toContain("HEAVYWEIGHT.ttf_156");
-
-    const powerField = screen.getByRole("spinbutton", {
-      name: /Power/,
-    });
-
-    await act(async () => {
-      userEvent.type(powerField, "123456789");
-    });
-
-    jest.advanceTimersByTime(499);
-    expect(image.src).not.toContain("HEAVYWEIGHT.ttf_156");
-
-    await act(async () => {
-      jest.advanceTimersByTime(2);
-    });
-
-    expect(image.src).toContain("HEAVYWEIGHT.ttf_156");
-  });
-
-  it("staggers health changes to only fire request after user stops typing", async () => {
-    const image = await screen.findByAltText(
-      "A blank card with the 'Stinky' sigil"
-    );
-
-    expect(image.src).not.toContain("HEAVYWEIGHT.ttf_156");
-
-    const healthField = screen.getByRole("spinbutton", {
-      name: /Health/,
-    });
-
-    await act(async () => {
-      userEvent.type(healthField, "123456789");
-    });
-
-    jest.advanceTimersByTime(499);
-    expect(image.src).not.toContain("HEAVYWEIGHT.ttf_156");
-
-    await act(async () => {
-      jest.advanceTimersByTime(2);
-    });
-
-    expect(image.src).toContain("HEAVYWEIGHT.ttf_156");
   });
 });
