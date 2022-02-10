@@ -18,19 +18,16 @@ const Stats = (props) => {
         );
   }, [power]);
 
-  const healthChanged = (e) => {
-    const newHealth = e.target.value;
-    setHealth(newHealth);
-
-    newHealth === ""
+  useEffect(() => {
+    health === ""
       ? setHealthTF("")
       : setHealthTF(
           `l_text:${HEAVYWEIGHT}_156:` +
-            `${encodeURIComponent(newHealth)},` +
+            `${encodeURIComponent(health)},` +
             `g_south_east,x_64,y_56,w_100,h_156,` +
-            `c_${newHealth.length < 2 ? "fit" : "scale"}/`
+            `c_${health.length < 2 ? "fit" : "scale"}/`
         );
-  };
+  }, [health]);
 
   return (
     <section className="mb-10">
@@ -55,7 +52,9 @@ const Stats = (props) => {
           aria-label="Health"
           name="health"
           value={health}
-          onChange={healthChanged}
+          onChange={(e) => {
+            setHealth(e.target.value);
+          }}
         />
       </section>
     </section>
