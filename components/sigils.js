@@ -3,15 +3,18 @@ import Select from "react-select";
 
 const Sigils = (props) => {
   const [sigil, setSigil] = useState("");
+  const { setSigilsTF } = props;
 
   const options = [
     { value: "", label: "No sigils" },
-    { value: "sigils/airborne", label: "Airborne" },
-    { value: "sigils/bifurcated_strike", label: "Bifurcated Strike" },
+    { value: "v1644605839:Inscryption:Sigils:airborne", label: "Airborne" },
+    { value: "v1644605839:Inscryption:Sigils:bifurcated_strike", label: "Bifurcated Strike" },
   ];
 
   useEffect(() => {
-    console.log(sigil);
+    sigil === ""
+      ? setSigilsTF("")
+      : setSigilsTF(`l_${sigil}.png,g_south,y_64/`);
   }, [sigil]);
 
   return (
