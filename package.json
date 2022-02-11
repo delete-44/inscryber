@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest --watch",
+    "test-ci": "jest"
   },
   "dependencies": {
     "next": "12.0.10",
