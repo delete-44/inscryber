@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { CARD_BASE, CLOUDINARY_BASE } from "../components/constants";
 import Name from "../components/name";
 import Stats from "../components/stats";
+import Sigils from "../components/sigils";
 
 export default function Home() {
   // State management for this component
@@ -14,16 +15,17 @@ export default function Home() {
   const [nameTF, setNameTF] = useState("");
   const [powerTF, setPowerTF] = useState("");
   const [healthTF, setHealthTF] = useState("");
+  const [sigilsTF, setSigilsTF] = useState("");
 
   // Stagger requests so they only send 500ms after user stops typing
   useEffect(() => {
     const timer = setTimeout(() => {
       setBusy(true);
-      const transformations = [nameTF, powerTF, healthTF].join();
+      const transformations = [nameTF, powerTF, healthTF, sigilsTF].join("");
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}`);
     }, 500);
     return () => clearTimeout(timer);
-  }, [nameTF, powerTF, healthTF]);
+  }, [nameTF, powerTF, healthTF, sigilsTF]);
 
   return (
     <div>
@@ -88,19 +90,7 @@ export default function Home() {
             </section>
 
             {/* Sigils form field */}
-            <section className="mb-10">
-              <p className="mb-3">
-                Does this creature have any{" "}
-                <label htmlFor="sigils">sigils</label>?
-              </p>
-
-              {/* THIS IS NOT FINAL, but a good indicator of size */}
-              <input
-                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-orange-100 bg-clip-padding border border-solid border-gray-300 rounded"
-                type="file"
-                id="portrait"
-              />
-            </section>
+            <Sigils setSigilsTF={setSigilsTF} />
 
             {/* Picture form field */}
             <section>
@@ -131,7 +121,7 @@ export default function Home() {
 
             <Image
               src={url}
-              alt="A blank card with the 'Stinky' sigil"
+              alt="A preview of your custom card"
               width={0}
               height={0}
               layout={busy ? 0 : "fill"}
