@@ -66,7 +66,7 @@ describe("Name", () => {
 
     // Confirm image contains both transformations
     expect(image.src).toMatch(/HEAVYWEIGHT.ttf_128/);
-    expect(image.src).toMatch(/HEAVYWEIGHT.ttf_156/);
+    expect(image.src).toMatch(/HEAVYWEIGHT.ttf_204/);
   });
 
   describe("staggering individual form fields", () => {
@@ -100,7 +100,7 @@ describe("Name", () => {
         "A blank card with the 'Stinky' sigil"
       );
 
-      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_156/);
+      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_204/);
 
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
@@ -111,13 +111,13 @@ describe("Name", () => {
       });
 
       jest.advanceTimersByTime(499);
-      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_156/);
+      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_204/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/HEAVYWEIGHT.ttf_156/);
+      expect(image.src).toMatch(/HEAVYWEIGHT.ttf_204/);
     });
 
     it("when health", async () => {
@@ -125,7 +125,7 @@ describe("Name", () => {
         "A blank card with the 'Stinky' sigil"
       );
 
-      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_156/);
+      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_204/);
 
       const healthField = screen.getByRole("spinbutton", {
         name: /Health/,
@@ -136,13 +136,13 @@ describe("Name", () => {
       });
 
       jest.advanceTimersByTime(499);
-      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_156/);
+      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_204/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/HEAVYWEIGHT.ttf_156/);
+      expect(image.src).toMatch(/HEAVYWEIGHT.ttf_204/);
     });
   });
 });

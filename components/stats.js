@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { HEAVYWEIGHT } from "./constants";
 
@@ -7,33 +7,27 @@ const Stats = (props) => {
   const [health, setHealth] = useState("");
   const { setPowerTF, setHealthTF } = props;
 
-  const powerChanged = (e) => {
-    const newPower = e.target.value;
-    setPower(newPower);
-
-    newPower === ""
+  useEffect(() => {
+    power === ""
       ? setPowerTF("")
       : setPowerTF(
-          `l_text:${HEAVYWEIGHT}_156:` +
-            `${encodeURIComponent(newPower)},` +
-            `g_south_west,x_64,y_164,w_100,h_156,` +
-            `c_${newPower.length < 2 ? "fit" : "scale"}/`
+          `l_text:${HEAVYWEIGHT}_204:` +
+            `${encodeURIComponent(power)},` +
+            `g_south_west,x_72,y_164,w_100,h_156,` +
+            `c_${power.length < 2 ? "fit" : "scale"}/`
         );
-  };
+  }, [power]);
 
-  const healthChanged = (e) => {
-    const newHealth = e.target.value;
-    setHealth(newHealth);
-
-    newHealth === ""
+  useEffect(() => {
+    health === ""
       ? setHealthTF("")
       : setHealthTF(
-          `l_text:${HEAVYWEIGHT}_156:` +
-            `${encodeURIComponent(newHealth)},` +
-            `g_south_east,x_64,y_56,w_100,h_156,` +
-            `c_${newHealth.length < 2 ? "fit" : "scale"}/`
+          `l_text:${HEAVYWEIGHT}_204:` +
+            `${encodeURIComponent(health)},` +
+            `g_south_east,x_60,y_66,w_100,h_156,` +
+            `c_${health.length < 2 ? "fit" : "scale"}/`
         );
-  };
+  }, [health]);
 
   return (
     <section className="mb-10">
@@ -48,7 +42,9 @@ const Stats = (props) => {
           aria-label="Power"
           name="power"
           value={power}
-          onChange={powerChanged}
+          onChange={(e) => {
+            setPower(e.target.value);
+          }}
         />
 
         <input
@@ -56,7 +52,9 @@ const Stats = (props) => {
           aria-label="Health"
           name="health"
           value={health}
-          onChange={healthChanged}
+          onChange={(e) => {
+            setHealth(e.target.value);
+          }}
         />
       </section>
     </section>
