@@ -1,8 +1,9 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import * as constants from "../components/constants";
 import Home from "../pages";
+import selectEvent from "react-select-event";
 
 describe("Name", () => {
   constants.CLOUDINARY_BASE = "https://test/";
@@ -143,6 +144,29 @@ describe("Name", () => {
       });
 
       expect(image.src).toMatch(/HEAVYWEIGHT.ttf_204/);
+    });
+
+    it("when sigils", async () => {
+      const image = await screen.findByAltText(
+        "A blank card with the 'Stinky' sigil"
+      );
+
+      expect(image.src).not.toMatch(/airborne/);
+
+      const sigilsField = screen.getByRole("combobox", {
+        "aria-label": /Sigils/,
+      });
+
+      await selectEvent.select(sigilsField, /Airborne/);
+
+      jest.advanceTimersByTime(499);
+      expect(image.src).not.toMatch(/airborne/);
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toMatch(/airborne/);
     });
   });
 });
