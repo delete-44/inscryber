@@ -24,6 +24,7 @@ const Sigils = (props) => {
       </p>
 
       <Select
+        instanceId="sigils-selector"
         options={options}
         isSearchable
         onChange={(e) => {
