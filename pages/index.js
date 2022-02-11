@@ -121,7 +121,7 @@ export default function Home() {
 
             <Image
               src={url}
-              alt="A blank card with the 'Stinky' sigil"
+              alt="A preview of your custom card"
               width={0}
               height={0}
               layout={busy ? 0 : "fill"}

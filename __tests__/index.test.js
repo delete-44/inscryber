@@ -21,18 +21,14 @@ describe("Name", () => {
   });
 
   it("mocks the image url to avoid contacting cloudinary", async () => {
-    const image = await screen.findByAltText(
-      "A blank card with the 'Stinky' sigil"
-    );
+    const image = await screen.findByAltText("A preview of your custom card");
 
     expect(image.src).not.toContain("cloudinary");
     expect(image.src).toContain("test");
   });
 
   it("staggers changes across multiple fields", async () => {
-    const image = await screen.findByAltText(
-      "A blank card with the 'Stinky' sigil"
-    );
+    const image = await screen.findByAltText("A preview of your custom card");
 
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
@@ -72,9 +68,7 @@ describe("Name", () => {
 
   describe("staggering individual form fields", () => {
     it("when name", async () => {
-      const image = await screen.findByAltText(
-        "A blank card with the 'Stinky' sigil"
-      );
+      const image = await screen.findByAltText("A preview of your custom card");
 
       expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_128/);
 
@@ -97,9 +91,7 @@ describe("Name", () => {
     });
 
     it("when power", async () => {
-      const image = await screen.findByAltText(
-        "A blank card with the 'Stinky' sigil"
-      );
+      const image = await screen.findByAltText("A preview of your custom card");
 
       expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_204/);
 
@@ -122,9 +114,7 @@ describe("Name", () => {
     });
 
     it("when health", async () => {
-      const image = await screen.findByAltText(
-        "A blank card with the 'Stinky' sigil"
-      );
+      const image = await screen.findByAltText("A preview of your custom card");
 
       expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_204/);
 
@@ -147,9 +137,7 @@ describe("Name", () => {
     });
 
     it("when sigils", async () => {
-      const image = await screen.findByAltText(
-        "A blank card with the 'Stinky' sigil"
-      );
+      const image = await screen.findByAltText("A preview of your custom card");
 
       expect(image.src).not.toMatch(/airborne/);
 
