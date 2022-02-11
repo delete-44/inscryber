@@ -29,7 +29,27 @@ describe("Sigils", () => {
     expect(sigilsLabel).toBeInTheDocument();
   });
 
-  it("correctly sets a transformation", () => {});
+  it("correctly sets a transformation", async () => {
+    const sigilsField = screen.getByRole("combobox", {
+      "aria-label": /Sigils/,
+    });
+
+    await selectEvent.select(sigilsField, /Airborne/);
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledWith(
+        "l_v1644605839:Inscryption:Sigils:airborne.png,g_south,y_64/"
+      );
+    });
+
+    await selectEvent.select(sigilsField, /Bifurcated Strike/);
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledWith(
+        "l_v1644605839:Inscryption:Sigils:bifurcated_strike.png,g_south,y_64/"
+      );
+    });
+  });
 
   it("completely removes the transformation when field is empty", async () => {
     const sigilsField = screen.getByRole("combobox", {
