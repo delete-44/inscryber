@@ -28,15 +28,11 @@ const Portrait = (props) => {
     }
 
     const uploadedImage = await upload(image);
+    const imageID = uploadedImage.url
+      .replace(/http:\/\/res.cloudinary.com\/.*\/image\/upload\//, "")
+      .replace(/\/Inscryption\/Uploads\//, ":Inscryption:Uploads:");
 
-    setPortraitTF(
-      `l_${uploadedImage.url
-        .replace(/http:\/\/res.cloudinary.com\/.*\/image\/upload\//, "")
-        .replace(
-          /\/Inscryption\/Uploads\//,
-          ":Inscryption:Uploads:"
-        )},c_fit,h_512,w_624,y_-80/`
-    );
+    setPortraitTF(`l_${imageID},c_fit,h_512,w_624,y_-80/`);
   }, [image]);
 
   return (
