@@ -3,6 +3,7 @@ import { CLOUDINARY_API_BASE } from "./constants";
 
 const Portrait = (props) => {
   const [image, setImage] = useState("");
+  const { setPortraitTF } = props;
 
   const upload = async (imgData) => {
     const formData = new FormData();
@@ -21,10 +22,21 @@ const Portrait = (props) => {
   };
 
   useEffect(async () => {
-    if (image === "") return;
+    if (image === "") {
+      setPortraitTF("");
+      return;
+    }
 
     const uploadedImage = await upload(image);
-    console.log(uploadedImage);
+
+    setPortraitTF(
+      `l_${uploadedImage.url
+        .replace(/http:\/\/res.cloudinary.com\/.*\/image\/upload\//, "")
+        .replace(
+          /\/Inscryption\/Uploads\//,
+          ":Inscryption:Uploads:"
+        )},c_fit,h_512,w_624,y_-80/`
+    );
   }, [image]);
 
   return (
