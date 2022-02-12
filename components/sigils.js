@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
+import { SIGILS } from "./constants";
 
 const Sigils = (props) => {
   const [sigil, setSigil] = useState("");
@@ -7,8 +8,12 @@ const Sigils = (props) => {
 
   const options = [
     { value: "", label: "No sigils" },
-    { value: "v1644605839:Inscryption:Sigils:airborne", label: "Airborne" },
-    { value: "v1644605839:Inscryption:Sigils:bifurcated_strike", label: "Bifurcated Strike" },
+    ...SIGILS.map((s) => {
+      return {
+        value: `${s.id}:Inscryption:Sigils:${s.filename}`,
+        label: s.label,
+      };
+    }),
   ];
 
   useEffect(() => {
