@@ -10,12 +10,6 @@ describe("Portrait", () => {
     url: "http://res.cloudinary.com/mock-entry/image/upload/folder/v1_mock_image.png",
   };
 
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve(testResponse),
-    })
-  );
-
   beforeEach(() => {
     render(<Portrait setPortraitTF={mockCallback} />);
     jest.clearAllMocks();
@@ -36,52 +30,91 @@ describe("Portrait", () => {
     expect(portraitLabel).toBeInTheDocument();
   });
 
-  it("correctly strips invalid characters from generated url", async () => {
-    const portraitField = screen.getByLabelText("portrait");
+  describe("when cloudinary upload is unsuccessful", () => {
+    global.fetch = jest.fn(() =>
+      Promise.reject()
+    );
 
-    expect(portraitField).not.toBeDisabled();
-
-    userEvent.upload(portraitField, testFile);
-
-    expect(portraitField).toBeDisabled();
-
-    await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledTimes(1);
-
-      expect(mockCallback).toHaveBeenCalledWith(
-        "l_folder:v1_mock_image.png,c_fit,h_512,w_624,y_-80/"
-      );
+    it("renders an error message", async () => {
+      const portraitField = screen.getByLabelText("portrait");
+      let errorText = screen.queryByText("Error:");
 
       expect(portraitField).not.toBeDisabled();
+      expect(errorText).toBe(null);
+
+      userEvent.upload(portraitField, testFile);
+
+      expect(portraitField).toBeDisabled();
+
+      errorText = screen.queryByText("Error:");
+      expect(errorText).toBe(null);
+
+      await waitFor(() => {
+        expect(global.fetch).toHaveBeenCalledTimes(1);
+
+        expect(mockCallback).not.toHaveBeenCalled();
+
+        expect(portraitField).not.toBeDisabled();
+        errorText = screen.getByText("Error:");
+        expect(errorText).toBeInTheDocument();
+      });
     });
   });
 
-  it("completely removes the transformation when field is empty", async () => {
-    const portraitField = screen.getByLabelText("portrait");
+  // describe("when cloudinary upload is successful", () => {
+  //   global.fetch = jest.fn(() =>
+  //     Promise.resolve({
+  //       json: () => Promise.resolve(testResponse),
+  //     })
+  //   );
 
-    expect(portraitField).not.toBeDisabled();
+  //   it("correctly strips invalid characters from generated url", async () => {
+  //     const portraitField = screen.getByLabelText("portrait");
 
-    userEvent.upload(portraitField, testFile);
+  //     expect(portraitField).not.toBeDisabled();
 
-    expect(portraitField).toBeDisabled();
+  //     userEvent.upload(portraitField, testFile);
 
-    await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledTimes(1);
-      expect(mockCallback).toHaveBeenCalledWith(
-        "l_folder:v1_mock_image.png,c_fit,h_512,w_624,y_-80/"
-      );
+  //     expect(portraitField).toBeDisabled();
 
-      expect(portraitField).not.toBeDisabled();
-    });
+  //     await waitFor(() => {
+  //       expect(global.fetch).toHaveBeenCalledTimes(1);
 
-    userEvent.upload(portraitField, "");
+  //       expect(mockCallback).toHaveBeenCalledWith(
+  //         "l_folder:v1_mock_image.png,c_fit,h_512,w_624,y_-80/"
+  //       );
 
-    expect(portraitField).not.toBeDisabled();
+  //       expect(portraitField).not.toBeDisabled();
+  //     });
+  //   });
 
-    await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledTimes(1);
-      expect(mockCallback).toHaveBeenCalledWith("");
-      expect(portraitField).not.toBeDisabled();
-    });
-  });
+  //   it("completely removes the transformation when field is empty", async () => {
+  //     const portraitField = screen.getByLabelText("portrait");
+
+  //     expect(portraitField).not.toBeDisabled();
+
+  //     userEvent.upload(portraitField, testFile);
+
+  //     expect(portraitField).toBeDisabled();
+
+  //     await waitFor(() => {
+  //       expect(global.fetch).toHaveBeenCalledTimes(1);
+  //       expect(mockCallback).toHaveBeenCalledWith(
+  //         "l_folder:v1_mock_image.png,c_fit,h_512,w_624,y_-80/"
+  //       );
+
+  //       expect(portraitField).not.toBeDisabled();
+  //     });
+
+  //     userEvent.upload(portraitField, "");
+
+  //     expect(portraitField).not.toBeDisabled();
+
+  //     await waitFor(() => {
+  //       expect(global.fetch).toHaveBeenCalledTimes(1);
+  //       expect(mockCallback).toHaveBeenCalledWith("");
+  //       expect(portraitField).not.toBeDisabled();
+  //     });
+  //   });
+  // });
 });
