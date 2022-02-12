@@ -3,6 +3,7 @@ import { CLOUDINARY_API_BASE } from "./constants";
 
 const Portrait = (props) => {
   const [image, setImage] = useState("");
+  const [error, setError] = useState(true);
   const [busy, setBusy] = useState(false);
   const { setPortraitTF } = props;
 
@@ -11,23 +12,30 @@ const Portrait = (props) => {
   const upload = async (imgData) => {
     setBusy(true);
 
-    const formData = new FormData();
-    formData.append("file", imgData);
-    formData.append(
-      "upload_preset",
-      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
-    );
+    try {
+      const formData = new FormData();
+      formData.append("file", imgData);
+      formData.append(
+        "upload_preset",
+        process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+      );
 
-    const response = await fetch(CLOUDINARY_API_BASE, {
-      method: "post",
-      body: formData,
-    });
+      const response = await fetch(CLOUDINARY_API_BASE, {
+        method: "post",
+        body: formData,
+      });
 
-    setBusy(false);
-    return response.json();
+      setBusy(false);
+      return response.json();
+    } catch (e) {
+      setError(true);
+      setBusy(false);
+    }
   };
 
   useEffect(async () => {
+    setError(false);
+
     if (image === "") {
       setPortraitTF("");
       return;
@@ -74,6 +82,21 @@ const Portrait = (props) => {
           setImage(e.target.files[0]);
         }}
       />
+
+      {error ? (
+        <div
+          className="border border-red text-red px-3 py-1.5 mt-2 rounded relative"
+          role="alert"
+        >
+          <strong className="font-bold mr-2">Error:</strong>
+          <span className="block sm:inline">
+            We didn't like your image. Please try again or use a different
+            picture
+          </span>
+        </div>
+      ) : (
+        <></>
+      )}
     </section>
   );
 };
