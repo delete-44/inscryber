@@ -5,6 +5,7 @@ import { CARD_BASE, CLOUDINARY_BASE } from "../components/constants";
 import Name from "../components/name";
 import Stats from "../components/stats";
 import Sigils from "../components/sigils";
+import Portrait from "../components/portrait";
 
 export default function Home() {
   // State management for this component
@@ -93,17 +94,7 @@ export default function Home() {
             <Sigils setSigilsTF={setSigilsTF} />
 
             {/* Picture form field */}
-            <section>
-              <p className="mb-3">
-                Finally... a <label htmlFor="portrait">portrait</label>.
-              </p>
-
-              <input
-                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-orange-100 bg-clip-padding border border-solid border-gray-300 rounded"
-                type="file"
-                id="portrait"
-              />
-            </section>
+            <Portrait />
           </div>
 
           {/* Right column */}
