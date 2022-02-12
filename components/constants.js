@@ -1,9 +1,8 @@
 export const HEAVYWEIGHT = "v1644177732:Inscryption:HEAVYWEIGHT.ttf";
-export const CARD_BASE = "v1644060066/Inscryption/blank_vladde"
+export const CARD_BASE = "v1644060066/Inscryption/blank_vladde";
 
-const CLOUDINARY_BASE = "https://res.cloudinary.com/delete-44";
-export const CLOUDINARY_IMAGE_BASE = `${CLOUDINARY_BASE}/image/upload/`
-export const CLOUDINARY_API_BASE = `${CLOUDINARY_BASE}/api/upload/`
+export const CLOUDINARY_IMAGE_BASE = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload/`;
+export const CLOUDINARY_API_BASE = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload`;
 
 export const SIGILS = [
   { id: "v1644605839", filename: "airborne", label: "Airborne" },
@@ -36,4 +35,4 @@ export const SIGILS = [
   { id: "v1644619390", filename: "unkillable", label: "Unkillable" },
   { id: "v1644619391", filename: "waterborne", label: "Waterborne" },
   { id: "v1644619391", filename: "worthy_sacrifice", label: "Worthy Sacrifice" },
-]
+];
