@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { CARD_BASE, CLOUDINARY_BASE } from "../components/constants";
+import { CARD_BASE, CLOUDINARY_IMAGE_BASE } from "../components/constants";
 import Name from "../components/name";
 import Stats from "../components/stats";
 import Sigils from "../components/sigils";
@@ -9,7 +9,7 @@ import Portrait from "../components/portrait";
 
 export default function Home() {
   // State management for this component
-  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}`);
+  const [url, setUrl] = useState(`${CLOUDINARY_IMAGE_BASE}${CARD_BASE}`);
   const [busy, setBusy] = useState(true);
 
   // Transformations to be applied to the image
@@ -23,7 +23,7 @@ export default function Home() {
     const timer = setTimeout(() => {
       setBusy(true);
       const transformations = [nameTF, powerTF, healthTF, sigilsTF].join("");
-      setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}`);
+      setUrl(`${CLOUDINARY_IMAGE_BASE}${transformations}${CARD_BASE}`);
     }, 500);
     return () => clearTimeout(timer);
   }, [nameTF, powerTF, healthTF, sigilsTF]);

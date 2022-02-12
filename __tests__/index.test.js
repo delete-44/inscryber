@@ -6,7 +6,7 @@ import Home from "../pages";
 import selectEvent from "react-select-event";
 
 describe("Name", () => {
-  constants.CLOUDINARY_BASE = "https://test/";
+  constants.CLOUDINARY_IMAGE_BASE = "https://test/";
 
   beforeEach(async () => {
     render(<Home />);
