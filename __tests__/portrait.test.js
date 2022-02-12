@@ -39,7 +39,11 @@ describe("Portrait", () => {
   it("correctly strips invalid characters from generated url", async () => {
     const portraitField = screen.getByLabelText("portrait");
 
+    expect(portraitField).not.toBeDisabled();
+
     userEvent.upload(portraitField, testFile);
+
+    expect(portraitField).toBeDisabled();
 
     await waitFor(() => {
       expect(global.fetch).toHaveBeenCalledTimes(1);
@@ -47,25 +51,37 @@ describe("Portrait", () => {
       expect(mockCallback).toHaveBeenCalledWith(
         "l_folder:v1_mock_image.png,c_fit,h_512,w_624,y_-80/"
       );
+
+      expect(portraitField).not.toBeDisabled();
     });
   });
 
   it("completely removes the transformation when field is empty", async () => {
     const portraitField = screen.getByLabelText("portrait");
 
+    expect(portraitField).not.toBeDisabled();
+
     userEvent.upload(portraitField, testFile);
 
+    expect(portraitField).toBeDisabled();
+
     await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalledTimes(1);
       expect(mockCallback).toHaveBeenCalledWith(
         "l_folder:v1_mock_image.png,c_fit,h_512,w_624,y_-80/"
       );
+
+      expect(portraitField).not.toBeDisabled();
     });
 
     userEvent.upload(portraitField, "");
 
+    expect(portraitField).not.toBeDisabled();
+
     await waitFor(() => {
       expect(global.fetch).toHaveBeenCalledTimes(1);
       expect(mockCallback).toHaveBeenCalledWith("");
+      expect(portraitField).not.toBeDisabled();
     });
   });
 });
