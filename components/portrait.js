@@ -28,9 +28,13 @@ const Portrait = (props) => {
     }
 
     const uploadedImage = await upload(image);
+
+    // .url property provides a full public URL. As we only need the image
+    // for transformation purposes, this strips the preceding cloudinary domain
+    // & replaces the filename / characters with :'s
     const imageID = uploadedImage.url
       .replace(/http:\/\/res.cloudinary.com\/.*\/image\/upload\//, "")
-      .replace(/\/Inscryption\/Uploads\//, ":Inscryption:Uploads:");
+      .replace(/\//g, ":");
 
     setPortraitTF(`l_${imageID},c_fit,h_512,w_624,y_-80/`);
   }, [image]);
