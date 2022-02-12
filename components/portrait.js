@@ -5,6 +5,8 @@ const Portrait = (props) => {
   const [image, setImage] = useState("");
   const { setPortraitTF } = props;
 
+  // Queries the cloudinary API to upload an image. If successful,
+  // will return an object containing a url key that we can use.
   const upload = async (imgData) => {
     const formData = new FormData();
     formData.append("file", imgData);
