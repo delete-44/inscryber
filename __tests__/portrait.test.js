@@ -42,6 +42,8 @@ describe("Portrait", () => {
     userEvent.upload(portraitField, testFile);
 
     await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalledTimes(1);
+
       expect(mockCallback).toHaveBeenCalledWith(
         "l_folder:v1_mock_image.png,c_fit,h_512,w_624,y_-80/"
       );
@@ -62,6 +64,7 @@ describe("Portrait", () => {
     userEvent.upload(portraitField, "");
 
     await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalledTimes(1);
       expect(mockCallback).toHaveBeenCalledWith("");
     });
   });
