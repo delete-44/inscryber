@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import Name from "../components/name";
+import Name from "components/name";
 import { HEAVYWEIGHT } from "components/constants";
 
 describe("Name", () => {

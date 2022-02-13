@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Sigils from "../components/sigils";
+import Sigils from "components/sigils";
 import selectEvent from "react-select-event";
 
 describe("Sigils", () => {
