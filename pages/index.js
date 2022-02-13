@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
 import Name from "@form_fields/name";
 import Stats from "components/stats";
-import Sigils from "components/sigils";
+import Sigils from "@form_fields/sigils";
 
 export default function Home() {
   // State management for this component
