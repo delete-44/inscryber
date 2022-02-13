@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import { SIGILS } from "./constants";
+import { SIGILS } from "components/constants";
 
 const Sigils = (props) => {
   const [sigil, setSigil] = useState("");
