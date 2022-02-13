@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
 import Name from "@form_fields/name";
-import Stats from "components/stats";
+import Stats from "@form_fields/stats";
 import Sigils from "@form_fields/sigils";
 
 export default function Home() {
