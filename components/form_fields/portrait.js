@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CLOUDINARY_API_BASE } from "components/constants";
 import Spinner from "components/spinner";
+import ErrorFlash from "components/error-flash";
 
 const Portrait = (props) => {
   const [image, setImage] = useState("");
@@ -69,6 +70,8 @@ const Portrait = (props) => {
           setImage(e.target.files[0]);
         }}
       />
+
+      <ErrorFlash hidden={false} />
     </section>
   );
 };
