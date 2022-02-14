@@ -82,4 +82,35 @@ describe("Portrait", () => {
       });
     });
   });
+
+  describe("when response is error", () => {
+    beforeEach(() => {
+      fetch.mockRejectOnce("Test error");
+    });
+
+    it("successfully manages state as image upload fails", async () => {
+      const fileField = screen.getByLabelText("portrait");
+      const error = screen.getByRole("alert");
+      const spinner = screen.getByRole("status");
+
+      expect(fileField).not.toBeDisabled();
+      expect(error).toHaveClass("hidden");
+      expect(spinner).toHaveClass("hidden");
+
+      userEvent.upload(fileField, testFile);
+
+      expect(fileField).toBeDisabled();
+      expect(error).toHaveClass("hidden");
+      expect(spinner).not.toHaveClass("hidden");
+
+      await waitFor(() => {
+        expect(fetch).toHaveBeenCalledTimes(1);
+        expect(mockCallback).toHaveBeenCalledTimes(0);
+
+        expect(fileField).not.toBeDisabled();
+        expect(error).not.toHaveClass("hidden");
+        expect(spinner).toHaveClass("hidden");
+      });
+    });
+  });
 });
