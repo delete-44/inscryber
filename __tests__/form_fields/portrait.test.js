@@ -1,8 +1,6 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import userEvent from "@testing-library/user-event";
 import Portrait from "@form_fields/portrait";
-import { HEAVYWEIGHT } from "components/constants";
 
 describe("Portrait", () => {
   const mockCallback = jest.fn();
@@ -12,11 +10,16 @@ describe("Portrait", () => {
     jest.clearAllMocks();
   });
 
-  it("renders a field upload field", () => {
+  it("renders a field upload field and hides status indicators by default", () => {
     const fileField = screen.getByLabelText("portrait");
+    const error = screen.getByRole("alert");
+    const spinner = screen.getByRole("status");
 
     expect(fileField).toBeInTheDocument();
-    expect(fileField).toHaveTextContent("");
+    expect(fileField).not.toBeDisabled();
+
+    expect(error).toHaveClass("hidden");
+    expect(spinner).toHaveClass("hidden");
   });
 
   it("renders a flavourful description", () => {
