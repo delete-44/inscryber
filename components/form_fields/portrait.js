@@ -12,8 +12,6 @@ const Portrait = (props) => {
   // Queries the cloudinary API to upload an image. If successful,
   // will return an object containing a url key that we can use.
   const upload = async (imgData) => {
-    setBusy(true);
-
     const formData = new FormData();
     formData.append("file", imgData);
     formData.append(
@@ -26,7 +24,6 @@ const Portrait = (props) => {
       body: formData,
     });
 
-    setBusy(false);
     return response.json();
   };
 
@@ -37,6 +34,7 @@ const Portrait = (props) => {
     }
 
     try {
+      setBusy(true);
       const uploaded = await upload(image);
 
       // Public ID is returned with "/" characters. As we are only using
@@ -44,6 +42,7 @@ const Portrait = (props) => {
       // Sizing & fitting for the image is done on upload, handled by
       // cloudinary, to save storage. Only need to position image in this TF.
       setPortraitTF(`l_${uploaded.public_id.replace(/\//g, ":")}.webp,y_-80/`);
+      setBusy(false);
     } catch (e) {
       // FIXME: Add proper error handling
       console.log(e);
