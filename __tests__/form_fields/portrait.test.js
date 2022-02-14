@@ -7,6 +7,8 @@ describe("Portrait", () => {
 
   beforeEach(() => {
     render(<Portrait setPortraitTF={mockCallback} />);
+    fetch.resetMocks();
+
     jest.clearAllMocks();
   });
 
