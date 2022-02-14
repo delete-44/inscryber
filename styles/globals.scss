@@ -53,4 +53,14 @@
   .text-shadow-red {
     text-shadow: 0 0 0.07em #e04852;
   }
+
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 }
