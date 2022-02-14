@@ -4,7 +4,7 @@ import Spinner from "components/spinner";
 
 describe("Spinner", () => {
   it("shows spinner unless hidden", () => {
-    render(<Spinner />);
+    render(<Spinner hidden={false} />);
 
     const spinner = screen.getByRole("status");
 
