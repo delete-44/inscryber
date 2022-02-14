@@ -1,5 +1,6 @@
 export const HEAVYWEIGHT = "Inscryption:HEAVYWEIGHT.ttf";
 export const CLOUDINARY_BASE = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload/`;
+export const CLOUDINARY_API_BASE = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload`;
 export const CARD_BASE = "Inscryption/blank_vladde";
 
 export const SIGILS = [

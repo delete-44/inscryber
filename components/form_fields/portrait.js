@@ -1,11 +1,39 @@
 import React, { useState, useEffect } from "react";
+import { CLOUDINARY_API_BASE } from "components/constants";
 
 const Portrait = (props) => {
   const [image, setImage] = useState("");
   const { setPortraitTF } = props;
 
+  // Queries the cloudinary API to upload an image. If successful,
+  // will return an object containing a url key that we can use.
+  const upload = async (imgData) => {
+    try {
+      const formData = new FormData();
+      formData.append("file", imgData);
+      formData.append(
+        "upload_preset",
+        process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+      );
+
+      const response = await fetch(CLOUDINARY_API_BASE, {
+        method: "post",
+        body: formData,
+      });
+
+      return response.json();
+    } catch (e) {
+      // FIXME: Add proper error handling
+      console.log(e);
+    }
+  };
+
   useEffect(async () => {
-    console.log(image);
+    if (image === "") return;
+
+    const uploaded = await upload(image);
+
+    console.log(uploaded);
   }, [image]);
 
   return (
