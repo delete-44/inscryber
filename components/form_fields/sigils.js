@@ -16,6 +16,15 @@ const Sigils = (props) => {
     }),
   ];
 
+  const selectStyles = {
+    placeholder: (defaultStyles) => {
+      return {
+        ...defaultStyles,
+        color: "#424242",
+      };
+    },
+  };
+
   useEffect(() => {
     sigil === ""
       ? setSigilsTF("")
@@ -33,6 +42,7 @@ const Sigils = (props) => {
         aria-label="sigils"
         options={options}
         isSearchable
+        styles={selectStyles}
         onChange={(e) => {
           setSigil(e.value);
         }}
