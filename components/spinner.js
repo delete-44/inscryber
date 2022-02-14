@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Spinner = (props) => {
   return (
@@ -11,6 +12,10 @@ const Spinner = (props) => {
       <span className="visually-hidden">Loading...</span>
     </div>
   );
+};
+
+Spinner.propTypes = {
+  hidden: PropTypes.bool.isRequired,
 };
 
 export default Spinner;

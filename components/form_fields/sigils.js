@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import Select from "react-select";
 import { SIGILS } from "components/constants";
 
@@ -49,6 +50,10 @@ const Sigils = (props) => {
       />
     </section>
   );
+};
+
+Sigils.propTypes = {
+  setSigilsTF: PropTypes.func.isRequired,
 };
 
 export default Sigils;

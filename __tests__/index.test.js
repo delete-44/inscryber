@@ -1,11 +1,11 @@
-import { act, render, screen } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import * as constants from "components/constants";
 import Home from "pages";
 import selectEvent from "react-select-event";
 
-describe("Name", () => {
+describe("Home", () => {
   constants.CLOUDINARY_BASE = "https://test/";
 
   beforeEach(async () => {
@@ -155,6 +155,38 @@ describe("Name", () => {
       });
 
       expect(image.src).toMatch(/airborne/);
+    });
+
+    it("when portrait", async () => {
+      fetch.mockResponseOnce(
+        JSON.stringify({
+          public_id: "fake/image/returned",
+        })
+      );
+
+      const testFile = new File(["Test"], "test.png", { type: "image/png" });
+      const image = await screen.findByAltText("A preview of your custom card");
+
+      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned.webp/);
+
+      const fileField = screen.getByLabelText("portrait");
+
+      await act(async () => {
+        userEvent.upload(fileField, testFile);
+      });
+
+      await waitFor(() => {
+        expect(fetch).toHaveBeenCalledTimes(1);
+      });
+
+      jest.advanceTimersByTime(499);
+      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned.webp/);
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toMatch(/test%2Fl_fake%3Aimage%3Areturned.webp/);
     });
   });
 });

@@ -5,6 +5,7 @@ import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
 import Name from "@form_fields/name";
 import Stats from "@form_fields/stats";
 import Sigils from "@form_fields/sigils";
+import Portrait from "@form_fields/portrait";
 import Spinner from "components/spinner";
 
 export default function Home() {
@@ -17,16 +18,17 @@ export default function Home() {
   const [powerTF, setPowerTF] = useState("");
   const [healthTF, setHealthTF] = useState("");
   const [sigilsTF, setSigilsTF] = useState("");
+  const [portraitTF, setPortraitTF] = useState("");
 
   // Stagger requests so they only send 500ms after user stops typing
   useEffect(() => {
     const timer = setTimeout(() => {
       setBusy(true);
-      const transformations = [nameTF, powerTF, healthTF, sigilsTF].join("");
+      const transformations = [nameTF, powerTF, healthTF, sigilsTF, portraitTF].join("");
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}`);
     }, 500);
     return () => clearTimeout(timer);
-  }, [nameTF, powerTF, healthTF, sigilsTF]);
+  }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF]);
 
   return (
     <div>
@@ -94,17 +96,7 @@ export default function Home() {
             <Sigils setSigilsTF={setSigilsTF} />
 
             {/* Picture form field */}
-            <section>
-              <p className="mb-3">
-                Finally... a <label htmlFor="portrait">portrait</label>.
-              </p>
-
-              <input
-                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-orange-100 bg-clip-padding border border-solid border-gray-300 rounded"
-                type="file"
-                id="portrait"
-              />
-            </section>
+            <Portrait setPortraitTF={setPortraitTF} />
           </div>
 
           {/* Right column */}
