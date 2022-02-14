@@ -5,6 +5,7 @@ import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
 import Name from "@form_fields/name";
 import Stats from "@form_fields/stats";
 import Sigils from "@form_fields/sigils";
+import Spinner from "components/spinner";
 
 export default function Home() {
   // State management for this component
@@ -108,16 +109,7 @@ export default function Home() {
 
           {/* Right column */}
           <div className="width-full flex justify-center items-center relative mt-16 md:mt-0 h-80 md:h-auto">
-            {busy ? (
-              <div
-                className="spinner-border animate-spin inline-block w-8 h-8 border-4 border-orange-400 rounded-full"
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            ) : (
-              <></>
-            )}
+            <Spinner hidden={!busy} />
 
             <Image
               src={url}
