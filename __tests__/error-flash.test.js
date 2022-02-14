@@ -11,8 +11,8 @@ describe("ErrorFlash", () => {
     const message = screen.getByText("Something went wrong! Please try again.");
 
     expect(alert).toBeInTheDocument();
+    expect(alert).not.toHaveClass("hidden");
     expect(error).toBeInTheDocument();
-    expect(error).not.toHaveClass("hidden")
     expect(message).toBeInTheDocument();
   });
 
