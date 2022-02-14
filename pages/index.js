@@ -5,6 +5,7 @@ import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
 import Name from "@form_fields/name";
 import Stats from "@form_fields/stats";
 import Sigils from "@form_fields/sigils";
+import Portrait from "@form_fields/portrait";
 import Spinner from "components/spinner";
 
 export default function Home() {
@@ -94,17 +95,7 @@ export default function Home() {
             <Sigils setSigilsTF={setSigilsTF} />
 
             {/* Picture form field */}
-            <section>
-              <p className="mb-3">
-                Finally... a <label htmlFor="portrait">portrait</label>.
-              </p>
-
-              <input
-                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-orange-100 bg-clip-padding border border-solid border-gray-300 rounded"
-                type="file"
-                id="portrait"
-              />
-            </section>
+            <Portrait />
           </div>
 
           {/* Right column */}
