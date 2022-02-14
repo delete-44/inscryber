@@ -25,12 +25,12 @@ const Name = (props) => {
       </p>
 
       <input
-        type="text"
         placeholder="Stoat"
         aria-label="Name"
         name="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        type="text"
       />
     </section>
   );
