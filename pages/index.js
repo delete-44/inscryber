@@ -18,16 +18,17 @@ export default function Home() {
   const [powerTF, setPowerTF] = useState("");
   const [healthTF, setHealthTF] = useState("");
   const [sigilsTF, setSigilsTF] = useState("");
+  const [portraitTF, setPortraitTF] = useState("");
 
   // Stagger requests so they only send 500ms after user stops typing
   useEffect(() => {
     const timer = setTimeout(() => {
       setBusy(true);
-      const transformations = [nameTF, powerTF, healthTF, sigilsTF].join("");
+      const transformations = [nameTF, powerTF, healthTF, sigilsTF, portraitTF].join("");
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}`);
     }, 500);
     return () => clearTimeout(timer);
-  }, [nameTF, powerTF, healthTF, sigilsTF]);
+  }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF]);
 
   return (
     <div>
@@ -95,7 +96,7 @@ export default function Home() {
             <Sigils setSigilsTF={setSigilsTF} />
 
             {/* Picture form field */}
-            <Portrait />
+            <Portrait setPortraitTf={setPortraitTF} />
           </div>
 
           {/* Right column */}
