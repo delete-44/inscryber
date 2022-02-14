@@ -10,7 +10,7 @@ const Sigils = (props) => {
     { value: "", label: "No sigils" },
     ...SIGILS.map((s) => {
       return {
-        value: `${s.id}:Inscryption:Sigils:${s.filename}`,
+        value: `Inscryption:Sigils:${s.filename}`,
         label: s.label,
       };
     }),
