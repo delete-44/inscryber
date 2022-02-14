@@ -12,6 +12,7 @@ describe("ErrorFlash", () => {
 
     expect(alert).toBeInTheDocument();
     expect(error).toBeInTheDocument();
+    expect(error).not.toHaveClass("hidden")
     expect(message).toBeInTheDocument();
   });
 
