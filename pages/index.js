@@ -96,7 +96,7 @@ export default function Home() {
             <Sigils setSigilsTF={setSigilsTF} />
 
             {/* Picture form field */}
-            <Portrait setPortraitTf={setPortraitTF} />
+            <Portrait setPortraitTF={setPortraitTF} />
           </div>
 
           {/* Right column */}

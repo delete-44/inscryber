@@ -33,7 +33,11 @@ const Portrait = (props) => {
 
     const uploaded = await upload(image);
 
-    console.log(uploaded);
+    // Public ID is returned with "/" characters. As we are only using
+    // the image for transformations, we replace them with ":"
+    // Sizing & fitting for the image is done on upload, handled by
+    // cloudinary, to save storage. Only need to position image in this TF.
+    setPortraitTF(`l_${uploaded.public_id.replace(/\//g, ":")}.webp,y_-80/`);
   }, [image]);
 
   return (
