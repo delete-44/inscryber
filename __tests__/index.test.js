@@ -5,7 +5,7 @@ import * as constants from "components/constants";
 import Home from "pages";
 import selectEvent from "react-select-event";
 
-describe("Name", () => {
+describe("Home", () => {
   constants.CLOUDINARY_BASE = "https://test/";
 
   beforeEach(async () => {
