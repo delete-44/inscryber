@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { HEAVYWEIGHT } from "./constants";
+import { HEAVYWEIGHT } from "components/constants";
 
 const Stats = (props) => {
   const [power, setPower] = useState("");

@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import Name from "../components/name";
-import { HEAVYWEIGHT } from "../components/constants";
+import Name from "@form_fields/name";
+import { HEAVYWEIGHT } from "components/constants";
 
 describe("Name", () => {
   const mockCallback = jest.fn();
