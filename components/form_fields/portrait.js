@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CLOUDINARY_API_BASE } from "components/constants";
 import Spinner from "components/spinner";
 import ErrorFlash from "components/error-flash";
+import PropTypes from "prop-types";
 
 const Portrait = (props) => {
   const [image, setImage] = useState("");
@@ -80,6 +81,10 @@ const Portrait = (props) => {
       />
     </section>
   );
+};
+
+Portrait.propTypes = {
+  setPortraitTF: PropTypes.func.isRequired,
 };
 
 export default Portrait;
