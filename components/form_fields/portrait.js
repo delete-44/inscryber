@@ -9,6 +9,7 @@ const Portrait = (props) => {
 
   // State management for form component
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState(false);
 
   // Queries the cloudinary API to upload an image. If successful,
   // will return an object containing a url key that we can use.
@@ -36,6 +37,7 @@ const Portrait = (props) => {
 
     try {
       setBusy(true);
+      setError(false);
       const uploaded = await upload(image);
 
       // Public ID is returned with "/" characters. As we are only using
@@ -45,8 +47,9 @@ const Portrait = (props) => {
       setPortraitTF(`l_${uploaded.public_id.replace(/\//g, ":")}.webp,y_-80/`);
       setBusy(false);
     } catch (e) {
-      // FIXME: Add proper error handling
       console.log(e);
+
+      setError(true);
       setBusy(false);
     }
   }, [image]);
@@ -71,7 +74,10 @@ const Portrait = (props) => {
         }}
       />
 
-      <ErrorFlash hidden={false} />
+      <ErrorFlash
+        hidden={!error}
+        message="Please try again. If the error persists, use a different image"
+      />
     </section>
   );
 };
