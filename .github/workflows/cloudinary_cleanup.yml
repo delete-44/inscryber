@@ -1,12 +1,12 @@
-# This workflow lists all images in the cloudinary upload folder
-# & deletes older ones.
+# Lists all images in the cloudinary upload folder & deletes those more than a day old.
+# When no files are found to be deleted, the delete request returns "not found"
 
-# Runs every monday @ 9am
+# Runs every day @ 5pm
 name: Cloudinary Cleanup
 
 on:
   schedule:
-    - cron: "0 9 * * MON"
+    - cron: "0 17 * * *"
   # Enables manual run from the Actions tab in GH
   workflow_dispatch:
 
@@ -41,6 +41,8 @@ jobs:
       - name: LOG joined public IDs to be sent to DELETE request
         run: echo "public_ids[]=${{ join(fromJSON(steps.jq-filter.outputs.RESOURCES), '&public_ids[]=') }}"
 
+      # Send request with ids to delete as 'application/x-www-form-urlencoded' content.
+      # IDs are joined with the `public_ids[]` key.
       - name: Delete selected files
         uses: fjogeleit/http-request-action@master
         id: delete-request
@@ -54,10 +56,3 @@ jobs:
 
       - name: LOG response from DELETE request
         run: echo ${{ steps.delete-request.outputs.response }}
-
-      # - name: DEBUG raw cloudinary output
-      #   run: echo ${{ steps.cloudinaryRequest.outputs.response }}
-      # - name: DEBUG "resources" from response
-      #   run: echo ${{ steps.cloudinaryRequest.outputs.response }}.resources
-      # - name: DEBUG filtered files from cloudinary
-      #   run: echo "Images are ${{ steps.cloudinaryRequest.outputs.response.resources.*.public_id }}"
