@@ -21,7 +21,7 @@ jobs:
       - name: Log encrypted env vars
         run: echo "$API_KEY -> $SECRET_KEY -> $CLOUD_NAME"
       - name: Log url
-        run: echo "https://$API_KEY:$SECRET_KEY@api.cloudinary.com/v1_1/$CLOUD_NAME/folders"
+        run: curl https://$API_KEY:$SECRET_KEY@api.cloudinary.com/v1_1/$CLOUD_NAME/folders
       - name: Retrieve files in cloudinary
         id: cloudinaryRequest
         uses: fjogeleit/http-request-action@master
