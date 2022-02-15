@@ -28,7 +28,7 @@ jobs:
           username: ${{ secrets.CLOUDINARY_API_KEY }}
           password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
       - name: Filter output with jq
-        run: echo "RESOURCES=$(echo ${{ toJSON(steps.cloudinaryRequest.outputs.response) }} | jq '.resources')" >> $GITHUB_ENV
+        run: echo "RESOURCES=$(echo toJSON(steps.cloudinaryRequest.outputs.response) | jq '.resources')" >> $GITHUB_ENV
       - name: Log jq variable
         run: echo $RESOURCES
 
