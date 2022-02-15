@@ -14,11 +14,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      env:
+        API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+        SECRET_KEY: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+        CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
       - name: Retrieve files in cloudinary
         id: cloudinaryRequest
         uses: fjogeleit/http-request-action@master
         with:
-          url: https://${{secrets.CLOUDINARY_API_KEY}}:${{secrets.CLOUDINARY_API_SECRET_KEY}}@api.cloudinary.com/v1_1/${{secrets.CLOUDINARY_CLOUD_NAME}}/folders
+          url: https://$API_KEY:$SECRET_KEY@api.cloudinary.com/v1_1/$CLOUD_NAME/folders
           method: "POST"
       - name: Log files from cloudinary
         run: echo "Images are ${{ toJSON(steps.cloudinaryRequest.outputs.response) }}"
