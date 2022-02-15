@@ -33,7 +33,7 @@ jobs:
       # This is stored as an output so we can use in later steps
       - name: Filter output with jq
         id: jq-filter
-        run: echo ::set-output name=RESOURCES::$(echo ${{ toJSON(steps.get-request.outputs.response) }} | jq '.resources | .[].public_id')
+        run: echo ::set-output name=RESOURCES::$(echo ${{ toJSON(steps.get-request.outputs.response) }} | jq '.resources | [.[].public_id]')
 
       - name: DEBUG Log jq variable
         run: echo ${{ steps.jq-filter.outputs.RESOURCES }}
