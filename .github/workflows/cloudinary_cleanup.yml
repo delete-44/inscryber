@@ -14,6 +14,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Log encrypted env vars
+        run: echo "${{ secrets.CLOUDINARY_API_KEY }} -> ${{ secrets.CLOUDINARY_API_SECRET_KEY }} -> ${{ secrets.CLOUDINARY_CLOUD_NAME }}"
       - name: Retrieve files in cloudinary
         id: cloudinaryRequest
         uses: fjogeleit/http-request-action@master
