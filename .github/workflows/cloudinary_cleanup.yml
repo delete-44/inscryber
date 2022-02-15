@@ -13,20 +13,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
-      SECRET_KEY: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
-      CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
     steps:
-      - name: Log encrypted env vars
-        run: echo "$API_KEY -> $SECRET_KEY -> $CLOUD_NAME"
-      - name: Curl url
-        run: curl https://$API_KEY:$SECRET_KEY@api.cloudinary.com/v1_1/$CLOUD_NAME/folders
       - name: Retrieve files in cloudinary
         id: cloudinaryRequest
         uses: fjogeleit/http-request-action@master
         with:
-          url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/folders
+          url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
+          data: "{ 'expression':'folder=Inscryption/Uploads' }"
           method: "GET"
           username: ${{ secrets.CLOUDINARY_API_KEY }}
           password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
