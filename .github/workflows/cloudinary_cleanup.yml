@@ -33,7 +33,7 @@ jobs:
       - name: Log jq variable
         run: echo ${{ steps.jq-filter.outputs.RESOURCES }}
       - name: Log filtered variable
-        run: echo '${{ steps.jq-filter.outputs.RESOURCES }} | jq ".[] | public_id"'
+        run: echo ${{ steps.jq-filter.outputs.RESOURCES.*.public_id }}
 
       # - name: DEBUG raw cloudinary output
       #   run: echo ${{ steps.cloudinaryRequest.outputs.response }}
