@@ -27,10 +27,12 @@ jobs:
           method: "POST"
           username: ${{ secrets.CLOUDINARY_API_KEY }}
           password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+      - name: Filter output with jq
+        run: echo steps.cloudinaryRequest.outputs.response | jq '.[].resources'
 
-      - name: DEBUG raw cloudinary output
-        run: echo ${{ steps.cloudinaryRequest.outputs.response }}
-      - name: DEBUG "resources" from response
-        run: echo ${{ steps.cloudinaryRequest.outputs.response }}.resources
+      # - name: DEBUG raw cloudinary output
+      #   run: echo ${{ steps.cloudinaryRequest.outputs.response }}
+      # - name: DEBUG "resources" from response
+      #   run: echo ${{ steps.cloudinaryRequest.outputs.response }}.resources
       # - name: DEBUG filtered files from cloudinary
       #   run: echo "Images are ${{ steps.cloudinaryRequest.outputs.response.resources.*.public_id }}"
