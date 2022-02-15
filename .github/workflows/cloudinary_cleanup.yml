@@ -20,13 +20,15 @@ jobs:
     steps:
       - name: Log encrypted env vars
         run: echo "$API_KEY -> $SECRET_KEY -> $CLOUD_NAME"
-      - name: Log url
+      - name: Curl url
         run: curl https://$API_KEY:$SECRET_KEY@api.cloudinary.com/v1_1/$CLOUD_NAME/folders
       - name: Retrieve files in cloudinary
         id: cloudinaryRequest
         uses: fjogeleit/http-request-action@master
         with:
-          url: "https://$API_KEY:$SECRET_KEY@api.cloudinary.com/v1_1/$CLOUD_NAME/folders"
+          url: "https://api.cloudinary.com/v1_1/$CLOUD_NAME/folders"
           method: "POST"
+          username: $API_KEY
+          password: $SECRET_KEY
       - name: Log files from cloudinary
         run: echo "Images are ${{ toJSON(steps.cloudinaryRequest.outputs.response) }}"
