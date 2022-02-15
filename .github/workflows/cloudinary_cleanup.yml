@@ -19,19 +19,40 @@ jobs:
       # more than an hour old"
       # https://cloudinary.com/documentation/search_api#expressions
       - name: Retrieve files in cloudinary
-        id: cloudinaryRequest
+        id: get-request
         uses: fjogeleit/http-request-action@master
         with:
           url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
           data: '{ "expression": "folder=Inscryption/Uploads AND uploaded_at>1h" }'
-          method: "POST"
+          method: 'POST'
           username: ${{ secrets.CLOUDINARY_API_KEY }}
           password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+
+      # Output of this response returns full metadata for each image. We don't need
+      # most of it, so use command line tool JQ to build an array of public IDs.
+      # This is stored as an output so we can use in later steps
       - name: Filter output with jq
         id: jq-filter
-        run: echo ::set-output name=RESOURCES::$(echo ${{ toJSON(steps.cloudinaryRequest.outputs.response) }} | jq '.resources | .[].public_id')
-      - name: Log jq variable
+        run: echo ::set-output name=RESOURCES::$(echo ${{ toJSON(steps.get-request.outputs.response) }} | jq '.resources | .[].public_id')
+
+      - name: Delete selected files
+        uses: fjogeleit/http-request-action@master
+        id: delete-request
+        with:
+          url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
+          data: ${{ join(steps.jq-filter.outputs.RESOURCES, "public_ids[]=") }}
+          method: 'DELETE'
+          username: ${{ secrets.CLOUDINARY_API_KEY }}
+          password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+
+      - name: DEBUG Log jq variable
         run: echo ${{ steps.jq-filter.outputs.RESOURCES }}
+
+      - name: DEBUG Log joined ids
+        run: echo ${{ join(steps.jq-filter.outputs.RESOURCES, "public_ids[]=") }}
+
+      - name: DEBUG log delete response
+        run: echo ${{ steps.delete-request.outputs.response }}
 
       # - name: DEBUG raw cloudinary output
       #   run: echo ${{ steps.cloudinaryRequest.outputs.response }}
