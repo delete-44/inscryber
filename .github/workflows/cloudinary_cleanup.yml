@@ -29,8 +29,8 @@ jobs:
           password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
 
       - name: DEBUG raw cloudinary output
-        run: echo "${{ toJSON(steps.cloudinaryRequest.outputs.response) }}"
+        run: echo ${{ toJSON(steps.cloudinaryRequest.outputs.response) }}
       - name: DEBUG "resources" from response
-        run: echo "${{ toJSON(steps.cloudinaryRequest.outputs.response).resources }}"
+        run: echo ${{ toJSON(steps.cloudinaryRequest.outputs.response.resources) }}
       - name: DEBUG filtered files from cloudinary
-        run: echo "Images are ${{ toJSON(steps.cloudinaryRequest.outputs.response).resources.*.public_id }}"
+        run: echo "Images are ${{ toJSON(steps.cloudinaryRequest.outputs.response.resources.*.public_id) }}"
