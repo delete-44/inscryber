@@ -39,7 +39,7 @@ jobs:
         run: echo ${{ steps.jq-filter.outputs.RESOURCES }}
 
       - name: DEBUG Log joined ids
-        run: echo ${{ join(steps.jq-filter.outputs.RESOURCES, 'public_ids[]=') }}
+        run: echo ${{ join(toJSON(steps.jq-filter.outputs.RESOURCES), 'public_ids[]=') }}
 
       - name: Delete selected files
         uses: fjogeleit/http-request-action@master
