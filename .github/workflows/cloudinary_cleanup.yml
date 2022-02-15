@@ -18,7 +18,7 @@ jobs:
         id: cloudinaryRequest
         uses: fjogeleit/http-request-action@master
         with:
-          url: https://${{secrets.CLOUDINARY_API_KEY}}:${{secrets.CLOUDINARY_API_SECRET_KEY}}@api.cloudinary.com/v1_1/${{secrets.CLOUDINARY_CLOUD_NAME}}/resources/image
+          url: https://${{secrets.CLOUDINARY_API_KEY}}:${{secrets.CLOUDINARY_API_SECRET_KEY}}@api.cloudinary.com/v1_1/${{secrets.CLOUDINARY_CLOUD_NAME}}/folders
           method: "POST"
       - name: Log files from cloudinary
         run: echo "Images are ${{ toJSON(steps.cloudinaryRequest.outputs.response) }}"
