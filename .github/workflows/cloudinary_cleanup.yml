@@ -47,6 +47,7 @@ jobs:
         with:
           url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/image/upload
           data: "public_ids[]=${{ join(fromJSON(steps.jq-filter.outputs.RESOURCES), '&public_ids[]=') }}"
+          contentType: 'application/x-www-form-urlencoded'
           method: 'DELETE'
           username: ${{ secrets.CLOUDINARY_API_KEY }}
           password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
