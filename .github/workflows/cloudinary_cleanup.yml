@@ -26,9 +26,7 @@ jobs:
         id: cloudinaryRequest
         uses: fjogeleit/http-request-action@master
         with:
-          url: "https://api.cloudinary.com/v1_1/$CLOUD_NAME/folders"
+          url: "https://$API_KEY:$SECRET_KEY@api.cloudinary.com/v1_1/$CLOUD_NAME/folders"
           method: "GET"
-          username: $API_KEY
-          password: $SECRET_KEY
       - name: Log files from cloudinary
         run: echo "Images are ${{ toJSON(steps.cloudinaryRequest.outputs.response) }}"
