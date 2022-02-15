@@ -40,7 +40,7 @@ jobs:
         id: delete-request
         with:
           url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/image/upload
-          data: ${{ join(steps.jq-filter.outputs.RESOURCES, ",") }}
+          data: ${{ join(steps.jq-filter.outputs.RESOURCES, 'public_ids[]=') }}
           method: 'DELETE'
           username: ${{ secrets.CLOUDINARY_API_KEY }}
           password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
@@ -49,7 +49,7 @@ jobs:
         run: echo ${{ steps.jq-filter.outputs.RESOURCES }}
 
       - name: DEBUG Log joined ids
-        run: echo ${{ join(steps.jq-filter.outputs.RESOURCES, "public_ids[]=") }}
+        run: echo ${{ join(steps.jq-filter.outputs.RESOURCES, 'public_ids[]=') }}
 
       - name: DEBUG log delete response
         run: echo ${{ steps.delete-request.outputs.response }}
