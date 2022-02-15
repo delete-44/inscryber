@@ -1,0 +1,18 @@
+# This workflow lists all images in the cloudinary upload folder
+# & deletes older ones.
+
+# Runs every monday @ 9am
+name: Cloudinary Cleanup
+
+on:
+  schedule:
+    - cron: "0 9 * * MON"
+  # Enables manual run from the Actions tab in GH
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug env vars
+        run: echo "Cloud name is ${{secrets.CLOUDINARY_CLOUD_NAME}}"
