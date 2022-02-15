@@ -20,7 +20,7 @@ jobs:
         with:
           url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
           data: "{ 'expression':'folder=Inscryption/Uploads' }"
-          method: "GET"
+          method: "POST"
           username: ${{ secrets.CLOUDINARY_API_KEY }}
           password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
       - name: Log files from cloudinary
