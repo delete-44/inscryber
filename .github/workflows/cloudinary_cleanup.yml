@@ -14,14 +14,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # The "expression" body argument is built using the Cloudinary search API
+      # It translates to "find images in the Inscryption/Uploads folder that are
+      # more than an hour old"
+      # https://cloudinary.com/documentation/search_api#expressions
       - name: Retrieve files in cloudinary
         id: cloudinaryRequest
         uses: fjogeleit/http-request-action@master
         with:
           url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
-          data: '{ "expression": "folder=Inscryption/Uploads" }'
+          data: '{ "expression": "folder=Inscryption/Uploads AND uploaded_at<1h" }'
           method: "POST"
           username: ${{ secrets.CLOUDINARY_API_KEY }}
           password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
-      - name: Log files from cloudinary
-        run: echo "Images are ${{ toJSON(steps.cloudinaryRequest.outputs.response) }}"
+
+      - name: DEBUG Log files from cloudinary
+        run: echo "Images are ${{ toJSON(steps.cloudinaryRequest.outputs.response).resources.*.public_id }}"
