@@ -29,9 +29,9 @@ const Sigils = (props) => {
         ...defaultStyles,
         backgroundColor: "#fff1e7",
         fontSize: "1.875rem",
-        borderBottom: "2px solid #cc6f33"
-      }
-    }
+        borderBottom: "2px solid #cc6f33",
+      };
+    },
   };
 
   useEffect(() => {
@@ -52,6 +52,14 @@ const Sigils = (props) => {
         options={options}
         isSearchable
         styles={selectStyles}
+        theme={(theme) => ({
+          ...theme,
+          colors: {
+          ...theme.colors,
+            primary25: '#fff1e7',
+            primary: '#cc6f33',
+          },
+        })}
         onChange={(e) => {
           setSigil(e.value);
         }}
