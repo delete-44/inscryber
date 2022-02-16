@@ -44,7 +44,8 @@
     @apply focus:outline-none;
     @apply focus:bg-white;
     @apply text-black;
-    @apply placeholder-gray
+    @apply placeholder-gray;
+    @apply rounded-md;
   }
 
   .text-shadow-orange {

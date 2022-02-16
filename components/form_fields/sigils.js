@@ -24,6 +24,14 @@ const Sigils = (props) => {
         color: "#424242",
       };
     },
+    control: (defaultStyles) => {
+      return {
+        ...defaultStyles,
+        backgroundColor: "#fff1e7",
+        fontSize: "1.875rem",
+        borderBottom: "2px solid #cc6f33"
+      }
+    }
   };
 
   useEffect(() => {
