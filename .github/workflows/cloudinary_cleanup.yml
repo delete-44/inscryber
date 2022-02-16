@@ -1,12 +1,12 @@
-# This workflow lists all images in the cloudinary upload folder
-# & deletes older ones.
+# Lists all images in the cloudinary upload folder & deletes those more than a day old.
+# When no files are found to be deleted, the delete request returns "not found"
 
-# Runs every monday @ 9am
+# Runs every day @ 5pm
 name: Cloudinary Cleanup
 
 on:
   schedule:
-    - cron: "0 9 * * MON"
+    - cron: "0 17 * * *"
   # Enables manual run from the Actions tab in GH
   workflow_dispatch:
 
@@ -14,5 +14,45 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Debug env vars
-        run: echo "Cloud name is ${{secrets.CLOUDINARY_CLOUD_NAME}}"
+      # The "expression" body argument is built using the Cloudinary search API
+      # It translates to "find images in the Inscryption/Uploads folder that are
+      # more than a day old"
+      # https://cloudinary.com/documentation/search_api#expressions
+      - name: Retrieve files in cloudinary
+        id: get-request
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
+          data: '{ "expression": "folder=Inscryption/Uploads AND uploaded_at<1d" }'
+          method: 'POST'
+          username: ${{ secrets.CLOUDINARY_API_KEY }}
+          password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+
+      # Output of this response returns full metadata for each image. We don't need
+      # most of it, so use command line tool JQ to build an array of public IDs.
+      # This is stored as an output so we can use in later steps
+      - name: Filter output with jq
+        id: jq-filter
+        run: echo ::set-output name=RESOURCES::$(echo ${{ toJSON(steps.get-request.outputs.response) }} | jq '.resources | [.[].public_id]')
+
+      - name: LOG all IDs to be deleted
+        run: echo ${{ steps.jq-filter.outputs.RESOURCES }}
+
+      - name: LOG joined public IDs to be sent to DELETE request
+        run: echo "public_ids[]=${{ join(fromJSON(steps.jq-filter.outputs.RESOURCES), '&public_ids[]=') }}"
+
+      # Send request with ids to delete as 'application/x-www-form-urlencoded' content.
+      # IDs are joined with the `public_ids[]` key.
+      - name: Delete selected files
+        uses: fjogeleit/http-request-action@master
+        id: delete-request
+        with:
+          url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/image/upload
+          data: "public_ids[]=${{ join(fromJSON(steps.jq-filter.outputs.RESOURCES), '&public_ids[]=') }}"
+          contentType: 'application/x-www-form-urlencoded'
+          method: 'DELETE'
+          username: ${{ secrets.CLOUDINARY_API_KEY }}
+          password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+
+      - name: LOG response from DELETE request
+        run: echo ${{ steps.delete-request.outputs.response }}
