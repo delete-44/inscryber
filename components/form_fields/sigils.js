@@ -32,6 +32,12 @@ const Sigils = (props) => {
         borderBottom: "2px solid #cc6f33",
       };
     },
+    singleValue: (defaultStyles) => {
+      return {
+        ...defaultStyles,
+        color: "black"
+      }
+    }
   };
 
   useEffect(() => {
