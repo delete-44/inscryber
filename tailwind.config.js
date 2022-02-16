@@ -11,6 +11,7 @@ module.exports = {
           400: "#cc6f33",
         },
         red: "#b72e38",
+        gray: "#424242",
       },
       fontFamily: {
         title: ["Heavyweight"],
