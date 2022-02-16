@@ -28,9 +28,9 @@ const Sigils = (props) => {
     singleValue: (defaultStyles) => {
       return {
         ...defaultStyles,
-        color: "black"
-      }
-    }
+        color: "black",
+      };
+    },
   };
 
   useEffect(() => {
@@ -54,11 +54,11 @@ const Sigils = (props) => {
         theme={(theme) => ({
           ...theme,
           colors: {
-          ...theme.colors,
-            primary25: '#ffb583', // Hover colour
-            primary: '#cc6f33',   // Border & option highlight colour
-            neutral0: "#fff1e7",  // Background colour
-            neutral50: '#424242', // Placeholder colour
+            ...theme.colors,
+            primary25: "#ffb583", // Hover colour
+            primary: "#cc6f33", // Border & option highlight colour
+            neutral0: "#fff1e7", // Background colour
+            neutral50: "#424242", // Placeholder colour
           },
         })}
         onChange={(e) => {
