@@ -16,7 +16,7 @@ jobs:
     steps:
       # The "expression" body argument is built using the Cloudinary search API
       # It translates to "find images in the Inscryption/Uploads folder that are
-      # more than an hour old"
+      # more than a day old"
       # https://cloudinary.com/documentation/search_api#expressions
       - name: Retrieve files in cloudinary
         id: get-request
