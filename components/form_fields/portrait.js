@@ -66,7 +66,7 @@ const Portrait = (props) => {
       </span>
 
       <input
-        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-orange-100 bg-clip-padding border border-solid border-gray-300 rounded"
+        className="w-full border-2 border-orange-100 border-b-orange-400 px-3 py-1.5 text-base font-normal text-gray-700 bg-orange-100 bg-clip-padding rounded-sm"
         type="file"
         id="portrait"
         disabled={busy}

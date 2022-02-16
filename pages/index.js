@@ -38,7 +38,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="h-screen">
+      <main className="min-h-screen">
         <h1 className="mt-5 mb-10">Inscryber</h1>
 
         {/* Full grid layout */}

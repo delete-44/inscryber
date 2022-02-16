@@ -35,15 +35,18 @@
   input[type="text"],
   input[type="number"] {
     @apply bg-orange-100;
-    @apply border-b-2;
-    @apply border-orange-400;
+    @apply border-2;
+    @apply border-orange-100;
+    @apply border-b-orange-400;
     @apply w-full;
     @apply p-2;
     @apply text-2xl;
-    @apply md:text-3xl;
+    @apply md:text-2xl;
     @apply focus:outline-none;
-    @apply focus:bg-white;
+    @apply focus:border-orange-400;
     @apply text-black;
+    @apply placeholder-gray;
+    @apply rounded-sm;
   }
 
   .text-shadow-orange {
