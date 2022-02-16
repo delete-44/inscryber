@@ -21,7 +21,7 @@ const Sigils = (props) => {
     control: (defaultStyles) => {
       return {
         ...defaultStyles,
-        fontSize: "1.875rem",
+        fontSize: "1.5rem",
         borderBottom: "2px solid #cc6f33",
       };
     },
