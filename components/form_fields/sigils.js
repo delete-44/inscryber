@@ -18,16 +18,9 @@ const Sigils = (props) => {
   ];
 
   const selectStyles = {
-    placeholder: (defaultStyles) => {
-      return {
-        ...defaultStyles,
-        color: "#424242",
-      };
-    },
     control: (defaultStyles) => {
       return {
         ...defaultStyles,
-        backgroundColor: "#fff1e7",
         fontSize: "1.875rem",
         borderBottom: "2px solid #cc6f33",
       };
@@ -62,8 +55,10 @@ const Sigils = (props) => {
           ...theme,
           colors: {
           ...theme.colors,
-            primary25: '#fff1e7',
-            primary: '#cc6f33',
+            primary25: '#ffb583', // Hover colour
+            primary: '#cc6f33',   // Border & option highlight colour
+            neutral0: "#fff1e7",  // Background colour
+            neutral50: '#424242', // Placeholder colour
           },
         })}
         onChange={(e) => {
