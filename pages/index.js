@@ -7,6 +7,7 @@ import Stats from "@form_fields/stats";
 import Sigils from "@form_fields/sigils";
 import Portrait from "@form_fields/portrait";
 import Spinner from "components/spinner";
+import Footer from "components/footer";
 
 export default function Home() {
   // State management for this component
@@ -119,11 +120,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="bg-white">
-        &copy; <a href="https://github.com/delete-44/">@delete44</a> [this
-        website] | &copy; <a href="https://github.com/vladdeSV">@vladdeSV</a>{" "}
-        [base card assets]
-      </footer>
+      <Footer />
     </div>
   );
 }
