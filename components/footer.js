@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -24,7 +25,9 @@ const Footer = () => {
         </li>
       </ul>
 
-      <a href="/about">About</a>
+      <Link href="/about">
+        <a>About</a>
+      </Link>
     </footer>
   );
 };

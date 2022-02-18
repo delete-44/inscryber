@@ -9,7 +9,7 @@ const About = () => {
         <h2>Overview</h2>
 
         <p className="about-text">
-          Inscryber is a fan-made project celebrating Daniel Mullins'{" "}
+          Inscryber is a fan-made project celebrating Daniel Mullins&apos;{" "}
           <a href="https://www.inscryption.com/">Inscryption</a>. This game
           captivated me from day one, and after seeing other fans make their own
           custom cards I decided this would be a fun project to make the process
@@ -23,8 +23,8 @@ const About = () => {
         <p className="about-text">
           It is far from a perfect piece of kit. If you find bugs with it, let
           me know via <a href="https://twitter.com/_delete44">Twitter</a>. If
-          there are more bugs than I am prepared for, I'll make a formal process
-          for reporting them.
+          there are more bugs than I am prepared for, I&apos;ll make a formal
+          process for reporting them.
         </p>
       </div>
 
@@ -49,7 +49,7 @@ const About = () => {
           </li>
 
           <li className="about-text">
-            "HEAVYWEIGHT" font created by Nerfect Type Laboratories .
+            @quot;HEAVYWEIGHT@quot; font created by Nerfect Type Laboratories.
           </li>
 
           <li className="about-text">
