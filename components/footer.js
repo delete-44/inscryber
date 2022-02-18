@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { LINKS } from "./constants";
 
 const Footer = () => {
   return (
@@ -18,20 +19,19 @@ const Footer = () => {
 
       <ul className="px-4 text-orange-100 inline">
         <li>
-          &copy; <a href="https://github.com/vladdeSV">vladdeSV</a>
+          &copy; <a href={LINKS.vladde}>vladdeSV</a>
           <br />
           [card base assets]
         </li>
 
         <li>
-          &copy;{" "}
-          <a href="https://www.danielmullinsgames.com/">Daniel Mullins</a>
+          &copy; <a href={LINKS.dmullins}>Daniel Mullins</a>
           <br />
           [designs, IP. Used &amp; distributed with permission]
         </li>
 
         <li>
-          &copy; <a href="https://github.com/delete-44/">delete44</a>
+          &copy; <a href={LINKS.delete44}>delete44</a>
           <br />
           [this website]
         </li>
