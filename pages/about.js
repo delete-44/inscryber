@@ -17,7 +17,7 @@ const About = () => {
         </p>
 
         <p className="about-text">
-          However many long days and sleepless nights later, here we are.
+          After many long days and sleepless nights, here we are.
         </p>
 
         <p className="about-text">
