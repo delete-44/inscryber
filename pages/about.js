@@ -49,11 +49,11 @@ const About = () => {
           </li>
 
           <li className="about-text">
-            @quot;HEAVYWEIGHT@quot; font created by Nerfect Type Laboratories.
+            &quot;HEAVYWEIGHT&quot; font created by Nerfect Type Laboratories.
           </li>
 
           <li className="about-text">
-            Additional card assets found in the inscribe-datamine discord by
+            Additional card assets found in the Inscryption discord by
             @Cyantist.
           </li>
 
@@ -63,7 +63,7 @@ const About = () => {
           </li>
 
           <li className="about-text">
-            And finally, Inscryption created by{" "}
+            And, of course, Inscryption created by{" "}
             <a href="https://www.danielmullinsgames.com/">Daniel Mullins</a>
           </li>
         </ul>
