@@ -12,7 +12,7 @@ export default {
   openGraph: {
     type: "website",
     url: "https://www.inscryber.delete44.com",
-    title: "Inscryber",
+    title: "Inscryber | Inscryption Card Generator",
     description:
       "Generate your own custom Inscryption cards. " +
       "This is your chance to become the newest scrybe (citation needed) . " +
