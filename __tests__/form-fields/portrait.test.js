@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Portrait from "@form_fields/portrait";
+import Portrait from "@form-fields/portrait";
 import userEvent from "@testing-library/user-event";
 
 describe("Portrait", () => {

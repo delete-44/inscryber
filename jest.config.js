@@ -15,7 +15,7 @@ const customJestConfig = {
   testEnvironment: "jest-environment-jsdom",
   collectCoverage: true,
   moduleNameMapper: {
-    "^@form_fields(.*)$": "components/form_fields/$1",
+    "^@form-fields(.*)$": "components/form-fields/$1",
   },
 };
 
