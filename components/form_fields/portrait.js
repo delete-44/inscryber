@@ -30,29 +30,35 @@ const Portrait = (props) => {
     return response.json();
   };
 
-  useEffect(async () => {
-    if (image === "") {
-      setPortraitTF("");
-      return;
+  useEffect(() => {
+    async function updatePortrait() {
+      if (image === "") {
+        setPortraitTF("");
+        return;
+      }
+
+      try {
+        setBusy(true);
+        setError(false);
+        const uploaded = await upload(image);
+
+        // Public ID is returned with "/" characters. As we are only using
+        // the image for transformations, we replace them with ":"
+        // Sizing & fitting for the image is done on upload, handled by
+        // cloudinary, to save storage. Only need to position image in this TF.
+        setPortraitTF(
+          `l_${uploaded.public_id.replace(/\//g, ":")}.webp,y_-80/`
+        );
+        setBusy(false);
+      } catch (e) {
+        console.log(e);
+
+        setError(true);
+        setBusy(false);
+      }
     }
 
-    try {
-      setBusy(true);
-      setError(false);
-      const uploaded = await upload(image);
-
-      // Public ID is returned with "/" characters. As we are only using
-      // the image for transformations, we replace them with ":"
-      // Sizing & fitting for the image is done on upload, handled by
-      // cloudinary, to save storage. Only need to position image in this TF.
-      setPortraitTF(`l_${uploaded.public_id.replace(/\//g, ":")}.webp,y_-80/`);
-      setBusy(false);
-    } catch (e) {
-      console.log(e);
-
-      setError(true);
-      setBusy(false);
-    }
+    updatePortrait();
   }, [image, setPortraitTF]);
 
   return (
