@@ -16,24 +16,24 @@ const Footer = () => {
         </Link>
       </nav>
 
-      <ul className="px-4 text-orange-100">
+      <ul className="px-4 text-orange-100 inline">
         <li>
           &copy; <a href="https://github.com/vladdeSV">vladdeSV</a>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[card base
-          assets]
+          <br />
+          [card base assets]
         </li>
 
         <li>
           &copy;{" "}
-          <a href="https://www.danielmullinsgames.com/">Daniel Mullins</a>&nbsp;
-          [designs, IP, original game, etc. Used &amp; distributed with
-          permission]
+          <a href="https://www.danielmullinsgames.com/">Daniel Mullins</a>
+          <br />
+          [designs, IP. Used &amp; distributed with permission]
         </li>
 
         <li>
           &copy; <a href="https://github.com/delete-44/">delete44</a>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[this
-          website]
+          <br />
+          [this website]
         </li>
       </ul>
     </footer>
