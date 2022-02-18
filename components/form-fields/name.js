@@ -16,7 +16,7 @@ const Name = (props) => {
             `g_north,y_48,w_600,h_116,` +
             `c_${name.length < 10 ? "fit" : "scale"}/`
         );
-  }, [name]);
+  }, [name, setNameTF]);
 
   return (
     <section className="mb-10">

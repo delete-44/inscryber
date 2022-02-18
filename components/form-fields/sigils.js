@@ -37,7 +37,7 @@ const Sigils = (props) => {
     sigil === ""
       ? setSigilsTF("")
       : setSigilsTF(`l_${sigil}.png,g_south,y_64/`);
-  }, [sigil]);
+  }, [sigil, setSigilsTF]);
 
   return (
     <section className="mb-10">
