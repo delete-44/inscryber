@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
-import Name from "@form_fields/name";
-import Stats from "@form_fields/stats";
-import Sigils from "@form_fields/sigils";
-import Portrait from "@form_fields/portrait";
+import Name from "@form-fields/name";
+import Stats from "@form-fields/stats";
+import Sigils from "@form-fields/sigils";
+import Portrait from "@form-fields/portrait";
 import Spinner from "components/spinner";
 import GridLayout from "layouts/grid-layout";
 
