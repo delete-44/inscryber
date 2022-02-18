@@ -53,6 +53,12 @@
     @apply text-shadow-red;
   }
 
+  a:hover {
+    @apply underline;
+    @apply decoration-red;
+    @apply underline-offset-4;
+  }
+
   // -----------------------------
   // Text overrides for about page
   // -----------------------------
