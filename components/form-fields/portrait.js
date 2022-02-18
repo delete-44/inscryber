@@ -75,6 +75,7 @@ const Portrait = (props) => {
         className="w-full border-2 border-orange-100 border-b-orange-400 px-3 py-1.5 text-base font-normal text-gray-700 bg-orange-100 bg-clip-padding rounded-sm"
         type="file"
         id="portrait"
+        accept="image/*"
         disabled={busy}
         onChange={(e) => {
           setImage(e.target.files[0]);
