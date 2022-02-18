@@ -15,7 +15,7 @@ export default {
     title: "Inscryber | Inscryption Card Generator",
     description:
       "Generate your own custom Inscryption cards. " +
-      "This is your chance to become the newest scrybe (citation needed) . " +
+      "This is your chance to become the newest scrybe (citation needed). " +
       "Celebrating Daniel Mullins' Inscryption.",
     images: [
       {
