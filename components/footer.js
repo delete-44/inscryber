@@ -25,7 +25,7 @@ const Footer = () => {
         </li>
 
         <li>
-          &copy; <a href={LINKS.dmullins}>Daniel Mullins</a>
+          &copy; <a href={LINKS.dmullins}>Daniel Mullins Games</a>
           <br />
           [designs, IP. Used &amp; distributed with permission]
         </li>
