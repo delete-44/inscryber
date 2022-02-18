@@ -4,11 +4,26 @@
 
 @import url("https://fonts.cdnfonts.com/css/heavyweight");
 
-// Standard styles
+// -----------------------------
+// Text decorators
+// -----------------------------
+
+.text-shadow-orange {
+  text-shadow: 0 0 0.07em #d68c5c;
+}
+
+.text-shadow-red {
+  text-shadow: 0 0 0.07em #e04852;
+}
+
 @layer components {
   body {
     @apply bg-black;
   }
+
+  // -----------------------------
+  // Text defaults for main page
+  // -----------------------------
 
   h1,
   p {
@@ -32,6 +47,20 @@
     @apply text-shadow-red;
   }
 
+  // -----------------------------
+  // Text overrides for about page
+  // -----------------------------
+
+  .about-text {
+    @apply mb-8;
+    @apply text-white;
+    @apply text-2xl;
+    @apply font-sans;
+  }
+
+  // -----------------------------
+  // Input defaults
+  // -----------------------------
   input[type="text"],
   input[type="number"] {
     @apply bg-orange-100;
@@ -49,13 +78,9 @@
     @apply rounded-sm;
   }
 
-  .text-shadow-orange {
-    text-shadow: 0 0 0.07em #d68c5c;
-  }
-
-  .text-shadow-red {
-    text-shadow: 0 0 0.07em #e04852;
-  }
+  // -----------------------------
+  // Utility class
+  // -----------------------------
 
   .visually-hidden {
     clip: rect(0 0 0 0);

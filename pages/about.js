@@ -15,7 +15,7 @@ const About = () => {
               Overview
             </h2>
 
-            <p className="mb-8 text-white text-2xl font-sans">
+            <p className="about-text">
               Inscryber is a fan-made project celebrating Daniel Mullins'{" "}
               <a
                 className="text-red text-shadow-red"
@@ -28,11 +28,11 @@ const About = () => {
               project to make the process easier.
             </p>
 
-            <p className="mb-8 text-white text-2xl font-sans">
+            <p className="about-text">
               However many long days and sleepless nights later, here we are.
             </p>
 
-            <p className="mb-8 text-white text-2xl font-sans">
+            <p className="about-text">
               It is far from a perfect piece of kit. If you find bugs with it,
               let me know via{" "}
               <a
@@ -52,7 +52,7 @@ const About = () => {
               Get Involved
             </h2>
 
-            <p className="mb-8 text-white text-2xl font-sans">
+            <p className="about-text">
               This tool is completely open source and transparent. If you want
               to inspect the code, do so on{" "}
               <a
