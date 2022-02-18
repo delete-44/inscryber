@@ -21,15 +21,6 @@
     @apply bg-black;
   }
 
-  .layout-grid {
-    @apply md:grid;
-    @apply md:grid-cols-2;
-    @apply md:gap-4;
-    @apply w-11/12;
-    @apply md:w-5/6;
-    @apply mx-auto;
-  }
-
   // -----------------------------
   // Text defaults for main page
   // -----------------------------
