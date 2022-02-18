@@ -43,7 +43,7 @@ export default function Home() {
         <h1 className="mt-5 mb-10">Inscryber</h1>
 
         {/* Full grid layout */}
-        <div className="md:grid md:grid-cols-2 md:gap-4 w-11/12 md:w-5/6 mx-auto">
+        <div className="layout-grid">
           {/* Left column */}
           <div className="text-center md:text-left">
             {/* Name form field */}

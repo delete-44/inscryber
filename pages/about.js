@@ -8,24 +8,17 @@ const About = () => {
         <h1 className="mt-5 mb-10">About</h1>
 
         {/* Full grid layout */}
-        <div className="md:grid md:grid-cols-2 md:gap-4 w-11/12 md:w-5/6 mx-auto">
+        <div className="layout-grid">
           {/* Left column */}
           <div className="text-left">
-            <h2 className="font-title text-orange-400 text-shadow-orange text-4xl">
-              Overview
-            </h2>
+            <h2>Overview</h2>
 
             <p className="about-text">
               Inscryber is a fan-made project celebrating Daniel Mullins'{" "}
-              <a
-                className="text-red text-shadow-red"
-                href="https://www.inscryption.com/"
-              >
-                Inscryption
-              </a>
-              . This game captivated me from day one, and after seeing other
-              fans make their own custom cards I decided this would be a fun
-              project to make the process easier.
+              <a href="https://www.inscryption.com/">Inscryption</a>. This game
+              captivated me from day one, and after seeing other fans make their
+              own custom cards I decided this would be a fun project to make the
+              process easier.
             </p>
 
             <p className="about-text">
@@ -35,85 +28,49 @@ const About = () => {
             <p className="about-text">
               It is far from a perfect piece of kit. If you find bugs with it,
               let me know via{" "}
-              <a
-                className="text-red text-shadow-red"
-                href="https://twitter.com/_delete44"
-              >
-                Twitter
-              </a>
-              . If there are more bugs than I am prepared for, I'll make a
-              formal process for reporting them.
+              <a href="https://twitter.com/_delete44">Twitter</a>. If there are
+              more bugs than I am prepared for, I'll make a formal process for
+              reporting them.
             </p>
           </div>
 
           {/* Left column */}
           <div className="text-left">
-            <h2 className="font-title text-orange-400 text-shadow-orange text-4xl">
-              Get Involved
-            </h2>
+            <h2>Get Involved</h2>
 
             <p className="about-text">
               This tool is completely open source and transparent. If you want
               to inspect the code, do so on{" "}
-              <a
-                className="text-red text-shadow-red"
-                href="https://github.com/delete-44/inscryber"
-              >
-                GitHub
-              </a>
-              . Or, if you want to see how badly managed it is, find it on{" "}
-              <a
-                className="text-red text-shadow-red"
-                href="https://trello.com/b/dBsycGJJ/inscryber"
-              >
-                Trello
-              </a>
-              .
+              <a href="https://github.com/delete-44/inscryber">GitHub</a>. Or,
+              if you want to see how badly managed it is, find it on{" "}
+              <a href="https://trello.com/b/dBsycGJJ/inscryber">Trello</a>.
             </p>
 
-            <h2 className="font-title text-orange-400 text-shadow-orange text-4xl">
-              Ownership
-            </h2>
+            <h2>Ownership</h2>
 
             <ul>
-              <li className="text-white text-2xl font-sans">
+              <li className="about-text">
                 Card base created by{" "}
-                <a
-                  className="text-red text-shadow-red"
-                  href="https://cards.vladde.me/"
-                >
-                  @vladdeSV
-                </a>
-                .
+                <a href="https://cards.vladde.me/">@vladdeSV</a>.
               </li>
 
-              <li className="text-white text-2xl font-sans">
+              <li className="about-text">
                 "HEAVYWEIGHT" font created by Nerfect Type Laboratories .
               </li>
 
-              <li className="text-white text-2xl font-sans">
+              <li className="about-text">
                 Additional card assets found in the inscribe-datamine discord by
                 @Cyantist.
               </li>
 
-              <li className="text-white text-2xl font-sans">
+              <li className="about-text">
                 This website created by{" "}
-                <a
-                  className="text-red text-shadow-red"
-                  href="https://www.delete44.com/"
-                >
-                  @delete44
-                </a>
+                <a href="https://www.delete44.com/">@delete44</a>
               </li>
 
-              <li className="text-white text-2xl font-sans">
+              <li className="about-text">
                 And finally, Inscryption created by{" "}
-                <a
-                  className="text-red text-shadow-red"
-                  href="https://www.danielmullinsgames.com/"
-                >
-                  Daniel Mullins
-                </a>
+                <a href="https://www.danielmullinsgames.com/">Daniel Mullins</a>
               </li>
             </ul>
           </div>

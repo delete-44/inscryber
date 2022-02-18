@@ -21,11 +21,21 @@
     @apply bg-black;
   }
 
+  .layout-grid {
+    @apply md:grid;
+    @apply md:grid-cols-2;
+    @apply md:gap-4;
+    @apply w-11/12;
+    @apply md:w-5/6;
+    @apply mx-auto;
+  }
+
   // -----------------------------
   // Text defaults for main page
   // -----------------------------
 
   h1,
+  h2,
   p {
     @apply text-orange-400;
     @apply font-title;
@@ -37,12 +47,17 @@
     @apply text-center;
   }
 
+  h2 {
+    @apply text-4xl;
+  }
+
   p {
     @apply text-4xl;
     @apply md:text-5xl;
   }
 
-  label {
+  label,
+  a {
     @apply text-red;
     @apply text-shadow-red;
   }
@@ -52,10 +67,13 @@
   // -----------------------------
 
   .about-text {
-    @apply mb-8;
     @apply text-white;
     @apply text-2xl;
     @apply font-sans;
+  }
+
+  p.about-text {
+    @apply mb-8;
   }
 
   // -----------------------------
