@@ -53,7 +53,7 @@ const Portrait = (props) => {
       setError(true);
       setBusy(false);
     }
-  }, [image]);
+  }, [image, setPortraitTF]);
 
   return (
     <section>

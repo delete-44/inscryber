@@ -16,7 +16,7 @@ const Stats = (props) => {
             `g_south_west,x_72,y_164,w_100,h_156,` +
             `c_${power.length < 2 ? "fit" : "scale"}/`
         );
-  }, [power]);
+  }, [power, setPowerTF]);
 
   useEffect(() => {
     health === ""
@@ -27,7 +27,7 @@ const Stats = (props) => {
             `g_south_east,x_60,y_66,w_100,h_156,` +
             `c_${health.length < 2 ? "fit" : "scale"}/`
         );
-  }, [health]);
+  }, [health, setHealthTF]);
 
   return (
     <section className="mb-10">
