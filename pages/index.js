@@ -37,7 +37,10 @@ export default function Home() {
   }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF]);
 
   return (
-    <GridLayout title="Inscryber | Inscryption Card Generator">
+    <GridLayout
+      title="Inscryber | Inscryption Card Generator"
+      heading="Inscryber"
+    >
       {/* Left column */}
       <div className="text-center md:text-left">
         {/* Name form field */}

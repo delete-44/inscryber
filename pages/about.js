@@ -4,7 +4,7 @@ import { LINKS } from "components/constants";
 
 const About = () => {
   return (
-    <GridLayout title="Inscryber | About">
+    <GridLayout title="Inscryber | About" heading="About Inscryber">
       {/* Left column */}
       <div className="text-left">
         <h2>Overview</h2>

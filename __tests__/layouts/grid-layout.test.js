@@ -4,11 +4,15 @@ import GridLayout from "layouts/grid-layout";
 
 describe("GridLayout", () => {
   beforeEach(() => {
-    render(<GridLayout title="TEST NAME">TEST CHILD</GridLayout>);
+    render(
+      <GridLayout title="TEST TITLE" heading="TEST HEADER">
+        TEST CHILD
+      </GridLayout>
+    );
   });
 
   it("renders a header and footer", () => {
-    const header = screen.getByRole("heading", { name: "TEST NAME" });
+    const header = screen.getByRole("heading", { name: "TEST HEADER" });
 
     expect(header).toBeInTheDocument();
 
