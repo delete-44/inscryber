@@ -1,9 +1,9 @@
 export default {
-  defaultTitle: "Inscryber",
+  defaultTitle: "Inscryber | Inscryption Card Generator",
   description:
-    "Inscryber is a fan-made project celebrating Daniel Mullins' Inscryption." +
-    "Generate custom cards quickly and, hopefully, painlessly." +
-    "If you're looking for an opportunity to become the newest Scrybe, this is it.",
+    "Inscryber is a fan-made project celebrating Daniel Mullins' Inscryption. " +
+    "Generate custom cards quickly and, hopefully, painlessly. " +
+    "Become the newest Scrybe",
   canonical: "https://www.inscryber.delete44.com",
   twitter: {
     cardType: "summary",
@@ -14,9 +14,9 @@ export default {
     url: "https://www.inscryber.delete44.com",
     title: "Inscryber",
     description:
-      "Inscryber is a fan-made project celebrating Daniel Mullins' Inscryption." +
-      "Generate custom cards quickly and, hopefully, painlessly." +
-      "If you're looking for an opportunity to become the newest Scrybe, this is it.",
+      "Generate your own custom Inscryption cards. " +
+      "This is your chance to become the newest scrybe (citation needed) . " +
+      "Celebrating Daniel Mullins' Inscryption.",
     images: [
       {
         url: `https://res.cloudinary.com/delete-44/image/upload/c_scale,w_600/v1644341775/Inscryption/blank_vladde.png`,
