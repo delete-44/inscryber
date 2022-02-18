@@ -3,7 +3,7 @@ export default {
   description:
     "Inscryber is a fan-made project celebrating Daniel Mullins' Inscryption. " +
     "Generate custom cards quickly and, hopefully, painlessly. " +
-    "Become the newest Scrybe",
+    "Become the newest Scrybe.",
   canonical: "https://www.inscryber.delete44.com",
   twitter: {
     cardType: "summary",
