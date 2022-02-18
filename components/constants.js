@@ -35,3 +35,13 @@ export const SIGILS = [
   { filename: "waterborne", label: "Waterborne" },
   { filename: "worthy_sacrifice", label: "Worthy Sacrifice" },
 ];
+
+export const LINKS = {
+  delete44: "https://www.delete44.com/",
+  delete44_twitter: "https://twitter.com/_delete44",
+  vladde: "https://cards.vladde.me/",
+  dmullins: "https://www.danielmullinsgames.com/",
+  inscryption: "https://www.inscryption.com/",
+  inscryber_github: "https://github.com/delete-44/inscryber",
+  inscryber_trello: "https://trello.com/b/dBsycGJJ/inscryber",
+};
