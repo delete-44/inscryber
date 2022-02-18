@@ -49,47 +49,6 @@ export default function Home() {
         {/* Power & health form fields */}
         <Stats setPowerTF={setPowerTF} setHealthTF={setHealthTF} />
 
-        {/* Cost form fields */}
-        <section className="mb-10">
-          <p className="mb-3">
-            And every creature has a <label htmlFor="cost">cost</label>
-            ...
-          </p>
-
-          <section className="grid grid-cols-2 gap-10 md:w-2/6 w-full">
-            <input type="number" min="0" aria-label="Cost" name="cost" />
-
-            <div>
-              <div className="form-check">
-                <input
-                  className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-orange-400 checked:border-white focus:outline-none transition duration-200 mt-1 align-top float-left mr-2 cursor-pointer"
-                  type="radio"
-                  name="costRadio"
-                  id="blood"
-                  defaultChecked
-                />
-
-                <label className="text-white" htmlFor="blood">
-                  Blood
-                </label>
-              </div>
-
-              <div className="form-check">
-                <input
-                  className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-orange-400 checked:border-white focus:outline-none transition duration-200 mt-1 align-top float-left mr-2 cursor-pointer"
-                  type="radio"
-                  name="costRadio"
-                  id="bones"
-                />
-
-                <label className="text-white" htmlFor="bones">
-                  Bones
-                </label>
-              </div>
-            </div>
-          </section>
-        </section>
-
         {/* Sigils form field */}
         <Sigils setSigilsTF={setSigilsTF} />
 
