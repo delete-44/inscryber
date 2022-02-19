@@ -13,8 +13,8 @@ const Stats = (props) => {
       : setPowerTF(
           `l_text:${HEAVYWEIGHT}_204:` +
             `${encodeURIComponent(power)},` +
-            `g_south_west,x_72,y_164,w_100,h_156,` +
-            `c_${power.length < 2 ? "fit" : "scale"}/`
+            `g_south_west,x_72,y_164,c_scale,` +
+            `w_${power.length < 2 ? "50" : "100"}/`
         );
   }, [power, setPowerTF]);
 
@@ -24,8 +24,8 @@ const Stats = (props) => {
       : setHealthTF(
           `l_text:${HEAVYWEIGHT}_204:` +
             `${encodeURIComponent(health)},` +
-            `g_south_east,x_60,y_66,w_100,h_156,` +
-            `c_${health.length < 2 ? "fit" : "scale"}/`
+            `g_south_east,x_60,y_86,c_scale,` +
+            `w_${health.length < 2 ? "50" : "100"}/`
         );
   }, [health, setHealthTF]);
 
