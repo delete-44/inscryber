@@ -26,6 +26,20 @@ const About = () => {
           more bugs than I am prepared for, I&apos;ll make a formal process for
           reporting them.
         </p>
+
+        <h2>Privacy</h2>
+
+        <p className="about-text">
+          No cookies are used in this site \o/ Fuck that.
+        </p>
+
+        <p className="about-text">
+          However. When you upload an image to this site, it is stored on
+          Cloudinary with a <strong>publicly available link</strong>. Any images
+          you upload <strong>will be visible</strong> to people if they have the
+          link. To mitigate this, all images older than 24 hours are
+          automatically deleted every day at ~5pm.
+        </p>
       </div>
 
       {/* Left column */}
