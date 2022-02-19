@@ -39,7 +39,7 @@ describe("Stats", () => {
   });
 
   describe("the power number field", () => {
-    it("uses fit cropping for numbers < 10", async () => {
+    it("reduces width for numbers < 2 characters", async () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
@@ -48,12 +48,12 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_west,x_72,y_164,w_100,h_156,c_fit/`
+          `l_text:${HEAVYWEIGHT}_204:9,g_south_west,x_72,y_164,c_scale,w_50/`
         );
       });
     });
 
-    it("uses scale cropping for numbers >= 10", async () => {
+    it("expands width for larger numbers", async () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
@@ -62,7 +62,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:10,g_south_west,x_72,y_164,w_100,h_156,c_scale/`
+          `l_text:${HEAVYWEIGHT}_204:10,g_south_west,x_72,y_164,c_scale,w_100/`
         );
       });
     });
@@ -88,7 +88,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_west,x_72,y_164,w_100,h_156,c_fit/`
+          `l_text:${HEAVYWEIGHT}_204:9,g_south_west,x_72,y_164,c_scale,w_50/`
         );
       });
 
@@ -101,7 +101,7 @@ describe("Stats", () => {
   });
 
   describe("the health number field", () => {
-    it("uses fit cropping for numbers < 10", async () => {
+    it("reduces width for numbers < 2 characters", async () => {
       const healthField = screen.getByRole("spinbutton", {
         name: /Health/,
       });
@@ -110,12 +110,12 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_east,x_60,y_66,w_100,h_156,c_fit/`
+          `l_text:${HEAVYWEIGHT}_204:9,g_south_east,x_60,y_86,c_scale,w_50/`
         );
       });
     });
 
-    it("uses scale cropping for numbers >= 10", async () => {
+    it("expands width for larger numbers", async () => {
       const healthField = screen.getByRole("spinbutton", {
         name: /Health/,
       });
@@ -124,7 +124,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:10,g_south_east,x_60,y_66,w_100,h_156,c_scale/`
+          `l_text:${HEAVYWEIGHT}_204:10,g_south_east,x_60,y_86,c_scale,w_100/`
         );
       });
     });
@@ -150,7 +150,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_east,x_60,y_66,w_100,h_156,c_fit/`
+          `l_text:${HEAVYWEIGHT}_204:9,g_south_east,x_60,y_86,c_scale,w_50/`
         );
       });
 
