@@ -11,11 +11,13 @@ describe("About", () => {
   it("renders headers & footer", () => {
     const h1 = screen.getByRole("heading", { name: "About Inscryber" });
     const overview = screen.getByRole("heading", { name: "Overview" });
+    const privacy = screen.getByRole("heading", { name: "Privacy" });
     const getInvolved = screen.getByRole("heading", { name: "Get Involved" });
     const ownership = screen.getByRole("heading", { name: "Ownership" });
 
     expect(h1).toBeInTheDocument();
     expect(overview).toBeInTheDocument();
+    expect(privacy).toBeInTheDocument();
     expect(getInvolved).toBeInTheDocument();
     expect(ownership).toBeInTheDocument();
 
