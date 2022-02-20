@@ -7,14 +7,22 @@ const Stats = (props) => {
   const [health, setHealth] = useState("");
   const { setPowerTF, setHealthTF } = props;
 
+  const getWidth = (stat) => {
+    if (stat === "1") return 50;
+
+    if (stat.length < 3) return 75;
+
+    return 100;
+  };
+
   useEffect(() => {
     power === ""
       ? setPowerTF("")
       : setPowerTF(
-          `l_text:${HEAVYWEIGHT}_204:` +
+          `l_text:${HEAVYWEIGHT}_196:` +
             `${encodeURIComponent(power)},` +
             `g_south_west,x_72,y_164,c_scale,` +
-            `w_${power.length < 2 ? "50" : "100"}/`
+            `w_${getWidth(power)}/`
         );
   }, [power, setPowerTF]);
 
@@ -22,10 +30,10 @@ const Stats = (props) => {
     health === ""
       ? setHealthTF("")
       : setHealthTF(
-          `l_text:${HEAVYWEIGHT}_204:` +
+          `l_text:${HEAVYWEIGHT}_196:` +
             `${encodeURIComponent(health)},` +
             `g_south_east,x_60,y_86,c_scale,` +
-            `w_${health.length < 2 ? "50" : "100"}/`
+            `w_${getWidth(health)}/`
         );
   }, [health, setHealthTF]);
 

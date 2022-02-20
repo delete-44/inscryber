@@ -39,16 +39,38 @@ describe("Stats", () => {
   });
 
   describe("the power number field", () => {
-    it("reduces width for numbers < 2 characters", async () => {
+    it("sets width at 50 for the character '1'", async () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
 
-      userEvent.type(powerField, "9");
+      userEvent.type(powerField, "1");
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_west,x_72,y_164,c_scale,w_50/`
+          `l_text:${HEAVYWEIGHT}_196:1,g_south_west,x_72,y_164,c_scale,w_50/`
+        );
+      });
+    });
+
+    it("sets width at 75 for the characters 2 to 99", async () => {
+      const powerField = screen.getByRole("spinbutton", {
+        name: /Power/,
+      });
+
+      userEvent.type(powerField, "2");
+
+      await waitFor(() => {
+        expect(mockCallback).toHaveBeenCalledWith(
+          `l_text:${HEAVYWEIGHT}_196:2,g_south_west,x_72,y_164,c_scale,w_75/`
+        );
+      });
+
+      userEvent.type(powerField, "99");
+
+      await waitFor(() => {
+        expect(mockCallback).toHaveBeenCalledWith(
+          `l_text:${HEAVYWEIGHT}_196:2,g_south_west,x_72,y_164,c_scale,w_75/`
         );
       });
     });
@@ -58,11 +80,11 @@ describe("Stats", () => {
         name: /Power/,
       });
 
-      userEvent.type(powerField, "10");
+      userEvent.type(powerField, "100");
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:10,g_south_west,x_72,y_164,c_scale,w_100/`
+          `l_text:${HEAVYWEIGHT}_196:100,g_south_west,x_72,y_164,c_scale,w_100/`
         );
       });
     });
@@ -88,7 +110,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_west,x_72,y_164,c_scale,w_50/`
+          `l_text:${HEAVYWEIGHT}_196:9,g_south_west,x_72,y_164,c_scale,w_75/`
         );
       });
 
@@ -101,16 +123,38 @@ describe("Stats", () => {
   });
 
   describe("the health number field", () => {
-    it("reduces width for numbers < 2 characters", async () => {
+    it("sets width at 50 for the character '1'", async () => {
       const healthField = screen.getByRole("spinbutton", {
         name: /Health/,
       });
 
-      userEvent.type(healthField, "9");
+      userEvent.type(healthField, "1");
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_east,x_60,y_86,c_scale,w_50/`
+          `l_text:${HEAVYWEIGHT}_196:1,g_south_east,x_60,y_86,c_scale,w_50/`
+        );
+      });
+    });
+
+    it("sets width at 75 for the characters 2 to 99", async () => {
+      const healthField = screen.getByRole("spinbutton", {
+        name: /Health/,
+      });
+
+      userEvent.type(healthField, "2");
+
+      await waitFor(() => {
+        expect(mockCallback).toHaveBeenCalledWith(
+          `l_text:${HEAVYWEIGHT}_196:2,g_south_east,x_60,y_86,c_scale,w_75/`
+        );
+      });
+
+      userEvent.type(healthField, "99");
+
+      await waitFor(() => {
+        expect(mockCallback).toHaveBeenCalledWith(
+          `l_text:${HEAVYWEIGHT}_196:2,g_south_east,x_60,y_86,c_scale,w_75/`
         );
       });
     });
@@ -120,11 +164,11 @@ describe("Stats", () => {
         name: /Health/,
       });
 
-      userEvent.type(healthField, "10");
+      userEvent.type(healthField, "100");
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:10,g_south_east,x_60,y_86,c_scale,w_100/`
+          `l_text:${HEAVYWEIGHT}_196:100,g_south_east,x_60,y_86,c_scale,w_100/`
         );
       });
     });
@@ -150,7 +194,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_east,x_60,y_86,c_scale,w_50/`
+          `l_text:${HEAVYWEIGHT}_196:9,g_south_east,x_60,y_86,c_scale,w_75/`
         );
       });
 
