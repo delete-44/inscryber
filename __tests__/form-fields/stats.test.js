@@ -39,7 +39,7 @@ describe("Stats", () => {
   });
 
   describe("the power number field", () => {
-    it("reduces width for numbers < 2 characters", async () => {
+    it("sets", async () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
@@ -48,7 +48,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_west,x_72,y_164,c_scale,w_50/`
+          `l_text:${HEAVYWEIGHT}_196:9,g_south_west,x_72,y_164,c_scale,w_50/`
         );
       });
     });
@@ -62,7 +62,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:10,g_south_west,x_72,y_164,c_scale,w_100/`
+          `l_text:${HEAVYWEIGHT}_196:10,g_south_west,x_72,y_164,c_scale,w_100/`
         );
       });
     });
@@ -88,7 +88,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_west,x_72,y_164,c_scale,w_50/`
+          `l_text:${HEAVYWEIGHT}_196:9,g_south_west,x_72,y_164,c_scale,w_50/`
         );
       });
 
@@ -101,7 +101,7 @@ describe("Stats", () => {
   });
 
   describe("the health number field", () => {
-    it("reduces width for numbers < 2 characters", async () => {
+    it("sets", async () => {
       const healthField = screen.getByRole("spinbutton", {
         name: /Health/,
       });
@@ -110,7 +110,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_east,x_60,y_86,c_scale,w_50/`
+          `l_text:${HEAVYWEIGHT}_196:9,g_south_east,x_60,y_86,c_scale,w_50/`
         );
       });
     });
@@ -124,7 +124,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:10,g_south_east,x_60,y_86,c_scale,w_100/`
+          `l_text:${HEAVYWEIGHT}_196:10,g_south_east,x_60,y_86,c_scale,w_100/`
         );
       });
     });
@@ -150,7 +150,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_204:9,g_south_east,x_60,y_86,c_scale,w_50/`
+          `l_text:${HEAVYWEIGHT}_196:9,g_south_east,x_60,y_86,c_scale,w_50/`
         );
       });
 
