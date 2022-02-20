@@ -38,7 +38,7 @@ describe("Stats", () => {
     expect(healthLabel).toBeInTheDocument();
   });
 
-  describe("the power number field", () => {
+  describe("getWidth function", () => {
     it("sets width at 50 for the character '1'", async () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
@@ -48,12 +48,12 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:1,g_south_west,x_72,y_164,c_scale,w_50/`
+          `l_text:${HEAVYWEIGHT}_196:1,g_south_west,x_72,y_156,c_scale,w_50/`
         );
       });
     });
 
-    it("sets width at 75 for the characters 2 to 99", async () => {
+    it("sets width at 65 for numbers 2-9", async () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
@@ -62,15 +62,30 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:2,g_south_west,x_72,y_164,c_scale,w_75/`
+          `l_text:${HEAVYWEIGHT}_196:2,g_south_west,x_72,y_156,c_scale,w_65/`
+        );
+      });
+    })
+
+    it("sets width at 80 for the characters 10 to 99", async () => {
+      const powerField = screen.getByRole("spinbutton", {
+        name: /Power/,
+      });
+
+      userEvent.type(powerField, "10");
+
+      await waitFor(() => {
+        expect(mockCallback).toHaveBeenCalledWith(
+          `l_text:${HEAVYWEIGHT}_196:10,g_south_west,x_72,y_156,c_scale,w_80/`
         );
       });
 
+      userEvent.type(powerField, "{selectall}{backspace}");
       userEvent.type(powerField, "99");
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:2,g_south_west,x_72,y_164,c_scale,w_75/`
+          `l_text:${HEAVYWEIGHT}_196:99,g_south_west,x_72,y_156,c_scale,w_80/`
         );
       });
     });
@@ -84,11 +99,13 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:100,g_south_west,x_72,y_164,c_scale,w_100/`
+          `l_text:${HEAVYWEIGHT}_196:100,g_south_west,x_72,y_156,c_scale,w_100/`
         );
       });
     });
+  });
 
+  describe("the power number field", () => {
     it("ignores non-numerical characters", async () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
@@ -110,7 +127,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:9,g_south_west,x_72,y_164,c_scale,w_75/`
+          `l_text:${HEAVYWEIGHT}_196:9,g_south_west,x_72,y_156,c_scale,w_65/`
         );
       });
 
@@ -123,56 +140,6 @@ describe("Stats", () => {
   });
 
   describe("the health number field", () => {
-    it("sets width at 50 for the character '1'", async () => {
-      const healthField = screen.getByRole("spinbutton", {
-        name: /Health/,
-      });
-
-      userEvent.type(healthField, "1");
-
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:1,g_south_east,x_60,y_86,c_scale,w_50/`
-        );
-      });
-    });
-
-    it("sets width at 75 for the characters 2 to 99", async () => {
-      const healthField = screen.getByRole("spinbutton", {
-        name: /Health/,
-      });
-
-      userEvent.type(healthField, "2");
-
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:2,g_south_east,x_60,y_86,c_scale,w_75/`
-        );
-      });
-
-      userEvent.type(healthField, "99");
-
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:2,g_south_east,x_60,y_86,c_scale,w_75/`
-        );
-      });
-    });
-
-    it("expands width for larger numbers", async () => {
-      const healthField = screen.getByRole("spinbutton", {
-        name: /Health/,
-      });
-
-      userEvent.type(healthField, "100");
-
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:100,g_south_east,x_60,y_86,c_scale,w_100/`
-        );
-      });
-    });
-
     it("ignores non-numerical characters", async () => {
       const healthField = screen.getByRole("spinbutton", {
         name: /Health/,
@@ -194,7 +161,7 @@ describe("Stats", () => {
 
       await waitFor(() => {
         expect(mockCallback).toHaveBeenCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:9,g_south_east,x_60,y_86,c_scale,w_75/`
+          `l_text:${HEAVYWEIGHT}_196:9,g_south_east,x_60,y_86,c_scale,w_65/`
         );
       });
 

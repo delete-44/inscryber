@@ -10,7 +10,7 @@ const Stats = (props) => {
   const getWidth = (stat) => {
     if (stat === "1") return 50;
 
-    if (stat.length < 3) return 75;
+    if (stat.length < 3) return 50 + stat.length * 15;
 
     return 100;
   };
@@ -21,7 +21,7 @@ const Stats = (props) => {
       : setPowerTF(
           `l_text:${HEAVYWEIGHT}_196:` +
             `${encodeURIComponent(power)},` +
-            `g_south_west,x_72,y_164,c_scale,` +
+            `g_south_west,x_72,y_156,c_scale,` +
             `w_${getWidth(power)}/`
         );
   }, [power, setPowerTF]);
