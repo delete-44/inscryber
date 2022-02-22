@@ -92,7 +92,7 @@ describe("Portrait", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
 
         expect(mockCallback).toHaveBeenCalledWith(
-          "l_fake:image:returned.webp,y_-80/"
+          "l_fake:image:returned/fl_layer_apply,y_-80/"
         );
       });
     });
