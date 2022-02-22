@@ -4,6 +4,9 @@ import userEvent from "@testing-library/user-event";
 import Name from "@form-fields/name";
 import { HEAVYWEIGHT } from "components/constants";
 
+const SHORT_STRING_TRANSFORMATION = "y_48,w_560,h_115,c_fit/";
+const LONG_STRING_TRANSFORMATION = "y_64,w_580,h_75,c_scale/";
+
 describe("Name", () => {
   const mockCallback = jest.fn();
 
@@ -38,7 +41,7 @@ describe("Name", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:123456789,g_north,y_48,w_600,h_116,c_fit/`
+        `l_text:${HEAVYWEIGHT}_128:123456789,g_north,${SHORT_STRING_TRANSFORMATION}`
       );
     });
   });
@@ -48,11 +51,11 @@ describe("Name", () => {
       name: /Name/,
     });
 
-    userEvent.type(nameField, "1234567890");
+    userEvent.type(nameField, "123456789012");
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:1234567890,g_north,y_48,w_600,h_116,c_scale/`
+        `l_text:${HEAVYWEIGHT}_128:123456789012,g_north,${LONG_STRING_TRANSFORMATION}`
       );
     });
   });
@@ -66,7 +69,7 @@ describe("Name", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:Test%20String,g_north,y_48,w_600,h_116,c_scale/`
+        `l_text:${HEAVYWEIGHT}_128:Test%20String,g_north,${SHORT_STRING_TRANSFORMATION}`
       );
     });
   });
@@ -80,7 +83,7 @@ describe("Name", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:123456789,g_north,y_48,w_600,h_116,c_fit/`
+        `l_text:${HEAVYWEIGHT}_128:123456789,g_north,${SHORT_STRING_TRANSFORMATION}`
       );
     });
 
