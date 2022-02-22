@@ -12,9 +12,12 @@ const Name = (props) => {
       ? setNameTF("")
       : setNameTF(
           `l_text:${HEAVYWEIGHT}_128:` +
-            `${encodeURIComponent(name)},` +
-            `g_north,y_48,w_600,h_116,` +
-            `c_${name.length < 10 ? "fit" : "scale"}/`
+            `${encodeURIComponent(name)},g_north,` +
+            `${
+              name.length < 12
+                ? "y_48,w_560,h_115,c_fit/"
+                : "y_64,w_580,h_75,c_scale/"
+            }`
         );
   }, [name, setNameTF]);
 
