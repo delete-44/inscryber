@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Uploader from "components/files/uploader";
+import Inscryber from "components/files/inscryber";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
 const Portrait = (props) => {
   const [imageId, setImageId] = useState("");
+  const [inscrybed, setInscrybed] = useState(false);
   const { setPortraitTF } = props;
 
   useEffect(() => {
@@ -13,8 +15,8 @@ const Portrait = (props) => {
       return;
     }
 
-    setPortraitTF(`l_${imageId}.webp,y_-80/`);
-  }, [imageId]);
+    inscrybed ? setPortraitTF("") : setPortraitTF(`l_${imageId}.webp,y_-80/`);
+  }, [imageId, inscrybed]);
 
   return (
     <section>
@@ -32,11 +34,7 @@ const Portrait = (props) => {
         <br />
       </small>
 
-      <input type="checkbox" name="costRadio" id="inscrybe-image" />
-
-      <label htmlFor="inscrybe-image" className="align-super">
-        Inscrybe Image
-      </label>
+      <Inscryber inscrybed={inscrybed} setInscrybed={setInscrybed} />
     </section>
   );
 };
