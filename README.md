@@ -54,8 +54,10 @@ This job has three key steps:
 
 As this is rate limited, there is a fallback via the UI. Talk to @delete-44 about this if it becomes an issue.
 
+Each run deletes a maximum of 100 images.
+
 Environment variables such as authentication secrets are stored in the GitHub [action secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
 
 #### When
 
-This job runs every day @ 5pm. Emails will be sent to collaborators in event of failure.
+This job runs every 6 hours. Emails will be sent to collaborators in event of failure.
