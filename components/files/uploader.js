@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { CLOUDINARY_API_BASE } from "components/constants";
 import Spinner from "components/spinner";
 import ErrorFlash from "components/error-flash";
-import Link from "next/link";
 
 const Uploader = (props) => {
   const [image, setImage] = useState("");
