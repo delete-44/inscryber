@@ -34,11 +34,11 @@ const About = () => {
         </p>
 
         <p className="about-text">
-          However. When you upload an image to this site, it is stored on
-          Cloudinary with a <strong>publicly available link</strong>. Any images
-          you upload <strong>will be visible</strong> to people if they have the
-          link. To mitigate this, all images older than 24 hours are
-          automatically deleted every day at ~5pm.
+          When you upload an image to this site, it is stored on Cloudinary with
+          a <strong>publicly available link</strong>. Any images you upload{" "}
+          <strong>will be visible</strong> to people if they have the link, and
+          to those with access to the Cloudinary folder. To mitigate this,
+          images are deleted 6 hours after upload.
         </p>
       </div>
 
