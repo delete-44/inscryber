@@ -36,7 +36,7 @@ const Sigils = (props) => {
   useEffect(() => {
     sigil === ""
       ? setSigilsTF("")
-      : setSigilsTF(`l_${sigil}.png,g_south,y_64/`);
+      : setSigilsTF(`l_${sigil}/fl_layer_apply,g_south,y_64/`);
   }, [sigil, setSigilsTF]);
 
   return (

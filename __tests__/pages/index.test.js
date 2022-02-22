@@ -167,7 +167,7 @@ describe("Home", () => {
       const testFile = new File(["Test"], "test.png", { type: "image/png" });
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned.webp/);
+      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
 
       const fileField = screen.getByLabelText("portrait");
 
@@ -180,13 +180,13 @@ describe("Home", () => {
       });
 
       jest.advanceTimersByTime(499);
-      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned.webp/);
+      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/test%2Fl_fake%3Aimage%3Areturned.webp/);
+      expect(image.src).toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
     });
   });
 });

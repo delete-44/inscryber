@@ -48,7 +48,7 @@ const Portrait = (props) => {
         // Sizing & fitting for the image is done on upload, handled by
         // cloudinary, to save storage. Only need to position image in this TF.
         setPortraitTF(
-          `l_${uploaded.public_id.replace(/\//g, ":")}.webp,y_-80/`
+          `l_${uploaded.public_id.replace(/\//g, ":")}/fl_layer_apply,y_-80/`
         );
         setBusy(false);
       } catch (e) {
