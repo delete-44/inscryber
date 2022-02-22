@@ -4,11 +4,21 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 
 const Portrait = (props) => {
+  const [imageId, setImageId] = useState("");
   const { setPortraitTF } = props;
+
+  useEffect(() => {
+    if (imageId === "") {
+      setPortraitTF("");
+      return;
+    }
+
+    setPortraitTF(`l_${imageId}.webp,y_-80/`);
+  }, [imageId]);
 
   return (
     <section>
-      <Uploader />
+      <Uploader setImageId={setImageId} />
 
       <small className="text-orange-100 text-left">
         Please review how we handle images in the privacy section of our{" "}
