@@ -4,8 +4,10 @@ import userEvent from "@testing-library/user-event";
 import Name from "@form-fields/name";
 import { HEAVYWEIGHT } from "components/constants";
 
-const SHORT_STRING_TRANSFORMATION = "w_560,h_115,c_fit/fl_layer_apply,y_48,g_north/";
-const LONG_STRING_TRANSFORMATION = "w_580,h_75,c_scale/fl_layer_apply,y_64,g_north/";
+const SHORT_STRING_TRANSFORMATION =
+  "w_560,h_115,c_fit/fl_layer_apply,y_48,g_north/";
+const LONG_STRING_TRANSFORMATION =
+  "w_580,h_75,c_scale/fl_layer_apply,y_64,g_north/";
 
 describe("Name", () => {
   const mockCallback = jest.fn();
