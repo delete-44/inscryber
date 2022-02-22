@@ -93,6 +93,22 @@
     @apply rounded-sm;
   }
 
+  input[type="checkbox"] {
+    @apply appearance-none;
+    @apply h-5;
+    @apply w-5;
+    @apply border;
+    @apply border-orange-400;
+    @apply bg-orange-100;
+    @apply checked:bg-orange-400;
+    @apply checked:border-orange-100;
+    @apply transition;
+    @apply duration-200;
+    @apply mt-3;
+    @apply mr-2;
+    @apply cursor-pointer;
+  }
+
   // -----------------------------
   // Utility class
   // -----------------------------
