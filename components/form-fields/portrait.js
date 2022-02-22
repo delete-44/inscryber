@@ -83,18 +83,15 @@ const Portrait = (props) => {
         }}
       />
 
-      <small className="text-white">
-        Images are scaled down to fit the portrait box on the card, to
-        dimensions 512x624.
-        <br />
-        For best results, use an image at least this size, with a transparent
-        background.
-        <br />
+      <small className="text-orange-100 text-left">
         Please review how we handle images in the privacy section of our{" "}
         <Link href="/about">
           <a>about page</a>
         </Link>{" "}
         before uploading.
+        <br />
+        Images are scaled to fit dimensions 624x512. For best results, use an
+        image at least this size, with a transparent background.
       </small>
 
       <ErrorFlash
