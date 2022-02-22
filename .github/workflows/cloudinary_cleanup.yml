@@ -6,7 +6,7 @@ name: Cloudinary Cleanup
 
 on:
   schedule:
-    - cron: "0 17 * * *"
+    - cron: "0 0,6,12,18 * * *"
   # Enables manual run from the Actions tab in GH
   workflow_dispatch:
 
