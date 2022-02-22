@@ -92,12 +92,19 @@ const Portrait = (props) => {
         <br />
         Images are scaled to fit dimensions 624x512. For best results, use an
         image at least this size, with a transparent background.
+        <br />
       </small>
 
       <ErrorFlash
         hidden={!error}
         message="Please try again. If the error persists, use a different image"
       />
+
+      <input type="checkbox" name="costRadio" id="inscrybe-image" />
+
+      <label htmlFor="inscrybe-image" className="align-super">
+        Inscrybe Image
+      </label>
     </section>
   );
 };
