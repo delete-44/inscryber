@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const Uploader = (props) => {
   const [image, setImage] = useState("");
+  const { setImageId } = props;
 
   // State management for form component
   const [busy, setBusy] = useState(false);
@@ -32,7 +33,7 @@ const Uploader = (props) => {
   useEffect(() => {
     async function updatePortrait() {
       if (image === "") {
-        console.log("");
+        setImageId("");
         return;
       }
 
@@ -45,7 +46,7 @@ const Uploader = (props) => {
         // the image for transformations, we replace them with ":"
         // Sizing & fitting for the image is done on upload, handled by
         // cloudinary, to save storage. Only need to position image in this TF.
-        console.log(`l_${uploaded.public_id.replace(/\//g, ":")}.webp,y_-80/`);
+        setImageId(uploaded.public_id.replace(/\//g, ":"));
         setBusy(false);
       } catch (e) {
         console.log(e);
@@ -56,7 +57,7 @@ const Uploader = (props) => {
     }
 
     updatePortrait();
-  }, [image, console.log]);
+  }, [image, setImageId]);
 
   return (
     <section>
