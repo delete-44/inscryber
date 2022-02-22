@@ -45,6 +45,7 @@ describe("Portrait", () => {
 
     expect(privacyText).toBeInTheDocument();
     expect(aboutLink).toBeInTheDocument();
+    expect(aboutLink).toHaveAttribute("href", "/about");
     expect(helpText).toBeInTheDocument();
   });
 
