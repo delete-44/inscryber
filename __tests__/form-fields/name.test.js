@@ -4,8 +4,8 @@ import userEvent from "@testing-library/user-event";
 import Name from "@form-fields/name";
 import { HEAVYWEIGHT } from "components/constants";
 
-const SHORT_STRING_TRANSFORMATION = "y_48,w_560,h_115,c_fit/";
-const LONG_STRING_TRANSFORMATION = "y_64,w_580,h_75,c_scale/";
+const SHORT_STRING_TRANSFORMATION = "w_560,h_115,c_fit/fl_layer_apply,y_48,g_north/";
+const LONG_STRING_TRANSFORMATION = "w_580,h_75,c_scale/fl_layer_apply,y_64,g_north/";
 
 describe("Name", () => {
   const mockCallback = jest.fn();
@@ -41,7 +41,7 @@ describe("Name", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:123456789,g_north,${SHORT_STRING_TRANSFORMATION}`
+        `l_text:${HEAVYWEIGHT}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
       );
     });
   });
@@ -55,7 +55,7 @@ describe("Name", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:123456789012,g_north,${LONG_STRING_TRANSFORMATION}`
+        `l_text:${HEAVYWEIGHT}_128:123456789012,${LONG_STRING_TRANSFORMATION}`
       );
     });
   });
@@ -69,7 +69,7 @@ describe("Name", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:Test%20String,g_north,${SHORT_STRING_TRANSFORMATION}`
+        `l_text:${HEAVYWEIGHT}_128:Test%20String,${SHORT_STRING_TRANSFORMATION}`
       );
     });
   });
@@ -83,7 +83,7 @@ describe("Name", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:123456789,g_north,${SHORT_STRING_TRANSFORMATION}`
+        `l_text:${HEAVYWEIGHT}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
       );
     });
 
