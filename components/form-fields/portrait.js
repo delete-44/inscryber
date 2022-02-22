@@ -15,10 +15,11 @@ const Portrait = (props) => {
       return;
     }
 
-    inscrybed
-      ? setPortraitTF(`e_pixelate:6,l_${imageId},y_-80/`)
-      : setPortraitTF(`l_${imageId},y_-80/`);
-    8;
+    setPortraitTF(
+      `l_${imageId}/` +
+        `${inscrybed ? "e_oil_paint:80/e_saturation:-80/" : ""}` +
+        "fl_layer_apply,y_-80/"
+    );
   }, [imageId, inscrybed]);
 
   return (
