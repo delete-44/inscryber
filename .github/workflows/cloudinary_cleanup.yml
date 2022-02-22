@@ -1,7 +1,8 @@
 # Lists all images in the cloudinary upload folder & deletes those more than a day old.
 # When no files are found to be deleted, the delete request returns "not found"
 
-# Runs every day @ 5pm
+# Runs every six hours, ie every day @ midnight, 6am, midday, and 6pm
+# Each run deletes a maximum of 100 images
 name: Cloudinary Cleanup
 
 on:
