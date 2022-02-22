@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Uploader from "components/portrait/uploader";
+import Uploader from "components/files/uploader";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
