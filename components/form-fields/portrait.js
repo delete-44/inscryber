@@ -3,6 +3,7 @@ import { CLOUDINARY_API_BASE } from "components/constants";
 import Spinner from "components/spinner";
 import ErrorFlash from "components/error-flash";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
 const Portrait = (props) => {
   const [image, setImage] = useState("");
@@ -81,6 +82,20 @@ const Portrait = (props) => {
           setImage(e.target.files[0]);
         }}
       />
+
+      <small className="text-white">
+        Images are scaled down to fit the portrait box on the card, to
+        dimensions 512x624.
+        <br />
+        For best results, use an image at least this size, with a transparent
+        background.
+        <br />
+        Please review how we handle images in the privacy section of our{" "}
+        <Link href="/about">
+          <a>about page</a>
+        </Link>{" "}
+        before uploading.
+      </small>
 
       <ErrorFlash
         hidden={!error}
