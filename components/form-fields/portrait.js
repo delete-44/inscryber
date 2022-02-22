@@ -3,6 +3,7 @@ import { CLOUDINARY_API_BASE } from "components/constants";
 import Spinner from "components/spinner";
 import ErrorFlash from "components/error-flash";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
 const Portrait = (props) => {
   const [image, setImage] = useState("");
@@ -81,6 +82,17 @@ const Portrait = (props) => {
           setImage(e.target.files[0]);
         }}
       />
+
+      <small className="text-orange-100 text-left">
+        Please review how we handle images in the privacy section of our{" "}
+        <Link href="/about">
+          <a>about page</a>
+        </Link>{" "}
+        before uploading.
+        <br />
+        Images are scaled to fit dimensions 624x512. For best results, use an
+        image at least this size, with a transparent background.
+      </small>
 
       <ErrorFlash
         hidden={!error}

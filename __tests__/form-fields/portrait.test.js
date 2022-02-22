@@ -34,6 +34,21 @@ describe("Portrait", () => {
     expect(fileLabel).toBeInTheDocument();
   });
 
+  it("renders privacy warning & help text", () => {
+    const privacyText = screen.getByText(
+      /Please review how we handle images in the privacy section of our before uploading./
+    );
+    const aboutLink = screen.getByRole("link", { name: "about page" });
+    const helpText = screen.getByText(
+      /Images are scaled to fit dimensions 624x512. For best results, use an image at least this size, with a transparent background./
+    );
+
+    expect(privacyText).toBeInTheDocument();
+    expect(aboutLink).toBeInTheDocument();
+    expect(aboutLink).toHaveAttribute("href", "/about");
+    expect(helpText).toBeInTheDocument();
+  });
+
   describe("when response is successful", () => {
     beforeEach(() => {
       fetch.mockResponseOnce(
