@@ -37,7 +37,7 @@ describe("Sigils", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        "l_Inscryption:ResizedSigils:airborne.png,g_south,y_64/"
+        "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
       );
     });
 
@@ -45,7 +45,7 @@ describe("Sigils", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        "l_Inscryption:ResizedSigils:bifurcated_strike.png,g_south,y_64/"
+        "l_Inscryption:ResizedSigils:bifurcated_strike/fl_layer_apply,g_south,y_64/"
       );
     });
   });
@@ -59,7 +59,7 @@ describe("Sigils", () => {
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledWith(
-        "l_Inscryption:ResizedSigils:airborne.png,g_south,y_64/"
+        "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
       );
     });
 
