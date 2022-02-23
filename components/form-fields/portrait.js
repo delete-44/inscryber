@@ -17,7 +17,7 @@ const Portrait = (props) => {
 
     setPortraitTF(
       `l_${imageId}/` +
-        `${inscrybed ? "e_oil_paint:80/e_saturation:-80/" : ""}` +
+        `${inscrybed ? "e_pixelate:5/e_oil_paint:80/e_saturation:-90/" : ""}` +
         "fl_layer_apply,y_-80/"
     );
   }, [imageId, inscrybed]);
