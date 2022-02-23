@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Inscryber = (props) => {
   const { setInscrybed } = props;
@@ -18,6 +19,11 @@ const Inscryber = (props) => {
       </label>
     </>
   );
+};
+
+Inscryber.propTypes = {
+  inscrybed: PropTypes.bool.isRequired,
+  setInscrybed: PropTypes.func.isRequired,
 };
 
 export default Inscryber;

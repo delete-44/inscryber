@@ -11,7 +11,7 @@ describe("Inscryber", () => {
   });
 
   it("renders inscryber checkbox with associated label", () => {
-    render(<Inscryber setInscrybed={mockCallback} />);
+    render(<Inscryber setInscrybed={mockCallback} inscrybed={false} />);
 
     const inscryberCheck = screen.getByRole("checkbox", {
       name: "Inscrybe Image",

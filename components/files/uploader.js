@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { CLOUDINARY_API_BASE } from "components/constants";
 import Spinner from "components/spinner";
 import ErrorFlash from "components/error-flash";
@@ -85,6 +86,10 @@ const Uploader = (props) => {
       />
     </section>
   );
+};
+
+Uploader.propTypes = {
+  setImageId: PropTypes.func.isRequired,
 };
 
 export default Uploader;
