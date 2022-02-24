@@ -45,3 +45,30 @@ export const LINKS = {
   inscryber_github: "https://github.com/delete-44/inscryber",
   inscryber_trello: "https://trello.com/b/dBsycGJJ/inscryber",
 };
+
+export const SELECT_STYLES = {
+  control: (defaultStyles) => {
+    return {
+      ...defaultStyles,
+      fontSize: "1.5rem",
+      borderBottom: "2px solid #cc6f33",
+    };
+  },
+  singleValue: (defaultStyles) => {
+    return {
+      ...defaultStyles,
+      color: "black",
+    };
+  },
+};
+
+export const SELECT_THEME = (theme) => ({
+  ...theme,
+  colors: {
+    ...theme.colors,
+    primary25: "#ffb583", // Hover colour
+    primary: "#cc6f33", // Border & option highlight colour
+    neutral0: "#fff1e7", // Background colour
+    neutral50: "#424242", // Placeholder colour
+  },
+})

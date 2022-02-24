@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Select from "react-select";
-import { SIGILS } from "components/constants";
+import { SIGILS, SELECT_STYLES, SELECT_THEME } from "components/constants";
 
 const Sigils = (props) => {
   const [sigil, setSigil] = useState("");
@@ -16,22 +16,6 @@ const Sigils = (props) => {
       };
     }),
   ];
-
-  const selectStyles = {
-    control: (defaultStyles) => {
-      return {
-        ...defaultStyles,
-        fontSize: "1.5rem",
-        borderBottom: "2px solid #cc6f33",
-      };
-    },
-    singleValue: (defaultStyles) => {
-      return {
-        ...defaultStyles,
-        color: "black",
-      };
-    },
-  };
 
   useEffect(() => {
     sigil === ""
@@ -50,17 +34,8 @@ const Sigils = (props) => {
         aria-label="sigils"
         options={options}
         isSearchable
-        styles={selectStyles}
-        theme={(theme) => ({
-          ...theme,
-          colors: {
-            ...theme.colors,
-            primary25: "#ffb583", // Hover colour
-            primary: "#cc6f33", // Border & option highlight colour
-            neutral0: "#fff1e7", // Background colour
-            neutral50: "#424242", // Placeholder colour
-          },
-        })}
+        styles={SELECT_STYLES}
+        theme={SELECT_THEME}
         onChange={(e) => {
           setSigil(e.value);
         }}
