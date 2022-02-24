@@ -20,7 +20,7 @@ const Patches = (props) => {
   useEffect(() => {
     patch === ""
       ? setPatchesTF("")
-      : setPatchesTF(`l_${patch}/fl_layer_apply,g_south,y_64/`);
+      : setPatchesTF(`l_${patch}/fl_layer_apply,g_north_west,y_148,x_32/`);
   }, [patch, setPatchesTF]);
 
   return (
