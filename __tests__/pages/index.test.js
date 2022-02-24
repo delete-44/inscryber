@@ -247,7 +247,10 @@ describe("Home", () => {
 
       expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
 
-      jest.advanceTimersByTime(2);
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
       expect(image.src).toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
     });
   });
