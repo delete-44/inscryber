@@ -11,7 +11,7 @@ const Patches = (props) => {
     { value: "", label: "No patches" },
     ...SIGILS.map((s) => {
       return {
-        value: `Inscryption:Patches:${s.filename}`,
+        value: `Inscryption:ResizedPatches:${s.filename}`,
         label: s.label,
       };
     }),
@@ -26,7 +26,7 @@ const Patches = (props) => {
   return (
     <section className="mb-10">
       <p className="mb-3">
-        Does this creature have any <label htmlFor="patches">patches</label>?
+        Or <label htmlFor="patches">patches</label>? I won't ask where from...
       </p>
 
       <Select
