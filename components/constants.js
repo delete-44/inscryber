@@ -69,6 +69,8 @@ export const SELECT_THEME = (theme) => ({
     primary25: "#ffb583", // Hover colour
     primary: "#cc6f33", // Border & option highlight colour
     neutral0: "#fff1e7", // Background colour
+    neutral10: "#ead7d1", // Multi-select selected options background
     neutral50: "#424242", // Placeholder colour
+    neutral80: "#000000", // Multi-select selected options text
   },
-})
+});
