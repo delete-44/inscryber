@@ -4,7 +4,7 @@ import Select from "react-select";
 import { SIGILS, SELECT_STYLES, SELECT_THEME } from "components/constants";
 
 const Sigils = (props) => {
-  const [sigil, setSigil] = useState({ value: "" });
+  const [sigil, setSigil] = useState(null);
   const { setSigilsTF } = props;
 
   const options = [
@@ -18,7 +18,7 @@ const Sigils = (props) => {
   ];
 
   useEffect(() => {
-    sigil.value === ""
+    sigil === null || sigil.value === ""
       ? setSigilsTF("")
       : setSigilsTF(`l_${sigil.value}/fl_layer_apply,g_south,y_64/`);
   }, [sigil, setSigilsTF]);
