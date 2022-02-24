@@ -14,7 +14,8 @@ describe("Portrait", () => {
     jest.clearAllMocks();
   });
 
-  it("renders a field upload field and hides status indicators by default", () => {
+  it("renders uploader & inscryber", () => {
+    // Form elements
     const fileField = screen.getByLabelText("portrait");
     const error = screen.getByRole("alert");
     const spinner = screen.getByRole("status");
@@ -24,14 +25,20 @@ describe("Portrait", () => {
 
     expect(error).toHaveClass("hidden");
     expect(spinner).toHaveClass("hidden");
-  });
 
-  it("renders a flavourful description", () => {
+    // Flavour text
     const fileFlavour = screen.getByText("Finally... a .");
     const fileLabel = screen.getByText("portrait");
 
     expect(fileFlavour).toBeInTheDocument();
     expect(fileLabel).toBeInTheDocument();
+
+    const inscryberCheck = screen.getByRole("checkbox", {
+      name: "Inscrybe Image",
+    });
+
+    expect(inscryberCheck).toBeInTheDocument();
+    expect(inscryberCheck).not.toBeChecked();
   });
 
   it("renders privacy warning & help text", () => {
@@ -47,6 +54,25 @@ describe("Portrait", () => {
     expect(aboutLink).toBeInTheDocument();
     expect(aboutLink).toHaveAttribute("href", "/about");
     expect(helpText).toBeInTheDocument();
+  });
+
+  it("does not set inscrybed transformation when no image uploaded", () => {
+    const fileField = screen.getByLabelText("portrait");
+    const error = screen.getByRole("alert");
+    const spinner = screen.getByRole("status");
+    const inscryberCheck = screen.getByRole("checkbox", {
+      name: "Inscrybe Image",
+    });
+
+    userEvent.click(inscryberCheck);
+
+    expect(fetch).toHaveBeenCalledTimes(0);
+    expect(mockCallback).toHaveBeenCalledTimes(1);
+    expect(mockCallback).toHaveBeenCalledWith("");
+
+    expect(fileField).not.toBeDisabled();
+    expect(error).toHaveClass("hidden");
+    expect(spinner).toHaveClass("hidden");
   });
 
   describe("when response is successful", () => {
@@ -76,11 +102,46 @@ describe("Portrait", () => {
       await waitFor(() => {
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(mockCallback).toHaveBeenCalledTimes(1);
+        expect(mockCallback).toHaveBeenCalledWith(
+          "l_fake:image:returned/fl_layer_apply,y_-80/"
+        );
 
         expect(fileField).not.toBeDisabled();
         expect(error).toHaveClass("hidden");
         expect(spinner).toHaveClass("hidden");
       });
+    });
+
+    it("sets and unsets inscrybed transformation for uploaded image", async () => {
+      const inscryberCheck = screen.getByRole("checkbox", {
+        name: "Inscrybe Image",
+      });
+
+      const fileField = screen.getByLabelText("portrait");
+
+      userEvent.upload(fileField, testFile);
+
+      await waitFor(() => {
+        expect(fetch).toHaveBeenCalledTimes(1);
+        expect(mockCallback).toHaveBeenCalledTimes(1);
+        expect(mockCallback).toHaveBeenLastCalledWith(
+          "l_fake:image:returned/fl_layer_apply,y_-80/"
+        );
+      });
+
+      userEvent.click(inscryberCheck);
+
+      expect(mockCallback).toHaveBeenCalledTimes(2);
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        "l_fake:image:returned/e_pixelate:5/e_oil_paint:80/e_saturation:-90/fl_layer_apply,y_-80/"
+      );
+
+      userEvent.click(inscryberCheck);
+
+      expect(mockCallback).toHaveBeenCalledTimes(3);
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        "l_fake:image:returned/fl_layer_apply,y_-80/"
+      );
     });
 
     it("correctly replaces invalid chars from response", async () => {
@@ -94,37 +155,6 @@ describe("Portrait", () => {
         expect(mockCallback).toHaveBeenCalledWith(
           "l_fake:image:returned/fl_layer_apply,y_-80/"
         );
-      });
-    });
-  });
-
-  describe("when response is error", () => {
-    beforeEach(() => {
-      fetch.mockRejectOnce("Test error");
-    });
-
-    it("successfully manages state as image upload fails", async () => {
-      const fileField = screen.getByLabelText("portrait");
-      const error = screen.getByRole("alert");
-      const spinner = screen.getByRole("status");
-
-      expect(fileField).not.toBeDisabled();
-      expect(error).toHaveClass("hidden");
-      expect(spinner).toHaveClass("hidden");
-
-      userEvent.upload(fileField, testFile);
-
-      expect(fileField).toBeDisabled();
-      expect(error).toHaveClass("hidden");
-      expect(spinner).not.toHaveClass("hidden");
-
-      await waitFor(() => {
-        expect(fetch).toHaveBeenCalledTimes(1);
-        expect(mockCallback).toHaveBeenCalledTimes(0);
-
-        expect(fileField).not.toBeDisabled();
-        expect(error).not.toHaveClass("hidden");
-        expect(spinner).toHaveClass("hidden");
       });
     });
   });
