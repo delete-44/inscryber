@@ -41,17 +41,68 @@ describe("Patches", () => {
         "l_Inscryption:ResizedPatches:airborne/fl_layer_apply,g_north_west,y_148,x_32/"
       );
     });
-
-    // await selectEvent.select(patchesField, /Bifurcated Strike/);
-
-    // await waitFor(() => {
-    //   expect(mockCallback).toHaveBeenLastCalledWith(
-    //     "l_Inscryption:ResizedPatches:bifurcated_strike/fl_layer_apply,g_north_west,y_148,x_32/"
-    //   );
-    // });
   });
 
-  it("correctly sets multiple transformations", async () => {});
+  it("correctly sets multiple transformations", async () => {
+    const patchesField = screen.getByRole("combobox", {
+      "aria-label": /Patches/,
+    });
+
+    await selectEvent.select(patchesField, /Airborne/);
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledTimes(1);
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        "l_Inscryption:ResizedPatches:airborne/fl_layer_apply,g_north_west,y_148,x_32/"
+      );
+    });
+
+    await selectEvent.select(patchesField, /Bifurcated Strike/);
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledTimes(2);
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        "l_Inscryption:ResizedPatches:airborne/fl_layer_apply,g_north_west,y_148,x_32/" +
+          "l_Inscryption:ResizedPatches:bifurcated_strike/fl_layer_apply,g_west,y_10,x_48/"
+      );
+    });
+
+    await selectEvent.select(patchesField, /Trifurcated Strike/);
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledTimes(3);
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        "l_Inscryption:ResizedPatches:airborne/fl_layer_apply,g_north_west,y_148,x_32/" +
+          "l_Inscryption:ResizedPatches:bifurcated_strike/fl_layer_apply,g_west,y_10,x_48/" +
+          "l_Inscryption:ResizedPatches:trifurcated_strike/fl_layer_apply,g_east,y_-96,x_28/"
+      );
+    });
+
+    await selectEvent.select(patchesField, /Stinky/);
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledTimes(4);
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        "l_Inscryption:ResizedPatches:airborne/fl_layer_apply,g_north_west,y_148,x_32/" +
+          "l_Inscryption:ResizedPatches:bifurcated_strike/fl_layer_apply,g_west,y_10,x_48/" +
+          "l_Inscryption:ResizedPatches:trifurcated_strike/fl_layer_apply,g_east,y_-96,x_28/" +
+          "l_Inscryption:ResizedPatches:stinky/a_-20/fl_layer_apply,g_north,x_64/"
+      );
+    });
+
+    // It does not set additional sigils
+    await selectEvent.select(patchesField, /Bifurcated Strike/);
+
+    await waitFor(() => {
+      expect(mockCallback).toHaveBeenCalledTimes(4);
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        "l_Inscryption:ResizedPatches:airborne/fl_layer_apply,g_north_west,y_148,x_32/" +
+          "l_Inscryption:ResizedPatches:bifurcated_strike/fl_layer_apply,g_west,y_10,x_48/" +
+          "l_Inscryption:ResizedPatches:trifurcated_strike/fl_layer_apply,g_east,y_-96,x_28/" +
+          "l_Inscryption:ResizedPatches:stinky/a_-20/fl_layer_apply,g_north,x_64/"
+      );
+    });
+  });
 
   it("removes the transformation when clear field is clicked", async () => {
     const patchesField = screen.getByRole("combobox", {
