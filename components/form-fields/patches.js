@@ -19,9 +19,9 @@ const Patches = (props) => {
 
   const patchTransformations = [
     "fl_layer_apply,g_north_west,y_148,x_32/",
-    "fl_layer_apply,g_north_west,y_156,x_64/",
-    "fl_layer_apply,g_north_west,y_174,x_96/",
-    "fl_layer_apply,g_north_west,y_184,x_300/",
+    "fl_layer_apply,g_west,y_10,x_48/",
+    "fl_layer_apply,g_east,y_-96,x_28/",
+    "a_-20/fl_layer_apply,g_north,x_64/",
   ];
 
   useEffect(() => {
