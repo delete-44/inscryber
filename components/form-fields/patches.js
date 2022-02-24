@@ -8,7 +8,6 @@ const Patches = (props) => {
   const { setPatchesTF } = props;
 
   const options = [
-    { value: "", label: "No patches" },
     ...SIGILS.map((s) => {
       return {
         value: `Inscryption:ResizedPatches:${s.filename}`,
