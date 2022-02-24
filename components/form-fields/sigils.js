@@ -4,7 +4,7 @@ import Select from "react-select";
 import { SIGILS, SELECT_STYLES, SELECT_THEME } from "components/constants";
 
 const Sigils = (props) => {
-  const [sigil, setSigil] = useState("");
+  const [sigil, setSigil] = useState({ value: "" });
   const { setSigilsTF } = props;
 
   const options = [
@@ -18,9 +18,9 @@ const Sigils = (props) => {
   ];
 
   useEffect(() => {
-    sigil === ""
+    sigil.value === ""
       ? setSigilsTF("")
-      : setSigilsTF(`l_${sigil}/fl_layer_apply,g_south,y_64/`);
+      : setSigilsTF(`l_${sigil.value}/fl_layer_apply,g_south,y_64/`);
   }, [sigil, setSigilsTF]);
 
   return (
@@ -34,11 +34,10 @@ const Sigils = (props) => {
         aria-label="sigils"
         options={options}
         isSearchable
+        value={sigil}
         styles={SELECT_STYLES}
         theme={SELECT_THEME}
-        onChange={(e) => {
-          setSigil(e.value);
-        }}
+        onChange={(e) => setSigil(e)}
       />
     </section>
   );
