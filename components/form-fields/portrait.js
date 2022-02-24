@@ -20,7 +20,7 @@ const Portrait = (props) => {
         `${inscrybed ? "e_pixelate:5/e_oil_paint:80/e_saturation:-90/" : ""}` +
         "fl_layer_apply,y_-80/"
     );
-  }, [imageId, inscrybed]);
+  }, [imageId, inscrybed, setPortraitTF]);
 
   return (
     <section>

@@ -141,9 +141,9 @@ describe("Home", () => {
 
       expect(image.src).not.toMatch(/airborne/);
 
-      const sigilsField = screen.getByRole("combobox", {
+      const sigilsField = screen.getAllByRole("combobox", {
         "aria-label": /Sigils/,
-      });
+      })[0];
 
       await selectEvent.select(sigilsField, /Airborne/);
 
@@ -155,6 +155,27 @@ describe("Home", () => {
       });
 
       expect(image.src).toMatch(/airborne/);
+    });
+
+    it("when patches", async () => {
+      const image = await screen.findByAltText("A preview of your custom card");
+
+      expect(image.src).not.toMatch(/stinky/);
+
+      const patchesField = screen.getAllByRole("combobox", {
+        "aria-label": /Patches/,
+      })[0];
+
+      await selectEvent.select(patchesField, /Stinky/);
+
+      jest.advanceTimersByTime(499);
+      expect(image.src).not.toMatch(/stinky/);
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toMatch(/stinky/);
     });
 
     it("when portrait", async () => {
@@ -180,6 +201,50 @@ describe("Home", () => {
       });
 
       jest.advanceTimersByTime(499);
+      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+    });
+
+    it("when inscrybed portrait", async () => {
+      fetch.mockResponseOnce(
+        JSON.stringify({
+          public_id: "fake/image/returned",
+        })
+      );
+
+      const testFile = new File(["Test"], "test.png", { type: "image/png" });
+      const image = await screen.findByAltText("A preview of your custom card");
+
+      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+
+      const fileField = screen.getByLabelText("portrait");
+
+      await act(async () => {
+        userEvent.upload(fileField, testFile);
+      });
+
+      await waitFor(() => {
+        expect(fetch).toHaveBeenCalledTimes(1);
+      });
+
+      jest.advanceTimersByTime(499);
+      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+
+      const inscryberCheck = screen.getByRole("checkbox", {
+        name: "Inscrybe Image",
+      });
+
+      userEvent.click(inscryberCheck);
+
+      await act(async () => {
+        jest.advanceTimersByTime(499);
+      });
+
       expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
 
       await act(async () => {

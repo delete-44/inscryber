@@ -5,6 +5,7 @@ import Name from "@form-fields/name";
 import Stats from "@form-fields/stats";
 import Sigils from "@form-fields/sigils";
 import Portrait from "@form-fields/portrait";
+import Patches from "@form-fields/patches";
 import Spinner from "components/spinner";
 import GridLayout from "layouts/grid-layout";
 
@@ -19,6 +20,7 @@ export default function Home() {
   const [healthTF, setHealthTF] = useState("");
   const [sigilsTF, setSigilsTF] = useState("");
   const [portraitTF, setPortraitTF] = useState("");
+  const [patchesTF, setPatchesTF] = useState("");
 
   // Stagger requests so they only send 500ms after user stops typing
   useEffect(() => {
@@ -30,11 +32,12 @@ export default function Home() {
         healthTF,
         sigilsTF,
         portraitTF,
+        patchesTF,
       ].join("");
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}`);
     }, 500);
     return () => clearTimeout(timer);
-  }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF]);
+  }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF, patchesTF]);
 
   return (
     <GridLayout
@@ -51,6 +54,9 @@ export default function Home() {
 
         {/* Sigils form field */}
         <Sigils setSigilsTF={setSigilsTF} />
+
+        {/* Patches form field */}
+        <Patches setPatchesTF={setPatchesTF} />
 
         {/* Picture form field */}
         <Portrait setPortraitTF={setPortraitTF} />
