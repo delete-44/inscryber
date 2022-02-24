@@ -47,7 +47,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "1");
 
       await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
+        expect(mockCallback).toHaveBeenLastCalledWith(
           `l_text:${HEAVYWEIGHT}_196:1,c_scale,w_50/fl_layer_apply,g_south_west,x_72,y_156/`
         );
       });
@@ -61,7 +61,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "2");
 
       await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
+        expect(mockCallback).toHaveBeenLastCalledWith(
           `l_text:${HEAVYWEIGHT}_196:2,c_scale,w_65/fl_layer_apply,g_south_west,x_72,y_156/`
         );
       });
@@ -75,7 +75,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "10");
 
       await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
+        expect(mockCallback).toHaveBeenLastCalledWith(
           `l_text:${HEAVYWEIGHT}_196:10,c_scale,w_80/fl_layer_apply,g_south_west,x_72,y_156/`
         );
       });
@@ -84,7 +84,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "99");
 
       await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
+        expect(mockCallback).toHaveBeenLastCalledWith(
           `l_text:${HEAVYWEIGHT}_196:99,c_scale,w_80/fl_layer_apply,g_south_west,x_72,y_156/`
         );
       });
@@ -98,7 +98,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "100");
 
       await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
+        expect(mockCallback).toHaveBeenLastCalledWith(
           `l_text:${HEAVYWEIGHT}_196:100,c_scale,w_100/fl_layer_apply,g_south_west,x_72,y_156/`
         );
       });
@@ -126,7 +126,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "9");
 
       await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
+        expect(mockCallback).toHaveBeenLastCalledWith(
           `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/fl_layer_apply,g_south_west,x_72,y_156/`
         );
       });
@@ -134,7 +134,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "{selectall}{backspace}");
 
       await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith("");
+        expect(mockCallback).toHaveBeenLastCalledWith("");
       });
     });
   });
@@ -160,7 +160,7 @@ describe("Stats", () => {
       userEvent.type(healthField, "9");
 
       await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith(
+        expect(mockCallback).toHaveBeenLastCalledWith(
           `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/fl_layer_apply,g_south_east,x_60,y_86/`
         );
       });
@@ -168,7 +168,7 @@ describe("Stats", () => {
       userEvent.type(healthField, "{selectall}{backspace}");
 
       await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledWith("");
+        expect(mockCallback).toHaveBeenLastCalledWith("");
       });
     });
   });

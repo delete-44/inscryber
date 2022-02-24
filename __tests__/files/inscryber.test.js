@@ -39,6 +39,6 @@ describe("Inscryber", () => {
 
     expect(inscryberCheck).toBeChecked();
     expect(mockCallback).toHaveBeenCalledTimes(1);
-    expect(mockCallback).toHaveBeenCalledWith(true);
+    expect(mockCallback).toHaveBeenLastCalledWith(true);
   });
 });
