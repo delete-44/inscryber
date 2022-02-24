@@ -16,13 +16,6 @@ const Patches = (props) => {
     }),
   ];
 
-  const patchTransformations = [
-    "fl_layer_apply,g_north_west,y_148,x_32/",
-    "fl_layer_apply,g_west,y_10,x_48/",
-    "fl_layer_apply,g_east,y_-96,x_28/",
-    "a_-20/fl_layer_apply,g_north,x_64/",
-  ];
-
   useEffect(() => {
     if (patches.length === 0) {
       setPatchesTF("");
@@ -33,6 +26,14 @@ const Patches = (props) => {
     // ie ["Inscryption:ResizedPatches:airborne", "Inscryption:ResizedPatches:stinky"]
     const patchValues = patches.map((p) => p.value);
     let transformation = "";
+
+    // Declare transformations for each patch
+    const patchTransformations = [
+      "fl_layer_apply,g_north_west,y_148,x_32/",
+      "fl_layer_apply,g_west,y_10,x_48/",
+      "fl_layer_apply,g_east,y_-96,x_28/",
+      "a_-20/fl_layer_apply,g_north,x_64/",
+    ];
 
     // Create full TF from individual sigil transformations declared
     // in patchTransformations. Each line pertains to a patch
@@ -46,7 +47,8 @@ const Patches = (props) => {
   return (
     <section className="mb-10">
       <p className="mb-3">
-        Or <label htmlFor="patches">patches</label>? I won't ask where from...
+        Or <label htmlFor="patches">patches</label>? I won&apos;t ask where
+        from...
       </p>
 
       <Select
