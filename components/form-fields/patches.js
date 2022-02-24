@@ -4,7 +4,7 @@ import Select from "react-select";
 import { SIGILS, SELECT_STYLES, SELECT_THEME } from "components/constants";
 
 const Patches = (props) => {
-  const [patches, setPatches] = useState("");
+  const [patches, setPatches] = useState([]);
   const { setPatchesTF } = props;
 
   const options = [
@@ -17,13 +17,31 @@ const Patches = (props) => {
     }),
   ];
 
-  useEffect(() => {
-    console.log(patches);
-    // e.map((o) => o.value)
+  const patchTransformations = [
+    "fl_layer_apply,g_north_west,y_148,x_32/",
+    "fl_layer_apply,g_north_west,y_156,x_64/",
+    "fl_layer_apply,g_north_west,y_174,x_96/",
+    "fl_layer_apply,g_north_west,y_184,x_300/",
+  ];
 
-    // patch === ""
-    //   ? setPatchesTF("")
-    //   : setPatchesTF(`l_${patch}/fl_layer_apply,g_north_west,y_148,x_32/`);
+  useEffect(() => {
+    if (patches.length === 0) {
+      setPatchesTF("");
+      return;
+    }
+
+    // Build array of selected values,
+    // ie ["Inscryption:ResizedPatches:airborne", "Inscryption:ResizedPatches:stinky"]
+    const patchValues = patches.map((p) => p.value);
+    let transformation = "";
+
+    // Create full TF from individual sigil transformations declared
+    // in patchTransformations. Each line pertains to a patch
+    patchValues.forEach((p, i) => {
+      transformation += `l_${p}/${patchTransformations[i]}`;
+    });
+
+    setPatchesTF(transformation);
   }, [patches, setPatchesTF]);
 
   return (
