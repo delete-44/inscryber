@@ -36,7 +36,7 @@ describe("Sigils", () => {
     await selectEvent.select(sigilsField, /Airborne/);
 
     await waitFor(() => {
-      expect(mockCallback).toHaveBeenCalledWith(
+      expect(mockCallback).toHaveBeenLastCalledWith(
         "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
       );
     });
@@ -44,7 +44,7 @@ describe("Sigils", () => {
     await selectEvent.select(sigilsField, /Bifurcated Strike/);
 
     await waitFor(() => {
-      expect(mockCallback).toHaveBeenCalledWith(
+      expect(mockCallback).toHaveBeenLastCalledWith(
         "l_Inscryption:ResizedSigils:bifurcated_strike/fl_layer_apply,g_south,y_64/"
       );
     });
@@ -58,7 +58,7 @@ describe("Sigils", () => {
     await selectEvent.select(sigilsField, /Airborne/);
 
     await waitFor(() => {
-      expect(mockCallback).toHaveBeenCalledWith(
+      expect(mockCallback).toHaveBeenLastCalledWith(
         "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
       );
     });
@@ -66,7 +66,7 @@ describe("Sigils", () => {
     await selectEvent.select(sigilsField, /No sigils/);
 
     await waitFor(() => {
-      expect(mockCallback).toHaveBeenCalledWith("");
+      expect(mockCallback).toHaveBeenLastCalledWith("");
     });
   });
 

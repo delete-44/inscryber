@@ -76,7 +76,7 @@ describe("Uploader", () => {
       await waitFor(() => {
         expect(fetch).toHaveBeenCalledTimes(1);
 
-        expect(mockCallback).toHaveBeenCalledWith("fake:image:returned");
+        expect(mockCallback).toHaveBeenLastCalledWith("fake:image:returned");
       });
     });
   });

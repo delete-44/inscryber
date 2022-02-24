@@ -68,7 +68,7 @@ describe("Portrait", () => {
 
     expect(fetch).toHaveBeenCalledTimes(0);
     expect(mockCallback).toHaveBeenCalledTimes(1);
-    expect(mockCallback).toHaveBeenCalledWith("");
+    expect(mockCallback).toHaveBeenLastCalledWith("");
 
     expect(fileField).not.toBeDisabled();
     expect(error).toHaveClass("hidden");
@@ -102,7 +102,7 @@ describe("Portrait", () => {
       await waitFor(() => {
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(mockCallback).toHaveBeenCalledTimes(1);
-        expect(mockCallback).toHaveBeenCalledWith(
+        expect(mockCallback).toHaveBeenLastCalledWith(
           "l_fake:image:returned/fl_layer_apply,y_-80/"
         );
 
@@ -152,7 +152,7 @@ describe("Portrait", () => {
       await waitFor(() => {
         expect(fetch).toHaveBeenCalledTimes(1);
 
-        expect(mockCallback).toHaveBeenCalledWith(
+        expect(mockCallback).toHaveBeenLastCalledWith(
           "l_fake:image:returned/fl_layer_apply,y_-80/"
         );
       });

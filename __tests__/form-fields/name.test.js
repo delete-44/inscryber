@@ -42,7 +42,7 @@ describe("Name", () => {
     userEvent.type(nameField, "123456789");
 
     await waitFor(() => {
-      expect(mockCallback).toHaveBeenCalledWith(
+      expect(mockCallback).toHaveBeenLastCalledWith(
         `l_text:${HEAVYWEIGHT}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
       );
     });
@@ -56,7 +56,7 @@ describe("Name", () => {
     userEvent.type(nameField, "123456789012");
 
     await waitFor(() => {
-      expect(mockCallback).toHaveBeenCalledWith(
+      expect(mockCallback).toHaveBeenLastCalledWith(
         `l_text:${HEAVYWEIGHT}_128:123456789012,${LONG_STRING_TRANSFORMATION}`
       );
     });
@@ -70,7 +70,7 @@ describe("Name", () => {
     userEvent.type(nameField, "Test String");
 
     await waitFor(() => {
-      expect(mockCallback).toHaveBeenCalledWith(
+      expect(mockCallback).toHaveBeenLastCalledWith(
         `l_text:${HEAVYWEIGHT}_128:Test%20String,${SHORT_STRING_TRANSFORMATION}`
       );
     });
@@ -84,7 +84,7 @@ describe("Name", () => {
     userEvent.type(nameField, "123456789");
 
     await waitFor(() => {
-      expect(mockCallback).toHaveBeenCalledWith(
+      expect(mockCallback).toHaveBeenLastCalledWith(
         `l_text:${HEAVYWEIGHT}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
       );
     });
@@ -92,7 +92,7 @@ describe("Name", () => {
     userEvent.type(nameField, "{selectall}{backspace}");
 
     await waitFor(() => {
-      expect(mockCallback).toHaveBeenCalledWith("");
+      expect(mockCallback).toHaveBeenLastCalledWith("");
     });
   });
 });
