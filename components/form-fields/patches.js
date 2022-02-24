@@ -4,7 +4,7 @@ import Select from "react-select";
 import { SIGILS, SELECT_STYLES, SELECT_THEME } from "components/constants";
 
 const Patches = (props) => {
-  const [patch, setPatch] = useState("");
+  const [patches, setPatches] = useState("");
   const { setPatchesTF } = props;
 
   const options = [
@@ -18,10 +18,13 @@ const Patches = (props) => {
   ];
 
   useEffect(() => {
-    patch === ""
-      ? setPatchesTF("")
-      : setPatchesTF(`l_${patch}/fl_layer_apply,g_north_west,y_148,x_32/`);
-  }, [patch, setPatchesTF]);
+    console.log(patches);
+    // e.map((o) => o.value)
+
+    // patch === ""
+    //   ? setPatchesTF("")
+    //   : setPatchesTF(`l_${patch}/fl_layer_apply,g_north_west,y_148,x_32/`);
+  }, [patches, setPatchesTF]);
 
   return (
     <section className="mb-10">
@@ -34,10 +37,15 @@ const Patches = (props) => {
         aria-label="patches"
         options={options}
         isSearchable
+        isMulti
         styles={SELECT_STYLES}
         theme={SELECT_THEME}
+        value={patches}
         onChange={(e) => {
-          setPatch(e.value);
+          // Allow maximum of 4 options to be selected
+          if (e.length < 5) {
+            setPatches(e);
+          }
         }}
       />
     </section>
