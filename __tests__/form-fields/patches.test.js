@@ -90,8 +90,12 @@ describe("Patches", () => {
       );
     });
 
-    // It does not set additional sigils
+    // It does not set additional sigils & renders warning to user
     await selectEvent.select(patchesField, /Bifurcated Strike/);
+
+    expect(
+      screen.getByText(/Only 4 patches can be applied at once./)
+    ).toBeInTheDocument();
 
     await waitFor(() => {
       expect(mockCallback).toHaveBeenCalledTimes(4);

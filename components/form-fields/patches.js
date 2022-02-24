@@ -7,6 +7,8 @@ const Patches = (props) => {
   const [patches, setPatches] = useState([]);
   const { setPatchesTF } = props;
 
+  const maxOptions = 4;
+
   const options = [
     ...SIGILS.map((s) => {
       return {
@@ -51,10 +53,16 @@ const Patches = (props) => {
         from...
       </p>
 
+      {/* noOptions solution by @hrafaelveloso - https://github.com/JedWatson/react-select/issues/1341#issuecomment-521195152 */}
       <Select
         instanceId="patches-selector"
         aria-label="patches"
-        options={options}
+        options={patches.length === maxOptions ? [] : options}
+        noOptionsMessage={() => {
+          return patches.length === maxOptions
+            ? `Only ${maxOptions} patches can be applied at once.`
+            : "No options available.";
+        }}
         isSearchable
         isMulti
         styles={SELECT_STYLES}
@@ -62,7 +70,7 @@ const Patches = (props) => {
         value={patches}
         onChange={(e) => {
           // Allow maximum of 4 options to be selected
-          if (e.length < 5) {
+          if (e.length <= maxOptions) {
             setPatches(e);
           }
         }}
