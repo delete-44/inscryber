@@ -178,6 +178,25 @@ describe("Home", () => {
       expect(image.src).toMatch(/stinky/);
     });
 
+    it("when card bases", async () => {
+      const image = await screen.findByAltText("A preview of your custom card");
+
+      expect(image.src).not.toMatch(/rare/);
+
+      const rareRadio = screen.getAllByRole("radio")[1];
+
+      userEvent.click(rareRadio);
+
+      jest.advanceTimersByTime(499);
+      expect(image.src).not.toMatch(/rare/);
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toMatch(/rare/);
+    });
+
     it("when portrait", async () => {
       fetch.mockResponseOnce(
         JSON.stringify({

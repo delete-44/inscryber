@@ -6,12 +6,13 @@ import Stats from "@form-fields/stats";
 import Sigils from "@form-fields/sigils";
 import Portrait from "@form-fields/portrait";
 import Patches from "@form-fields/patches";
+import CardBase from "@form-fields/card-base";
 import Spinner from "components/spinner";
 import GridLayout from "layouts/grid-layout";
 
 export default function Home() {
   // State management for this component
-  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}`);
+  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}vladde`);
   const [busy, setBusy] = useState(true);
 
   // Transformations to be applied to the image
@@ -21,6 +22,8 @@ export default function Home() {
   const [sigilsTF, setSigilsTF] = useState("");
   const [portraitTF, setPortraitTF] = useState("");
   const [patchesTF, setPatchesTF] = useState("");
+
+  const [cardBase, setCardBase] = useState("vladde");
 
   // Stagger requests so they only send 500ms after user stops typing
   useEffect(() => {
@@ -34,10 +37,10 @@ export default function Home() {
         portraitTF,
         patchesTF,
       ].join("");
-      setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}`);
+      setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}${cardBase}`);
     }, 500);
     return () => clearTimeout(timer);
-  }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF, patchesTF]);
+  }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF, patchesTF, cardBase]);
 
   return (
     <GridLayout
@@ -45,7 +48,7 @@ export default function Home() {
       heading="Inscryber"
     >
       {/* Left column */}
-      <div className="text-center md:text-left">
+      <div>
         {/* Name form field */}
         <Name setNameTF={setNameTF} />
 
@@ -58,7 +61,9 @@ export default function Home() {
         {/* Patches form field */}
         <Patches setPatchesTF={setPatchesTF} />
 
-        {/* Picture form field */}
+        {/* Card back selector, ie rarity */}
+        <CardBase value={cardBase} setValue={setCardBase} />
+
         <Portrait setPortraitTF={setPortraitTF} />
       </div>
 
