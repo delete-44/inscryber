@@ -5,7 +5,7 @@ export const CARD_BASE = "Inscryption/blank_";
 
 // The amount of time to wait after the user makes
 // changes, in ms, before requesting a new image
-export const DEBOUNCE_TIMER = 500;
+export const DEBOUNCE_TIMER = 1000;
 
 export const SIGILS = [
   { filename: "airborne", label: "Airborne" },
