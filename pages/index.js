@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
+import { CARD_BASE, CLOUDINARY_BASE, DEBOUNCE_TIMER } from "components/constants";
 import Name from "@form-fields/name";
 import Stats from "@form-fields/stats";
 import Sigils from "@form-fields/sigils";
@@ -38,7 +38,7 @@ export default function Home() {
         patchesTF,
       ].join("");
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}${cardBase}`);
-    }, 500);
+    }, DEBOUNCE_TIMER);
     return () => clearTimeout(timer);
   }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF, patchesTF, cardBase]);
 
