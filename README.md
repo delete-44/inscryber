@@ -48,7 +48,7 @@ To generate the `portrait` transformation, user images are uploaded to the `Insc
 
 This job has three key steps:
 
-1. Query the Cloudinary `search` API for any uploaded images in that subfolder that were uploaded more than a day ago
+1. Query the Cloudinary `search` API for any uploaded images in that subfolder that were uploaded more than 6 hours ago
 2. Use `jq` to format the response to this query and retrieve the `public_id`'s of these uploads
 3. Query the cloudinary `admin` API to delete these files
 

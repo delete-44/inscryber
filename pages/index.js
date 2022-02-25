@@ -25,7 +25,8 @@ export default function Home() {
 
   const [cardBase, setCardBase] = useState("vladde");
 
-  // Stagger requests so they only send 500ms after user stops typing
+  // Stagger requests so they wait for a delay, defined
+  // in CONSTANTs, from user input before requesting new image
   useEffect(() => {
     const timer = setTimeout(() => {
       setBusy(true);
