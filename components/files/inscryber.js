@@ -14,9 +14,7 @@ const Inscryber = (props) => {
         checked={props.inscrybed}
         onChange={(e) => setInscrybed(e.target.checked)}
       />
-      <label htmlFor="inscrybe-image" className="align-super">
-        Inscrybe Image
-      </label>
+      <label htmlFor="inscrybe-image">Inscrybe Image</label>
     </>
   );
 };

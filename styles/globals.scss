@@ -92,24 +92,34 @@
     @apply rounded-sm;
   }
 
-  input[type="checkbox"] {
+  input[type="checkbox"],
+  input[type="radio"] {
     @apply appearance-none;
     @apply h-5;
     @apply w-5;
-    @apply border;
-    @apply mt-3;
     @apply mr-2;
     @apply cursor-pointer;
-    @apply rounded-sm;
+    @apply mt-1;
+    @apply align-top;
+    @apply float-left;
 
     @apply transition;
     @apply duration-200;
 
     // Switch background & border on check
+    @apply border;
     @apply border-orange-400;
     @apply bg-orange-100;
     @apply checked:bg-orange-400;
     @apply checked:border-orange-100;
+  }
+
+  input[type="checkbox"] {
+    @apply rounded-sm;
+  }
+
+  input[type="radio"] {
+    @apply rounded-full;
   }
 
   // -----------------------------
