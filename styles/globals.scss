@@ -43,7 +43,7 @@
   }
 
   p {
-    @apply text-4xl;
+    @apply text-5xl;
   }
 
   label,
@@ -99,6 +99,7 @@
     @apply mr-2;
     @apply cursor-pointer;
     @apply mt-1;
+    @apply md:mt-2;
     @apply align-top;
     @apply float-left;
 

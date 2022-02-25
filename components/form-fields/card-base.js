@@ -9,7 +9,7 @@ const CardBase = (props) => {
         Which <label htmlFor="card-base">card base</label> do you want?
       </p>
 
-      <span className="inline-flex w-full md:w-3/6 justify-between">
+      <span className="inline-flex w-full md:w-4/6 justify-between">
         {BASES.map(({ value, label }) => {
           return (
             <div key={value}>
@@ -22,7 +22,9 @@ const CardBase = (props) => {
                   setValue(value);
                 }}
               />
-              <label htmlFor={value}>{label}</label>
+              <label htmlFor={value} className="text-xl md:text-2xl">
+                {label}
+              </label>
             </div>
           );
         })}
