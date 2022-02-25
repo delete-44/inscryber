@@ -43,8 +43,8 @@
   }
 
   p {
-    @apply text-4xl;
-    @apply md:text-5xl;
+    @apply text-3xl;
+    @apply md:text-4xl;
   }
 
   label,
@@ -84,8 +84,7 @@
     @apply border-b-orange-400;
     @apply w-full;
     @apply p-2;
-    @apply text-2xl;
-    @apply md:text-2xl;
+    @apply text-xl;
     @apply focus:outline-none;
     @apply focus:border-orange-400;
     @apply text-black;
