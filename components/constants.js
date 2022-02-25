@@ -3,6 +3,10 @@ export const CLOUDINARY_BASE = `https://res.cloudinary.com/${process.env.NEXT_PU
 export const CLOUDINARY_API_BASE = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload`;
 export const CARD_BASE = "Inscryption/blank_";
 
+// The amount of time to wait after the user makes
+// changes, in ms, before requesting a new image
+export const DEBOUNCE_TIMER = 1000;
+
 export const SIGILS = [
   { filename: "airborne", label: "Airborne" },
   { filename: "ant_spawner", label: "Ant Spawner" },

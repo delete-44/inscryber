@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
+import { CARD_BASE, CLOUDINARY_BASE, DEBOUNCE_TIMER } from "components/constants";
 import Name from "@form-fields/name";
 import Stats from "@form-fields/stats";
 import Sigils from "@form-fields/sigils";
@@ -25,7 +25,8 @@ export default function Home() {
 
   const [cardBase, setCardBase] = useState("vladde");
 
-  // Stagger requests so they only send 500ms after user stops typing
+  // Stagger requests so they wait for a delay, defined
+  // in CONSTANTs, from user input before requesting new image
   useEffect(() => {
     const timer = setTimeout(() => {
       setBusy(true);
@@ -38,7 +39,7 @@ export default function Home() {
         patchesTF,
       ].join("");
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}${cardBase}`);
-    }, 500);
+    }, DEBOUNCE_TIMER);
     return () => clearTimeout(timer);
   }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF, patchesTF, cardBase]);
 

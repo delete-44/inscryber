@@ -1,4 +1,4 @@
-# Lists all images in the cloudinary upload folder & deletes those more than a day old.
+# Lists all images in the cloudinary upload folder & deletes those more than 6hrs old.
 # When no files are found to be deleted, the delete request returns "not found"
 
 # Runs every six hours, ie every day @ midnight, 6am, midday, and 6pm
@@ -17,7 +17,7 @@ jobs:
     steps:
       # The "expression" body argument is built using the Cloudinary search API
       # It translates to "find images in the Inscryption/Uploads folder that are
-      # more than a day old"
+      # more than 6 hours old.
       # https://cloudinary.com/documentation/search_api#expressions
       - name: Retrieve files in cloudinary
         id: get-request

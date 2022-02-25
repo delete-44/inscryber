@@ -44,7 +44,7 @@ describe("Home", () => {
       userEvent.type(nameField, "123456789");
     });
 
-    jest.advanceTimersByTime(499);
+    jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
     expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf/);
 
     // Make a change before timer runs out
@@ -53,7 +53,7 @@ describe("Home", () => {
     });
 
     // Confirm that image does not change
-    jest.advanceTimersByTime(499);
+    jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
     expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf/);
 
     // Allow timer to finish
@@ -80,7 +80,7 @@ describe("Home", () => {
         userEvent.type(nameField, "123456789");
       });
 
-      jest.advanceTimersByTime(499);
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_128/);
 
       await act(async () => {
@@ -103,7 +103,7 @@ describe("Home", () => {
         userEvent.type(powerField, "123456789");
       });
 
-      jest.advanceTimersByTime(499);
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_196/);
 
       await act(async () => {
@@ -126,7 +126,7 @@ describe("Home", () => {
         userEvent.type(healthField, "123456789");
       });
 
-      jest.advanceTimersByTime(499);
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_196/);
 
       await act(async () => {
@@ -147,7 +147,7 @@ describe("Home", () => {
 
       await selectEvent.select(sigilsField, /Airborne/);
 
-      jest.advanceTimersByTime(499);
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       expect(image.src).not.toMatch(/airborne/);
 
       await act(async () => {
@@ -168,7 +168,7 @@ describe("Home", () => {
 
       await selectEvent.select(patchesField, /Stinky/);
 
-      jest.advanceTimersByTime(499);
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       expect(image.src).not.toMatch(/stinky/);
 
       await act(async () => {
@@ -187,7 +187,7 @@ describe("Home", () => {
 
       userEvent.click(rareRadio);
 
-      jest.advanceTimersByTime(499);
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       expect(image.src).not.toMatch(/rare/);
 
       await act(async () => {
@@ -219,7 +219,7 @@ describe("Home", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
       });
 
-      jest.advanceTimersByTime(499);
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
 
       await act(async () => {
@@ -251,7 +251,7 @@ describe("Home", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
       });
 
-      jest.advanceTimersByTime(499);
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
 
       const inscryberCheck = screen.getByRole("checkbox", {
@@ -261,7 +261,7 @@ describe("Home", () => {
       userEvent.click(inscryberCheck);
 
       await act(async () => {
-        jest.advanceTimersByTime(499);
+        jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       });
 
       expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
