@@ -48,7 +48,7 @@ export default function Home() {
       heading="Inscryber"
     >
       {/* Left column */}
-      <div className="text-center md:text-left">
+      <div>
         {/* Name form field */}
         <Name setNameTF={setNameTF} />
 
