@@ -6,7 +6,7 @@ const CardBase = (props) => {
   return (
     <section className="mb-10">
       <p className="mb-3">
-        Which <label htmlFor="card-base">base card</label> do you choose?
+        Which <label htmlFor="card-base">card base</label> do you want?
       </p>
 
       <span className="inline-flex w-full md:w-3/6 justify-between">
