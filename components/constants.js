@@ -36,6 +36,12 @@ export const SIGILS = [
   { filename: "worthy_sacrifice", label: "Worthy Sacrifice" },
 ];
 
+export const BASES = [
+  { value: "vladde", label: "Normal" },
+  { value: "rare", label: "Rare" },
+  { value: "unsacrificable", label: "Unsacrificable" },
+];
+
 export const LINKS = {
   delete44: "https://www.delete44.com/",
   delete44_twitter: "https://twitter.com/_delete44",

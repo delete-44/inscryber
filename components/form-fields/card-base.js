@@ -1,4 +1,5 @@
 import React from "react";
+import { BASES } from "components/constants";
 
 const CardBase = (props) => {
   const { setValue } = props;
@@ -9,44 +10,22 @@ const CardBase = (props) => {
       </p>
 
       <span className="inline-flex w-full md:w-3/6 justify-between">
-        <div>
-          <input
-            type="radio"
-            name="card-base"
-            id="normal"
-            checked={props.value === "vladde"}
-            onChange={() => {
-              setValue("vladde");
-            }}
-          />
-          <label htmlFor="normal">Normal</label>
-        </div>
-
-        <div>
-          <input
-            type="radio"
-            name="card-base"
-            id="rare"
-            checked={props.value === "rare"}
-            onChange={() => {
-              setValue("rare");
-            }}
-          />
-          <label htmlFor="rare">Rare</label>
-        </div>
-
-        <div>
-          <input
-            type="radio"
-            name="card-base"
-            id="unsacrificable"
-            checked={props.value === "unsacrificable"}
-            onChange={() => {
-              setValue("unsacrificable");
-            }}
-          />
-          <label htmlFor="unsacrificable">Unsacrificable</label>
-        </div>
+        {BASES.map(({ value, label }) => {
+          return (
+            <div key={value}>
+              <input
+                type="radio"
+                name="card-base"
+                id={value}
+                checked={props.value === value}
+                onChange={() => {
+                  setValue(value);
+                }}
+              />
+              <label htmlFor={value}>{label}</label>
+            </div>
+          );
+        })}
       </span>
     </section>
   );
