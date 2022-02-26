@@ -76,7 +76,7 @@ export default function Home() {
       </div>
 
       {/* Right column */}
-      <div className="width-full flex justify-center relative mt-16 md:mt-0 h-min">
+      <div className="width-full flex justify-center relative mt-16 md:mt-0 h-min sticky top-4">
         <Spinner hidden={!busy} />
 
         <Image
