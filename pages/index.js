@@ -16,7 +16,9 @@ import GridLayout from "layouts/grid-layout";
 
 export default function Home() {
   // State management for this component
-  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}blur`);
+  const [url, setUrl] = useState(
+    `${CLOUDINARY_BASE}c_scale,h_1050,w_691/${CARD_BASE}blur`
+  );
   const [busy, setBusy] = useState(true);
 
   // Transformations to be applied to the image
@@ -74,7 +76,7 @@ export default function Home() {
       </div>
 
       {/* Right column */}
-      <div className="width-full flex justify-center relative mt-16 md:mt-0">
+      <div className="width-full flex justify-center relative mt-16 md:mt-0 h-min">
         <Spinner hidden={!busy} />
 
         <Image
