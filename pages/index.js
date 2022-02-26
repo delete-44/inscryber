@@ -1,6 +1,12 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { CARD_BASE, CLOUDINARY_BASE, DEBOUNCE_TIMER } from "components/constants";
+import {
+  CARD_BASE,
+  CLOUDINARY_BASE,
+  DEBOUNCE_TIMER,
+  CARD_WIDTH,
+  CARD_HEIGHT,
+} from "components/constants";
 import Name from "@form-fields/name";
 import Stats from "@form-fields/stats";
 import Sigils from "@form-fields/sigils";
@@ -12,7 +18,9 @@ import GridLayout from "layouts/grid-layout";
 
 export default function Home() {
   // State management for this component
-  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}vladde`);
+  const [url, setUrl] = useState(
+    `${CLOUDINARY_BASE}c_scale,h_${CARD_HEIGHT},w_${CARD_WIDTH}/${CARD_BASE}blur`
+  );
   const [busy, setBusy] = useState(true);
 
   // Transformations to be applied to the image
@@ -38,6 +46,7 @@ export default function Home() {
         portraitTF,
         patchesTF,
       ].join("");
+
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}${cardBase}`);
     }, DEBOUNCE_TIMER);
     return () => clearTimeout(timer);
@@ -69,16 +78,16 @@ export default function Home() {
       </div>
 
       {/* Right column */}
-      <div className="width-full flex justify-center items-center relative mt-16 md:mt-0 h-80 md:h-auto">
+      <div className="width-full flex justify-center relative mt-16 md:mt-0 h-min sticky top-4">
         <Spinner hidden={!busy} />
 
         <Image
           src={url}
           alt="A preview of your custom card"
-          width={0}
-          height={0}
-          layout={busy ? 0 : "fill"}
+          width={busy ? 0 : CARD_WIDTH * 0.75}
+          height={busy ? 0 : CARD_HEIGHT * 0.75}
           objectFit="contain"
+          objectPosition="center top"
           priority
           onLoadingComplete={() => {
             setBusy(false);

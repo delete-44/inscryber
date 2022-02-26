@@ -7,6 +7,10 @@ export const CARD_BASE = "Inscryption/blank_";
 // changes, in ms, before requesting a new image
 export const DEBOUNCE_TIMER = 1000;
 
+// The dimensions of the base cards
+export const CARD_WIDTH = 691;
+export const CARD_HEIGHT = 1050;
+
 export const SIGILS = [
   { filename: "airborne", label: "Airborne" },
   { filename: "ant_spawner", label: "Ant Spawner" },
