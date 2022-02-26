@@ -4,6 +4,8 @@ import {
   CARD_BASE,
   CLOUDINARY_BASE,
   DEBOUNCE_TIMER,
+  CARD_WIDTH,
+  CARD_HEIGHT,
 } from "components/constants";
 import Name from "@form-fields/name";
 import Stats from "@form-fields/stats";
@@ -17,7 +19,7 @@ import GridLayout from "layouts/grid-layout";
 export default function Home() {
   // State management for this component
   const [url, setUrl] = useState(
-    `${CLOUDINARY_BASE}c_scale,h_1050,w_691/${CARD_BASE}blur`
+    `${CLOUDINARY_BASE}c_scale,h_${CARD_HEIGHT},w_${CARD_WIDTH}/${CARD_BASE}blur`
   );
   const [busy, setBusy] = useState(true);
 
@@ -82,8 +84,8 @@ export default function Home() {
         <Image
           src={url}
           alt="A preview of your custom card"
-          width={busy ? 0 : 518.25}
-          height={busy ? 0 : 787.5}
+          width={busy ? 0 : CARD_WIDTH * 0.75}
+          height={busy ? 0 : CARD_HEIGHT * 0.75}
           objectFit="contain"
           objectPosition="center top"
           priority
