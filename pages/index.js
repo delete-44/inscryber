@@ -16,7 +16,7 @@ import GridLayout from "layouts/grid-layout";
 
 export default function Home() {
   // State management for this component
-  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}vladde`);
+  const [url, setUrl] = useState(`${CLOUDINARY_BASE}${CARD_BASE}blur`);
   const [busy, setBusy] = useState(true);
 
   // Transformations to be applied to the image
@@ -42,6 +42,7 @@ export default function Home() {
         portraitTF,
         patchesTF,
       ].join("");
+
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}${cardBase}`);
     }, DEBOUNCE_TIMER);
     return () => clearTimeout(timer);
