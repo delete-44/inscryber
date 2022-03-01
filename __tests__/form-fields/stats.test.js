@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import Stats from "@form-fields/stats";
@@ -46,11 +46,9 @@ describe("Stats", () => {
 
       userEvent.type(powerField, "1");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenLastCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:1,c_scale,w_50/fl_layer_apply,g_south_west,x_72,y_156/`
-        );
-      });
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        `l_text:${HEAVYWEIGHT}_196:1,c_scale,w_50/fl_layer_apply,g_south_west,x_72,y_156/`
+      );
     });
 
     it("sets width at 65 for numbers 2-9", async () => {
@@ -60,11 +58,9 @@ describe("Stats", () => {
 
       userEvent.type(powerField, "2");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenLastCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:2,c_scale,w_65/fl_layer_apply,g_south_west,x_72,y_156/`
-        );
-      });
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        `l_text:${HEAVYWEIGHT}_196:2,c_scale,w_65/fl_layer_apply,g_south_west,x_72,y_156/`
+      );
     });
 
     it("sets width at 80 for the characters 10 to 99", async () => {
@@ -74,20 +70,16 @@ describe("Stats", () => {
 
       userEvent.type(powerField, "10");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenLastCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:10,c_scale,w_80/fl_layer_apply,g_south_west,x_72,y_156/`
-        );
-      });
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        `l_text:${HEAVYWEIGHT}_196:10,c_scale,w_80/fl_layer_apply,g_south_west,x_72,y_156/`
+      );
 
       userEvent.type(powerField, "{selectall}{backspace}");
       userEvent.type(powerField, "99");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenLastCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:99,c_scale,w_80/fl_layer_apply,g_south_west,x_72,y_156/`
-        );
-      });
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        `l_text:${HEAVYWEIGHT}_196:99,c_scale,w_80/fl_layer_apply,g_south_west,x_72,y_156/`
+      );
     });
 
     it("expands width for larger numbers", async () => {
@@ -97,11 +89,9 @@ describe("Stats", () => {
 
       userEvent.type(powerField, "100");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenLastCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:100,c_scale,w_100/fl_layer_apply,g_south_west,x_72,y_156/`
-        );
-      });
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        `l_text:${HEAVYWEIGHT}_196:100,c_scale,w_100/fl_layer_apply,g_south_west,x_72,y_156/`
+      );
     });
   });
 
@@ -113,9 +103,7 @@ describe("Stats", () => {
 
       userEvent.type(powerField, "Text");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledTimes(0);
-      });
+      expect(mockCallback).toHaveBeenCalledTimes(0);
     });
 
     it("completely removes the transformation when field is empty", async () => {
@@ -125,17 +113,13 @@ describe("Stats", () => {
 
       userEvent.type(powerField, "9");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenLastCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/fl_layer_apply,g_south_west,x_72,y_156/`
-        );
-      });
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/fl_layer_apply,g_south_west,x_72,y_156/`
+      );
 
       userEvent.type(powerField, "{selectall}{backspace}");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenLastCalledWith("");
-      });
+      expect(mockCallback).toHaveBeenLastCalledWith("");
     });
   });
 
@@ -147,9 +131,7 @@ describe("Stats", () => {
 
       userEvent.type(healthField, "Text");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenCalledTimes(0);
-      });
+      expect(mockCallback).toHaveBeenCalledTimes(0);
     });
 
     it("completely removes the transformation when field is empty", async () => {
@@ -159,17 +141,13 @@ describe("Stats", () => {
 
       userEvent.type(healthField, "9");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenLastCalledWith(
-          `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/fl_layer_apply,g_south_east,x_60,y_86/`
-        );
-      });
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/fl_layer_apply,g_south_east,x_60,y_86/`
+      );
 
       userEvent.type(healthField, "{selectall}{backspace}");
 
-      await waitFor(() => {
-        expect(mockCallback).toHaveBeenLastCalledWith("");
-      });
+      expect(mockCallback).toHaveBeenLastCalledWith("");
     });
   });
 });
