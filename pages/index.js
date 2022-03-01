@@ -47,12 +47,13 @@ export default function Home() {
         sigilsTF,
         portraitTF,
         patchesTF,
+        tribesTF,
       ].join("");
 
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}${cardBase}`);
     }, DEBOUNCE_TIMER);
     return () => clearTimeout(timer);
-  }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF, patchesTF, cardBase]);
+  }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF, patchesTF, cardBase, tribesTF]);
 
   return (
     <GridLayout

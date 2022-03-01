@@ -19,7 +19,30 @@ const Tribes = (props) => {
       .sort();
 
     console.log(checkedTribes);
-    // Apply each on in a transformation
+
+    if (checkedTribes.length === 0) {
+      setTribesTF("");
+      return;
+    }
+
+    // Apply each one in a transformation
+    let transformation = "";
+
+    // Declare transformations for each tribe
+    const tribeTransformations = [
+      "fl_layer_apply,g_north_west,y_148,x_32/",
+      "fl_layer_apply,g_west,y_10,x_48/",
+      "fl_layer_apply,g_east,y_-96,x_28/",
+      "a_-20/fl_layer_apply,g_north,x_64/",
+    ];
+
+    // Create full TF from individual tribe transformations declared
+    // in tribeTransformations. Each line pertains to a tribe
+    checkedTribes.forEach((p, i) => {
+      transformation += `l_Inscryption:ResizedTribes:${p}/${tribeTransformations[i]}`;
+    });
+
+    setTribesTF(transformation);
   }, [selectedTribes]);
 
   return (
