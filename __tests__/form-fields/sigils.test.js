@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Sigils from "@form-fields/sigils";
 import selectEvent from "react-select-event";
@@ -35,19 +35,15 @@ describe("Sigils", () => {
 
     await selectEvent.select(sigilsField, /Airborne/);
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
-      );
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
+    );
 
     await selectEvent.select(sigilsField, /Bifurcated Strike/);
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        "l_Inscryption:ResizedSigils:bifurcated_strike/fl_layer_apply,g_south,y_64/"
-      );
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedSigils:bifurcated_strike/fl_layer_apply,g_south,y_64/"
+    );
   });
 
   it("completely removes the transformation when field is empty", async () => {
@@ -57,17 +53,13 @@ describe("Sigils", () => {
 
     await selectEvent.select(sigilsField, /Airborne/);
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
-      );
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
+    );
 
     await selectEvent.select(sigilsField, /No sigils/);
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith("");
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith("");
   });
 
   it("renders an option for each sigil", async () => {
