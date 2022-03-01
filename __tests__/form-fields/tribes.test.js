@@ -69,7 +69,32 @@ describe("Tribes", () => {
     );
   });
 
-  it("sorts selected tribes alphabetically regardless of selection order", async () => {});
+  it("sorts selected tribes alphabetically regardless of selection order", async () => {
+    const birdField = screen.getByRole("checkbox", { name: /Bird/ });
+    const hoovedField = screen.getByRole("checkbox", { name: /Hooved/ });
+    const reptileField = screen.getByRole("checkbox", { name: /Reptile/ });
+
+    userEvent.click(reptileField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_north_west,y_32/"
+    );
+
+    userEvent.click(birdField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedTribes:bird/o_30/fl_layer_apply,g_north_west,y_32/" +
+        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_north,y_32/"
+    );
+
+    userEvent.click(hoovedField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedTribes:bird/o_30/fl_layer_apply,g_north_west,y_32/" +
+        "l_Inscryption:ResizedTribes:hooved/o_30/fl_layer_apply,g_north,y_32/" +
+        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_north_east,y_32/"
+    );
+  });
 
   it("correctly sets all transformations when all selected", async () => {});
 
