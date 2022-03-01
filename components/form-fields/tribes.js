@@ -18,8 +18,6 @@ const Tribes = (props) => {
       .filter((k) => selectedTribes[k])
       .sort();
 
-    console.log(checkedTribes);
-
     if (checkedTribes.length === 0) {
       setTribesTF("");
       return;
@@ -30,16 +28,17 @@ const Tribes = (props) => {
 
     // Declare transformations for each tribe
     const tribeTransformations = [
-      "fl_layer_apply,g_north_west,y_148,x_32/",
-      "fl_layer_apply,g_west,y_10,x_48/",
-      "fl_layer_apply,g_east,y_-96,x_28/",
-      "a_-20/fl_layer_apply,g_north,x_64/",
+      "o_30/fl_layer_apply,g_north_west,y_32/",
+      "o_30/fl_layer_apply,g_north,y_32/",
+      "o_30/fl_layer_apply,g_north_east,y_32/",
+      "o_30/fl_layer_apply,g_east,y_96,x_96/",
+      "o_30/fl_layer_apply,g_west,y_96,x_96/",
     ];
 
     // Create full TF from individual tribe transformations declared
     // in tribeTransformations. Each line pertains to a tribe
-    checkedTribes.forEach((p, i) => {
-      transformation += `l_Inscryption:ResizedTribes:${p}/${tribeTransformations[i]}`;
+    checkedTribes.forEach((t, i) => {
+      transformation += `l_Inscryption:ResizedTribes:${t}/${tribeTransformations[i]}`;
     });
 
     setTribesTF(transformation);
