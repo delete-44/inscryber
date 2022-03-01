@@ -47,9 +47,9 @@ export const SIGILS = [
 ];
 
 export const BASES = [
-  { value: "vladde", label: "Normal" },
-  { value: "rare", label: "Rare" },
-  { value: "unsacrificable", label: "Unsacrificable" },
+  { filename: "vladde", label: "Normal" },
+  { filename: "rare", label: "Rare" },
+  { filename: "unsacrificable", label: "Unsacrificable" },
 ];
 
 export const TRIBES = [
