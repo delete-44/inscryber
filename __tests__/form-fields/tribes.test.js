@@ -96,7 +96,27 @@ describe("Tribes", () => {
     );
   });
 
-  it("correctly sets all transformations when all selected", async () => {});
+  it("correctly sets all transformations when all selected", async () => {
+    const birdField = screen.getByRole("checkbox", { name: /Bird/ });
+    const canineField = screen.getByRole("checkbox", { name: /Canine/ });
+    const hoovedField = screen.getByRole("checkbox", { name: /Hooved/ });
+    const insectField = screen.getByRole("checkbox", { name: /Insect/ });
+    const reptileField = screen.getByRole("checkbox", { name: /Reptile/ });
+
+    userEvent.click(birdField);
+    userEvent.click(canineField);
+    userEvent.click(hoovedField);
+    userEvent.click(insectField);
+    userEvent.click(reptileField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedTribes:bird/o_30/fl_layer_apply,g_north_west,y_32/" +
+        "l_Inscryption:ResizedTribes:canine/o_30/fl_layer_apply,g_north,y_32/" +
+        "l_Inscryption:ResizedTribes:hooved/o_30/fl_layer_apply,g_north_east,y_32/" +
+        "l_Inscryption:ResizedTribes:insect/o_30/fl_layer_apply,g_east,y_96,x_96/" +
+        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_west,y_96,x_96/"
+    );
+  });
 
   it("removes the transformation when all transformations deselected", async () => {});
 });
