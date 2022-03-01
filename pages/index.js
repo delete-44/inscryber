@@ -13,6 +13,7 @@ import Sigils from "@form-fields/sigils";
 import Portrait from "@form-fields/portrait";
 import Patches from "@form-fields/patches";
 import CardBase from "@form-fields/card-base";
+import Tribes from "@form-fields/tribes";
 import Spinner from "components/spinner";
 import GridLayout from "layouts/grid-layout";
 
@@ -30,6 +31,7 @@ export default function Home() {
   const [sigilsTF, setSigilsTF] = useState("");
   const [portraitTF, setPortraitTF] = useState("");
   const [patchesTF, setPatchesTF] = useState("");
+  const [tribesTF, setTribesTF] = useState("");
 
   const [cardBase, setCardBase] = useState("vladde");
 
@@ -38,19 +40,34 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setBusy(true);
+
+      // Compile all transformations into one string
+      // Order this array by layers, ie the first element
+      // will appear under all others, the last element
+      // will appear over.
       const transformations = [
+        portraitTF,
+        tribesTF,
         nameTF,
         powerTF,
         healthTF,
         sigilsTF,
-        portraitTF,
         patchesTF,
       ].join("");
 
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}${cardBase}`);
     }, DEBOUNCE_TIMER);
     return () => clearTimeout(timer);
-  }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF, patchesTF, cardBase]);
+  }, [
+    nameTF,
+    powerTF,
+    healthTF,
+    sigilsTF,
+    portraitTF,
+    patchesTF,
+    cardBase,
+    tribesTF,
+  ]);
 
   return (
     <GridLayout
@@ -70,6 +87,9 @@ export default function Home() {
 
         {/* Patches form field */}
         <Patches setPatchesTF={setPatchesTF} />
+
+        {/* Tribes form fields */}
+        <Tribes setTribesTF={setTribesTF} />
 
         {/* Card back selector, ie rarity */}
         <CardBase value={cardBase} setValue={setCardBase} />

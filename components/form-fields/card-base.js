@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { BASES } from "components/constants";
 
 const CardBase = (props) => {
@@ -10,19 +11,19 @@ const CardBase = (props) => {
       </p>
 
       <span className="inline-flex w-full md:w-4/6 justify-between">
-        {BASES.map(({ value, label }) => {
+        {BASES.map(({ filename, label }) => {
           return (
-            <div key={value}>
+            <div key={filename}>
               <input
                 type="radio"
                 name="card-base"
-                id={value}
-                checked={props.value === value}
+                id={filename}
+                checked={props.value === filename}
                 onChange={() => {
-                  setValue(value);
+                  setValue(filename);
                 }}
               />
-              <label htmlFor={value} className="text-xl md:text-2xl">
+              <label htmlFor={filename} className="text-xl md:text-2xl">
                 {label}
               </label>
             </div>
@@ -31,6 +32,11 @@ const CardBase = (props) => {
       </span>
     </section>
   );
+};
+
+CardBase.propTypes = {
+  setValue: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default CardBase;

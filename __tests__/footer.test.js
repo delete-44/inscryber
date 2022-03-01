@@ -4,7 +4,7 @@ import Footer from "components/footer";
 import { LINKS } from "components/constants";
 
 describe("Footer", () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     render(<Footer />);
   });
 

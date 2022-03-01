@@ -1,3 +1,4 @@
+// Standard transformation utilities
 export const HEAVYWEIGHT = "Inscryption:HEAVYWEIGHT.ttf";
 export const CLOUDINARY_BASE = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload/`;
 export const CLOUDINARY_API_BASE = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload`;
@@ -11,6 +12,7 @@ export const DEBOUNCE_TIMER = 1000;
 export const CARD_WIDTH = 691;
 export const CARD_HEIGHT = 1050;
 
+// Standard customisation options
 export const SIGILS = [
   { filename: "airborne", label: "Airborne" },
   { filename: "ant_spawner", label: "Ant Spawner" },
@@ -45,11 +47,20 @@ export const SIGILS = [
 ];
 
 export const BASES = [
-  { value: "vladde", label: "Normal" },
-  { value: "rare", label: "Rare" },
-  { value: "unsacrificable", label: "Unsacrificable" },
+  { filename: "vladde", label: "Normal" },
+  { filename: "rare", label: "Rare" },
+  { filename: "unsacrificable", label: "Unsacrificable" },
 ];
 
+export const TRIBES = [
+  { filename: "bird", label: "Bird" },
+  { filename: "canine", label: "Canine" },
+  { filename: "hooved", label: "Hooved" },
+  { filename: "insect", label: "Insect" },
+  { filename: "reptile", label: "Reptile" },
+];
+
+// Links for the ABOUT page
 export const LINKS = {
   delete44: "https://www.delete44.com/",
   delete44_twitter: "https://twitter.com/_delete44",
@@ -60,6 +71,7 @@ export const LINKS = {
   inscryber_trello: "https://trello.com/b/dBsycGJJ/inscryber",
 };
 
+// react-select styling config
 export const SELECT_STYLES = {
   control: (defaultStyles) => {
     return {

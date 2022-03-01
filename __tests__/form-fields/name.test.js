@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import Name from "@form-fields/name";
@@ -34,65 +34,55 @@ describe("Name", () => {
     expect(nameLabel).toBeInTheDocument();
   });
 
-  it("uses fit cropping for short strings", async () => {
+  it("uses fit cropping for short strings", () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
     });
 
     userEvent.type(nameField, "123456789");
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
-      );
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      `l_text:${HEAVYWEIGHT}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
+    );
   });
 
-  it("uses scale cropping for long strings", async () => {
+  it("uses scale cropping for long strings", () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
     });
 
     userEvent.type(nameField, "123456789012");
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:123456789012,${LONG_STRING_TRANSFORMATION}`
-      );
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      `l_text:${HEAVYWEIGHT}_128:123456789012,${LONG_STRING_TRANSFORMATION}`
+    );
   });
 
-  it("encodes special characters in transformation", async () => {
+  it("encodes special characters in transformation", () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
     });
 
     userEvent.type(nameField, "Test String");
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:Test%20String,${SHORT_STRING_TRANSFORMATION}`
-      );
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      `l_text:${HEAVYWEIGHT}_128:Test%20String,${SHORT_STRING_TRANSFORMATION}`
+    );
   });
 
-  it("completely removes the transformation when field is empty", async () => {
+  it("completely removes the transformation when field is empty", () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
     });
 
     userEvent.type(nameField, "123456789");
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
-      );
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      `l_text:${HEAVYWEIGHT}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
+    );
 
     userEvent.type(nameField, "{selectall}{backspace}");
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith("");
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith("");
   });
 });

@@ -178,6 +178,27 @@ describe("Home", () => {
       expect(image.src).toMatch(/stinky/);
     });
 
+    it("when tribes", async () => {
+      const image = await screen.findByAltText("A preview of your custom card");
+
+      expect(image.src).not.toMatch(/bird/);
+
+      const birdTribe = screen.getAllByRole("checkbox", {
+        name: /Bird/,
+      })[0];
+
+      userEvent.click(birdTribe);
+
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
+      expect(image.src).not.toMatch(/bird/);
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toMatch(/bird/);
+    });
+
     it("when card bases", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 
