@@ -5,8 +5,16 @@ const Tribes = (props) => {
   const [selectedTribes, setSelectedTribes] = useState({});
   const { setTribesTF } = props;
 
+  // selectedTribes initialises as an empty object.
+  // As values are selected, they get added in the form
+  // filename: isSelected?
+  // Use a !! to set a forced true/false solution when
+  // querying if the filename is selected
   useEffect(() => {
     console.log(selectedTribes);
+    // Retrieve checked tribes
+    // Sort them alphabetically for consistency
+    // Apply each on in a transformation
   }, [selectedTribes]);
 
   return (
@@ -23,7 +31,7 @@ const Tribes = (props) => {
                 type="checkbox"
                 name="tribes"
                 id={filename}
-                checked={selectedTribes[filename]}
+                checked={!!selectedTribes[filename]}
                 onChange={(e) => {
                   setSelectedTribes({
                     ...selectedTribes,
