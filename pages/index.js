@@ -40,20 +40,34 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setBusy(true);
+
+      // Compile all transformations into one string
+      // Order this array by layers, ie the first element
+      // will appear under all others, the last element
+      // will appear over.
       const transformations = [
+        portraitTF,
+        tribesTF,
         nameTF,
         powerTF,
         healthTF,
         sigilsTF,
-        portraitTF,
         patchesTF,
-        tribesTF,
       ].join("");
 
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}${cardBase}`);
     }, DEBOUNCE_TIMER);
     return () => clearTimeout(timer);
-  }, [nameTF, powerTF, healthTF, sigilsTF, portraitTF, patchesTF, cardBase, tribesTF]);
+  }, [
+    nameTF,
+    powerTF,
+    healthTF,
+    sigilsTF,
+    portraitTF,
+    patchesTF,
+    cardBase,
+    tribesTF,
+  ]);
 
   return (
     <GridLayout
