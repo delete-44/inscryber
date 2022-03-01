@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import CardBase from "@form-fields/card-base";
 import userEvent from "@testing-library/user-event";
@@ -51,9 +51,7 @@ describe("CardBase", () => {
 
     userEvent.click(rareRadio);
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith("rare");
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith("rare");
 
     rerender(<CardBase value={"rare"} setValue={mockCallback} />);
 
@@ -63,9 +61,7 @@ describe("CardBase", () => {
 
     userEvent.click(unsacrificableRadio);
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith("unsacrificable");
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith("unsacrificable");
 
     rerender(<CardBase value={"unsacrificable"} setValue={mockCallback} />);
 
@@ -75,9 +71,7 @@ describe("CardBase", () => {
 
     userEvent.click(normalRadio);
 
-    await waitFor(() => {
-      expect(mockCallback).toHaveBeenLastCalledWith("vladde");
-    });
+    expect(mockCallback).toHaveBeenLastCalledWith("vladde");
 
     rerender(<CardBase value={"vladde"} setValue={mockCallback} />);
 
