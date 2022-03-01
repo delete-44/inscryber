@@ -11,9 +11,14 @@ const Tribes = (props) => {
   // Use a !! to set a forced true/false solution when
   // querying if the filename is selected
   useEffect(() => {
-    console.log(selectedTribes);
-    // Retrieve checked tribes
-    // Sort them alphabetically for consistency
+    // Retrieve sorted array of checked tribes, ie
+    // Create array of keys from the object where
+    // the value for that key is "true"
+    const checkedTribes = Object.keys(selectedTribes)
+      .filter((k) => selectedTribes[k])
+      .sort();
+
+    console.log(checkedTribes);
     // Apply each on in a transformation
   }, [selectedTribes]);
 
