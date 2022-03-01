@@ -40,7 +40,7 @@ describe("CardBase", () => {
     expect(cardBaseLabel).toBeInTheDocument();
   });
 
-  it("correctly sets the rendered card", async () => {
+  it("correctly sets the rendered card", () => {
     const { rerender } = render(
       <CardBase value={"vladde"} setValue={mockCallback} />
     );

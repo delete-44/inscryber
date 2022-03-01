@@ -35,7 +35,7 @@ describe("Tribes", () => {
     expect(tribesLabel).toBeInTheDocument();
   });
 
-  it("correctly sets a transformation", async () => {
+  it("correctly sets a transformation", () => {
     const birdField = screen.getByRole("checkbox", { name: /Bird/ });
 
     userEvent.click(birdField);
@@ -45,7 +45,7 @@ describe("Tribes", () => {
     );
   });
 
-  it("correctly unsets specific transformations", async () => {
+  it("correctly unsets specific transformations", () => {
     const birdField = screen.getByRole("checkbox", { name: /Bird/ });
     const canineField = screen.getByRole("checkbox", { name: /Canine/ });
 
@@ -69,7 +69,7 @@ describe("Tribes", () => {
     );
   });
 
-  it("sorts selected tribes alphabetically regardless of selection order", async () => {
+  it("sorts selected tribes alphabetically regardless of selection order", () => {
     const birdField = screen.getByRole("checkbox", { name: /Bird/ });
     const hoovedField = screen.getByRole("checkbox", { name: /Hooved/ });
     const reptileField = screen.getByRole("checkbox", { name: /Reptile/ });
@@ -96,7 +96,7 @@ describe("Tribes", () => {
     );
   });
 
-  it("correctly sets all transformations when all selected", async () => {
+  it("correctly sets all transformations when all selected", () => {
     const birdField = screen.getByRole("checkbox", { name: /Bird/ });
     const canineField = screen.getByRole("checkbox", { name: /Canine/ });
     const hoovedField = screen.getByRole("checkbox", { name: /Hooved/ });
@@ -118,7 +118,7 @@ describe("Tribes", () => {
     );
   });
 
-  it("removes the transformation when all transformations deselected", async () => {
+  it("removes the transformation when all transformations deselected", () => {
     const birdField = screen.getByRole("checkbox", { name: /Bird/ });
     const canineField = screen.getByRole("checkbox", { name: /Canine/ });
     const hoovedField = screen.getByRole("checkbox", { name: /Hooved/ });

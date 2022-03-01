@@ -34,7 +34,7 @@ describe("Name", () => {
     expect(nameLabel).toBeInTheDocument();
   });
 
-  it("uses fit cropping for short strings", async () => {
+  it("uses fit cropping for short strings", () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
     });
@@ -46,7 +46,7 @@ describe("Name", () => {
     );
   });
 
-  it("uses scale cropping for long strings", async () => {
+  it("uses scale cropping for long strings", () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
     });
@@ -58,7 +58,7 @@ describe("Name", () => {
     );
   });
 
-  it("encodes special characters in transformation", async () => {
+  it("encodes special characters in transformation", () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
     });
@@ -70,7 +70,7 @@ describe("Name", () => {
     );
   });
 
-  it("completely removes the transformation when field is empty", async () => {
+  it("completely removes the transformation when field is empty", () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
     });

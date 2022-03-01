@@ -39,7 +39,7 @@ describe("Stats", () => {
   });
 
   describe("getWidth function", () => {
-    it("sets width at 50 for the character '1'", async () => {
+    it("sets width at 50 for the character '1'", () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
@@ -51,7 +51,7 @@ describe("Stats", () => {
       );
     });
 
-    it("sets width at 65 for numbers 2-9", async () => {
+    it("sets width at 65 for numbers 2-9", () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
@@ -63,7 +63,7 @@ describe("Stats", () => {
       );
     });
 
-    it("sets width at 80 for the characters 10 to 99", async () => {
+    it("sets width at 80 for the characters 10 to 99", () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
@@ -82,7 +82,7 @@ describe("Stats", () => {
       );
     });
 
-    it("expands width for larger numbers", async () => {
+    it("expands width for larger numbers", () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
@@ -96,7 +96,7 @@ describe("Stats", () => {
   });
 
   describe("the power number field", () => {
-    it("ignores non-numerical characters", async () => {
+    it("ignores non-numerical characters", () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
@@ -106,7 +106,7 @@ describe("Stats", () => {
       expect(mockCallback).toHaveBeenCalledTimes(0);
     });
 
-    it("completely removes the transformation when field is empty", async () => {
+    it("completely removes the transformation when field is empty", () => {
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
       });
@@ -124,7 +124,7 @@ describe("Stats", () => {
   });
 
   describe("the health number field", () => {
-    it("ignores non-numerical characters", async () => {
+    it("ignores non-numerical characters", () => {
       const healthField = screen.getByRole("spinbutton", {
         name: /Health/,
       });
@@ -134,7 +134,7 @@ describe("Stats", () => {
       expect(mockCallback).toHaveBeenCalledTimes(0);
     });
 
-    it("completely removes the transformation when field is empty", async () => {
+    it("completely removes the transformation when field is empty", () => {
       const healthField = screen.getByRole("spinbutton", {
         name: /Health/,
       });
