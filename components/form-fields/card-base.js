@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { BASES } from "components/constants";
 
 const CardBase = (props) => {
@@ -31,6 +32,11 @@ const CardBase = (props) => {
       </span>
     </section>
   );
+};
+
+CardBase.propTypes = {
+  setValue: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default CardBase;

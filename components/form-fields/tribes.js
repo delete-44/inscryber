@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { TRIBES } from "components/constants";
 
 const Tribes = (props) => {
@@ -75,6 +76,10 @@ const Tribes = (props) => {
       </span>
     </section>
   );
+};
+
+Tribes.propTypes = {
+  setTribesTF: PropTypes.func.isRequired,
 };
 
 export default Tribes;
