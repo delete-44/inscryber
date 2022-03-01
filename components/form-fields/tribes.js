@@ -67,7 +67,7 @@ const Tribes = (props) => {
                   });
                 }}
               />
-              <label htmlFor={filename} className="text-xl md:text-2xl">
+              <label htmlFor={filename} className="text-xl  md:text-2xl">
                 {label}
               </label>
             </div>
