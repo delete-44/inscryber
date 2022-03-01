@@ -54,6 +54,19 @@ describe("Tribes", () => {
     expect(mockCallback).toHaveBeenLastCalledWith(
       "l_Inscryption:ResizedTribes:bird/o_30/fl_layer_apply,g_north_west,y_32/"
     );
+
+    userEvent.click(canineField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedTribes:bird/o_30/fl_layer_apply,g_north_west,y_32/" +
+        "l_Inscryption:ResizedTribes:canine/o_30/fl_layer_apply,g_north,y_32/"
+    );
+
+    userEvent.click(canineField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedTribes:bird/o_30/fl_layer_apply,g_north_west,y_32/"
+    );
   });
 
   it("sorts selected tribes alphabetically regardless of selection order", async () => {});
