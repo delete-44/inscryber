@@ -13,6 +13,7 @@ import Sigils from "@form-fields/sigils";
 import Portrait from "@form-fields/portrait";
 import Patches from "@form-fields/patches";
 import CardBase from "@form-fields/card-base";
+import Tribes from "@form-fields/tribes";
 import Spinner from "components/spinner";
 import GridLayout from "layouts/grid-layout";
 
@@ -30,6 +31,7 @@ export default function Home() {
   const [sigilsTF, setSigilsTF] = useState("");
   const [portraitTF, setPortraitTF] = useState("");
   const [patchesTF, setPatchesTF] = useState("");
+  const [tribesTF, setTribesTF] = useState("");
 
   const [cardBase, setCardBase] = useState("vladde");
 
@@ -70,6 +72,9 @@ export default function Home() {
 
         {/* Patches form field */}
         <Patches setPatchesTF={setPatchesTF} />
+
+        {/* Tribes form fields */}
+        <Tribes setTribesTF={setTribesTF} />
 
         {/* Card back selector, ie rarity */}
         <CardBase value={cardBase} setValue={setCardBase} />
