@@ -123,6 +123,7 @@
   }
 
   .check-label {
+    text-shadow: none;
     @apply text-xl;
     @apply md:text-2xl;
     @apply text-orange-100;
