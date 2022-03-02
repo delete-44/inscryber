@@ -42,12 +42,12 @@ const Form = (props) => {
       const transformations = [
         portraitTF,
         tribesTF,
+        costTF,
         nameTF,
         powerTF,
         healthTF,
         sigilsTF,
         patchesTF,
-        costTF,
       ].join("");
 
       setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}${cardBase}`);
