@@ -122,6 +122,16 @@
     @apply rounded-full;
   }
 
+  .check-label {
+    @apply text-xl;
+    @apply md:text-2xl;
+    @apply text-orange-100;
+
+    @apply peer-checked:text-orange-400;
+    @apply transition;
+    @apply duration-200;
+  }
+
   // -----------------------------
   // Utility class
   // -----------------------------
