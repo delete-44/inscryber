@@ -11,7 +11,7 @@ describe("CardBase", () => {
   });
 
   it("renders radio buttons correctly", () => {
-    render(<CardBase value={"vladde"} setValue={mockCallback} />);
+    render(<CardBase base={"vladde"} setBase={mockCallback} />);
 
     const normalRadio = screen.getAllByRole("radio")[0];
     const rareRadio = screen.getAllByRole("radio")[1];
@@ -31,7 +31,7 @@ describe("CardBase", () => {
   });
 
   it("renders a flavourful description", () => {
-    render(<CardBase value={"vladde"} setValue={mockCallback} />);
+    render(<CardBase base={"vladde"} setBase={mockCallback} />);
 
     const cardBaseFlavour = screen.getByText("Which do you want?");
     const cardBaseLabel = screen.getByText("card base");
@@ -42,7 +42,7 @@ describe("CardBase", () => {
 
   it("correctly sets the rendered card", () => {
     const { rerender } = render(
-      <CardBase value={"vladde"} setValue={mockCallback} />
+      <CardBase base={"vladde"} setBase={mockCallback} />
     );
 
     const normalRadio = screen.getAllByRole("radio")[0];
@@ -53,7 +53,7 @@ describe("CardBase", () => {
 
     expect(mockCallback).toHaveBeenLastCalledWith("rare");
 
-    rerender(<CardBase value={"rare"} setValue={mockCallback} />);
+    rerender(<CardBase base={"rare"} setBase={mockCallback} />);
 
     expect(normalRadio).not.toBeChecked();
     expect(rareRadio).toBeChecked();
@@ -63,7 +63,7 @@ describe("CardBase", () => {
 
     expect(mockCallback).toHaveBeenLastCalledWith("unsacrificable");
 
-    rerender(<CardBase value={"unsacrificable"} setValue={mockCallback} />);
+    rerender(<CardBase base={"unsacrificable"} setBase={mockCallback} />);
 
     expect(normalRadio).not.toBeChecked();
     expect(rareRadio).not.toBeChecked();
@@ -73,7 +73,7 @@ describe("CardBase", () => {
 
     expect(mockCallback).toHaveBeenLastCalledWith("vladde");
 
-    rerender(<CardBase value={"vladde"} setValue={mockCallback} />);
+    rerender(<CardBase base={"vladde"} setBase={mockCallback} />);
 
     expect(normalRadio).toBeChecked();
     expect(rareRadio).not.toBeChecked();

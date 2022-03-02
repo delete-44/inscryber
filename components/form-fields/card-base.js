@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { BASES } from "components/constants";
 
 const CardBase = (props) => {
-  const { setValue } = props;
+  const { setBase } = props;
   return (
     <section className="mb-10">
       <p className="mb-3">
@@ -18,9 +18,9 @@ const CardBase = (props) => {
                 type="radio"
                 name="card-base"
                 id={filename}
-                checked={props.value === filename}
+                checked={props.base === filename}
                 onChange={() => {
-                  setValue(filename);
+                  setBase(filename);
                 }}
               />
               <label htmlFor={filename} className="text-xl md:text-2xl">
@@ -35,8 +35,8 @@ const CardBase = (props) => {
 };
 
 CardBase.propTypes = {
-  setValue: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  setBase: PropTypes.func.isRequired,
+  base: PropTypes.string.isRequired,
 };
 
 export default CardBase;

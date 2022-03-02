@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import Name from "@form-fields/name";
 import Stats from "@form-fields/stats";
 import Sigils from "@form-fields/sigils";
@@ -77,11 +78,16 @@ const Form = (props) => {
       <Tribes setTribesTF={setTribesTF} />
 
       {/* Card back selector, ie rarity */}
-      <CardBase value={cardBase} setValue={setCardBase} />
+      <CardBase base={cardBase} setBase={setCardBase} />
 
       <Portrait setPortraitTF={setPortraitTF} />
     </div>
   );
+};
+
+Form.propTypes = {
+  setBusy: PropTypes.func.isRequired,
+  setUrl: PropTypes.func.isRequired,
 };
 
 export default Form;
