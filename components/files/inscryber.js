@@ -11,10 +11,11 @@ const Inscryber = (props) => {
         type="checkbox"
         name="costRadio"
         id="inscrybe-image"
+        className="peer"
         checked={props.inscrybed}
         onChange={(e) => setInscrybed(e.target.checked)}
       />
-      <label htmlFor="inscrybe-image" className="text-xl md:text-2xl">
+      <label htmlFor="inscrybe-image" className="check-label">
         Inscrybe Image
       </label>
     </>
