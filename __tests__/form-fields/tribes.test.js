@@ -113,8 +113,8 @@ describe("Tribes", () => {
       "l_Inscryption:ResizedTribes:bird/o_30/fl_layer_apply,g_north_west,y_32/" +
         "l_Inscryption:ResizedTribes:canine/o_30/fl_layer_apply,g_north,y_32/" +
         "l_Inscryption:ResizedTribes:hooved/o_30/fl_layer_apply,g_north_east,y_32/" +
-        "l_Inscryption:ResizedTribes:insect/o_30/fl_layer_apply,g_east,y_96,x_96/" +
-        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_west,y_96,x_96/"
+        "l_Inscryption:ResizedTribes:insect/o_30/fl_layer_apply,g_west,y_96,x_96/" +
+        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_east,y_96,x_96/"
     );
   });
 
@@ -152,7 +152,7 @@ describe("Tribes", () => {
       "l_Inscryption:ResizedTribes:bird/o_30/fl_layer_apply,g_north_west,y_32/" +
         "l_Inscryption:ResizedTribes:canine/o_30/fl_layer_apply,g_north,y_32/" +
         "l_Inscryption:ResizedTribes:insect/o_30/fl_layer_apply,g_north_east,y_32/" +
-        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_east,y_96,x_96/"
+        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_west,y_96,x_96/"
     );
 
     userEvent.click(hoovedField);
@@ -161,8 +161,8 @@ describe("Tribes", () => {
       "l_Inscryption:ResizedTribes:bird/o_30/fl_layer_apply,g_north_west,y_32/" +
         "l_Inscryption:ResizedTribes:canine/o_30/fl_layer_apply,g_north,y_32/" +
         "l_Inscryption:ResizedTribes:hooved/o_30/fl_layer_apply,g_north_east,y_32/" +
-        "l_Inscryption:ResizedTribes:insect/o_30/fl_layer_apply,g_east,y_96,x_96/" +
-        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_west,y_96,x_96/"
+        "l_Inscryption:ResizedTribes:insect/o_30/fl_layer_apply,g_west,y_96,x_96/" +
+        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_east,y_96,x_96/"
     );
 
     userEvent.click(birdField);
@@ -171,7 +171,7 @@ describe("Tribes", () => {
       "l_Inscryption:ResizedTribes:canine/o_30/fl_layer_apply,g_north_west,y_32/" +
         "l_Inscryption:ResizedTribes:hooved/o_30/fl_layer_apply,g_north,y_32/" +
         "l_Inscryption:ResizedTribes:insect/o_30/fl_layer_apply,g_north_east,y_32/" +
-        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_east,y_96,x_96/"
+        "l_Inscryption:ResizedTribes:reptile/o_30/fl_layer_apply,g_west,y_96,x_96/"
     );
 
     userEvent.click(canineField);
