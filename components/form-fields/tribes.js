@@ -32,8 +32,8 @@ const Tribes = (props) => {
       "o_30/fl_layer_apply,g_north_west,y_32/",
       "o_30/fl_layer_apply,g_north,y_32/",
       "o_30/fl_layer_apply,g_north_east,y_32/",
-      "o_30/fl_layer_apply,g_east,y_96,x_96/",
       "o_30/fl_layer_apply,g_west,y_96,x_96/",
+      "o_30/fl_layer_apply,g_east,y_96,x_96/",
     ];
 
     // Create full TF from individual tribe transformations declared
