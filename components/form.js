@@ -63,6 +63,8 @@ const Form = (props) => {
     tribesTF,
     costTF,
     cardBase,
+    setBusy,
+    setUrl,
   ]);
 
   return (

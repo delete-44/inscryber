@@ -26,7 +26,7 @@ const Cost = (props) => {
   return (
     <section className="mb-10">
       <p className="mb-3">
-        There's always a <label htmlFor="cost">cost</label>...
+        There&apos;s always a <label htmlFor="cost">cost</label>...
       </p>
 
       <Select

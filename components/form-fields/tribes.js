@@ -43,7 +43,7 @@ const Tribes = (props) => {
     });
 
     setTribesTF(transformation);
-  }, [selectedTribes]);
+  }, [selectedTribes, setTribesTF]);
 
   return (
     <section className="mb-10">
