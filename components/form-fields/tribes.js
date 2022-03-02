@@ -59,6 +59,7 @@ const Tribes = (props) => {
                 type="checkbox"
                 name="tribes"
                 id={filename}
+                className="peer"
                 checked={!!selectedTribes[filename]}
                 onChange={(e) => {
                   setSelectedTribes({
@@ -67,7 +68,7 @@ const Tribes = (props) => {
                   });
                 }}
               />
-              <label htmlFor={filename} className="text-xl md:text-2xl">
+              <label htmlFor={filename} className="check-label">
                 {label}
               </label>
             </div>

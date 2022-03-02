@@ -18,12 +18,13 @@ const CardBase = (props) => {
                 type="radio"
                 name="card-base"
                 id={filename}
+                className="peer"
                 checked={props.base === filename}
                 onChange={() => {
                   setBase(filename);
                 }}
               />
-              <label htmlFor={filename} className="text-xl md:text-2xl">
+              <label htmlFor={filename} className="check-label">
                 {label}
               </label>
             </div>

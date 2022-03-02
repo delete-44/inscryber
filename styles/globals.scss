@@ -19,6 +19,9 @@
 @layer components {
   body {
     @apply bg-black;
+
+    @apply selection:text-black;
+    @apply selection:bg-orange-400;
   }
 
   // -----------------------------
@@ -120,6 +123,17 @@
 
   input[type="radio"] {
     @apply rounded-full;
+  }
+
+  .check-label {
+    text-shadow: none;
+    @apply text-xl;
+    @apply md:text-2xl;
+    @apply text-orange-100;
+
+    @apply peer-checked:text-orange-400;
+    @apply transition;
+    @apply duration-200;
   }
 
   // -----------------------------
