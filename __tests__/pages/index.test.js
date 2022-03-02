@@ -183,9 +183,7 @@ describe("Home", () => {
 
       expect(image.src).not.toMatch(/bird/);
 
-      const birdTribe = screen.getAllByRole("checkbox", {
-        name: /Bird/,
-      })[0];
+      const birdTribe = screen.getByRole("checkbox", { name: /Bird/ });
 
       userEvent.click(birdTribe);
 
