@@ -60,6 +60,23 @@ export const TRIBES = [
   { filename: "reptile", label: "Reptile" },
 ];
 
+export const COSTS = [
+  { filename: "blood_1", label: "1 Blood" },
+  { filename: "blood_2", label: "2 Blood" },
+  { filename: "blood_3", label: "3 Blood" },
+  { filename: "blood_4", label: "4 Blood" },
+  { filename: "bone_1", label: "1 Bone" },
+  { filename: "bone_2", label: "2 Bone" },
+  { filename: "bone_3", label: "3 Bone" },
+  { filename: "bone_4", label: "4 Bone" },
+  { filename: "bone_5", label: "5 Bone" },
+  { filename: "bone_6", label: "6 Bone" },
+  { filename: "bone_7", label: "7 Bone" },
+  { filename: "bone_8", label: "8 Bone" },
+  { filename: "bone_9", label: "9 Bone" },
+  { filename: "bone_10", label: "10 Bone" },
+];
+
 // Links for the ABOUT page
 export const LINKS = {
   delete44: "https://www.delete44.com/",
