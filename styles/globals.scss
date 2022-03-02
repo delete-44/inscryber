@@ -19,6 +19,9 @@
 @layer components {
   body {
     @apply bg-black;
+
+    @apply selection:text-black;
+    @apply selection:bg-orange-400;
   }
 
   // -----------------------------
