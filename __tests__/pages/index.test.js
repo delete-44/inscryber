@@ -183,9 +183,7 @@ describe("Home", () => {
 
       expect(image.src).not.toMatch(/bird/);
 
-      const birdTribe = screen.getAllByRole("checkbox", {
-        name: /Bird/,
-      })[0];
+      const birdTribe = screen.getByRole("checkbox", { name: /Bird/ });
 
       userEvent.click(birdTribe);
 
@@ -216,6 +214,27 @@ describe("Home", () => {
       });
 
       expect(image.src).toMatch(/rare/);
+    });
+
+    it("when cost", async () => {
+      const image = await screen.findByAltText("A preview of your custom card");
+
+      expect(image.src).not.toMatch(/blood/);
+
+      const costSelector = screen.getAllByRole("combobox", {
+        "aria-label": /Cost/,
+      })[2];
+
+      await selectEvent.select(costSelector, /1 Blood/);
+
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
+      expect(image.src).not.toMatch(/blood/);
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toMatch(/blood/);
     });
 
     it("when portrait", async () => {

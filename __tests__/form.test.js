@@ -43,11 +43,13 @@ describe("Form", () => {
       "aria-label": /Patches/,
     })[0];
 
-    const birdTribe = screen.getAllByRole("checkbox", {
-      name: /Bird/,
-    })[0];
+    const birdTribe = screen.getByRole("checkbox", { name: /Bird/ });
 
     const rareCardBack = screen.getAllByRole("radio")[1];
+
+    const cost = screen.getAllByRole("combobox", {
+      "aria-label": /Cost/,
+    })[0];
 
     const portrait = screen.getByLabelText("portrait");
 
@@ -58,6 +60,7 @@ describe("Form", () => {
     expect(patches).toBeInTheDocument();
     expect(birdTribe).toBeInTheDocument();
     expect(rareCardBack).toBeInTheDocument();
+    expect(cost).toBeInTheDocument();
     expect(portrait).toBeInTheDocument();
   });
 

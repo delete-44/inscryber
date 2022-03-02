@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import {
+  CARD_BASE,
+  CLOUDINARY_BASE,
+  DEBOUNCE_TIMER,
+} from "components/constants";
+
 import Name from "@form-fields/name";
 import Stats from "@form-fields/stats";
 import Sigils from "@form-fields/sigils";
@@ -7,11 +13,7 @@ import Portrait from "@form-fields/portrait";
 import Patches from "@form-fields/patches";
 import CardBase from "@form-fields/card-base";
 import Tribes from "@form-fields/tribes";
-import {
-  CARD_BASE,
-  CLOUDINARY_BASE,
-  DEBOUNCE_TIMER,
-} from "components/constants";
+import Cost from "@form-fields/cost";
 
 const Form = (props) => {
   // Transformations to be applied to the image
@@ -22,6 +24,7 @@ const Form = (props) => {
   const [portraitTF, setPortraitTF] = useState("");
   const [patchesTF, setPatchesTF] = useState("");
   const [tribesTF, setTribesTF] = useState("");
+  const [costTF, setCostTF] = useState("");
   const [cardBase, setCardBase] = useState("vladde");
 
   const { setBusy, setUrl } = props;
@@ -39,6 +42,7 @@ const Form = (props) => {
       const transformations = [
         portraitTF,
         tribesTF,
+        costTF,
         nameTF,
         powerTF,
         healthTF,
@@ -56,8 +60,11 @@ const Form = (props) => {
     sigilsTF,
     portraitTF,
     patchesTF,
-    cardBase,
     tribesTF,
+    costTF,
+    cardBase,
+    setBusy,
+    setUrl,
   ]);
 
   return (
@@ -79,6 +86,9 @@ const Form = (props) => {
 
       {/* Card back selector, ie rarity */}
       <CardBase base={cardBase} setBase={setCardBase} />
+
+      {/* Interim cost dropdown */}
+      <Cost setCostTF={setCostTF} />
 
       <Portrait setPortraitTF={setPortraitTF} />
     </div>
