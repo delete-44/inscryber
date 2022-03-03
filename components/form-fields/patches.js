@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Select from "react-select";
-import { SIGILS, SELECT_STYLES, SELECT_THEME } from "components/constants";
+import { SIGILS } from "components/constants";
+import MultiSelect from "components/multi-select";
 
 const Patches = (props) => {
   const [patches, setPatches] = useState([]);
   const { setPatchesTF } = props;
-
-  const maxOptions = 4;
 
   const options = [
     ...SIGILS.map((s) => {
@@ -53,27 +51,12 @@ const Patches = (props) => {
         from...
       </p>
 
-      {/* noOptions solution by @hrafaelveloso - https://github.com/JedWatson/react-select/issues/1341#issuecomment-521195152 */}
-      <Select
-        instanceId="patches-selector"
-        aria-label="patches"
-        options={patches.length === maxOptions ? [] : options}
-        noOptionsMessage={() => {
-          return patches.length === maxOptions
-            ? `Only ${maxOptions} patches can be applied at once.`
-            : "No options available.";
-        }}
-        isSearchable
-        isMulti
-        styles={SELECT_STYLES}
-        theme={SELECT_THEME}
-        value={patches}
-        onChange={(e) => {
-          // Allow maximum of 4 options to be selected
-          if (e.length <= maxOptions) {
-            setPatches(e);
-          }
-        }}
+      <MultiSelect
+        id="patches"
+        options={options}
+        maxOptions={4}
+        setSelected={setPatches}
+        selected={patches}
       />
     </section>
   );

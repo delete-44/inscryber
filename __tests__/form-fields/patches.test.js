@@ -21,12 +21,14 @@ describe("Patches", () => {
     expect(patchesField).toHaveTextContent("");
   });
 
-  it("renders a flavourful description", () => {
+  it("renders a flavourful description & help text", () => {
     const patchesFlavour = screen.getByText("Or ? I won't ask where from...");
     const patchesLabel = screen.getByText("patches");
+    const maxText = screen.getByText("4 maximum");
 
     expect(patchesFlavour).toBeInTheDocument();
     expect(patchesLabel).toBeInTheDocument();
+    expect(maxText).toBeInTheDocument();
   });
 
   it("correctly sets a transformation", async () => {
