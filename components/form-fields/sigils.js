@@ -4,7 +4,6 @@ import { SIGILS } from "components/constants";
 import MultiSelect from "components/multi-select";
 
 const Sigils = (props) => {
-  const [sigil, setSigil] = useState(null);
   const [sigils, setSigils] = useState([]);
   const { setSigilsTF } = props;
 
