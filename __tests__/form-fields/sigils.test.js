@@ -21,12 +21,14 @@ describe("Sigils", () => {
     expect(sigilsField).toHaveTextContent("");
   });
 
-  it("renders a flavourful description", () => {
+  it("renders a flavourful description & help text", () => {
     const sigilsFlavour = screen.getByText("Does this creature have any ?");
     const sigilsLabel = screen.getByText("sigils");
+    const maxText = screen.getByText("2 maximum");
 
     expect(sigilsFlavour).toBeInTheDocument();
     expect(sigilsLabel).toBeInTheDocument();
+    expect(maxText).toBeInTheDocument();
   });
 
   it("correctly sets a single transformation", async () => {
