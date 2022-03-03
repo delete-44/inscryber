@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Select from "react-select";
+import { SELECT_STYLES, SELECT_THEME } from "components/constants";
 
 const MultiSelect = (props) => {
   const { id, options, maxOptions, setSelected } = props;
@@ -31,6 +33,14 @@ const MultiSelect = (props) => {
       <small className="text-orange-100">{maxOptions} maximum</small>
     </>
   );
+};
+
+MultiSelect.propTypes = {
+  id: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
+  maxOptions: PropTypes.number.isRequired,
+  setSelected: PropTypes.func.isRequired,
+  selected: PropTypes.array.isRequired,
 };
 
 export default MultiSelect;
