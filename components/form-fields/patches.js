@@ -75,6 +75,8 @@ const Patches = (props) => {
           }
         }}
       />
+
+      <small className="text-orange-100">{maxOptions} maximum</small>
     </section>
   );
 };
