@@ -5,6 +5,7 @@ import { SELECT_STYLES, SELECT_THEME } from "components/constants";
 
 const MultiSelect = (props) => {
   const { id, options, maxOptions, setSelected } = props;
+
   return (
     <>
       {/* noOptions solution by @hrafaelveloso - https://github.com/JedWatson/react-select/issues/1341#issuecomment-521195152 */}
