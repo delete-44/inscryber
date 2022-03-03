@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Sigils from "@form-fields/sigils";
 import selectEvent from "react-select-event";
+import userEvent from "@testing-library/user-event";
 
 describe("Sigils", () => {
   const mockCallback = jest.fn();
@@ -28,7 +29,7 @@ describe("Sigils", () => {
     expect(sigilsLabel).toBeInTheDocument();
   });
 
-  it("correctly sets a transformation", async () => {
+  it("correctly sets a single transformation", async () => {
     const sigilsField = screen.getByRole("combobox", {
       "aria-label": /Sigils/,
     });
@@ -38,15 +39,43 @@ describe("Sigils", () => {
     expect(mockCallback).toHaveBeenLastCalledWith(
       "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
     );
-
-    // await selectEvent.select(sigilsField, /Bifurcated Strike/);
-
-    // expect(mockCallback).toHaveBeenLastCalledWith(
-    //   "l_Inscryption:ResizedSigils:bifurcated_strike/fl_layer_apply,g_south,y_64/"
-    // );
   });
 
-  it("completely removes the transformation when field is empty", async () => {
+  it("correctly sets multiple transformations", async () => {
+    const sigilsField = screen.getByRole("combobox", {
+      "aria-label": /Sigils/,
+    });
+
+    await selectEvent.select(sigilsField, /Airborne/);
+
+    expect(mockCallback).toHaveBeenCalledTimes(1);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
+    );
+
+    await selectEvent.select(sigilsField, /Bifurcated Strike/);
+
+    expect(mockCallback).toHaveBeenCalledTimes(2);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedSigils:airborne/w_180,c_scale/fl_layer_apply,g_south,y_39,x_-75/" +
+        "l_Inscryption:ResizedSigils:bifurcated_strike/w_180,c_scale/fl_layer_apply,g_south,y_150,x_75/"
+    );
+
+    // It does not set additional sigils & renders warning to user
+    await selectEvent.select(sigilsField, /Bifurcated Strike/);
+
+    expect(
+      screen.getByText(/Only 2 sigils can be applied at once./)
+    ).toBeInTheDocument();
+
+    expect(mockCallback).toHaveBeenCalledTimes(2);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryption:ResizedSigils:airborne/w_180,c_scale/fl_layer_apply,g_south,y_39,x_-75/" +
+        "l_Inscryption:ResizedSigils:bifurcated_strike/w_180,c_scale/fl_layer_apply,g_south,y_150,x_75/"
+    );
+  });
+
+  it("removes the transformation when clear field is clicked", async () => {
     const sigilsField = screen.getByRole("combobox", {
       "aria-label": /Sigils/,
     });
@@ -57,9 +86,12 @@ describe("Sigils", () => {
       "l_Inscryption:ResizedSigils:airborne/fl_layer_apply,g_south,y_64/"
     );
 
-    // await selectEvent.select(sigilsField, /No sigils/);
+    const removeButton = screen.getByRole("button", {
+      name: "Remove Airborne",
+    });
+    userEvent.click(removeButton);
 
-    // expect(mockCallback).toHaveBeenLastCalledWith("");
+    expect(mockCallback).toHaveBeenLastCalledWith("");
   });
 
   it("renders an option for each sigil", async () => {
@@ -68,8 +100,6 @@ describe("Sigils", () => {
     });
 
     selectEvent.openMenu(sigilsField);
-
-    // expect(screen.getByText(/No sigil/)).toBeInTheDocument();
 
     expect(screen.getByText(/Airborne/)).toBeInTheDocument();
     expect(screen.getByText(/Ant Spawner/)).toBeInTheDocument();
