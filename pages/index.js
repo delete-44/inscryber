@@ -44,7 +44,7 @@ export default function Home() {
 
         <small className="text-orange-100 text-center mt-2">
           To download this image, right click (or long press on mobile devices)
-          and select "Save Image As".
+          and select &quot;Save Image As&quot;.
         </small>
       </div>
     </GridLayout>
