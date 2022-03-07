@@ -74,7 +74,7 @@ describe("Home", () => {
     });
 
     // Confirm image contains both transformations
-    expect(image.src).toMatch(/HEAVYWEIGHT.ttf_128/);
+    expect(image.src).toMatch(/VICIOUSHUNGER.ttf_128/);
     expect(image.src).toMatch(/HEAVYWEIGHT.ttf_196/);
   });
 
@@ -82,7 +82,7 @@ describe("Home", () => {
     it("when name", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_128/);
+      expect(image.src).not.toMatch(/VICIOUSHUNGER.ttf_128/);
 
       const nameField = screen.getByRole("textbox", {
         name: /Name/,
@@ -93,13 +93,13 @@ describe("Home", () => {
       });
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_128/);
+      expect(image.src).not.toMatch(/VICIOUSHUNGER.ttf_128/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/HEAVYWEIGHT.ttf_128/);
+      expect(image.src).toMatch(/VICIOUSHUNGER.ttf_128/);
     });
 
     it("when power", async () => {
