@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import Name from "@form-fields/name";
-import { HEAVYWEIGHT } from "components/constants";
+import { VICIOUS_HUNGER } from "components/constants";
 
 const SHORT_STRING_TRANSFORMATION =
   "w_560,h_115,c_fit/fl_layer_apply,y_48,g_north/";
@@ -42,7 +42,7 @@ describe("Name", () => {
     userEvent.type(nameField, "123456789");
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      `l_text:${HEAVYWEIGHT}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
+      `l_text:${VICIOUS_HUNGER}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
     );
   });
 
@@ -54,7 +54,7 @@ describe("Name", () => {
     userEvent.type(nameField, "123456789012");
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      `l_text:${HEAVYWEIGHT}_128:123456789012,${LONG_STRING_TRANSFORMATION}`
+      `l_text:${VICIOUS_HUNGER}_128:123456789012,${LONG_STRING_TRANSFORMATION}`
     );
   });
 
@@ -66,7 +66,7 @@ describe("Name", () => {
     userEvent.type(nameField, "Test String");
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      `l_text:${HEAVYWEIGHT}_128:Test%20String,${SHORT_STRING_TRANSFORMATION}`
+      `l_text:${VICIOUS_HUNGER}_128:Test%20String,${SHORT_STRING_TRANSFORMATION}`
     );
   });
 
@@ -78,7 +78,7 @@ describe("Name", () => {
     userEvent.type(nameField, "123456789");
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      `l_text:${HEAVYWEIGHT}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
+      `l_text:${VICIOUS_HUNGER}_128:123456789,${SHORT_STRING_TRANSFORMATION}`
     );
 
     userEvent.type(nameField, "{selectall}{backspace}");
