@@ -8,6 +8,16 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Local Development
 
+Create a `.env.local` file in the root of the app with the following variables declared:
+
+```bash
+NEXT_PUBLIC_CLOUDINARY_NAME=inscryber-staging
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=inscryber-art-preset
+SITE_URL=https://www.inscryber.delete44.com/
+```
+
+These will connect you to the staging Cloudinary account to tests changes without impacting production data.
+
 Run the development server with
 
 ```bash
