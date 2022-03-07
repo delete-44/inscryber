@@ -20,6 +20,18 @@ describe("Home", () => {
     jest.useRealTimers();
   });
 
+  it("renders basic page layout", async () => {
+    const h1 = screen.getByRole("heading", { name: "Inscryber" });
+    const image = await screen.findByAltText("A preview of your custom card");
+    const imageHelpText = screen.getByText(
+      /To download this image, right click \(or long press on mobile devices\) and select "Save Image As"./
+    );
+
+    expect(h1).toBeInTheDocument();
+    expect(image).toBeInTheDocument();
+    expect(imageHelpText).toBeInTheDocument();
+  });
+
   it("mocks the image url to avoid contacting cloudinary", async () => {
     const image = await screen.findByAltText("A preview of your custom card");
 

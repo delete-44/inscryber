@@ -26,7 +26,7 @@ export default function Home() {
       <Form setBusy={setBusy} setUrl={setUrl} />
 
       {/* Right column */}
-      <div className="width-full flex justify-center relative mt-16 md:mt-0 h-min sticky top-4">
+      <div className="width-full flex flex-col justify-center relative mt-16 md:mt-0 h-min sticky top-4">
         <Spinner hidden={!busy} />
 
         <Image
@@ -41,6 +41,11 @@ export default function Home() {
             setBusy(false);
           }}
         />
+
+        <small className="text-orange-100 text-center mt-2">
+          To download this image, right click (or long press on mobile devices)
+          and select "Save Image As".
+        </small>
       </div>
     </GridLayout>
   );
