@@ -47,7 +47,7 @@ describe("Portrait", () => {
     );
     const aboutLink = screen.getByRole("link", { name: "about page" });
     const helpText = screen.getByText(
-      /Images are scaled to fit dimensions 624x512. For best results, use an image at least this size, with a transparent background./
+      /Images are scaled to fit dimensions 625x514. For best results, use an image at least this size, with a transparent background./
     );
 
     expect(privacyText).toBeInTheDocument();

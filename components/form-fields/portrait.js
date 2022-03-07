@@ -33,7 +33,7 @@ const Portrait = (props) => {
         </Link>{" "}
         before uploading.
         <br />
-        Images are scaled to fit dimensions 624x512. For best results, use an
+        Images are scaled to fit dimensions 625x514. For best results, use an
         image at least this size, with a transparent background.
         <br />
       </small>
