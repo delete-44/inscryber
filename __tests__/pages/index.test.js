@@ -198,20 +198,20 @@ describe("Home", () => {
     it("when tribes", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/bird/);
+      expect(image.src).not.toMatch(/t_tribe_1/);
 
       const birdTribe = screen.getByRole("checkbox", { name: /Bird/ });
 
       userEvent.click(birdTribe);
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/bird/);
+      expect(image.src).not.toMatch(/t_tribe_1/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/bird/);
+      expect(image.src).toMatch(/t_tribe_1/);
     });
 
     it("when card bases", async () => {
