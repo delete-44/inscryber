@@ -22,7 +22,7 @@ const Stats = (props) => {
           `l_text:${HEAVYWEIGHT}_196:` +
             `${encodeURIComponent(power)},` +
             `c_scale,w_${getWidth(power)}` +
-            `/fl_layer_apply,g_south_west,x_72,y_156/`
+            `/t_power/`
         );
   }, [power, setPowerTF]);
 
@@ -33,7 +33,7 @@ const Stats = (props) => {
           `l_text:${HEAVYWEIGHT}_196:` +
             `${encodeURIComponent(health)},` +
             `c_scale,w_${getWidth(health)}` +
-            `/fl_layer_apply,g_south_east,x_60,y_86/`
+            `/t_health/`
         );
   }, [health, setHealthTF]);
 
