@@ -102,7 +102,7 @@ describe("Form", () => {
     expect(mockSetUrl).toHaveBeenLastCalledWith(
       "https://test/" +
         "l_text:Inscryption:VICIOUSHUNGER.ttf_128:9/t_name_short/" +
-        "l_text:Inscryption:HEAVYWEIGHT.ttf_196:123456789,c_scale,w_100/fl_layer_apply,g_south_west,x_72,y_156/" +
+        "l_text:Inscryption:HEAVYWEIGHT.ttf_196:123456789,c_scale,w_100/t_power/" +
         "Inscryption/blank_vladde"
     );
     expect(mockSetBusy).toBeCalledWith(true);

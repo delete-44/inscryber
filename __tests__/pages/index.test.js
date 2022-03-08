@@ -50,14 +50,17 @@ describe("Home", () => {
       name: /Power/,
     });
 
-    expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf/);
+    expect(image.src).not.toMatch(/t_name_short/);
+    expect(image.src).not.toMatch(/t_power/);
 
     await act(async () => {
       userEvent.type(nameField, "123456789");
     });
 
     jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-    expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf/);
+
+    expect(image.src).not.toMatch(/t_name_short/);
+    expect(image.src).not.toMatch(/t_power/);
 
     // Make a change before timer runs out
     await act(async () => {
@@ -66,7 +69,9 @@ describe("Home", () => {
 
     // Confirm that image does not change
     jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-    expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf/);
+
+    expect(image.src).not.toMatch(/t_name_short/);
+    expect(image.src).not.toMatch(/t_power/);
 
     // Allow timer to finish
     await act(async () => {
@@ -75,7 +80,7 @@ describe("Home", () => {
 
     // Confirm image contains both transformations
     expect(image.src).toMatch(/t_name_short/);
-    expect(image.src).toMatch(/HEAVYWEIGHT.ttf_196/);
+    expect(image.src).toMatch(/t_power/);
   });
 
   describe("staggering individual form fields", () => {
@@ -105,7 +110,7 @@ describe("Home", () => {
     it("when power", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_196/);
+      expect(image.src).not.toMatch(/t_power/);
 
       const powerField = screen.getByRole("spinbutton", {
         name: /Power/,
@@ -116,19 +121,19 @@ describe("Home", () => {
       });
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_196/);
+      expect(image.src).not.toMatch(/t_power/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/HEAVYWEIGHT.ttf_196/);
+      expect(image.src).toMatch(/t_power/);
     });
 
     it("when health", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_196/);
+      expect(image.src).not.toMatch(/t_health/);
 
       const healthField = screen.getByRole("spinbutton", {
         name: /Health/,
@@ -139,13 +144,13 @@ describe("Home", () => {
       });
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/HEAVYWEIGHT.ttf_196/);
+      expect(image.src).not.toMatch(/t_health/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/HEAVYWEIGHT.ttf_196/);
+      expect(image.src).toMatch(/t_health/);
     });
 
     it("when sigils", async () => {
