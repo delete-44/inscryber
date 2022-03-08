@@ -101,7 +101,7 @@ describe("Form", () => {
     // Confirm image contains both transformations
     expect(mockSetUrl).toHaveBeenLastCalledWith(
       "https://test/" +
-        "l_text:Inscryption:VICIOUSHUNGER.ttf_128:9,w_560,h_115,c_fit/fl_layer_apply,y_48,g_north/" +
+        "l_text:Inscryption:VICIOUSHUNGER.ttf_128:9/t_name_short/" +
         "l_text:Inscryption:HEAVYWEIGHT.ttf_196:123456789,c_scale,w_100/fl_layer_apply,g_south_west,x_72,y_156/" +
         "Inscryption/blank_vladde"
     );
