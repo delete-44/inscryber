@@ -27,19 +27,10 @@ const Tribes = (props) => {
     // Apply each one in a transformation
     let transformation = "";
 
-    // Declare transformations for each tribe
-    const tribeTransformations = [
-      "o_30/fl_layer_apply,g_north_west,y_32/",
-      "o_30/fl_layer_apply,g_north,y_32/",
-      "o_30/fl_layer_apply,g_north_east,y_32/",
-      "o_30/fl_layer_apply,g_west,y_96,x_96/",
-      "o_30/fl_layer_apply,g_east,y_96,x_96/",
-    ];
-
-    // Create full TF from individual tribe transformations declared
-    // in tribeTransformations. Each line pertains to a tribe
+    // Add transformation for each tribe. Transformations
+    // are named in Cloudinary in the form tribe_x
     checkedTribes.forEach((t, i) => {
-      transformation += `l_Inscryption:ResizedTribes:${t}/${tribeTransformations[i]}`;
+      transformation += `l_Inscryption:ResizedTribes:${t}/t_tribe_${++i}/`;
     });
 
     setTribesTF(transformation);

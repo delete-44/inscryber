@@ -198,20 +198,20 @@ describe("Home", () => {
     it("when tribes", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/bird/);
+      expect(image.src).not.toMatch(/t_tribe_1/);
 
       const birdTribe = screen.getByRole("checkbox", { name: /Bird/ });
 
       userEvent.click(birdTribe);
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/bird/);
+      expect(image.src).not.toMatch(/t_tribe_1/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/bird/);
+      expect(image.src).toMatch(/t_tribe_1/);
     });
 
     it("when card bases", async () => {
@@ -236,7 +236,7 @@ describe("Home", () => {
     it("when cost", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/blood/);
+      expect(image.src).not.toMatch(/t_cost/);
 
       const costSelector = screen.getAllByRole("combobox", {
         "aria-label": /Cost/,
@@ -245,13 +245,13 @@ describe("Home", () => {
       await selectEvent.select(costSelector, /1 Blood/);
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/blood/);
+      expect(image.src).not.toMatch(/t_cost/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/blood/);
+      expect(image.src).toMatch(/t_cost/);
     });
 
     it("when portrait", async () => {
@@ -264,7 +264,7 @@ describe("Home", () => {
       const testFile = new File(["Test"], "test.png", { type: "image/png" });
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+      expect(image.src).not.toMatch(/t_portrait/);
 
       const fileField = screen.getByLabelText("portrait");
 
@@ -277,13 +277,13 @@ describe("Home", () => {
       });
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+      expect(image.src).not.toMatch(/t_portrait/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+      expect(image.src).toMatch(/t_portrait/);
     });
 
     it("when inscrybed portrait", async () => {
@@ -296,7 +296,7 @@ describe("Home", () => {
       const testFile = new File(["Test"], "test.png", { type: "image/png" });
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+      expect(image.src).not.toMatch(/t_inscrybed/);
 
       const fileField = screen.getByLabelText("portrait");
 
@@ -309,7 +309,7 @@ describe("Home", () => {
       });
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+      expect(image.src).not.toMatch(/t_inscrybed/);
 
       const inscryberCheck = screen.getByRole("checkbox", {
         name: "Inscrybe Image",
@@ -321,13 +321,13 @@ describe("Home", () => {
         jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       });
 
-      expect(image.src).not.toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+      expect(image.src).not.toMatch(/t_inscrybed/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/test%2Fl_fake%3Aimage%3Areturned/);
+      expect(image.src).toMatch(/t_inscrybed/);
     });
   });
 });

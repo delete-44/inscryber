@@ -103,7 +103,7 @@ describe("Portrait", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(mockCallback).toHaveBeenCalledTimes(1);
         expect(mockCallback).toHaveBeenLastCalledWith(
-          "l_fake:image:returned/fl_layer_apply,y_-80/"
+          "l_fake:image:returned/t_portrait/"
         );
 
         expect(fileField).not.toBeDisabled();
@@ -125,7 +125,7 @@ describe("Portrait", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(mockCallback).toHaveBeenCalledTimes(1);
         expect(mockCallback).toHaveBeenLastCalledWith(
-          "l_fake:image:returned/fl_layer_apply,y_-80/"
+          "l_fake:image:returned/t_portrait/"
         );
       });
 
@@ -133,14 +133,14 @@ describe("Portrait", () => {
 
       expect(mockCallback).toHaveBeenCalledTimes(2);
       expect(mockCallback).toHaveBeenLastCalledWith(
-        "l_fake:image:returned/e_pixelate:5/e_oil_paint:80/e_saturation:-90/fl_layer_apply,y_-80/"
+        "l_fake:image:returned/t_inscrybed/t_portrait/"
       );
 
       userEvent.click(inscryberCheck);
 
       expect(mockCallback).toHaveBeenCalledTimes(3);
       expect(mockCallback).toHaveBeenLastCalledWith(
-        "l_fake:image:returned/fl_layer_apply,y_-80/"
+        "l_fake:image:returned/t_portrait/"
       );
     });
 
@@ -153,7 +153,7 @@ describe("Portrait", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
 
         expect(mockCallback).toHaveBeenLastCalledWith(
-          "l_fake:image:returned/fl_layer_apply,y_-80/"
+          "l_fake:image:returned/t_portrait/"
         );
       });
     });

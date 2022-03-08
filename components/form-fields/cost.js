@@ -20,7 +20,7 @@ const Cost = (props) => {
   useEffect(() => {
     cost === null || cost.value === ""
       ? setCostTF("")
-      : setCostTF(`l_${cost.value}/fl_layer_apply,g_north_east,x_32,y_110/`);
+      : setCostTF(`l_${cost.value}/t_cost/`);
   }, [cost, setCostTF]);
 
   return (

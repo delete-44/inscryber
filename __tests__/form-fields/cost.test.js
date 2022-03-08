@@ -36,13 +36,13 @@ describe("Cost", () => {
     await selectEvent.select(costField, /1 Blood/);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedCosts:blood_1/fl_layer_apply,g_north_east,x_32,y_110/"
+      "l_Inscryption:ResizedCosts:blood_1/t_cost/"
     );
 
     await selectEvent.select(costField, /1 Bone/);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedCosts:bone_1/fl_layer_apply,g_north_east,x_32,y_110/"
+      "l_Inscryption:ResizedCosts:bone_1/t_cost/"
     );
   });
 
@@ -54,7 +54,7 @@ describe("Cost", () => {
     await selectEvent.select(costField, /8 Bones/);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedCosts:bone_8/fl_layer_apply,g_north_east,x_32,y_110/"
+      "l_Inscryption:ResizedCosts:bone_8/t_cost/"
     );
 
     await selectEvent.select(costField, /Free/);
