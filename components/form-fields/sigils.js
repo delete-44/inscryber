@@ -24,7 +24,7 @@ const Sigils = (props) => {
 
     // Single sigils are larger and central than multiple sigils
     if (sigils.length === 1) {
-      setSigilsTF(`l_${sigils[0].value}/fl_layer_apply,g_south,y_64/`);
+      setSigilsTF(`l_${sigils[0].value}/t_sigil/`);
       return;
     }
 
@@ -33,17 +33,10 @@ const Sigils = (props) => {
     const sigilValues = sigils.map((p) => p.value);
     let transformation = "";
 
-    const commonTransformations = "w_180,c_scale/fl_layer_apply,g_south,";
-    // Declare transformations for each patch
-    const sigilTransformations = [
-      `${commonTransformations}y_39,x_-75/`,
-      `${commonTransformations}y_150,x_75/`,
-    ];
-
-    // Create full TF from individual sigil transformations declared
-    // in sigilTransformations. Each line pertains to a patch
-    sigilValues.forEach((p, i) => {
-      transformation += `l_${p}/${sigilTransformations[i]}`;
+    // Add transformation for each sigil. Transformations
+    // are named in Cloudinary in the form sigil_x
+    sigilValues.forEach((s, i) => {
+      transformation += `l_${s}/t_sigil_${++i}/`;
     });
 
     setSigilsTF(transformation);

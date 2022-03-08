@@ -27,7 +27,7 @@ const Patches = (props) => {
     const patchValues = patches.map((p) => p.value);
     let transformation = "";
 
-    // Add transformation for each sigil. Transformations
+    // Add transformation for each patch. Transformations
     // are named in Cloudinary in the form patch_x
     patchValues.forEach((p, i) => {
       transformation += `l_${p}/t_patch_${++i}/`;
