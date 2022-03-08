@@ -236,7 +236,7 @@ describe("Home", () => {
     it("when cost", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/blood/);
+      expect(image.src).not.toMatch(/t_cost/);
 
       const costSelector = screen.getAllByRole("combobox", {
         "aria-label": /Cost/,
@@ -245,13 +245,13 @@ describe("Home", () => {
       await selectEvent.select(costSelector, /1 Blood/);
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/blood/);
+      expect(image.src).not.toMatch(/t_cost/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/blood/);
+      expect(image.src).toMatch(/t_cost/);
     });
 
     it("when portrait", async () => {
