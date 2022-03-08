@@ -29,7 +29,7 @@ const Patches = (props) => {
 
     // Declare transformations for each patch
     const patchTransformations = [
-      "fl_layer_apply,g_north_west,y_148,x_32/",
+      "t_patch_1/",
       "fl_layer_apply,g_west,y_10,x_48/",
       "fl_layer_apply,g_east,y_-96,x_28/",
       "a_-20/fl_layer_apply,g_north,x_64/",
@@ -38,7 +38,7 @@ const Patches = (props) => {
     // Create full TF from individual sigil transformations declared
     // in patchTransformations. Each line pertains to a patch
     patchValues.forEach((p, i) => {
-      transformation += `l_${p}/${patchTransformations[i]}`;
+      transformation += `l_${p}/t_patch_${i + 1}/`;
     });
 
     setPatchesTF(transformation);
