@@ -151,7 +151,7 @@ describe("Home", () => {
     it("when sigils", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/airborne/);
+      expect(image.src).not.toMatch(/sigil/);
 
       const sigilsField = screen.getAllByRole("combobox", {
         "aria-label": /Sigils/,
@@ -160,13 +160,13 @@ describe("Home", () => {
       await selectEvent.select(sigilsField, /Airborne/);
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/airborne/);
+      expect(image.src).not.toMatch(/sigil/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/airborne/);
+      expect(image.src).toMatch(/sigil/);
     });
 
     it("when patches", async () => {
