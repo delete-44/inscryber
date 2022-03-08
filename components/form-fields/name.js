@@ -12,12 +12,8 @@ const Name = (props) => {
       ? setNameTF("")
       : setNameTF(
           `l_text:${VICIOUS_HUNGER}_128:` +
-            `${encodeURIComponent(name)},` +
-            `${
-              name.length < 12
-                ? "w_560,h_115,c_fit/fl_layer_apply,y_48,g_north/"
-                : "w_580,h_75,c_scale/fl_layer_apply,y_64,g_north/"
-            }`
+            `${encodeURIComponent(name)}/` +
+            `t_name_${name.length < 12 ? "short" : "long"}/`
         );
   }, [name, setNameTF]);
 

@@ -47,7 +47,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "1");
 
       expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:1,c_scale,w_50/fl_layer_apply,g_south_west,x_72,y_156/`
+        `l_text:${HEAVYWEIGHT}_196:1,c_scale,w_50/t_power/`
       );
     });
 
@@ -59,7 +59,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "2");
 
       expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:2,c_scale,w_65/fl_layer_apply,g_south_west,x_72,y_156/`
+        `l_text:${HEAVYWEIGHT}_196:2,c_scale,w_65/t_power/`
       );
     });
 
@@ -71,14 +71,14 @@ describe("Stats", () => {
       userEvent.type(powerField, "10");
 
       expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:10,c_scale,w_80/fl_layer_apply,g_south_west,x_72,y_156/`
+        `l_text:${HEAVYWEIGHT}_196:10,c_scale,w_80/t_power/`
       );
 
       userEvent.type(powerField, "{selectall}{backspace}");
       userEvent.type(powerField, "99");
 
       expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:99,c_scale,w_80/fl_layer_apply,g_south_west,x_72,y_156/`
+        `l_text:${HEAVYWEIGHT}_196:99,c_scale,w_80/t_power/`
       );
     });
 
@@ -90,7 +90,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "100");
 
       expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:100,c_scale,w_100/fl_layer_apply,g_south_west,x_72,y_156/`
+        `l_text:${HEAVYWEIGHT}_196:100,c_scale,w_100/t_power/`
       );
     });
   });
@@ -114,7 +114,7 @@ describe("Stats", () => {
       userEvent.type(powerField, "9");
 
       expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/fl_layer_apply,g_south_west,x_72,y_156/`
+        `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/t_power/`
       );
 
       userEvent.type(powerField, "{selectall}{backspace}");
@@ -142,7 +142,7 @@ describe("Stats", () => {
       userEvent.type(healthField, "9");
 
       expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/fl_layer_apply,g_south_east,x_60,y_86/`
+        `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/t_health/`
       );
 
       userEvent.type(healthField, "{selectall}{backspace}");
