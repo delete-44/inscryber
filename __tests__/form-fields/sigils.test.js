@@ -39,7 +39,7 @@ describe("Sigils", () => {
     await selectEvent.select(sigilsField, /Airborne/);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedSigils:airborne/t_sigil/"
+      "l_Inscryber:Sigils:v1:airborne/t_sigil/"
     );
   });
 
@@ -52,15 +52,15 @@ describe("Sigils", () => {
 
     expect(mockCallback).toHaveBeenCalledTimes(1);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedSigils:airborne/t_sigil/"
+      "l_Inscryber:Sigils:v1:airborne/t_sigil/"
     );
 
     await selectEvent.select(sigilsField, /Bifurcated Strike/);
 
     expect(mockCallback).toHaveBeenCalledTimes(2);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedSigils:airborne/t_sigil_1/" +
-        "l_Inscryption:ResizedSigils:bifurcated_strike/t_sigil_2/"
+      "l_Inscryber:Sigils:v1:airborne/t_sigil_1/" +
+        "l_Inscryber:Sigils:v1:bifurcated_strike/t_sigil_2/"
     );
 
     // It does not set additional sigils & renders warning to user
@@ -72,8 +72,8 @@ describe("Sigils", () => {
 
     expect(mockCallback).toHaveBeenCalledTimes(2);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedSigils:airborne/t_sigil_1/" +
-        "l_Inscryption:ResizedSigils:bifurcated_strike/t_sigil_2/"
+      "l_Inscryber:Sigils:v1:airborne/t_sigil_1/" +
+        "l_Inscryber:Sigils:v1:bifurcated_strike/t_sigil_2/"
     );
   });
 
@@ -85,7 +85,7 @@ describe("Sigils", () => {
     await selectEvent.select(sigilsField, /Airborne/);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedSigils:airborne/t_sigil/"
+      "l_Inscryber:Sigils:v1:airborne/t_sigil/"
     );
 
     const removeButton = screen.getByRole("button", {
