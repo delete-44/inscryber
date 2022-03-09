@@ -1,10 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Select from "react-select";
-import { SELECT_STYLES, SELECT_THEME } from "components/constants";
+import { SELECT_STYLES, SELECT_THEME, SIGILS } from "components/constants";
 
 const MultiSelect = (props) => {
-  const { id, options, maxOptions, setSelected } = props;
+  const { id, maxOptions, setSelected } = props;
+
+  const options = [
+    ...SIGILS.map((s) => {
+      return {
+        value: s.filename,
+        label: s.label,
+      };
+    }),
+  ];
 
   return (
     <>
@@ -38,7 +47,6 @@ const MultiSelect = (props) => {
 
 MultiSelect.propTypes = {
   id: PropTypes.string.isRequired,
-  options: PropTypes.array.isRequired,
   maxOptions: PropTypes.number.isRequired,
   setSelected: PropTypes.func.isRequired,
   selected: PropTypes.array.isRequired,
