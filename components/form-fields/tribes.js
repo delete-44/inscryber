@@ -30,7 +30,7 @@ const Tribes = (props) => {
     // Add transformation for each tribe. Transformations
     // are named in Cloudinary in the form tribe_x
     checkedTribes.forEach((t, i) => {
-      transformation += `l_Inscryption:ResizedTribes:${t}/t_tribe_${++i}/`;
+      transformation += `l_Inscryber:Tribes:v1:${t}/t_tribe_${++i}/`;
     });
 
     setTribesTF(transformation);

@@ -41,7 +41,7 @@ describe("Tribes", () => {
     userEvent.click(birdField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:bird/t_tribe_1/"
+      "l_Inscryber:Tribes:v1:bird/t_tribe_1/"
     );
   });
 
@@ -52,20 +52,20 @@ describe("Tribes", () => {
     userEvent.click(birdField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:bird/t_tribe_1/"
+      "l_Inscryber:Tribes:v1:bird/t_tribe_1/"
     );
 
     userEvent.click(canineField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:bird/t_tribe_1/" +
-        "l_Inscryption:ResizedTribes:canine/t_tribe_2/"
+      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
+        "l_Inscryber:Tribes:v1:canine/t_tribe_2/"
     );
 
     userEvent.click(canineField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:bird/t_tribe_1/"
+      "l_Inscryber:Tribes:v1:bird/t_tribe_1/"
     );
   });
 
@@ -77,22 +77,22 @@ describe("Tribes", () => {
     userEvent.click(reptileField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:reptile/t_tribe_1/"
+      "l_Inscryber:Tribes:v1:reptile/t_tribe_1/"
     );
 
     userEvent.click(birdField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:bird/t_tribe_1/" +
-        "l_Inscryption:ResizedTribes:reptile/t_tribe_2/"
+      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
+        "l_Inscryber:Tribes:v1:reptile/t_tribe_2/"
     );
 
     userEvent.click(hoovedField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:bird/t_tribe_1/" +
-        "l_Inscryption:ResizedTribes:hooved/t_tribe_2/" +
-        "l_Inscryption:ResizedTribes:reptile/t_tribe_3/"
+      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
+        "l_Inscryber:Tribes:v1:hooved/t_tribe_2/" +
+        "l_Inscryber:Tribes:v1:reptile/t_tribe_3/"
     );
   });
 
@@ -110,11 +110,11 @@ describe("Tribes", () => {
     userEvent.click(reptileField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:bird/t_tribe_1/" +
-        "l_Inscryption:ResizedTribes:canine/t_tribe_2/" +
-        "l_Inscryption:ResizedTribes:hooved/t_tribe_3/" +
-        "l_Inscryption:ResizedTribes:insect/t_tribe_4/" +
-        "l_Inscryption:ResizedTribes:reptile/t_tribe_5/"
+      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
+        "l_Inscryber:Tribes:v1:canine/t_tribe_2/" +
+        "l_Inscryber:Tribes:v1:hooved/t_tribe_3/" +
+        "l_Inscryber:Tribes:v1:insect/t_tribe_4/" +
+        "l_Inscryber:Tribes:v1:reptile/t_tribe_5/"
     );
   });
 
@@ -128,50 +128,50 @@ describe("Tribes", () => {
     userEvent.click(canineField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:canine/t_tribe_1/"
+      "l_Inscryber:Tribes:v1:canine/t_tribe_1/"
     );
 
     userEvent.click(reptileField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:canine/t_tribe_1/" +
-        "l_Inscryption:ResizedTribes:reptile/t_tribe_2/"
+      "l_Inscryber:Tribes:v1:canine/t_tribe_1/" +
+        "l_Inscryber:Tribes:v1:reptile/t_tribe_2/"
     );
 
     userEvent.click(birdField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:bird/t_tribe_1/" +
-        "l_Inscryption:ResizedTribes:canine/t_tribe_2/" +
-        "l_Inscryption:ResizedTribes:reptile/t_tribe_3/"
+      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
+        "l_Inscryber:Tribes:v1:canine/t_tribe_2/" +
+        "l_Inscryber:Tribes:v1:reptile/t_tribe_3/"
     );
 
     userEvent.click(insectField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:bird/t_tribe_1/" +
-        "l_Inscryption:ResizedTribes:canine/t_tribe_2/" +
-        "l_Inscryption:ResizedTribes:insect/t_tribe_3/" +
-        "l_Inscryption:ResizedTribes:reptile/t_tribe_4/"
+      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
+        "l_Inscryber:Tribes:v1:canine/t_tribe_2/" +
+        "l_Inscryber:Tribes:v1:insect/t_tribe_3/" +
+        "l_Inscryber:Tribes:v1:reptile/t_tribe_4/"
     );
 
     userEvent.click(hoovedField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:bird/t_tribe_1/" +
-        "l_Inscryption:ResizedTribes:canine/t_tribe_2/" +
-        "l_Inscryption:ResizedTribes:hooved/t_tribe_3/" +
-        "l_Inscryption:ResizedTribes:insect/t_tribe_4/" +
-        "l_Inscryption:ResizedTribes:reptile/t_tribe_5/"
+      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
+        "l_Inscryber:Tribes:v1:canine/t_tribe_2/" +
+        "l_Inscryber:Tribes:v1:hooved/t_tribe_3/" +
+        "l_Inscryber:Tribes:v1:insect/t_tribe_4/" +
+        "l_Inscryber:Tribes:v1:reptile/t_tribe_5/"
     );
 
     userEvent.click(birdField);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedTribes:canine/t_tribe_1/" +
-        "l_Inscryption:ResizedTribes:hooved/t_tribe_2/" +
-        "l_Inscryption:ResizedTribes:insect/t_tribe_3/" +
-        "l_Inscryption:ResizedTribes:reptile/t_tribe_4/"
+      "l_Inscryber:Tribes:v1:canine/t_tribe_1/" +
+        "l_Inscryber:Tribes:v1:hooved/t_tribe_2/" +
+        "l_Inscryber:Tribes:v1:insect/t_tribe_3/" +
+        "l_Inscryber:Tribes:v1:reptile/t_tribe_4/"
     );
 
     userEvent.click(canineField);
