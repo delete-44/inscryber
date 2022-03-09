@@ -1,20 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { SIGILS } from "components/constants";
 import MultiSelect from "components/multi-select";
 
 const Patches = (props) => {
   const [patches, setPatches] = useState([]);
   const { setPatchesTF } = props;
-
-  const options = [
-    ...SIGILS.map((s) => {
-      return {
-        value: `Inscryber:Patches:v1:${s.filename}`,
-        label: s.label,
-      };
-    }),
-  ];
 
   useEffect(() => {
     if (patches.length === 0) {
@@ -23,14 +13,14 @@ const Patches = (props) => {
     }
 
     // Build array of selected values,
-    // ie ["Inscryber:Patches:v1:airborne", "Inscryber:Patches:v1:stinky"]
+    // ie ["airborne", "stinky"]
     const patchValues = patches.map((p) => p.value);
     let transformation = "";
 
     // Add transformation for each patch. Transformations
     // are named in Cloudinary in the form patch_x
     patchValues.forEach((p, i) => {
-      transformation += `l_${p}/t_patch_${++i}/`;
+      transformation += `l_Inscryber:Patches:v1:${p}/t_patch_${++i}/`;
     });
 
     setPatchesTF(transformation);
@@ -45,7 +35,6 @@ const Patches = (props) => {
 
       <MultiSelect
         id="patches"
-        options={options}
         maxOptions={4}
         setSelected={setPatches}
         selected={patches}
