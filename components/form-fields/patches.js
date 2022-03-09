@@ -10,7 +10,7 @@ const Patches = (props) => {
   const options = [
     ...SIGILS.map((s) => {
       return {
-        value: `Inscryption:ResizedPatches:${s.filename}`,
+        value: `Inscryber:Patches:v1:${s.filename}`,
         label: s.label,
       };
     }),
@@ -23,7 +23,7 @@ const Patches = (props) => {
     }
 
     // Build array of selected values,
-    // ie ["Inscryption:ResizedPatches:airborne", "Inscryption:ResizedPatches:stinky"]
+    // ie ["Inscryber:Patches:v1:airborne", "Inscryber:Patches:v1:stinky"]
     const patchValues = patches.map((p) => p.value);
     let transformation = "";
 

@@ -39,7 +39,7 @@ describe("Patches", () => {
     await selectEvent.select(patchesField, /Airborne/);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedPatches:airborne/t_patch_1/"
+      "l_Inscryber:Patches:v1:airborne/t_patch_1/"
     );
   });
 
@@ -52,34 +52,34 @@ describe("Patches", () => {
 
     expect(mockCallback).toHaveBeenCalledTimes(1);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedPatches:airborne/t_patch_1/"
+      "l_Inscryber:Patches:v1:airborne/t_patch_1/"
     );
 
     await selectEvent.select(patchesField, /Bifurcated Strike/);
 
     expect(mockCallback).toHaveBeenCalledTimes(2);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedPatches:airborne/t_patch_1/" +
-        "l_Inscryption:ResizedPatches:bifurcated_strike/t_patch_2/"
+      "l_Inscryber:Patches:v1:airborne/t_patch_1/" +
+        "l_Inscryber:Patches:v1:bifurcated_strike/t_patch_2/"
     );
 
     await selectEvent.select(patchesField, /Trifurcated Strike/);
 
     expect(mockCallback).toHaveBeenCalledTimes(3);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedPatches:airborne/t_patch_1/" +
-        "l_Inscryption:ResizedPatches:bifurcated_strike/t_patch_2/" +
-        "l_Inscryption:ResizedPatches:trifurcated_strike/t_patch_3/"
+      "l_Inscryber:Patches:v1:airborne/t_patch_1/" +
+        "l_Inscryber:Patches:v1:bifurcated_strike/t_patch_2/" +
+        "l_Inscryber:Patches:v1:trifurcated_strike/t_patch_3/"
     );
 
     await selectEvent.select(patchesField, /Stinky/);
 
     expect(mockCallback).toHaveBeenCalledTimes(4);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedPatches:airborne/t_patch_1/" +
-        "l_Inscryption:ResizedPatches:bifurcated_strike/t_patch_2/" +
-        "l_Inscryption:ResizedPatches:trifurcated_strike/t_patch_3/" +
-        "l_Inscryption:ResizedPatches:stinky/t_patch_4/"
+      "l_Inscryber:Patches:v1:airborne/t_patch_1/" +
+        "l_Inscryber:Patches:v1:bifurcated_strike/t_patch_2/" +
+        "l_Inscryber:Patches:v1:trifurcated_strike/t_patch_3/" +
+        "l_Inscryber:Patches:v1:stinky/t_patch_4/"
     );
 
     // It does not set additional sigils & renders warning to user
@@ -91,10 +91,10 @@ describe("Patches", () => {
 
     expect(mockCallback).toHaveBeenCalledTimes(4);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedPatches:airborne/t_patch_1/" +
-        "l_Inscryption:ResizedPatches:bifurcated_strike/t_patch_2/" +
-        "l_Inscryption:ResizedPatches:trifurcated_strike/t_patch_3/" +
-        "l_Inscryption:ResizedPatches:stinky/t_patch_4/"
+      "l_Inscryber:Patches:v1:airborne/t_patch_1/" +
+        "l_Inscryber:Patches:v1:bifurcated_strike/t_patch_2/" +
+        "l_Inscryber:Patches:v1:trifurcated_strike/t_patch_3/" +
+        "l_Inscryber:Patches:v1:stinky/t_patch_4/"
     );
   });
 
@@ -106,7 +106,7 @@ describe("Patches", () => {
     await selectEvent.select(patchesField, /Airborne/);
 
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryption:ResizedPatches:airborne/t_patch_1/"
+      "l_Inscryber:Patches:v1:airborne/t_patch_1/"
     );
 
     const removeButton = screen.getByRole("button", {
