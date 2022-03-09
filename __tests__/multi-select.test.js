@@ -7,23 +7,15 @@ import userEvent from "@testing-library/user-event";
 describe("MultiSelect", () => {
   const mockCallback = jest.fn();
 
-  const testOptions = [
-    { value: "test-1", label: "Test Option #1" },
-    { value: "test-2", label: "Test Option #2" },
-    { value: "test-3", label: "Test Option #3" },
-    { value: "test-4", label: "Test Option #4" },
-  ];
-
   beforeEach(() => {
     render(
       <MultiSelect
         id="TEST-ID"
-        options={testOptions}
         maxOptions={10}
         setSelected={mockCallback}
         selected={[
-          { value: "test-1", label: "Test Option #1" },
-          { value: "test-4", label: "Test Option #4" },
+          { value: "ant_spawner", label: "Ant Spawner" },
+          { value: "fecundity", label: "Fecundity" },
         ]}
       />
     );
@@ -40,35 +32,61 @@ describe("MultiSelect", () => {
     expect(maxText).toBeInTheDocument();
   });
 
-  it("renders provided options", () => {
+  it("renders an option for each sigil", async () => {
     const multiSelectField = screen.getByRole("combobox", {
       "aria-label": /TEST-ID/,
     });
 
     selectEvent.openMenu(multiSelectField);
 
-    expect(screen.getByText(/Test Option #1/)).toBeInTheDocument();
-    expect(screen.getByText(/Test Option #2/)).toBeInTheDocument();
-    expect(screen.getByText(/Test Option #3/)).toBeInTheDocument();
-    expect(screen.getByText(/Test Option #4/)).toBeInTheDocument();
+    expect(screen.getByText(/Airborne/)).toBeInTheDocument();
+    expect(screen.getByText(/Ant Spawner/)).toBeInTheDocument();
+    expect(screen.getByText(/Bees Within/)).toBeInTheDocument();
+    expect(screen.getByText(/Bellist/)).toBeInTheDocument();
+    expect(screen.getByText(/Bifurcated Strike/)).toBeInTheDocument();
+    expect(screen.getByText(/Bone King/)).toBeInTheDocument();
+    expect(screen.getByText(/Burrower/)).toBeInTheDocument();
+    expect(screen.getByText(/Corpse Eater/)).toBeInTheDocument();
+    expect(screen.getByText(/Dam Builder/)).toBeInTheDocument();
+    expect(screen.getByText(/Fecundity/)).toBeInTheDocument();
+    expect(screen.getByText(/Fledgeling/)).toBeInTheDocument();
+    expect(screen.getByText(/Frozen Away/)).toBeInTheDocument();
+    expect(screen.getByText(/Guardian/)).toBeInTheDocument();
+    expect(screen.getByText(/Hefty/)).toBeInTheDocument();
+    expect(screen.getByText(/Hoarder/)).toBeInTheDocument();
+    expect(screen.getByText(/Leader/)).toBeInTheDocument();
+    expect(screen.getByText(/Loose Tail/)).toBeInTheDocument();
+    expect(screen.getByText(/Many Lives/)).toBeInTheDocument();
+    expect(screen.getByText(/Mighty Leap/)).toBeInTheDocument();
+    expect(screen.getByText(/Rabbithole/)).toBeInTheDocument();
+    expect(screen.getByText(/Random/)).toBeInTheDocument();
+    expect(screen.getByText(/Sharp Quills/)).toBeInTheDocument();
+    expect(screen.getByText(/Sprinter/)).toBeInTheDocument();
+    expect(screen.getByText(/Stinky/)).toBeInTheDocument();
+    expect(screen.getByText(/Touch of Death/)).toBeInTheDocument();
+    expect(screen.getByText(/Trifurcated Strike/)).toBeInTheDocument();
+    expect(screen.getByText(/Trinket Bearer/)).toBeInTheDocument();
+    expect(screen.getByText(/Unkillable/)).toBeInTheDocument();
+    expect(screen.getByText(/Waterborne/)).toBeInTheDocument();
+    expect(screen.getByText(/Worthy Sacrifice/)).toBeInTheDocument();
   });
 
   it("correctly shows selected values", () => {
-    const remove1Button = screen.getByRole("button", {
-      name: "Remove Test Option #1",
+    const removeAntButton = screen.getByRole("button", {
+      name: "Remove Ant Spawner",
     });
 
-    const remove4Button = screen.getByRole("button", {
-      name: "Remove Test Option #4",
+    const removeFecundityButton = screen.getByRole("button", {
+      name: "Remove Fecundity",
     });
 
-    expect(remove1Button).toBeInTheDocument();
-    expect(remove4Button).toBeInTheDocument();
+    expect(removeAntButton).toBeInTheDocument();
+    expect(removeFecundityButton).toBeInTheDocument();
 
-    expect(screen.getByText(/Test Option #1/)).toBeInTheDocument();
-    expect(screen.queryByText(/Test Option #2/)).toBeNull();
-    expect(screen.queryByText(/Test Option #3/)).toBeNull();
-    expect(screen.getByText(/Test Option #4/)).toBeInTheDocument();
+    expect(screen.getByText(/Ant Spawner/)).toBeInTheDocument();
+    expect(screen.queryByText(/Bone King/)).toBeNull();
+    expect(screen.queryByText(/Mighty Leap/)).toBeNull();
+    expect(screen.getByText(/Fecundity/)).toBeInTheDocument();
   });
 
   it("calls setSelected when options change", async () => {
@@ -76,24 +94,24 @@ describe("MultiSelect", () => {
       "aria-label": /TEST-ID/,
     });
 
-    const remove4Button = screen.getByRole("button", {
-      name: "Remove Test Option #4",
+    const removeFecundityButton = screen.getByRole("button", {
+      name: "Remove Fecundity",
     });
 
     // Confirm adding options works
-    await selectEvent.select(multiSelectField, /Test Option #2/);
+    await selectEvent.select(multiSelectField, /Bone King/);
 
     expect(mockCallback).toHaveBeenLastCalledWith([
-      { label: "Test Option #1", value: "test-1" },
-      { label: "Test Option #4", value: "test-4" },
-      { label: "Test Option #2", value: "test-2" },
+      { label: "Ant Spawner", value: "ant_spawner" },
+      { label: "Fecundity", value: "fecundity" },
+      { label: "Bone King", value: "bone_king" },
     ]);
 
-    userEvent.click(remove4Button);
+    userEvent.click(removeFecundityButton);
 
     // Confirm removing options works
     expect(mockCallback).toHaveBeenLastCalledWith([
-      { label: "Test Option #1", value: "test-1" },
+      { label: "Ant Spawner", value: "ant_spawner" },
     ]);
   });
 });
