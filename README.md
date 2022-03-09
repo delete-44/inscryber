@@ -71,3 +71,37 @@ Environment variables such as authentication secrets are stored in the GitHub [a
 #### When
 
 This job runs every 6 hours. Emails will be sent to collaborators in event of failure.
+
+## Assets
+
+Assets are, naturally, *fundamental* to the success of this project. They are stored on Cloudinary.
+
+Scaling images *up* if the datamine size is lower than the usable size can be done with CLIP STUDIO's `Change Image Resolution` feature or similar.
+
+|           | Datamine size | Usable Size | Example Storage                       |
+|-----------|---------------|-------------|---------------------------------------|
+| Card Base | 125x190       | 691x1050    | Inscryber/blank_rare                  |
+| Sigils    | 49x49         | 256x256     | Inscryber/Sigils/v1/worthy_sacrifice  |
+| Patches   | 347x356       | 256x263     | Inscryber/Patches/v1/worthy_sacrifice |
+| Tribes    | 109x149       | 256x350     | Inscryber/Tribes/v1/bird              |
+| Costs     | 64x64         | 284x284     | Inscryber/Costs/v1/blood_1            |
+
+### Fonts
+
+`VICIOUS HUNGER` is used for the names.
+
+`HEAVYWEIGHT` is used for everything else.
+
+Fonts can be found online or in the `inscribe-datamine`.
+
+They are uploaded using a custom `signed upload` configuration in Cloudinary, as described in [this blog post](https://www.learnwithjason.dev/blog/upload-custom-font-cloudinary-media-library).
+
+### Patches
+
+Patches are created from existing sigils.
+
+1. Add the patch base from the datamine.
+2. Overlay & center the sigil to transform.
+3. Colour the sigil #d8fcd4.
+4. Duplicate this layer.
+5. On the **lower** layer, apply a Gaussian Blur effect of ~20px x & y.
