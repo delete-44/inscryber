@@ -11,7 +11,7 @@ const Cost = (props) => {
     { value: "", label: "Free" },
     ...COSTS.map((s) => {
       return {
-        value: `Inscryption:ResizedCosts:${s.filename}`,
+        value: `Inscryber:Costs:v1:${s.filename}`,
         label: s.label,
       };
     }),
