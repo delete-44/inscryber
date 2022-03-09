@@ -19,7 +19,7 @@ export default {
       "Celebrating Daniel Mullins' Inscryption.",
     images: [
       {
-        url: `https://res.cloudinary.com/delete-44/image/upload/c_scale,w_600/v1644341775/Inscryption/demo_card.png`,
+        url: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload/c_scale,w_600/v1644341775/Inscryber/demo_card.png`,
         width: 600,
         height: 600,
         alt: "A blank Inscryption card",
@@ -29,7 +29,7 @@ export default {
   additionalLinkTags: [
     {
       rel: "icon",
-      href: `https://res.cloudinary.com/delete-44/image/upload/c_crop,g_face:auto,h_237,w_237/c_scale,w_16/v1645197267/Inscryption/demo_card.png`,
+      href: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload/c_crop,g_face:auto,h_237,w_237/c_scale,w_16/v1645197267/Inscryber/demo_card.png`,
     },
   ],
   additionalMetaTags: [
