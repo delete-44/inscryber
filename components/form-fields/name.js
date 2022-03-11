@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { VICIOUS_HUNGER } from "components/constants";
+import { HEAVYWEIGHT } from "components/constants";
 
 const Name = (props) => {
   const [name, setName] = useState("");
@@ -11,7 +11,7 @@ const Name = (props) => {
     name === ""
       ? setNameTF("")
       : setNameTF(
-          `l_text:${VICIOUS_HUNGER}_128:` +
+          `l_text:${HEAVYWEIGHT}_128:` +
             `${encodeURIComponent(name)}/` +
             `t_name_${name.length < 12 ? "short" : "long"}/`
         );
