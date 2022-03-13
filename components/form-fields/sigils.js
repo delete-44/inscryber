@@ -26,7 +26,7 @@ const Sigils = (props) => {
     // Add transformation for each sigil. Transformations
     // are named in Cloudinary in the form sigil_x
     sigilValues.forEach((s, i) => {
-      transformation += `l_Inscryber:Sigils:v1:${s}/t_sigil_${++i}/`;
+      transformation += `l_Inscryber:Sigils:v1:${s}/t_v1_sigil_${++i}/`;
     });
 
     setSigilsTF(transformation);
