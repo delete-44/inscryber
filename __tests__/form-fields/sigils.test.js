@@ -59,8 +59,8 @@ describe("Sigils", () => {
 
     expect(mockCallback).toHaveBeenCalledTimes(2);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Sigils:v1:airborne/t_sigil_1/" +
-        "l_Inscryber:Sigils:v1:bifurcated_strike/t_sigil_2/"
+      "l_Inscryber:Sigils:v1:airborne/t_v1_sigil_1/" +
+        "l_Inscryber:Sigils:v1:bifurcated_strike/t_v1_sigil_2/"
     );
 
     // It does not set additional sigils & renders warning to user
@@ -72,8 +72,8 @@ describe("Sigils", () => {
 
     expect(mockCallback).toHaveBeenCalledTimes(2);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Sigils:v1:airborne/t_sigil_1/" +
-        "l_Inscryber:Sigils:v1:bifurcated_strike/t_sigil_2/"
+      "l_Inscryber:Sigils:v1:airborne/t_v1_sigil_1/" +
+        "l_Inscryber:Sigils:v1:bifurcated_strike/t_v1_sigil_2/"
     );
   });
 
