@@ -12,6 +12,13 @@ const DynamicCost = (props) => {
       setCostTF("");
       return;
     }
+
+    if (cost < 10) {
+      setCostTF(`t_v1_${currency}-bg-narrow/`);
+      return;
+    }
+
+    setCostTF(`t_v1_${currency}-bg-wide/`);
   }, [cost, currency, setCostTF]);
 
   return (
