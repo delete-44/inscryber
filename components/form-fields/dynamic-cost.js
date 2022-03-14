@@ -1,3 +1,4 @@
+import { COST_TYPES } from "components/constants";
 import React, { useState } from "react";
 
 const DynamicCost = (props) => {
@@ -29,27 +30,24 @@ const DynamicCost = (props) => {
         />
 
         <div>
-          <div className="form-check">
-            <input
-              type="radio"
-              name="cost-radio"
-              id="blood"
-              defaultChecked
-              className="peer"
-            />
+          {COST_TYPES.map((type) => {
+            return (
+              <div className="form-check" key={type.filename}>
+                <input
+                  type="radio"
+                  name="cost-radio"
+                  id={type.filename}
+                  className="peer"
+                  checked={currency == type.filename}
+                  onChange={() => setCurrency(type.filename)}
+                />
 
-            <label htmlFor="blood" className="check-label">
-              Blood
-            </label>
-          </div>
-
-          <div className="form-check">
-            <input type="radio" name="cost-radio" id="bones" className="peer" />
-
-            <label htmlFor="bones" className="check-label">
-              Bones
-            </label>
-          </div>
+                <label htmlFor={type.filename} className="check-label">
+                  {type.label}
+                </label>
+              </div>
+            );
+          })}
         </div>
       </section>
     </section>

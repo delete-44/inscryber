@@ -61,6 +61,11 @@ export const TRIBES = [
   { filename: "reptile", label: "Reptile" },
 ];
 
+export const COST_TYPES = [
+  { filename: "blood", label: "Blood" },
+  { filename: "bone", label: "Bone" },
+];
+
 export const COSTS = [
   { filename: "blood_1", label: "1 Blood" },
   { filename: "blood_2", label: "2 Blood" },
