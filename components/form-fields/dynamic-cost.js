@@ -1,4 +1,4 @@
-import { COST_TYPES } from "components/constants";
+import { CURRENCIES } from "components/constants";
 import React, { useState } from "react";
 
 const DynamicCost = (props) => {
@@ -30,7 +30,7 @@ const DynamicCost = (props) => {
         />
 
         <div>
-          {COST_TYPES.map((type) => {
+          {CURRENCIES.map((type) => {
             return (
               <div className="form-check" key={type.filename}>
                 <input

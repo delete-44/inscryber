@@ -61,7 +61,7 @@ export const TRIBES = [
   { filename: "reptile", label: "Reptile" },
 ];
 
-export const COST_TYPES = [
+export const CURRENCIES = [
   { filename: "blood", label: "Blood" },
   { filename: "bone", label: "Bone" },
 ];
