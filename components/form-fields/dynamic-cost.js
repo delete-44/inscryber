@@ -1,10 +1,18 @@
 import { CURRENCIES } from "components/constants";
-import React, { useState } from "react";
+import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
 
 const DynamicCost = (props) => {
   const [cost, setCost] = useState("");
   const [currency, setCurrency] = useState("blood");
   const { setCostTF } = props;
+
+  useEffect(() => {
+    if (cost === "" || cost < 1) {
+      setCostTF("");
+      return;
+    }
+  }, [cost, currency, setCostTF]);
 
   return (
     <section className="mb-10">
@@ -52,6 +60,10 @@ const DynamicCost = (props) => {
       </section>
     </section>
   );
+};
+
+DynamicCost.propTypes = {
+  setCostTF: PropTypes.func.isRequired,
 };
 
 export default DynamicCost;

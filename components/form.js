@@ -76,7 +76,7 @@ const Form = (props) => {
       {/* Power & health form fields */}
       <Stats setPowerTF={setPowerTF} setHealthTF={setHealthTF} />
 
-      <DynamicCost />
+      <DynamicCost setCostTF={setCostTF} />
 
       {/* Sigils form field */}
       <Sigils setSigilsTF={setSigilsTF} />
