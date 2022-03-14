@@ -14,11 +14,18 @@ const DynamicCost = (props) => {
     }
 
     if (cost < 10) {
-      setCostTF(`t_v1_${currency}-bg-narrow/`);
+      setCostTF(
+        `t_v1_${currency}-bg-narrow/` +
+          `l_Inscryber:Costs:v1:${currency}:${cost}/t_v1_cost-unit/`
+      );
       return;
     }
 
-    setCostTF(`t_v1_${currency}-bg-wide/`);
+    setCostTF(
+      `t_v1_${currency}-bg-wide/` +
+        `l_Inscryber:Costs:v1:${currency}:${String(cost[0])}/t_v1_cost-ten/` +
+        `l_Inscryber:Costs:v1:${currency}:${String(cost[1])}/t_v1_cost-unit/`
+    );
   }, [cost, currency, setCostTF]);
 
   return (
@@ -65,6 +72,8 @@ const DynamicCost = (props) => {
           })}
         </div>
       </section>
+
+      <small className="text-orange-100">0 minimum, 99 maximum</small>
     </section>
   );
 };
