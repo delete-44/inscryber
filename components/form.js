@@ -14,6 +14,7 @@ import Patches from "@form-fields/patches";
 import CardBase from "@form-fields/card-base";
 import Tribes from "@form-fields/tribes";
 import Cost from "@form-fields/cost";
+import DynamicCost from "@form-fields/dynamic-cost";
 
 const Form = (props) => {
   // Transformations to be applied to the image
@@ -89,6 +90,8 @@ const Form = (props) => {
 
       {/* Interim cost dropdown */}
       <Cost setCostTF={setCostTF} />
+
+      <DynamicCost />
 
       <Portrait setPortraitTF={setPortraitTF} />
     </div>
