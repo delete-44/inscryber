@@ -42,10 +42,10 @@ const Tribes = (props) => {
         Does this creature belong to any <label htmlFor="tribes">tribes</label>?
       </p>
 
-      <span className="flex flex-wrap w-full md:w-4/6 ">
+      <span className="grid grid-cols-2 md:grid-cols-3 w-full md:w-5/6">
         {TRIBES.map(({ filename, label }) => {
           return (
-            <div key={filename} className="w-2/6">
+            <div key={filename}>
               <input
                 type="checkbox"
                 name="tribes"
