@@ -44,7 +44,7 @@ const Stats = (props) => {
         <label htmlFor="health">health</label>?
       </p>
 
-      <section className="grid grid-cols-2 gap-10 md:w-2/6 w-full">
+      <section className="grid grid-cols-2 gap-10 md:w-3/6 w-full">
         <input
           type="number"
           aria-label="Power"

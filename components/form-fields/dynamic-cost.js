@@ -8,14 +8,8 @@ const DynamicCost = (props) => {
         ...
       </p>
 
-      <section className="grid grid-cols-2 gap-10 md:w-2/6 w-full">
-        <input
-          type="number"
-          min="0"
-          aria-label="Cost"
-          name="cost"
-          className="w-1/2"
-        />
+      <section className="grid grid-cols-2 gap-10 md:w-3/6 w-full">
+        <input type="number" aria-label="Cost" name="cost" className="my-2" />
 
         <div>
           <div className="form-check">

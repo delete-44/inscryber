@@ -76,6 +76,8 @@ const Form = (props) => {
       {/* Power & health form fields */}
       <Stats setPowerTF={setPowerTF} setHealthTF={setHealthTF} />
 
+      <DynamicCost />
+
       {/* Sigils form field */}
       <Sigils setSigilsTF={setSigilsTF} />
 
@@ -87,11 +89,6 @@ const Form = (props) => {
 
       {/* Card back selector, ie rarity */}
       <CardBase base={cardBase} setBase={setCardBase} />
-
-      {/* Interim cost dropdown */}
-      <Cost setCostTF={setCostTF} />
-
-      <DynamicCost />
 
       <Portrait setPortraitTF={setPortraitTF} />
     </div>
