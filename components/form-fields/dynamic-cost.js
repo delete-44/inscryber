@@ -8,11 +8,16 @@ const DynamicCost = (props) => {
   const { setCostTF } = props;
 
   useEffect(() => {
+    // Remove transformation if card is free
     if (cost === "" || cost < 1) {
       setCostTF("");
       return;
     }
 
+    // For as long as we have valid assets, use them - for
+    // blood this is 1-4, bones 1-3
+
+    // For single-character costs, use the narrow background
     if (cost < 10) {
       setCostTF(
         `t_v2_${currency}-bg-narrow/` +
@@ -21,6 +26,10 @@ const DynamicCost = (props) => {
       return;
     }
 
+    // For costs < 20, use a small background and decrease the padding
+    // around the "1"
+
+    // For two-character costs, use wide background
     setCostTF(
       `t_v2_${currency}-bg-wide/` +
         `l_Inscryber:Costs:v2:${currency}:${String(cost[0])}/t_v2_cost-ten/` +
