@@ -64,4 +64,18 @@ describe("DynamicCost", () => {
     expect(mockCallback).toHaveBeenCalledTimes(3);
     expect(mockCallback).toHaveBeenLastCalledWith("");
   });
+
+  describe("invalid characters", () => {
+    it("does not accept non-numerical characters", () => {});
+
+    it("does not accept numbers less than 0", () => {});
+
+    it("does not accept numbers greater than 99", () => {});
+  });
+
+  it("uses narrow background for numbers less than 10", () => {});
+
+  it("uses narrow background and reduces padding for numbers less than 20", () => {});
+
+  it("uses wide backgrounds for 2-character numbers", () => {});
 });
