@@ -45,11 +45,9 @@ describe("Form", () => {
 
     const birdTribe = screen.getByRole("checkbox", { name: /Bird/ });
 
-    const rareCardBack = screen.getAllByRole("radio")[1];
+    const rareCardBack = screen.getByRole("radio", { name: /Rare/ });
 
-    const cost = screen.getAllByRole("combobox", {
-      "aria-label": /Cost/,
-    })[0];
+    const cost = screen.getByRole("spinbutton", { name: /Cost/ });
 
     const portrait = screen.getByLabelText("portrait");
 

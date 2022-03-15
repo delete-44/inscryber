@@ -158,9 +158,7 @@ describe("Home", () => {
 
       expect(image.src).not.toMatch(/t_cost/);
 
-      const costField = screen.getByRole("spinbutton", {
-        name: /Cost/,
-      });
+      const costField = screen.getByRole("spinbutton", { name: /Cost/ });
 
       userEvent.type(costField, "1");
 

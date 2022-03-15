@@ -12,17 +12,9 @@ describe("DynamicCost", () => {
   });
 
   it("renders a cost number field & selectors for each currency", () => {
-    const costField = screen.getByRole("spinbutton", {
-      name: /Cost/,
-    });
-
-    const bloodField = screen.getByRole("radio", {
-      name: /Blood/,
-    });
-
-    const boneField = screen.getByRole("radio", {
-      name: /Bone/,
-    });
+    const costField = screen.getByRole("spinbutton", { name: /Cost/ });
+    const bloodField = screen.getByRole("radio", { name: /Blood/ });
+    const boneField = screen.getByRole("radio", { name: /Bone/ });
 
     expect(costField).toBeInTheDocument();
     expect(costField).toHaveTextContent("");
@@ -43,9 +35,7 @@ describe("DynamicCost", () => {
   });
 
   it("removes transformation when value is 0 or empty", () => {
-    const costField = screen.getByRole("spinbutton", {
-      name: /Cost/,
-    });
+    const costField = screen.getByRole("spinbutton", { name: /Cost/ });
 
     userEvent.type(costField, "1");
 
@@ -118,9 +108,7 @@ describe("DynamicCost", () => {
   });
 
   it("switches between bone & blood currencies when radio button selection changed", () => {
-    const costField = screen.getByRole("spinbutton", {
-      name: /Cost/,
-    });
+    const costField = screen.getByRole("spinbutton", { name: /Cost/ });
 
     userEvent.type(costField, "10");
 
@@ -163,9 +151,7 @@ describe("DynamicCost", () => {
   it("uses existing assets for bone costs 0-3", () => {});
 
   it("uses narrow background for numbers less than 10", () => {
-    const costField = screen.getByRole("spinbutton", {
-      name: /Cost/,
-    });
+    const costField = screen.getByRole("spinbutton", { name: /Cost/ });
 
     userEvent.type(costField, "1");
 
@@ -190,9 +176,7 @@ describe("DynamicCost", () => {
   it("uses narrow background and reduces padding for numbers less than 20", () => {});
 
   it("uses wide backgrounds for 2-character numbers", () => {
-    const costField = screen.getByRole("spinbutton", {
-      name: /Cost/,
-    });
+    const costField = screen.getByRole("spinbutton", { name: /Cost/ });
 
     userEvent.type(costField, "1");
 
