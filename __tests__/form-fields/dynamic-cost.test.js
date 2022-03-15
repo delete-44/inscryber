@@ -117,7 +117,50 @@ describe("DynamicCost", () => {
     });
   });
 
-  it("switches between bone & blood currencies when radio button selection changed", () => {});
+  it("switches between bone & blood currencies when radio button selection changed", () => {
+    const costField = screen.getByRole("spinbutton", {
+      name: /Cost/,
+    });
+
+    userEvent.type(costField, "10");
+
+    expect(mockCallback).toHaveBeenCalledTimes(2);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_v2_blood-bg-wide/" +
+        "l_Inscryber:Costs:v2:blood:1/t_v2_cost-ten/" +
+        "l_Inscryber:Costs:v2:blood:0/t_v2_cost-unit/"
+    );
+
+    const bloodField = screen.getByRole("radio", {
+      name: /Blood/,
+    });
+
+    const boneField = screen.getByRole("radio", {
+      name: /Bone/,
+    });
+
+    userEvent.click(boneField);
+
+    expect(mockCallback).toHaveBeenCalledTimes(3);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_v2_bone-bg-wide/" +
+        "l_Inscryber:Costs:v2:bone:1/t_v2_cost-ten/" +
+        "l_Inscryber:Costs:v2:bone:0/t_v2_cost-unit/"
+    );
+
+    userEvent.click(bloodField);
+
+    expect(mockCallback).toHaveBeenCalledTimes(4);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_v2_blood-bg-wide/" +
+        "l_Inscryber:Costs:v2:blood:1/t_v2_cost-ten/" +
+        "l_Inscryber:Costs:v2:blood:0/t_v2_cost-unit/"
+    );
+  });
+
+  it("uses existing assets for blood costs 0-4", () => {});
+
+  it("uses existing assets for bone costs 0-3", () => {});
 
   it("uses narrow background for numbers less than 10", () => {
     const costField = screen.getByRole("spinbutton", {
