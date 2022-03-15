@@ -66,11 +66,55 @@ describe("DynamicCost", () => {
   });
 
   describe("invalid characters", () => {
-    it("does not accept non-numerical characters", () => {});
+    it("does not accept non-numerical characters", () => {
+      const costField = screen.getByRole("spinbutton", {
+        name: /Cost/,
+      });
 
-    it("does not accept numbers less than 0", () => {});
+      userEvent.type(costField, "X");
 
-    it("does not accept numbers greater than 99", () => {});
+      expect(mockCallback).toHaveBeenCalledTimes(0);
+
+      userEvent.type(costField, "{selectall}{backspace}");
+      userEvent.type(costField, "/");
+
+      expect(mockCallback).toHaveBeenCalledTimes(0);
+    });
+
+    it("does not accept numbers less than 0", () => {
+      const costField = screen.getByRole("spinbutton", {
+        name: /Cost/,
+      });
+
+      userEvent.type(costField, "-1");
+
+      expect(mockCallback).toHaveBeenCalledTimes(0);
+
+      userEvent.type(costField, "{selectall}{backspace}");
+      userEvent.type(costField, "-100");
+
+      expect(mockCallback).toHaveBeenCalledTimes(0);
+    });
+
+    it("does not accept numbers greater than 99", () => {
+      const costField = screen.getByRole("spinbutton", {
+        name: /Cost/,
+      });
+
+      userEvent.type(costField, "10");
+
+      expect(mockCallback).toHaveBeenCalledTimes(2);
+      expect(mockCallback).toHaveBeenLastCalledWith(
+        "t_v2_blood-bg-wide/" +
+          "l_Inscryber:Costs:v2:blood:1/t_v2_cost-ten/" +
+          "l_Inscryber:Costs:v2:blood:0/t_v2_cost-unit/"
+      );
+
+      // Add third character
+      userEvent.type(costField, "0");
+
+      expect(mockCallback).toHaveBeenCalledTimes(2);
+    });
   });
 
   it("uses narrow background for numbers less than 10", () => {});
