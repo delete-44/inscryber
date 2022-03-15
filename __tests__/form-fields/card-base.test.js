@@ -13,9 +13,11 @@ describe("CardBase", () => {
   it("renders radio buttons correctly", () => {
     render(<CardBase base={"vladde"} setBase={mockCallback} />);
 
-    const normalRadio = screen.getAllByRole("radio")[0];
-    const rareRadio = screen.getAllByRole("radio")[1];
-    const unsacrificableRadio = screen.getAllByRole("radio")[2];
+    const normalRadio = screen.getByRole("radio", { name: /Normal/ });
+    const rareRadio = screen.getByRole("radio", { name: /Rare/ });
+    const unsacrificableRadio = screen.getByRole("radio", {
+      name: /Unsacrificable/,
+    });
 
     expect(normalRadio).toBeInTheDocument();
     expect(normalRadio).toHaveAttribute("id", "vladde");
@@ -45,9 +47,11 @@ describe("CardBase", () => {
       <CardBase base={"vladde"} setBase={mockCallback} />
     );
 
-    const normalRadio = screen.getAllByRole("radio")[0];
-    const rareRadio = screen.getAllByRole("radio")[1];
-    const unsacrificableRadio = screen.getAllByRole("radio")[2];
+    const normalRadio = screen.getByRole("radio", { name: /Normal/ });
+    const rareRadio = screen.getByRole("radio", { name: /Rare/ });
+    const unsacrificableRadio = screen.getByRole("radio", {
+      name: /Unsacrificable/,
+    });
 
     userEvent.click(rareRadio);
 

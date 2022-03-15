@@ -153,6 +153,27 @@ describe("Home", () => {
       expect(image.src).toMatch(/t_health/);
     });
 
+    it("when cost", async () => {
+      const image = await screen.findByAltText("A preview of your custom card");
+
+      expect(image.src).not.toMatch(/t_cost/);
+
+      const costField = screen.getByRole("spinbutton", {
+        name: /Cost/,
+      });
+
+      userEvent.type(costField, "1");
+
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
+      expect(image.src).not.toMatch(/t_v2_blood-bg-narrow/);
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toMatch(/t_v2_blood-bg-narrow/);
+    });
+
     it("when sigils", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 
@@ -219,7 +240,7 @@ describe("Home", () => {
 
       expect(image.src).not.toMatch(/rare/);
 
-      const rareRadio = screen.getAllByRole("radio")[1];
+      const rareRadio = screen.getByRole("radio", { name: /Rare/ });
 
       userEvent.click(rareRadio);
 
@@ -231,27 +252,6 @@ describe("Home", () => {
       });
 
       expect(image.src).toMatch(/rare/);
-    });
-
-    it("when cost", async () => {
-      const image = await screen.findByAltText("A preview of your custom card");
-
-      expect(image.src).not.toMatch(/t_cost/);
-
-      const costSelector = screen.getAllByRole("combobox", {
-        "aria-label": /Cost/,
-      })[2];
-
-      await selectEvent.select(costSelector, /1 Blood/);
-
-      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/t_cost/);
-
-      await act(async () => {
-        jest.advanceTimersByTime(2);
-      });
-
-      expect(image.src).toMatch(/t_cost/);
     });
 
     it("when portrait", async () => {
