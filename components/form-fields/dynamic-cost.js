@@ -26,9 +26,6 @@ const DynamicCost = (props) => {
       return;
     }
 
-    // For costs < 20, use a small background and decrease the padding
-    // around the "1"
-
     // For two-character costs, use wide background
     setCostTF(
       `t_v2_${currency}-bg-wide/` +

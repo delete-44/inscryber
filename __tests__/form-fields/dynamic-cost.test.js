@@ -173,8 +173,6 @@ describe("DynamicCost", () => {
     );
   });
 
-  it("uses narrow background and reduces padding for numbers less than 20", () => {});
-
   it("uses wide backgrounds for 2-character numbers", () => {
     const costField = screen.getByRole("spinbutton", { name: /Cost/ });
 
