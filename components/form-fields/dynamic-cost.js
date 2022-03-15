@@ -15,16 +15,16 @@ const DynamicCost = (props) => {
 
     if (cost < 10) {
       setCostTF(
-        `t_v1_${currency}-bg-narrow/` +
-          `l_Inscryber:Costs:v1:${currency}:${cost}/t_v1_cost-unit/`
+        `t_v2_${currency}-bg-narrow/` +
+          `l_Inscryber:Costs:v2:${currency}:${cost}/t_v2_cost-unit/`
       );
       return;
     }
 
     setCostTF(
-      `t_v1_${currency}-bg-wide/` +
-        `l_Inscryber:Costs:v1:${currency}:${String(cost[0])}/t_v1_cost-ten/` +
-        `l_Inscryber:Costs:v1:${currency}:${String(cost[1])}/t_v1_cost-unit/`
+      `t_v2_${currency}-bg-wide/` +
+        `l_Inscryber:Costs:v2:${currency}:${String(cost[0])}/t_v2_cost-ten/` +
+        `l_Inscryber:Costs:v2:${currency}:${String(cost[1])}/t_v2_cost-unit/`
     );
   }, [cost, currency, setCostTF]);
 
