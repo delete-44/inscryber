@@ -47,11 +47,11 @@ describe("DynamicCost", () => {
       name: /Cost/,
     });
 
-    userEvent.type(costField, "5");
+    userEvent.type(costField, "1");
 
     expect(mockCallback).toHaveBeenCalledTimes(1);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:5/t_v2_cost-unit/"
+      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:1/t_v2_cost-unit/"
     );
 
     userEvent.type(costField, "{selectall}{backspace}");
@@ -117,9 +117,75 @@ describe("DynamicCost", () => {
     });
   });
 
-  it("uses narrow background for numbers less than 10", () => {});
+  it("switches between bone & blood currencies when radio button selection changed", () => {});
+
+  it("uses narrow background for numbers less than 10", () => {
+    const costField = screen.getByRole("spinbutton", {
+      name: /Cost/,
+    });
+
+    userEvent.type(costField, "1");
+
+    expect(mockCallback).toHaveBeenCalledTimes(1);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:1/t_v2_cost-unit/"
+    );
+
+    userEvent.type(costField, "{selectall}{backspace}");
+
+    expect(mockCallback).toHaveBeenCalledTimes(2);
+    expect(mockCallback).toHaveBeenLastCalledWith("");
+
+    userEvent.type(costField, "9");
+
+    expect(mockCallback).toHaveBeenCalledTimes(3);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:9/t_v2_cost-unit/"
+    );
+  });
 
   it("uses narrow background and reduces padding for numbers less than 20", () => {});
 
-  it("uses wide backgrounds for 2-character numbers", () => {});
+  it("uses wide backgrounds for 2-character numbers", () => {
+    const costField = screen.getByRole("spinbutton", {
+      name: /Cost/,
+    });
+
+    userEvent.type(costField, "1");
+
+    expect(mockCallback).toHaveBeenCalledTimes(1);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:1/t_v2_cost-unit/"
+    );
+
+    userEvent.type(costField, "0");
+
+    expect(mockCallback).toHaveBeenCalledTimes(2);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_v2_blood-bg-wide/" +
+        "l_Inscryber:Costs:v2:blood:1/t_v2_cost-ten/" +
+        "l_Inscryber:Costs:v2:blood:0/t_v2_cost-unit/"
+    );
+
+    userEvent.type(costField, "{selectall}{backspace}");
+
+    expect(mockCallback).toHaveBeenCalledTimes(3);
+    expect(mockCallback).toHaveBeenLastCalledWith("");
+
+    userEvent.type(costField, "9");
+
+    expect(mockCallback).toHaveBeenCalledTimes(4);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:9/t_v2_cost-unit/"
+    );
+
+    userEvent.type(costField, "9");
+
+    expect(mockCallback).toHaveBeenCalledTimes(5);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_v2_blood-bg-wide/" +
+        "l_Inscryber:Costs:v2:blood:9/t_v2_cost-ten/" +
+        "l_Inscryber:Costs:v2:blood:9/t_v2_cost-unit/"
+    );
+  });
 });
