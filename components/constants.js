@@ -88,6 +88,7 @@ export const LINKS = {
   delete44: "https://www.delete44.com/",
   delete44_twitter: "https://twitter.com/_delete44",
   vladde: "https://cards.vladde.me/",
+  avgUser: "https://www.reddit.com/user/The_Enlightened_Guy",
   dmullins: "https://www.danielmullinsgames.com/",
   inscryption: "https://www.inscryption.com/",
   inscryber_github: "https://github.com/delete-44/inscryber",
