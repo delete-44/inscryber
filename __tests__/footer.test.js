@@ -32,12 +32,18 @@ describe("Footer", () => {
     const copyright = screen.getByRole("list");
 
     const vladdeLink = screen.getByRole("link", { name: "vladdeSV" });
+    const avgUserLink = screen.getByRole("link", {
+      name: "anAverageUsersName",
+    });
     const dmullinsLink = screen.getByRole("link", {
       name: "Daniel Mullins Games",
     });
     const delete44Link = screen.getByRole("link", { name: "delete44" });
 
-    const vladdeText = screen.getByText("© [card base assets]");
+    const vladdeText = screen.getByText('© ["normal" card base asset]');
+    const avgUserText = screen.getByText(
+      "© [additional cost assets, including the blood font type]"
+    );
     const dmullinsText = screen.getByText(
       "© [designs, IP. Used & distributed with permission]"
     );
@@ -48,6 +54,10 @@ describe("Footer", () => {
     expect(vladdeLink).toBeInTheDocument();
     expect(vladdeText).toBeInTheDocument();
     expect(vladdeLink).toHaveAttribute("href", LINKS.vladde);
+
+    expect(avgUserLink).toBeInTheDocument();
+    expect(avgUserText).toBeInTheDocument();
+    expect(avgUserLink).toHaveAttribute("href", LINKS.avgUser);
 
     expect(dmullinsLink).toBeInTheDocument();
     expect(dmullinsText).toBeInTheDocument();
