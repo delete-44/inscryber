@@ -41,7 +41,7 @@ describe("DynamicCost", () => {
 
     expect(mockCallback).toHaveBeenCalledTimes(1);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:1/t_v2_cost-unit/"
+      "l_Inscryber:Costs:v2:blood_1/t_cost/"
     );
 
     userEvent.type(costField, "{selectall}{backspace}");
@@ -95,9 +95,7 @@ describe("DynamicCost", () => {
 
       expect(mockCallback).toHaveBeenCalledTimes(2);
       expect(mockCallback).toHaveBeenLastCalledWith(
-        "t_v2_blood-bg-wide/" +
-          "l_Inscryber:Costs:v2:blood:1/t_v2_cost-ten/" +
-          "l_Inscryber:Costs:v2:blood:0/t_v2_cost-unit/"
+        "l_Inscryber:Costs:v2:blood_10/t_cost/"
       );
 
       // Add third character
@@ -114,9 +112,7 @@ describe("DynamicCost", () => {
 
     expect(mockCallback).toHaveBeenCalledTimes(2);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_v2_blood-bg-wide/" +
-        "l_Inscryber:Costs:v2:blood:1/t_v2_cost-ten/" +
-        "l_Inscryber:Costs:v2:blood:0/t_v2_cost-unit/"
+      "l_Inscryber:Costs:v2:blood_10/t_cost/"
     );
 
     const bloodField = screen.getByRole("radio", {
@@ -131,65 +127,52 @@ describe("DynamicCost", () => {
 
     expect(mockCallback).toHaveBeenCalledTimes(3);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_v2_bone-bg-wide/" +
-        "l_Inscryber:Costs:v2:bone:1/t_v2_cost-ten/" +
-        "l_Inscryber:Costs:v2:bone:0/t_v2_cost-unit/"
+      "l_Inscryber:Costs:v2:bone_10/t_cost/"
     );
 
     userEvent.click(bloodField);
 
     expect(mockCallback).toHaveBeenCalledTimes(4);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_v2_blood-bg-wide/" +
-        "l_Inscryber:Costs:v2:blood:1/t_v2_cost-ten/" +
-        "l_Inscryber:Costs:v2:blood:0/t_v2_cost-unit/"
+      "l_Inscryber:Costs:v2:blood_10/t_cost/"
     );
   });
 
-  it("uses existing assets for blood costs 0-4", () => {});
-
-  it("uses existing assets for bone costs 0-3", () => {});
-
-  it("uses narrow background for numbers less than 10", () => {
+  it("uses existing assets for costs up to 10", () => {
     const costField = screen.getByRole("spinbutton", { name: /Cost/ });
 
     userEvent.type(costField, "1");
 
     expect(mockCallback).toHaveBeenCalledTimes(1);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:1/t_v2_cost-unit/"
-    );
-
-    userEvent.type(costField, "{selectall}{backspace}");
-
-    expect(mockCallback).toHaveBeenCalledTimes(2);
-    expect(mockCallback).toHaveBeenLastCalledWith("");
-
-    userEvent.type(costField, "9");
-
-    expect(mockCallback).toHaveBeenCalledTimes(3);
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:9/t_v2_cost-unit/"
-    );
-  });
-
-  it("uses wide backgrounds for 2-character numbers", () => {
-    const costField = screen.getByRole("spinbutton", { name: /Cost/ });
-
-    userEvent.type(costField, "1");
-
-    expect(mockCallback).toHaveBeenCalledTimes(1);
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:1/t_v2_cost-unit/"
+      "l_Inscryber:Costs:v2:blood_1/t_cost/"
     );
 
     userEvent.type(costField, "0");
 
     expect(mockCallback).toHaveBeenCalledTimes(2);
     expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryber:Costs:v2:blood_10/t_cost/"
+    );
+  });
+
+  it("uses dynamically generates 2-character costs", () => {
+    const costField = screen.getByRole("spinbutton", { name: /Cost/ });
+
+    userEvent.type(costField, "1");
+
+    expect(mockCallback).toHaveBeenCalledTimes(1);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryber:Costs:v2:blood_1/t_cost/"
+    );
+
+    userEvent.type(costField, "1");
+
+    expect(mockCallback).toHaveBeenCalledTimes(2);
+    expect(mockCallback).toHaveBeenLastCalledWith(
       "t_v2_blood-bg-wide/" +
         "l_Inscryber:Costs:v2:blood:1/t_v2_cost-ten/" +
-        "l_Inscryber:Costs:v2:blood:0/t_v2_cost-unit/"
+        "l_Inscryber:Costs:v2:blood:1/t_v2_cost-unit/"
     );
 
     userEvent.type(costField, "{selectall}{backspace}");
@@ -201,7 +184,7 @@ describe("DynamicCost", () => {
 
     expect(mockCallback).toHaveBeenCalledTimes(4);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_v2_blood-bg-narrow/l_Inscryber:Costs:v2:blood:9/t_v2_cost-unit/"
+      "l_Inscryber:Costs:v2:blood_9/t_cost/"
     );
 
     userEvent.type(costField, "9");

@@ -163,13 +163,13 @@ describe("Home", () => {
       userEvent.type(costField, "1");
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/t_v2_blood-bg-narrow/);
+      expect(image.src).not.toMatch(/t_cost/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/t_v2_blood-bg-narrow/);
+      expect(image.src).toMatch(/t_cost/);
     });
 
     it("when sigils", async () => {
