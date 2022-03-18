@@ -58,11 +58,15 @@ describe("MultiSelect", () => {
     expect(screen.getByText(/Loose Tail/)).toBeInTheDocument();
     expect(screen.getByText(/Many Lives/)).toBeInTheDocument();
     expect(screen.getByText(/Mighty Leap/)).toBeInTheDocument();
+    expect(screen.getByText(/Moon Strike/)).toBeInTheDocument();
     expect(screen.getByText(/Rabbithole/)).toBeInTheDocument();
     expect(screen.getByText(/Random/)).toBeInTheDocument();
+    expect(screen.getByText(/Repulsive/)).toBeInTheDocument();
     expect(screen.getByText(/Sharp Quills/)).toBeInTheDocument();
     expect(screen.getByText(/Sprinter/)).toBeInTheDocument();
+    expect(screen.getByText(/Steel Trap/)).toBeInTheDocument();
     expect(screen.getByText(/Stinky/)).toBeInTheDocument();
+    expect(screen.getByText(/Tidal Lock/)).toBeInTheDocument();
     expect(screen.getByText(/Touch of Death/)).toBeInTheDocument();
     expect(screen.getByText(/Trifurcated Strike/)).toBeInTheDocument();
     expect(screen.getByText(/Trinket Bearer/)).toBeInTheDocument();
