@@ -6,6 +6,7 @@ import {
   SELECT_THEME,
   SIGILS,
   GRIMORA_SIGILS,
+  MAGNIFICUS_SIGILS,
 } from "components/constants";
 
 const MultiSelect = (props) => {
@@ -19,6 +20,10 @@ const MultiSelect = (props) => {
     {
       label: "Grimora",
       options: GRIMORA_SIGILS,
+    },
+    {
+      label: "Magnificus",
+      options: MAGNIFICUS_SIGILS,
     },
   ];
 
