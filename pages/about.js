@@ -56,20 +56,25 @@ const About = () => {
         <h2>Ownership</h2>
 
         <ul>
-          <li className="about-text">
+          <li className="about-text mb-4">
             Card base created by <a href={LINKS.vladde}>@vladdeSV</a>.
           </li>
 
-          <li className="about-text">
+          <li className="about-text mb-4">
+            Blood font type, additional cost numbers, blank cost background
+            created by <a href={LINKS.avgUser}>@anAverageUsersName</a>.
+          </li>
+
+          <li className="about-text mb-4">
             &quot;HEAVYWEIGHT&quot; font created by Nerfect Type Laboratories.
           </li>
 
-          <li className="about-text">
+          <li className="about-text mb-4">
             Additional card assets found in the Inscryption discord by
             @Cyantist.
           </li>
 
-          <li className="about-text">
+          <li className="about-text mb-4">
             This website created by <a href={LINKS.delete44}>@delete44</a>
           </li>
 
