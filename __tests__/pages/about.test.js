@@ -34,6 +34,9 @@ describe("About", () => {
     const githubLink = screen.getByRole("link", { name: "GitHub" });
     const trelloLink = screen.getByRole("link", { name: "Trello" });
     const vladdeLink = screen.getByRole("link", { name: "@vladdeSV" });
+    const avgUserLink = screen.getByRole("link", {
+      name: "@anAverageUsersName",
+    });
     const dmullinsLink = screen.getByRole("link", { name: "Daniel Mullins" });
 
     expect(inscryptionLink).toBeInTheDocument();
@@ -50,6 +53,9 @@ describe("About", () => {
 
     expect(vladdeLink).toBeInTheDocument();
     expect(vladdeLink).toHaveAttribute("href", LINKS.vladde);
+
+    expect(avgUserLink).toBeInTheDocument();
+    expect(avgUserLink).toHaveAttribute("href", LINKS.avgUser);
 
     expect(dmullinsLink).toBeInTheDocument();
     expect(dmullinsLink).toHaveAttribute("href", LINKS.dmullins);

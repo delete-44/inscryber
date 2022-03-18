@@ -90,6 +90,11 @@ export const TRIBES = [
   { filename: "reptile", label: "Reptile" },
 ];
 
+export const CURRENCIES = [
+  { filename: "blood", label: "Blood" },
+  { filename: "bone", label: "Bone" },
+];
+
 export const COSTS = [
   { filename: "blood_1", label: "1 Blood" },
   { filename: "blood_2", label: "2 Blood" },
@@ -112,6 +117,7 @@ export const LINKS = {
   delete44: "https://www.delete44.com/",
   delete44_twitter: "https://twitter.com/_delete44",
   vladde: "https://cards.vladde.me/",
+  avgUser: "https://www.reddit.com/user/The_Enlightened_Guy",
   dmullins: "https://www.danielmullinsgames.com/",
   inscryption: "https://www.inscryption.com/",
   inscryber_github: "https://github.com/delete-44/inscryber",

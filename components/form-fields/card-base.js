@@ -10,7 +10,7 @@ const CardBase = (props) => {
         Which <label htmlFor="card-base">card base</label> do you want?
       </p>
 
-      <span className="inline-flex w-full md:w-4/6 justify-between">
+      <span className="grid grid-cols-2 md:grid-cols-3 w-full md:w-5/6">
         {BASES.map(({ filename, label }) => {
           return (
             <div key={filename}>

@@ -18,13 +18,19 @@ const Footer = () => {
       </nav>
 
       <ul className="px-4 text-orange-100 inline">
-        <li>
+        <li className="mb-2">
           &copy; <a href={LINKS.vladde}>vladdeSV</a>
           <br />
-          [card base assets]
+          [&quot;normal&quot; card base asset]
         </li>
 
-        <li>
+        <li className="mb-2">
+          &copy; <a href={LINKS.avgUser}>anAverageUsersName</a>
+          <br />
+          [additional cost assets, including the blood font type]
+        </li>
+
+        <li className="mb-2">
           &copy; <a href={LINKS.dmullins}>Daniel Mullins Games</a>
           <br />
           [designs, IP. Used &amp; distributed with permission]
