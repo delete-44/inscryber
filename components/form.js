@@ -13,7 +13,6 @@ import Portrait from "@form-fields/portrait";
 import Patches from "@form-fields/patches";
 import CardBase from "@form-fields/card-base";
 import Tribes from "@form-fields/tribes";
-import Cost from "@form-fields/cost";
 import DynamicCost from "@form-fields/dynamic-cost";
 
 const Form = (props) => {
@@ -76,6 +75,7 @@ const Form = (props) => {
       {/* Power & health form fields */}
       <Stats setPowerTF={setPowerTF} setHealthTF={setHealthTF} />
 
+      {/* Cost form fields - number field & radio buttons for currencies */}
       <DynamicCost setCostTF={setCostTF} />
 
       {/* Sigils form field */}
