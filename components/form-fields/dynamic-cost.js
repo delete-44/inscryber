@@ -14,19 +14,14 @@ const DynamicCost = (props) => {
       return;
     }
 
-    // For as long as we have valid assets, use them - for
-    // blood this is 1-4, bones 1-3
-
-    // For single-character costs, use the narrow background
-    if (cost < 10) {
-      setCostTF(
-        `t_v2_${currency}-bg-narrow/` +
-          `l_Inscryber:Costs:v2:${currency}:${cost}/t_v2_cost-unit/`
-      );
+    // For as long as we have valid assets (up to 10), use them
+    if (cost <= 10) {
+      setCostTF(`l_Inscryber:Costs:v2:${currency}_${cost}/t_cost/`);
       return;
     }
 
-    // For two-character costs, use wide background
+    // For larger costs, generate them dynamically by rendering
+    // a wide background, then each character of the number in line
     setCostTF(
       `t_v2_${currency}-bg-wide/` +
         `l_Inscryber:Costs:v2:${currency}:${String(cost[0])}/t_v2_cost-ten/` +
