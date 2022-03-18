@@ -16,6 +16,10 @@ const MultiSelect = (props) => {
       label: "Leshy",
       options: SIGILS,
     },
+    {
+      label: "Grimora",
+      options: GRIMORA_SIGILS,
+    },
   ];
 
   return (

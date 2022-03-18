@@ -52,12 +52,12 @@ export const SIGILS = [
 ];
 
 export const GRIMORA_SIGILS = [
-  { value: "apparition", label: "Apparition" },
-  { value: "bloodguzzler", label: "Bloodguzzler" },
-  { value: "bonedigger", label: "Bonedigger" },
-  { value: "brittle", label: "Brittle" },
-  { value: "exploding_corpse", label: "Exploding Corpse" },
-  { value: "haunter", label: "Haunter" },
+  { value: "Grimora:apparition", label: "Apparition" },
+  { value: "Grimora:bloodguzzler", label: "Bloodguzzler" },
+  { value: "Grimora:bonedigger", label: "Bonedigger" },
+  { value: "Grimora:brittle", label: "Brittle" },
+  { value: "Grimora:exploding_corpse", label: "Exploding Corpse" },
+  { value: "Grimora:haunter", label: "Haunter" },
 ];
 
 export const BASES = [
