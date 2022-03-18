@@ -1,18 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Select from "react-select";
-import { SELECT_STYLES, SELECT_THEME, SIGILS } from "components/constants";
+import {
+  SELECT_STYLES,
+  SELECT_THEME,
+  SIGILS,
+  GRIMORA_SIGILS,
+} from "components/constants";
 
 const MultiSelect = (props) => {
   const { id, maxOptions, setSelected } = props;
 
   const options = [
-    ...SIGILS.map((s) => {
-      return {
-        value: s.filename,
-        label: s.label,
-      };
-    }),
+    {
+      label: "Leshy",
+      options: SIGILS,
+    },
+    {
+      label: "Grimora",
+      options: GRIMORA_SIGILS,
+    },
   ];
 
   return (
