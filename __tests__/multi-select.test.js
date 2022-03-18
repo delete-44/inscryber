@@ -10,6 +10,7 @@ describe("MultiSelect", () => {
 
   constants.SIGILS = [{ value: "leshy", label: "Beasts" }];
   constants.GRIMORA_SIGILS = [{ value: "grimora", label: "Dead" }];
+  constants.MAGNIFICUS_SIGILS = [{ value: "magnificus", label: "Magicks" }];
 
   beforeEach(() => {
     render(
@@ -89,8 +90,10 @@ describe("MultiSelect", () => {
 
     expect(screen.getByText(/Leshy/)).toBeInTheDocument();
     expect(screen.getByText(/Grimora/)).toBeInTheDocument();
+    expect(screen.getByText(/Magnificus/)).toBeInTheDocument();
 
     expect(screen.getByText(/Beasts/)).toBeInTheDocument();
     expect(screen.getByText(/Dead/)).toBeInTheDocument();
+    expect(screen.getByText(/Magicks/)).toBeInTheDocument();
   });
 });

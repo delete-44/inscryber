@@ -60,6 +60,22 @@ export const GRIMORA_SIGILS = [
   { value: "Grimora:haunter", label: "Haunter" },
 ];
 
+export const MAGNIFICUS_SIGILS = [
+  { value: "Magnificus:arms_of_edaxio", label: "Arms of Edaxio" },
+  { value: "Magnificus:head_of_edaxio", label: "Head of Edaxio" },
+  { value: "Magnificus:legs_of_edaxio", label: "Legs of Edaxio" },
+  { value: "Magnificus:torso_of_edaxio", label: "Torso of Edaxio" },
+  { value: "Magnificus:gem_animator", label: "Gem Animator" },
+  { value: "Magnificus:gem_dependant", label: "Gem Dependant" },
+  { value: "Magnificus:gem_guardian", label: "Gem Guardian" },
+  { value: "Magnificus:mental_gemnastics", label: "Mental Gemnastics" },
+  { value: "Magnificus:blue_mox", label: "Blue Mox" },
+  { value: "Magnificus:green_mox", label: "Green Mox" },
+  { value: "Magnificus:orange_mox", label: "Orange Mox" },
+  { value: "Magnificus:ruby_heart", label: "Ruby Heart" },
+  { value: "Magnificus:virtual_realist", label: "Virtual Realist" },
+];
+
 export const BASES = [
   { filename: "vladde", label: "Normal" },
   { filename: "rare", label: "Rare" },
