@@ -76,6 +76,18 @@ export const MAGNIFICUS_SIGILS = [
   { value: "Magnificus:virtual_realist", label: "Virtual Realist" },
 ];
 
+export const KAYCEE_SIGILS = [
+  { value: "Kaycee:bloodlust", label: "Bloodlust" },
+  { value: "Kaycee:brood_parasite", label: "Brood Parasite" },
+  { value: "Kaycee:double_strike", label: "Double Strike" },
+  { value: "Kaycee:finical_hatchling", label: "Finical Hatchling" },
+  { value: "Kaycee:kraken_waterborne", label: "Kraken Waterborne" },
+  { value: "Kaycee:made_of_stone", label: "Made of Stone" },
+  { value: "Kaycee:morsel", label: "Morsel" },
+  { value: "Kaycee:rampager", label: "Rampager" },
+  { value: "Kaycee:scavenger", label: "Scavenger" },
+];
+
 export const BASES = [
   { filename: "vladde", label: "Normal" },
   { filename: "rare", label: "Rare" },
