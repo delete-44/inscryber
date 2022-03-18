@@ -74,17 +74,18 @@ This job runs every 6 hours. Emails will be sent to collaborators in event of fa
 
 ## Assets
 
-Assets are, naturally, *fundamental* to the success of this project. They are stored on Cloudinary.
+Assets are, naturally, _fundamental_ to the success of this project. They are stored on Cloudinary.
 
-Scaling images *up* if the datamine size is lower than the usable size can be done with CLIP STUDIO's `Change Image Resolution` feature or similar.
+Scaling images _up_ if the datamine size is lower than the usable size can be done with CLIP STUDIO's `Change Image Resolution` feature or similar.
 
-|           | Datamine size | Usable Size | Example Storage                       |
-|-----------|---------------|-------------|---------------------------------------|
-| Card Base | 125x190       | 691x1050    | Inscryber/blank_rare                  |
-| Sigils    | 49x49         | 256x256     | Inscryber/Sigils/v1/worthy_sacrifice  |
-| Patches   | 347x356       | 256x263     | Inscryber/Patches/v1/worthy_sacrifice |
-| Tribes    | 109x149       | 256x350     | Inscryber/Tribes/v1/bird              |
-| Costs     | 64x64         | 284x284     | Inscryber/Costs/v1/blood_1            |
+|                  | Datamine size | Usable Size | Example Storage                       |
+| ---------------- | ------------- | ----------- | ------------------------------------- |
+| Card Base        | 125x190       | 691x1050    | Inscryber/blank_rare                  |
+| Sigils           | 49x49         | 256x256     | Inscryber/Sigils/v1/worthy_sacrifice  |
+| Patches          | 347x356       | 256x263     | Inscryber/Patches/v1/worthy_sacrifice |
+| Tribes           | 109x149       | 256x350     | Inscryber/Tribes/v1/bird              |
+| Grouped Costs    | 64x64         | 284x284     | Inscryber/Costs/v2/blood_1            |
+| Individual Costs | 22x64         | 98x284      | Inscryber/Costs/v2/blood:1            |
 
 ### Fonts
 
@@ -105,3 +106,13 @@ Patches are created from existing sigils.
 3. Colour the sigil #d8fcd4.
 4. Duplicate this layer.
 5. On the **lower** layer, apply a Gaussian Blur effect of ~20px x & y.
+
+### Costs
+
+There are two types of "cost" stored; grouped and individual.
+
+Grouped assets consist of a narrow background, "currency x" indicator, and a number. They are stored in the root `Costs/vx/` directory. These exist up to a value of 10, after which we need to dynamically generate costs
+
+Individual costs are _just_ the specified number. Within the directory for individual costs also exists a `{currency}-bg-wide` asset that can be used as a backdrop.
+
+All cost assets not found within the base game created by @anAverageUsersName.
