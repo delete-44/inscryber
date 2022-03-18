@@ -3,9 +3,14 @@ import "@testing-library/jest-dom";
 import MultiSelect from "components/multi-select";
 import selectEvent from "react-select-event";
 import userEvent from "@testing-library/user-event";
+import * as constants from "components/constants";
 
 describe("MultiSelect", () => {
   const mockCallback = jest.fn();
+
+  constants.SIGILS = [{ value: "leshy", label: "Beasts" }];
+  constants.GRIMORA_SIGILS = [{ value: "grimora", label: "Dead" }];
+  constants.MAGNIFICUS_SIGILS = [{ value: "magnificus", label: "Magicks" }];
 
   beforeEach(() => {
     render(
@@ -30,45 +35,6 @@ describe("MultiSelect", () => {
 
     expect(multiSelectField).toBeInTheDocument();
     expect(maxText).toBeInTheDocument();
-  });
-
-  it("renders an option for each sigil", async () => {
-    const multiSelectField = screen.getByRole("combobox", {
-      "aria-label": /TEST-ID/,
-    });
-
-    selectEvent.openMenu(multiSelectField);
-
-    expect(screen.getByText(/Airborne/)).toBeInTheDocument();
-    expect(screen.getByText(/Ant Spawner/)).toBeInTheDocument();
-    expect(screen.getByText(/Bees Within/)).toBeInTheDocument();
-    expect(screen.getByText(/Bellist/)).toBeInTheDocument();
-    expect(screen.getByText(/Bifurcated Strike/)).toBeInTheDocument();
-    expect(screen.getByText(/Bone King/)).toBeInTheDocument();
-    expect(screen.getByText(/Burrower/)).toBeInTheDocument();
-    expect(screen.getByText(/Corpse Eater/)).toBeInTheDocument();
-    expect(screen.getByText(/Dam Builder/)).toBeInTheDocument();
-    expect(screen.getByText(/Fecundity/)).toBeInTheDocument();
-    expect(screen.getByText(/Fledgeling/)).toBeInTheDocument();
-    expect(screen.getByText(/Frozen Away/)).toBeInTheDocument();
-    expect(screen.getByText(/Guardian/)).toBeInTheDocument();
-    expect(screen.getByText(/Hefty/)).toBeInTheDocument();
-    expect(screen.getByText(/Hoarder/)).toBeInTheDocument();
-    expect(screen.getByText(/Leader/)).toBeInTheDocument();
-    expect(screen.getByText(/Loose Tail/)).toBeInTheDocument();
-    expect(screen.getByText(/Many Lives/)).toBeInTheDocument();
-    expect(screen.getByText(/Mighty Leap/)).toBeInTheDocument();
-    expect(screen.getByText(/Rabbithole/)).toBeInTheDocument();
-    expect(screen.getByText(/Random/)).toBeInTheDocument();
-    expect(screen.getByText(/Sharp Quills/)).toBeInTheDocument();
-    expect(screen.getByText(/Sprinter/)).toBeInTheDocument();
-    expect(screen.getByText(/Stinky/)).toBeInTheDocument();
-    expect(screen.getByText(/Touch of Death/)).toBeInTheDocument();
-    expect(screen.getByText(/Trifurcated Strike/)).toBeInTheDocument();
-    expect(screen.getByText(/Trinket Bearer/)).toBeInTheDocument();
-    expect(screen.getByText(/Unkillable/)).toBeInTheDocument();
-    expect(screen.getByText(/Waterborne/)).toBeInTheDocument();
-    expect(screen.getByText(/Worthy Sacrifice/)).toBeInTheDocument();
   });
 
   it("correctly shows selected values", () => {
@@ -99,12 +65,12 @@ describe("MultiSelect", () => {
     });
 
     // Confirm adding options works
-    await selectEvent.select(multiSelectField, /Bone King/);
+    await selectEvent.select(multiSelectField, /Beasts/);
 
     expect(mockCallback).toHaveBeenLastCalledWith([
       { label: "Ant Spawner", value: "ant_spawner" },
       { label: "Fecundity", value: "fecundity" },
-      { label: "Bone King", value: "bone_king" },
+      { label: "Beasts", value: "leshy" },
     ]);
 
     userEvent.click(removeFecundityButton);
@@ -113,5 +79,21 @@ describe("MultiSelect", () => {
     expect(mockCallback).toHaveBeenLastCalledWith([
       { label: "Ant Spawner", value: "ant_spawner" },
     ]);
+  });
+
+  it("renders a group of options for each scrybe", async () => {
+    const multiSelectField = screen.getByRole("combobox", {
+      "aria-label": /TEST-ID/,
+    });
+
+    selectEvent.openMenu(multiSelectField);
+
+    expect(screen.getByText(/Leshy/)).toBeInTheDocument();
+    expect(screen.getByText(/Grimora/)).toBeInTheDocument();
+    expect(screen.getByText(/Magnificus/)).toBeInTheDocument();
+
+    expect(screen.getByText(/Beasts/)).toBeInTheDocument();
+    expect(screen.getByText(/Dead/)).toBeInTheDocument();
+    expect(screen.getByText(/Magicks/)).toBeInTheDocument();
   });
 });
