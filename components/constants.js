@@ -76,6 +76,32 @@ export const MAGNIFICUS_SIGILS = [
   { value: "Magnificus:virtual_realist", label: "Virtual Realist" },
 ];
 
+export const PO3_SIGILS = [
+  { value: "PO3:annoying", label: "Annoying" },
+  { value: "PO3:attack_conduit", label: "Attack Conduit" },
+  { value: "PO3:battery_bearer", label: "Battery Bearer" },
+  { value: "PO3:bomb_latch", label: "Bomb Latch" },
+  { value: "PO3:brittle_latch", label: "Brittle Latch" },
+  { value: "PO3:buff_when_powered", label: "Buff when Powered" },
+  { value: "PO3:clinger", label: "Clinger" },
+  { value: "PO3:dead_byte", label: "Dead Byte" },
+  { value: "PO3:detonator", label: "Detonator" },
+  { value: "PO3:gem_detonator", label: "Gem Detonator" },
+  { value: "PO3:gem_spawn_conduit", label: "Gem Spawn Conduit" },
+  { value: "PO3:gift_when_powered", label: "Gift when Powered" },
+  { value: "PO3:hostage_file", label: "Hostage File" },
+  { value: "PO3:nano_armour", label: "Nano Armour" },
+  { value: "PO3:null_conduit", label: "Null Conduit" },
+  { value: "PO3:overclocked", label: "Overclocked" },
+  { value: "PO3:sentry", label: "Sentry" },
+  { value: "PO3:shield_latch", label: "Shield Latch" },
+  { value: "PO3:sniper", label: "Sniper" },
+  { value: "PO3:swapper", label: "Swapper" },
+  { value: "PO3:transformer", label: "Transformer" },
+  { value: "PO3:trifurcated_when_powered", label: "Trifurcated when Powered" },
+  { value: "PO3:vessel_printer", label: "Vessel Printer" },
+];
+
 export const KAYCEE_SIGILS = [
   { value: "Kaycee:bloodlust", label: "Bloodlust" },
   { value: "Kaycee:brood_parasite", label: "Brood Parasite" },
