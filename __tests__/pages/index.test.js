@@ -23,13 +23,17 @@ describe("Home", () => {
   it("renders basic page layout", async () => {
     const h1 = screen.getByRole("heading", { name: "Inscryber" });
     const image = await screen.findByAltText("A preview of your custom card");
+    const imageDownloadLink = screen.getByRole("link", { name: "Open Full Image"})
     const imageHelpText = screen.getByText(
-      /To download this image, right click \(or long press on mobile devices\) and select "Save Image As"./
+      /The preview image on this page is 75% the size of the full image. To retrieve the full resolution version, use the link above./
     );
 
     expect(h1).toBeInTheDocument();
     expect(image).toBeInTheDocument();
     expect(imageHelpText).toBeInTheDocument();
+
+    expect(imageDownloadLink).toBeInTheDocument();
+    expect(imageDownloadLink).toHaveAttribute("href", constants.CLOUDINARY_BASE)
   });
 
   it("mocks the image url to avoid contacting cloudinary", async () => {

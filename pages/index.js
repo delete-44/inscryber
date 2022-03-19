@@ -9,6 +9,7 @@ import {
 import Form from "components/form";
 import Spinner from "components/spinner";
 import GridLayout from "layouts/grid-layout";
+import Link from "next/link";
 
 export default function Home() {
   // State management for this component
@@ -42,9 +43,18 @@ export default function Home() {
           }}
         />
 
+        <Link href={url}>
+          <a
+            target="_blank"
+            className={`mx-auto mt-2 text-4xl ${busy ? "hidden" : ""}`}
+          >
+            Open Full Image
+          </a>
+        </Link>
+
         <small className="text-orange-100 text-center mt-2">
-          To download this image, right click (or long press on mobile devices)
-          and select &quot;Save Image As&quot;.
+          The preview image on this page is 75% the size of the full image. To
+          retrieve the full resolution version, use the link above.
         </small>
       </div>
     </GridLayout>
