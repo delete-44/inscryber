@@ -7,6 +7,7 @@ import {
   SIGILS,
   GRIMORA_SIGILS,
   MAGNIFICUS_SIGILS,
+  PO3_SIGILS,
   KAYCEE_SIGILS,
 } from "components/constants";
 
@@ -14,22 +15,11 @@ const MultiSelect = (props) => {
   const { id, maxOptions, setSelected } = props;
 
   const options = [
-    {
-      label: "Leshy",
-      options: SIGILS,
-    },
-    {
-      label: "Grimora",
-      options: GRIMORA_SIGILS,
-    },
-    {
-      label: "Magnificus",
-      options: MAGNIFICUS_SIGILS,
-    },
-    {
-      label: "Kaycee",
-      options: KAYCEE_SIGILS,
-    },
+    { label: "Leshy", options: SIGILS },
+    { label: "Grimora", options: GRIMORA_SIGILS },
+    { label: "Magnificus", options: MAGNIFICUS_SIGILS },
+    { label: "PO3", options: PO3_SIGILS },
+    { label: "Kaycee", options: KAYCEE_SIGILS },
   ];
 
   return (
