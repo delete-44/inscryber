@@ -33,12 +33,22 @@ describe("Portrait", () => {
     expect(fileFlavour).toBeInTheDocument();
     expect(fileLabel).toBeInTheDocument();
 
-    const inscryberCheck = screen.getByRole("checkbox", {
-      name: "Inscrybe Image",
+    const bleachCheck = screen.getByRole("checkbox", { name: /Bleach Colour/ });
+    const distortCheck = screen.getByRole("checkbox", {
+      name: /Distort Edges/,
+    });
+    const removeBGCheck = screen.getByRole("checkbox", {
+      name: /Remove Background/,
     });
 
-    expect(inscryberCheck).toBeInTheDocument();
-    expect(inscryberCheck).not.toBeChecked();
+    expect(bleachCheck).toBeInTheDocument();
+    expect(bleachCheck).not.toBeChecked();
+
+    expect(distortCheck).toBeInTheDocument();
+    expect(distortCheck).not.toBeChecked();
+
+    expect(removeBGCheck).toBeInTheDocument();
+    expect(removeBGCheck).not.toBeChecked();
   });
 
   it("renders privacy warning & help text", () => {
@@ -56,15 +66,13 @@ describe("Portrait", () => {
     expect(helpText).toBeInTheDocument();
   });
 
-  it("does not set inscrybed transformation when no image uploaded", () => {
+  it("does not set inscrybed transformations when no image uploaded", () => {
     const fileField = screen.getByLabelText("portrait");
     const error = screen.getByRole("alert");
     const spinner = screen.getByRole("status");
-    const inscryberCheck = screen.getByRole("checkbox", {
-      name: "Inscrybe Image",
-    });
+    const bleachCheck = screen.getByRole("checkbox", { name: /Bleach Colour/ });
 
-    userEvent.click(inscryberCheck);
+    userEvent.click(bleachCheck);
 
     expect(fetch).toHaveBeenCalledTimes(0);
     expect(mockCallback).toHaveBeenCalledTimes(1);
@@ -112,11 +120,10 @@ describe("Portrait", () => {
       });
     });
 
-    it("sets and unsets inscrybed transformation for uploaded image", async () => {
-      const inscryberCheck = screen.getByRole("checkbox", {
-        name: "Inscrybe Image",
+    it("sets and unsets inscrybed transformations for uploaded image", async () => {
+      const bleachCheck = screen.getByRole("checkbox", {
+        name: /Bleach Colour/,
       });
-
       const fileField = screen.getByLabelText("portrait");
 
       userEvent.upload(fileField, testFile);
@@ -129,14 +136,14 @@ describe("Portrait", () => {
         );
       });
 
-      userEvent.click(inscryberCheck);
+      userEvent.click(bleachCheck);
 
       expect(mockCallback).toHaveBeenCalledTimes(2);
       expect(mockCallback).toHaveBeenLastCalledWith(
-        "l_fake:image:returned/t_inscrybed/t_portrait/"
+        "l_fake:image:returned/t_bleach_colour/t_portrait/"
       );
 
-      userEvent.click(inscryberCheck);
+      userEvent.click(bleachCheck);
 
       expect(mockCallback).toHaveBeenCalledTimes(3);
       expect(mockCallback).toHaveBeenLastCalledWith(

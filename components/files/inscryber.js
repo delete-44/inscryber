@@ -1,30 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import MultiCheckbox from "components/multi-checkbox";
+import { PORTRAIT_MANIPULATIONS } from "components/constants";
 
 const Inscryber = (props) => {
-  const { setInscrybed } = props;
+  const [selectedManipulations, setSelectedManipulations] = useState([]);
+  const { setInscrybedTFs } = props;
+
+  // selectedManipulations comes in as an array of transformations
+  // If any of these are present, chain them with "/" characters
+  // If not, remove the transformation completely
+  useEffect(() => {
+    setInscrybedTFs(
+      selectedManipulations.length > 0
+        ? `${selectedManipulations.join("/")}/`
+        : ""
+    );
+  }, [selectedManipulations, setInscrybedTFs]);
 
   return (
-    <>
-      {" "}
-      <input
-        type="checkbox"
-        name="costRadio"
-        id="inscrybe-image"
-        className="peer"
-        checked={props.inscrybed}
-        onChange={(e) => setInscrybed(e.target.checked)}
-      />
-      <label htmlFor="inscrybe-image" className="check-label">
-        Inscrybe Image
-      </label>
-    </>
+    <MultiCheckbox
+      options={PORTRAIT_MANIPULATIONS}
+      setSelectedFilenames={setSelectedManipulations}
+      formName="tribes"
+    />
   );
 };
 
 Inscryber.propTypes = {
-  inscrybed: PropTypes.bool.isRequired,
-  setInscrybed: PropTypes.func.isRequired,
+  setInscrybedTFs: PropTypes.func.isRequired,
 };
 
 export default Inscryber;

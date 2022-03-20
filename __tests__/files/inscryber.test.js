@@ -7,38 +7,106 @@ describe("Inscryber", () => {
   const mockCallback = jest.fn();
 
   beforeEach(() => {
+    render(<Inscryber setInscrybedTFs={mockCallback} />);
+
     jest.clearAllMocks();
   });
 
-  it("renders inscryber checkbox with associated label", () => {
-    render(<Inscryber setInscrybed={mockCallback} inscrybed={false} />);
-
-    const inscryberCheck = screen.getByRole("checkbox", {
-      name: "Inscrybe Image",
+  it("renders a checkbox for each manipulation", () => {
+    const bleachField = screen.getByRole("checkbox", { name: /Bleach Colour/ });
+    const distortField = screen.getByRole("checkbox", {
+      name: /Distort Edges/,
+    });
+    const removeBGField = screen.getByRole("checkbox", {
+      name: /Remove Background/,
     });
 
-    expect(inscryberCheck).toBeInTheDocument();
-    expect(inscryberCheck).not.toBeChecked();
+    expect(bleachField).toBeInTheDocument();
+    expect(distortField).toBeInTheDocument();
+    expect(removeBGField).toBeInTheDocument();
   });
 
-  it("sets & unsets checkbox", () => {
-    const { rerender } = render(
-      <Inscryber setInscrybed={mockCallback} inscrybed={false} />
-    );
+  it("correctly sets a transformation", () => {
+    const bleachField = screen.getByRole("checkbox", { name: /Bleach Colour/ });
 
-    const inscryberCheck = screen.getByRole("checkbox", {
-      name: "Inscrybe Image",
+    userEvent.click(bleachField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith("t_bleach_colour/");
+  });
+
+  it("correctly unsets specific transformations", () => {
+    const bleachField = screen.getByRole("checkbox", { name: /Bleach Colour/ });
+    const distortField = screen.getByRole("checkbox", {
+      name: /Distort Edges/,
     });
 
-    expect(inscryberCheck).not.toBeChecked();
-    expect(mockCallback).toHaveBeenCalledTimes(0);
+    userEvent.click(bleachField);
 
-    userEvent.click(inscryberCheck);
+    expect(mockCallback).toHaveBeenLastCalledWith("t_bleach_colour/");
 
-    rerender(<Inscryber setInscrybed={mockCallback} inscrybed />);
+    userEvent.click(distortField);
 
-    expect(inscryberCheck).toBeChecked();
-    expect(mockCallback).toHaveBeenCalledTimes(1);
-    expect(mockCallback).toHaveBeenLastCalledWith(true);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_bleach_colour/t_distort_edges/"
+    );
+
+    userEvent.click(distortField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith("t_bleach_colour/");
+  });
+
+  it("correctly sets all transformations when all selected", () => {
+    const bleachField = screen.getByRole("checkbox", { name: /Bleach Colour/ });
+    const distortField = screen.getByRole("checkbox", {
+      name: /Distort Edges/,
+    });
+    const removeBGField = screen.getByRole("checkbox", {
+      name: /Remove Background/,
+    });
+
+    userEvent.click(bleachField);
+    userEvent.click(distortField);
+    userEvent.click(removeBGField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_bleach_colour/t_distort_edges/t_remove_background/"
+    );
+  });
+
+  it("removes the transformation when all transformations deselected", () => {
+    const bleachField = screen.getByRole("checkbox", { name: /Bleach Colour/ });
+    const distortField = screen.getByRole("checkbox", {
+      name: /Distort Edges/,
+    });
+    const removeBGField = screen.getByRole("checkbox", {
+      name: /Remove Background/,
+    });
+
+    userEvent.click(distortField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith("t_distort_edges/");
+
+    userEvent.click(bleachField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_bleach_colour/t_distort_edges/"
+    );
+
+    userEvent.click(removeBGField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_bleach_colour/t_distort_edges/t_remove_background/"
+    );
+
+    userEvent.click(bleachField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "t_distort_edges/t_remove_background/"
+    );
+
+    userEvent.click(distortField);
+    userEvent.click(removeBGField);
+
+    expect(mockCallback).toHaveBeenLastCalledWith("");
   });
 });
