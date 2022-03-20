@@ -27,14 +27,14 @@ export default function Home() {
       <Form setBusy={setBusy} setUrl={setUrl} />
 
       {/* Right column */}
-      <div className="width-full flex flex-col justify-center relative mt-16 md:mt-0 h-min sticky top-4">
+      <div className="width-full flex flex-col justify-center relative mt-16 md:mt-0 h-min sticky top-24">
         <Spinner hidden={!busy} />
 
         <Image
           src={url}
           alt="A preview of your custom card"
-          width={busy ? 0 : CARD_WIDTH * 0.75}
-          height={busy ? 0 : CARD_HEIGHT * 0.75}
+          width={busy ? 0 : CARD_WIDTH * 0.6}
+          height={busy ? 0 : CARD_HEIGHT * 0.6}
           objectFit="contain"
           objectPosition="center top"
           priority
@@ -46,16 +46,11 @@ export default function Home() {
         <Link href={url}>
           <a
             target="_blank"
-            className={`mx-auto mt-2 text-4xl ${busy ? "hidden" : ""}`}
+            className={`mx-auto mt-2 text-3xl ${busy ? "hidden" : ""}`}
           >
-            Open Full Image
+            Full Resolution Image (opens in new tab)
           </a>
         </Link>
-
-        <small className="text-orange-100 text-center mt-2">
-          The preview image on this page is 75% the size of the full image. To
-          retrieve the full resolution version, use the link above.
-        </small>
       </div>
     </GridLayout>
   );
