@@ -9,6 +9,7 @@ import {
 import Form from "components/form";
 import Spinner from "components/spinner";
 import GridLayout from "layouts/grid-layout";
+import Link from "next/link";
 
 export default function Home() {
   // State management for this component
@@ -26,14 +27,14 @@ export default function Home() {
       <Form setBusy={setBusy} setUrl={setUrl} />
 
       {/* Right column */}
-      <div className="width-full flex flex-col justify-center relative mt-16 md:mt-0 h-min sticky top-4">
+      <div className="width-full flex flex-col justify-center relative mt-16 md:mt-0 h-min sticky top-24">
         <Spinner hidden={!busy} />
 
         <Image
           src={url}
           alt="A preview of your custom card"
-          width={busy ? 0 : CARD_WIDTH * 0.75}
-          height={busy ? 0 : CARD_HEIGHT * 0.75}
+          width={busy ? 0 : CARD_WIDTH * 0.6}
+          height={busy ? 0 : CARD_HEIGHT * 0.6}
           objectFit="contain"
           objectPosition="center top"
           priority
@@ -42,10 +43,17 @@ export default function Home() {
           }}
         />
 
-        <small className="text-orange-100 text-center mt-2">
-          To download this image, right click (or long press on mobile devices)
-          and select &quot;Save Image As&quot;.
-        </small>
+        <Link href={url}>
+          <a
+            target="_blank"
+            className={`mx-auto mt-8 mb-2 text-center ${busy ? "hidden" : ""}`}
+            tabIndex={-1}
+          >
+            <button>Full Image</button>
+          </a>
+        </Link>
+
+        <small className="mx-auto">Opens in new tab</small>
       </div>
     </GridLayout>
   );

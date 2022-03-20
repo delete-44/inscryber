@@ -23,13 +23,18 @@ describe("Home", () => {
   it("renders basic page layout", async () => {
     const h1 = screen.getByRole("heading", { name: "Inscryber" });
     const image = await screen.findByAltText("A preview of your custom card");
-    const imageHelpText = screen.getByText(
-      /To download this image, right click \(or long press on mobile devices\) and select "Save Image As"./
-    );
+    const imageDownloadLink = screen.getByRole("link", { name: "Full Image" });
+    const imageDownloadHelpText = screen.getByText(/Opens in new tab/);
 
     expect(h1).toBeInTheDocument();
     expect(image).toBeInTheDocument();
-    expect(imageHelpText).toBeInTheDocument();
+    expect(imageDownloadHelpText).toBeInTheDocument();
+
+    expect(imageDownloadLink).toBeInTheDocument();
+    expect(imageDownloadLink).toHaveAttribute(
+      "href",
+      `${constants.CLOUDINARY_BASE}c_scale,h_${constants.CARD_HEIGHT},w_${constants.CARD_WIDTH}/${constants.CARD_BASE}blur`
+    );
   });
 
   it("mocks the image url to avoid contacting cloudinary", async () => {
@@ -37,6 +42,23 @@ describe("Home", () => {
 
     expect(image.src).not.toContain("cloudinary");
     expect(image.src).toContain("test");
+  });
+
+  it("keeps download link in sync with changes", async () => {
+    const image = await screen.findByAltText("A preview of your custom card");
+    const imageDownloadLink = screen.getByRole("link", { name: "Full Image" });
+    const nameField = screen.getByRole("textbox", { name: /Name/ });
+
+    expect(image.src).not.toMatch(/t_name_short/);
+    expect(imageDownloadLink.href).not.toMatch(/t_name_short/);
+
+    await act(async () => {
+      userEvent.type(nameField, "123456789");
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER + 1);
+    });
+
+    expect(image.src).toMatch(/t_name_short/);
+    expect(imageDownloadLink.href).toMatch(/t_name_short/);
   });
 
   it("staggers changes across multiple fields", async () => {
