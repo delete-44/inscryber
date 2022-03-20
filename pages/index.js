@@ -46,11 +46,17 @@ export default function Home() {
         <Link href={url}>
           <a
             target="_blank"
-            className={`mx-auto mt-2 text-3xl ${busy ? "hidden" : ""}`}
+            className={`mx-auto mt-8 mb-2 text-3xl text-center ${
+              busy ? "hidden" : ""
+            }`}
           >
-            Full Resolution Image (opens in new tab)
+            <button className="bg-transparent hover:bg-orange-400 hover:text-black text-orange-100 font-semibold hover:text-white py-2 px-4 border border-orange-400 hover:border-transparent rounded">
+              Full Image
+            </button>
           </a>
         </Link>
+
+        <small className="text-orange-100 mx-auto">Opens in new tab</small>
       </div>
     </GridLayout>
   );
