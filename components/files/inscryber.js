@@ -8,7 +8,11 @@ const Inscryber = (props) => {
   const { setInscrybedTFs } = props;
 
   useEffect(() => {
-    setInscrybedTFs(selectedManipulations.join("/"));
+    setInscrybedTFs(
+      selectedManipulations.length > 0
+        ? `${selectedManipulations.join("/")}/`
+        : ""
+    );
   }, [selectedManipulations, setInscrybedTFs]);
 
   return (
@@ -21,7 +25,6 @@ const Inscryber = (props) => {
 };
 
 Inscryber.propTypes = {
-  inscrybed: PropTypes.bool.isRequired,
   setInscrybedTFs: PropTypes.func.isRequired,
 };
 
