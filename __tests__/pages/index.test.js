@@ -316,7 +316,7 @@ describe("Home", () => {
       const testFile = new File(["Test"], "test.png", { type: "image/png" });
       const image = await screen.findByAltText("A preview of your custom card");
 
-      expect(image.src).not.toMatch(/t_inscrybed/);
+      expect(image.src).not.toMatch(/t_bleach_colour/);
 
       const fileField = screen.getByLabelText("portrait");
 
@@ -329,25 +329,25 @@ describe("Home", () => {
       });
 
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
-      expect(image.src).not.toMatch(/t_inscrybed/);
+      expect(image.src).not.toMatch(/t_bleach_colour/);
 
-      const inscryberCheck = screen.getByRole("checkbox", {
-        name: "Inscrybe Image",
+      const bleachCheck = screen.getByRole("checkbox", {
+        name: /Bleach Colour/,
       });
 
-      userEvent.click(inscryberCheck);
+      userEvent.click(bleachCheck);
 
       await act(async () => {
         jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       });
 
-      expect(image.src).not.toMatch(/t_inscrybed/);
+      expect(image.src).not.toMatch(/t_bleach_colour/);
 
       await act(async () => {
         jest.advanceTimersByTime(2);
       });
 
-      expect(image.src).toMatch(/t_inscrybed/);
+      expect(image.src).toMatch(/t_bleach_colour/);
     });
   });
 });
