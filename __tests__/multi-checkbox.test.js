@@ -35,85 +35,55 @@ describe("MultiCheckbox", () => {
   });
 
   it("correctly sets a selected filename", () => {
-    const birdField = screen.getByRole("checkbox", { name: /Bird/ });
+    const checkOne = screen.getByRole("checkbox", { name: /Checkbox 1/ });
 
-    userEvent.click(birdField);
+    userEvent.click(checkOne);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:MultiCheckbox:v1:bird/t_tribe_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith(["test-checkbox-1"]);
   });
 
   it("correctly unsets specific filenames", () => {
-    const birdField = screen.getByRole("checkbox", { name: /Bird/ });
-    const canineField = screen.getByRole("checkbox", { name: /Canine/ });
+    const checkOne = screen.getByRole("checkbox", { name: /Checkbox 1/ });
+    const checkTwo = screen.getByRole("checkbox", { name: /Checkbox 2/ });
 
-    userEvent.click(birdField);
+    userEvent.click(checkOne);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:MultiCheckbox:v1:bird/t_tribe_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith(["test-checkbox-1"]);
 
-    userEvent.click(canineField);
+    userEvent.click(checkTwo);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:MultiCheckbox:v1:bird/t_tribe_1/" +
-        "l_Inscryber:MultiCheckbox:v1:canine/t_tribe_2/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith([
+      "test-checkbox-1",
+      "test-checkbox-2",
+    ]);
 
-    userEvent.click(canineField);
+    userEvent.click(checkTwo);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:MultiCheckbox:v1:bird/t_tribe_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith(["test-checkbox-1"]);
   });
 
   it("sorts selected values alphabetically regardless of selection order", () => {
-    const birdField = screen.getByRole("checkbox", { name: /Bird/ });
-    const hoovedField = screen.getByRole("checkbox", { name: /Hooved/ });
-    const reptileField = screen.getByRole("checkbox", { name: /Reptile/ });
+    const checkOne = screen.getByRole("checkbox", { name: /Checkbox 1/ });
+    const checkTwo = screen.getByRole("checkbox", { name: /Checkbox 2/ });
+    const checkThree = screen.getByRole("checkbox", { name: /Checkbox 3/ });
 
-    userEvent.click(reptileField);
+    userEvent.click(checkThree);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:MultiCheckbox:v1:reptile/t_tribe_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith(["test-checkbox-3"]);
 
-    userEvent.click(birdField);
+    userEvent.click(checkOne);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:MultiCheckbox:v1:bird/t_tribe_1/" +
-        "l_Inscryber:MultiCheckbox:v1:reptile/t_tribe_2/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith([
+      "test-checkbox-1",
+      "test-checkbox-3",
+    ]);
 
-    userEvent.click(hoovedField);
+    userEvent.click(checkTwo);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:MultiCheckbox:v1:bird/t_tribe_1/" +
-        "l_Inscryber:MultiCheckbox:v1:hooved/t_tribe_2/" +
-        "l_Inscryber:MultiCheckbox:v1:reptile/t_tribe_3/"
-    );
-  });
-
-  it("correctly sets all transformations when all selected", () => {
-    const birdField = screen.getByRole("checkbox", { name: /Bird/ });
-    const canineField = screen.getByRole("checkbox", { name: /Canine/ });
-    const hoovedField = screen.getByRole("checkbox", { name: /Hooved/ });
-    const insectField = screen.getByRole("checkbox", { name: /Insect/ });
-    const reptileField = screen.getByRole("checkbox", { name: /Reptile/ });
-
-    userEvent.click(birdField);
-    userEvent.click(canineField);
-    userEvent.click(hoovedField);
-    userEvent.click(insectField);
-    userEvent.click(reptileField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:MultiCheckbox:v1:bird/t_tribe_1/" +
-        "l_Inscryber:MultiCheckbox:v1:canine/t_tribe_2/" +
-        "l_Inscryber:MultiCheckbox:v1:hooved/t_tribe_3/" +
-        "l_Inscryber:MultiCheckbox:v1:insect/t_tribe_4/" +
-        "l_Inscryber:MultiCheckbox:v1:reptile/t_tribe_5/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith([
+      "test-checkbox-1",
+      "test-checkbox-2",
+      "test-checkbox-3",
+    ]);
   });
 });
