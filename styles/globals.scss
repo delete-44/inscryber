@@ -82,6 +82,14 @@
   // -----------------------------
   // Input defaults
   // -----------------------------
+  input,
+  button,
+  a {
+    @apply focus:outline-none;
+    @apply focus:border-orange-400;
+    @apply focus:outline-orange-400;
+  }
+
   input[type="text"],
   input[type="number"] {
     @apply bg-orange-100;
@@ -91,8 +99,6 @@
     @apply w-full;
     @apply p-2;
     @apply text-2xl;
-    @apply focus:outline-none;
-    @apply focus:border-orange-400;
     @apply text-black;
     @apply placeholder-gray;
     @apply rounded-sm;
@@ -127,6 +133,23 @@
 
   input[type="radio"] {
     @apply rounded-full;
+  }
+
+  button {
+    @apply py-2;
+    @apply px-4;
+    @apply text-orange-100;
+    @apply rounded-sm;
+    @apply text-3xl;
+
+    @apply transition;
+    @apply duration-200;
+
+    @apply border;
+    @apply border-orange-400;
+    @apply hover:border-transparent;
+    @apply bg-transparent;
+    @apply hover:bg-orange-400;
   }
 
   .check-label {

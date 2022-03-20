@@ -46,13 +46,10 @@ export default function Home() {
         <Link href={url}>
           <a
             target="_blank"
-            className={`mx-auto mt-8 mb-2 text-3xl text-center ${
-              busy ? "hidden" : ""
-            }`}
+            className={`mx-auto mt-8 mb-2 text-center ${busy ? "hidden" : ""}`}
+            tabIndex={-1}
           >
-            <button className="bg-transparent hover:bg-orange-400 hover:text-black text-orange-100 font-semibold hover:text-white py-2 px-4 border border-orange-400 hover:border-transparent rounded">
-              Full Image
-            </button>
+            <button>Full Image</button>
           </a>
         </Link>
 
