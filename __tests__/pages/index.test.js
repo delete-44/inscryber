@@ -49,6 +49,9 @@ describe("Home", () => {
     const imageDownloadLink = screen.getByRole("link", { name: "Full Image" });
     const nameField = screen.getByRole("textbox", { name: /Name/ });
 
+    expect(image.src).not.toMatch(/t_name_short/);
+    expect(imageDownloadLink.href).not.toMatch(/t_name_short/);
+
     await act(async () => {
       userEvent.type(nameField, "123456789");
       jest.advanceTimersByTime(constants.DEBOUNCE_TIMER + 1);
