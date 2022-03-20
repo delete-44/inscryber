@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { PORTRAIT_MANIPULATIONS } from "components/constants";
 import MultiCheckbox from "components/multi-checkbox";
 
 const Inscryber = (props) => {
   const [selectedManipulations, setSelectedManipulations] = useState([]);
-  const { setInscrybed } = props;
+  const { setInscrybedTFs } = props;
+
+  useEffect(() => {
+    setInscrybedTFs(selectedManipulations.join("/"));
+  }, [selectedManipulations, setInscrybedTFs]);
 
   return (
     <MultiCheckbox
@@ -18,7 +22,7 @@ const Inscryber = (props) => {
 
 Inscryber.propTypes = {
   inscrybed: PropTypes.bool.isRequired,
-  setInscrybed: PropTypes.func.isRequired,
+  setInscrybedTFs: PropTypes.func.isRequired,
 };
 
 export default Inscryber;

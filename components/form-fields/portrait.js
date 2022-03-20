@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Portrait = (props) => {
   const [imageId, setImageId] = useState("");
-  const [inscrybed, setInscrybed] = useState(false);
+  const [inscrybedTFs, setInscrybedTFs] = useState(false);
   const { setPortraitTF } = props;
 
   useEffect(() => {
@@ -15,12 +15,8 @@ const Portrait = (props) => {
       return;
     }
 
-    setPortraitTF(
-      `l_${imageId}/` +
-        `${inscrybed ? "t_inscrybed/" : ""}` +
-        "t_portrait/"
-    );
-  }, [imageId, inscrybed, setPortraitTF]);
+    setPortraitTF(`l_${imageId}/${inscrybedTFs}/t_portrait/`);
+  }, [imageId, inscrybedTFs, setPortraitTF]);
 
   return (
     <section>
@@ -38,7 +34,10 @@ const Portrait = (props) => {
         <br />
       </small>
 
-      <Inscryber inscrybed={inscrybed} setInscrybed={setInscrybed} />
+      <Inscryber
+        inscrybedTFs={inscrybedTFs}
+        setInscrybedTFs={setInscrybedTFs}
+      />
     </section>
   );
 };
