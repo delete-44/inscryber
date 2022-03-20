@@ -133,23 +133,6 @@ export const CURRENCIES = [
   { filename: "bone", label: "Bone" },
 ];
 
-export const COSTS = [
-  { filename: "blood_1", label: "1 Blood" },
-  { filename: "blood_2", label: "2 Blood" },
-  { filename: "blood_3", label: "3 Blood" },
-  { filename: "blood_4", label: "4 Blood" },
-  { filename: "bone_1", label: "1 Bone" },
-  { filename: "bone_2", label: "2 Bones" },
-  { filename: "bone_3", label: "3 Bones" },
-  { filename: "bone_4", label: "4 Bones" },
-  { filename: "bone_5", label: "5 Bones" },
-  { filename: "bone_6", label: "6 Bones" },
-  { filename: "bone_7", label: "7 Bones" },
-  { filename: "bone_8", label: "8 Bones" },
-  { filename: "bone_9", label: "9 Bones" },
-  { filename: "bone_10", label: "10 Bones" },
-];
-
 // Links for the ABOUT page
 export const LINKS = {
   delete44: "https://www.delete44.com/",
