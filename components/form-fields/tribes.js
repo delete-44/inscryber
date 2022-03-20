@@ -1,25 +1,14 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { TRIBES } from "components/constants";
+import MultiCheckbox from "components/multi-checkbox";
 
 const Tribes = (props) => {
-  const [selectedTribes, setSelectedTribes] = useState({});
+  const [selectedTribes, setSelectedTribes] = useState([]);
   const { setTribesTF } = props;
 
-  // selectedTribes initialises as an empty object.
-  // As values are selected, they get added in the form
-  // filename: isSelected?
-  // Use a !! to set a forced true/false solution when
-  // querying if the filename is selected
   useEffect(() => {
-    // Retrieve sorted array of checked tribes, ie
-    // Create array of keys from the object where
-    // the value for that key is "true"
-    const checkedTribes = Object.keys(selectedTribes)
-      .filter((k) => selectedTribes[k])
-      .sort();
-
-    if (checkedTribes.length === 0) {
+    if (selectedTribes.length === 0) {
       setTribesTF("");
       return;
     }
@@ -29,7 +18,7 @@ const Tribes = (props) => {
 
     // Add transformation for each tribe. Transformations
     // are named in Cloudinary in the form tribe_x
-    checkedTribes.forEach((t, i) => {
+    selectedTribes.forEach((t, i) => {
       transformation += `l_Inscryber:Tribes:v1:${t}/t_tribe_${++i}/`;
     });
 
@@ -42,30 +31,11 @@ const Tribes = (props) => {
         Does this creature belong to any <label htmlFor="tribes">tribes</label>?
       </p>
 
-      <span className="grid grid-cols-2 md:grid-cols-3 w-full md:w-5/6">
-        {TRIBES.map(({ filename, label }) => {
-          return (
-            <div key={filename}>
-              <input
-                type="checkbox"
-                name="tribes"
-                id={filename}
-                className="peer"
-                checked={!!selectedTribes[filename]}
-                onChange={(e) => {
-                  setSelectedTribes({
-                    ...selectedTribes,
-                    [filename]: e.target.checked,
-                  });
-                }}
-              />
-              <label htmlFor={filename} className="check-label">
-                {label}
-              </label>
-            </div>
-          );
-        })}
-      </span>
+      <MultiCheckbox
+        options={TRIBES}
+        setSelectedOptions={setSelectedTribes}
+        formName="tribes"
+      />
     </section>
   );
 };
