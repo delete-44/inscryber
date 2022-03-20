@@ -133,6 +133,12 @@ export const CURRENCIES = [
   { filename: "bone", label: "Bone" },
 ];
 
+export const PORTRAIT_MANIPULATIONS = [
+  { filename: "t_bleach_colour", label: "Bleach Colour" },
+  { filename: "t_distort_edges", label: "Distort Edges" },
+  { filename: "t_remove_background", label: "Remove Background" },
+];
+
 // Links for the ABOUT page
 export const LINKS = {
   delete44: "https://www.delete44.com/",

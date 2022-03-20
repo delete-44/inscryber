@@ -1,24 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { PORTRAIT_MANIPULATIONS } from "components/constants";
+import MultiCheckbox from "components/multi-checkbox";
 
 const Inscryber = (props) => {
+  const [selectedManipulations, setSelectedManipulations] = useState([]);
   const { setInscrybed } = props;
 
   return (
-    <>
-      {" "}
-      <input
-        type="checkbox"
-        name="costRadio"
-        id="inscrybe-image"
-        className="peer"
-        checked={props.inscrybed}
-        onChange={(e) => setInscrybed(e.target.checked)}
-      />
-      <label htmlFor="inscrybe-image" className="check-label">
-        Inscrybe Image
-      </label>
-    </>
+    <MultiCheckbox
+      options={PORTRAIT_MANIPULATIONS}
+      setSelectedFilenames={setSelectedManipulations}
+      formName="tribes"
+    />
   );
 };
 
