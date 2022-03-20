@@ -7,6 +7,8 @@ const Tribes = (props) => {
   const [selectedTribes, setSelectedTribes] = useState([]);
   const { setTribesTF } = props;
 
+  // MultiCheckbox component sets selectedTribes as
+  // an array of filenames
   useEffect(() => {
     if (selectedTribes.length === 0) {
       setTribesTF("");
@@ -33,7 +35,7 @@ const Tribes = (props) => {
 
       <MultiCheckbox
         options={TRIBES}
-        setSelectedOptions={setSelectedTribes}
+        setSelectedFilenames={setSelectedTribes}
         formName="tribes"
       />
     </section>

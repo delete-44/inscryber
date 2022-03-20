@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const MultiCheckbox = (props) => {
-  const [selected, setSelected] = useState({});
-  const { setSelectedOptions } = props;
+  const [selectedOptions, setSelectedOptions] = useState({});
+  const { setSelectedFilenames } = props;
 
   // selected initialises as an empty object.
   // As values are selected, they get added in the form
@@ -13,12 +14,12 @@ const MultiCheckbox = (props) => {
     // Retrieve sorted array of checked items, ie
     // Create array of keys from the object where
     // the value for that key is "true"
-    setSelectedOptions(
-      Object.keys(selected)
-        .filter((k) => selected[k])
+    setSelectedFilenames(
+      Object.keys(selectedOptions)
+        .filter((k) => selectedOptions[k])
         .sort()
     );
-  }, [setSelectedOptions, selected]);
+  }, [setSelectedFilenames, selectedOptions]);
 
   return (
     <span className="grid grid-cols-2 md:grid-cols-3 w-full md:w-5/6">
@@ -30,10 +31,10 @@ const MultiCheckbox = (props) => {
               name={props.formName}
               id={filename}
               className="peer"
-              checked={!!selected[filename]}
+              checked={!!selectedOptions[filename]}
               onChange={(e) => {
-                setSelected({
-                  ...selected,
+                setSelectedOptions({
+                  ...selectedOptions,
                   [filename]: e.target.checked,
                 });
               }}
@@ -46,6 +47,12 @@ const MultiCheckbox = (props) => {
       })}
     </span>
   );
+};
+
+MultiCheckbox.propTypes = {
+  options: PropTypes.array.isRequired,
+  setSelectedFilenames: PropTypes.func.isRequired,
+  formName: PropTypes.string.isRequired,
 };
 
 export default MultiCheckbox;
