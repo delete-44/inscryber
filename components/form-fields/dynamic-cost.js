@@ -74,7 +74,7 @@ const DynamicCost = (props) => {
         </div>
       </section>
 
-      <small className="text-orange-100">0 minimum, 99 maximum</small>
+      <small>0 minimum, 99 maximum</small>
     </section>
   );
 };

@@ -57,7 +57,7 @@ const MultiSelect = (props) => {
         }}
       />
 
-      <small className="text-orange-100">{maxOptions} maximum</small>
+      <small>{maxOptions} maximum</small>
     </>
   );
 };

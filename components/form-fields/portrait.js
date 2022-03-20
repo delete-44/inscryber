@@ -26,7 +26,7 @@ const Portrait = (props) => {
     <section>
       <Uploader setImageId={setImageId} />
 
-      <small className="text-orange-100">
+      <small>
         Please review how we handle images in the privacy section of our{" "}
         <Link href="/about">
           <a>about page</a>

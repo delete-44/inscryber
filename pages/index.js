@@ -56,7 +56,7 @@ export default function Home() {
           </a>
         </Link>
 
-        <small className="text-orange-100 mx-auto">Opens in new tab</small>
+        <small className="mx-auto">Opens in new tab</small>
       </div>
     </GridLayout>
   );
