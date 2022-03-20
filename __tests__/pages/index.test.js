@@ -44,6 +44,20 @@ describe("Home", () => {
     expect(image.src).toContain("test");
   });
 
+  it("keeps download link in sync with changes", async () => {
+    const image = await screen.findByAltText("A preview of your custom card");
+    const imageDownloadLink = screen.getByRole("link", { name: "Full Image" });
+    const nameField = screen.getByRole("textbox", { name: /Name/ });
+
+    await act(async () => {
+      userEvent.type(nameField, "123456789");
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER + 1);
+    });
+
+    expect(image.src).toMatch(/t_name_short/);
+    expect(imageDownloadLink.href).toMatch(/t_name_short/);
+  });
+
   it("staggers changes across multiple fields", async () => {
     const image = await screen.findByAltText("A preview of your custom card");
 
