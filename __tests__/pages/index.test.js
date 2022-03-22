@@ -23,12 +23,12 @@ describe("Home", () => {
   it("renders basic page layout", async () => {
     const h1 = screen.getByRole("heading", { name: "Inscryber" });
     const image = await screen.findByAltText("A preview of your custom card");
-    const imageDownloadLink = screen.getByRole("link", { name: "Full Image" });
-    const imageDownloadHelpText = screen.getByText(/Opens in new tab/);
+    const imageDownloadLink = screen.getByRole("link", {
+      name: "Download Image",
+    });
 
     expect(h1).toBeInTheDocument();
     expect(image).toBeInTheDocument();
-    expect(imageDownloadHelpText).toBeInTheDocument();
 
     expect(imageDownloadLink).toBeInTheDocument();
     expect(imageDownloadLink).toHaveAttribute(
@@ -46,11 +46,16 @@ describe("Home", () => {
 
   it("keeps download link in sync with changes", async () => {
     const image = await screen.findByAltText("A preview of your custom card");
-    const imageDownloadLink = screen.getByRole("link", { name: "Full Image" });
+    const imageDownloadLink = screen.getByRole("link", {
+      name: "Download Image",
+    });
     const nameField = screen.getByRole("textbox", { name: /Name/ });
 
     expect(image.src).not.toMatch(/t_name_short/);
+    expect(image.src).toMatch(/fl_attachment%3Ainscryber-card/);
+
     expect(imageDownloadLink.href).not.toMatch(/t_name_short/);
+    expect(imageDownloadLink.href).toMatch(/fl_attachment:inscryber-card/);
 
     await act(async () => {
       userEvent.type(nameField, "123456789");
@@ -58,7 +63,10 @@ describe("Home", () => {
     });
 
     expect(image.src).toMatch(/t_name_short/);
+    expect(image.src).toMatch(/fl_attachment%3Ainscryber-card/);
+
     expect(imageDownloadLink.href).toMatch(/t_name_short/);
+    expect(imageDownloadLink.href).toMatch(/fl_attachment:inscryber-card/);
   });
 
   it("staggers changes across multiple fields", async () => {

@@ -49,11 +49,9 @@ export default function Home() {
             className={`mx-auto mt-8 mb-2 text-center ${busy ? "hidden" : ""}`}
             tabIndex={-1}
           >
-            <button>Full Image</button>
+            <button>Download Image</button>
           </a>
         </Link>
-
-        <small className="mx-auto">Opens in new tab</small>
       </div>
     </GridLayout>
   );
