@@ -3,7 +3,7 @@ export const HEAVYWEIGHT = "Inscryber:HEAVYWEIGHT.ttf";
 export const VICIOUS_HUNGER = "Inscryber:VICIOUSHUNGER.ttf";
 export const CLOUDINARY_BASE = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload/`;
 export const CLOUDINARY_API_BASE = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload`;
-export const CARD_BASE = "Inscryber/blank_";
+export const CARD_BASE = "fl_attachment:inscryber-card/Inscryber/blank_";
 
 // The amount of time to wait after the user makes
 // changes, in ms, before requesting a new image
