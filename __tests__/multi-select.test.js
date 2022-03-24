@@ -13,6 +13,7 @@ describe("MultiSelect", () => {
   constants.MAGNIFICUS_SIGILS = [{ value: "magnificus", label: "Magicks" }];
   constants.PO3_SIGILS = [{ value: "PO3", label: "Technology" }];
   constants.KAYCEE_SIGILS = [{ value: "kaycee", label: "Old Data" }];
+  constants.ADDITIONAL_SIGILS = [{ value: "additional", label: "GOTY" }];
 
   beforeEach(() => {
     render(
@@ -95,11 +96,13 @@ describe("MultiSelect", () => {
     expect(screen.getByText(/Magnificus/)).toBeInTheDocument();
     expect(screen.getByText(/PO3/)).toBeInTheDocument();
     expect(screen.getByText(/Kaycee/)).toBeInTheDocument();
+    expect(screen.getByText(/Additional/)).toBeInTheDocument();
 
     expect(screen.getByText(/Beasts/)).toBeInTheDocument();
     expect(screen.getByText(/Dead/)).toBeInTheDocument();
     expect(screen.getByText(/Magicks/)).toBeInTheDocument();
     expect(screen.getByText(/Technology/)).toBeInTheDocument();
     expect(screen.getByText(/Old Data/)).toBeInTheDocument();
+    expect(screen.getByText(/GOTY/)).toBeInTheDocument();
   });
 });
