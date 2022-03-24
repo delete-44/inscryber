@@ -114,6 +114,12 @@ export const KAYCEE_SIGILS = [
   { value: "Kaycee:scavenger", label: "Scavenger" },
 ];
 
+export const ADDITIONAL_SIGILS = [
+  { value: "Additional:blank", label: "Blank Sigil" },
+  { value: "Additional:gdca", label: "Game Developers Choice Awards GOTY" },
+  { value: "Additional:igf", label: "Independent Games Festival Grand Prize" },
+]
+
 export const BASES = [
   { filename: "vladde", label: "Normal" },
   { filename: "rare", label: "Rare" },

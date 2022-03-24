@@ -9,6 +9,7 @@ import {
   MAGNIFICUS_SIGILS,
   PO3_SIGILS,
   KAYCEE_SIGILS,
+  ADDITIONAL_SIGILS
 } from "components/constants";
 
 const MultiSelect = (props) => {
@@ -20,6 +21,7 @@ const MultiSelect = (props) => {
     { label: "Magnificus", options: MAGNIFICUS_SIGILS },
     { label: "PO3", options: PO3_SIGILS },
     { label: "Kaycee", options: KAYCEE_SIGILS },
+    { label: "Additional", options: ADDITIONAL_SIGILS },
   ];
 
   return (
