@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { TRIBES } from "components/constants";
+import { OVERLAYS } from "components/constants";
 import MultiCheckbox from "components/multi-checkbox";
 
 const Overlays = (props) => {
@@ -30,11 +30,11 @@ const Overlays = (props) => {
   return (
     <section className="mb-10">
       <p className="mb-3">
-        Do you require any <label htmlFor="overlays">overlays</label>?
+        ...Or have any <label htmlFor="overlays">overlays</label>?
       </p>
 
       <MultiCheckbox
-        options={TRIBES}
+        options={OVERLAYS}
         setSelectedFilenames={setSelectedOverlays}
         formName="overlays"
       />

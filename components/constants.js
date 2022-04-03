@@ -118,7 +118,7 @@ export const ADDITIONAL_SIGILS = [
   { value: "Additional:blank", label: "Blank Sigil" },
   { value: "Additional:gdca", label: "Game Developers Choice Awards GOTY" },
   { value: "Additional:igf", label: "Independent Games Festival Grand Prize" },
-]
+];
 
 export const BASES = [
   { filename: "vladde", label: "Normal" },
@@ -132,6 +132,16 @@ export const TRIBES = [
   { filename: "hooved", label: "Hooved" },
   { filename: "insect", label: "Insect" },
   { filename: "reptile", label: "Reptile" },
+];
+
+export const OVERLAYS = [
+  { filename: "blood_1", label: "Blood [1]" },
+  { filename: "blood_2", label: "Blood [2]" },
+  { filename: "blood_3", label: "Blood [3]" },
+  { filename: "blood_4", label: "Blood [4]" },
+  { filename: "fungus", label: "Fungus" },
+  { filename: "smoke", label: "Smoke" },
+  { filename: "stitches", label: "Stitches" },
 ];
 
 export const CURRENCIES = [
