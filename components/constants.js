@@ -137,9 +137,8 @@ export const TRIBES = [
 export const OVERLAYS = [
   { filename: "blood_1", label: "Blood [1]" },
   { filename: "blood_2", label: "Blood [2]" },
-  { filename: "blood_3", label: "Blood [3]" },
-  { filename: "blood_4", label: "Blood [4]" },
   { filename: "fungus", label: "Fungus" },
+  { filename: "goo", label: "Goo" },
   { filename: "smoke", label: "Smoke" },
   { filename: "stitches", label: "Stitches" },
 ];
