@@ -263,6 +263,25 @@ describe("Home", () => {
       expect(image.src).toMatch(/t_tribe_1/);
     });
 
+    it("when overlays", async () => {
+      const image = await screen.findByAltText("A preview of your custom card");
+
+      expect(image.src).not.toMatch(/t_tribe_1/);
+
+      const gooOverlay = screen.getByRole("checkbox", { name: /Goo/ });
+
+      userEvent.click(gooOverlay);
+
+      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
+      expect(image.src).not.toMatch(/goo/);
+
+      await act(async () => {
+        jest.advanceTimersByTime(2);
+      });
+
+      expect(image.src).toMatch(/goo/);
+    });
+
     it("when card bases", async () => {
       const image = await screen.findByAltText("A preview of your custom card");
 

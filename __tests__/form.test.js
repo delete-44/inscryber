@@ -45,6 +45,8 @@ describe("Form", () => {
 
     const birdTribe = screen.getByRole("checkbox", { name: /Bird/ });
 
+    const gooOverlay = screen.getByRole("checkbox", { name: /Goo/ });
+
     const rareCardBack = screen.getByRole("radio", { name: /Rare/ });
 
     const cost = screen.getByRole("spinbutton", { name: /Cost/ });
@@ -57,6 +59,7 @@ describe("Form", () => {
     expect(sigils).toBeInTheDocument();
     expect(patches).toBeInTheDocument();
     expect(birdTribe).toBeInTheDocument();
+    expect(gooOverlay).toBeInTheDocument();
     expect(rareCardBack).toBeInTheDocument();
     expect(cost).toBeInTheDocument();
     expect(portrait).toBeInTheDocument();
