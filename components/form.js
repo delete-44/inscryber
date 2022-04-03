@@ -13,6 +13,7 @@ import Portrait from "@form-fields/portrait";
 import Patches from "@form-fields/patches";
 import CardBase from "@form-fields/card-base";
 import Tribes from "@form-fields/tribes";
+import Overlays from "@form-fields/overlays";
 import DynamicCost from "@form-fields/dynamic-cost";
 
 const Form = (props) => {
@@ -24,6 +25,7 @@ const Form = (props) => {
   const [portraitTF, setPortraitTF] = useState("");
   const [patchesTF, setPatchesTF] = useState("");
   const [tribesTF, setTribesTF] = useState("");
+  const [overlaysTF, setOverlaysTF] = useState("");
   const [costTF, setCostTF] = useState("");
   const [cardBase, setCardBase] = useState("vladde");
 
@@ -47,6 +49,7 @@ const Form = (props) => {
         powerTF,
         healthTF,
         sigilsTF,
+        overlaysTF,
         patchesTF,
       ].join("");
 
@@ -61,6 +64,7 @@ const Form = (props) => {
     portraitTF,
     patchesTF,
     tribesTF,
+    overlaysTF,
     costTF,
     cardBase,
     setBusy,
@@ -86,6 +90,9 @@ const Form = (props) => {
 
       {/* Tribes form fields */}
       <Tribes setTribesTF={setTribesTF} />
+
+      {/* Overlays form fields */}
+      <Overlays setOverlaysTF={setOverlaysTF} />
 
       {/* Card back selector, ie rarity */}
       <CardBase base={cardBase} setBase={setCardBase} />
