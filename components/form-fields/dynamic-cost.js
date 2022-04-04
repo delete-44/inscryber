@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 const DynamicCost = (props) => {
   const [cost, setCost] = useState("");
   const [currency, setCurrency] = useState("blood");
+  const [max, setMax] = useState(99);
   const { setCostTF } = props;
 
   useEffect(() => {
@@ -32,7 +33,7 @@ const DynamicCost = (props) => {
   return (
     <section className="mb-10">
       <p className="mb-3">
-        And every creature has a <label htmlFor="power">cost</label>
+        And every creature has a <label htmlFor="cost">cost</label>
         ...
       </p>
 
@@ -46,7 +47,7 @@ const DynamicCost = (props) => {
           onChange={(e) => {
             // Accepted values are from 0 (free) to 99, as we support
             // max. 2 chars of cost.
-            if (e.target.value >= 0 && e.target.value < 100) {
+            if (e.target.value >= 0 && e.target.value <= max) {
               setCost(e.target.value);
             }
           }}
@@ -74,7 +75,7 @@ const DynamicCost = (props) => {
         </div>
       </section>
 
-      <small>0 minimum, 99 maximum</small>
+      <small>0 minimum, {max} maximum</small>
     </section>
   );
 };
