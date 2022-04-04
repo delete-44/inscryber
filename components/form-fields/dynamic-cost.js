@@ -8,6 +8,13 @@ const DynamicCost = (props) => {
   const { setCostTF } = props;
 
   useEffect(() => {
+    // If switching to a currency with a lower max value,
+    // ie blood to energy, it is possible to input a value
+    // greater than the max. This eliminates that risk.
+    if (cost > currency.max) {
+      setCost(currency.max);
+    }
+
     // Remove transformation if card is free
     if (cost === "" || cost < 1) {
       setCostTF("");
@@ -43,7 +50,7 @@ const DynamicCost = (props) => {
           type="number"
           aria-label="Cost"
           name="cost"
-          className="my-2"
+          className="my-6"
           value={cost}
           onChange={(e) => {
             // Accepted values are from 0 (free) to 99, as we support
