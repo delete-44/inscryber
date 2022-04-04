@@ -70,7 +70,7 @@ const DynamicCost = (props) => {
                   name="cost-radio"
                   id={type.filename}
                   className="peer"
-                  checked={currency == type}
+                  checked={currency.filename == type.filename}
                   onChange={() => setCurrency(type)}
                 />
 
