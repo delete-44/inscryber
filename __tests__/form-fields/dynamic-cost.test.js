@@ -96,7 +96,7 @@ describe("DynamicCost", () => {
       expect(mockCallback).toHaveBeenCalledTimes(0);
     });
 
-    it("does not accept numbers greater than currency max", () => {
+    it("does not accept numbers greater than chosen currency max", () => {
       const costField = screen.getByRole("spinbutton", {
         name: /Cost/,
       });
@@ -115,36 +115,78 @@ describe("DynamicCost", () => {
     });
   });
 
-  it("switches between currencies when radio button selection changed", () => {
+  it("automatically reduces input value when changing to a currency with a a max lower than current value", () => {
     const costField = screen.getByRole("spinbutton", { name: /Cost/ });
 
-    userEvent.type(costField, "10");
+    userEvent.type(costField, "100");
+    expect(costField).toHaveValue(100);
 
-    expect(mockCallback).toHaveBeenCalledTimes(2);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Costs:v2:test-1_10/t_cost/"
+      "t_v2_test-1-bg-wide/" +
+        "l_Inscryber:Costs:v2:test-1:1/t_v2_cost-ten" +
+        "/l_Inscryber:Costs:v2:test-1:0/t_v2_cost-unit/"
     );
 
-    const test1Field = screen.getByRole("radio", {
-      name: /TEST 1/,
-    });
-
-    const test2Field = screen.getByRole("radio", {
-      name: /TEST 2/,
-    });
+    const test2Field = screen.getByRole("radio", { name: /TEST 2/ });
+    const test3Field = screen.getByRole("radio", { name: /TEST 3/ });
 
     userEvent.click(test2Field);
 
-    expect(mockCallback).toHaveBeenCalledTimes(3);
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Costs:v2:test-2_10/t_cost/"
+      "t_v2_test-2-bg-wide/" +
+        "l_Inscryber:Costs:v2:test-2:3/t_v2_cost-ten/" +
+        "l_Inscryber:Costs:v2:test-2:0/t_v2_cost-unit/"
     );
 
-    userEvent.click(test1Field);
+    expect(costField).toHaveValue(30);
 
-    expect(mockCallback).toHaveBeenCalledTimes(4);
+    userEvent.click(test3Field);
+
+    expect(costField).toHaveValue(5);
+
     expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Costs:v2:test-1_10/t_cost/"
+      "l_Inscryber:Costs:v2:test-3_5/t_cost/"
+    );
+  });
+
+  it("switches between currencies when radio button selection changed", () => {
+    const costField = screen.getByRole("spinbutton", { name: /Cost/ });
+
+    userEvent.type(costField, "1");
+
+    expect(mockCallback).toHaveBeenCalledTimes(1);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryber:Costs:v2:test-1_1/t_cost/"
+    );
+
+    const test1Field = screen.getByRole("radio", { name: /TEST 1/ });
+    const test2Field = screen.getByRole("radio", { name: /TEST 2/ });
+    const test3Field = screen.getByRole("radio", { name: /TEST 3/ });
+
+    expect(test1Field).toBeChecked();
+    expect(test2Field).not.toBeChecked();
+    expect(test3Field).not.toBeChecked();
+
+    userEvent.click(test2Field);
+
+    expect(test1Field).not.toBeChecked();
+    expect(test2Field).toBeChecked();
+    expect(test3Field).not.toBeChecked();
+
+    expect(mockCallback).toHaveBeenCalledTimes(2);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryber:Costs:v2:test-2_1/t_cost/"
+    );
+
+    userEvent.click(test3Field);
+
+    expect(test1Field).not.toBeChecked();
+    expect(test2Field).not.toBeChecked();
+    expect(test3Field).toBeChecked();
+
+    expect(mockCallback).toHaveBeenCalledTimes(3);
+    expect(mockCallback).toHaveBeenLastCalledWith(
+      "l_Inscryber:Costs:v2:test-3_1/t_cost/"
     );
   });
 

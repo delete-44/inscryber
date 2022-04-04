@@ -33,8 +33,8 @@ const DynamicCost = (props) => {
     // a wide background, then each character of the number in line
     setCostTF(
       `t_v2_${filename}-bg-wide/` +
-        `l_Inscryber:Costs:v2:${filename}:${String(cost[0])}/t_v2_cost-ten/` +
-        `l_Inscryber:Costs:v2:${filename}:${String(cost[1])}/t_v2_cost-unit/`
+        `l_Inscryber:Costs:v2:${filename}:${String(cost)[0]}/t_v2_cost-ten/` +
+        `l_Inscryber:Costs:v2:${filename}:${String(cost)[1]}/t_v2_cost-unit/`
     );
   }, [cost, currency, setCostTF]);
 
