@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const DynamicCost = (props) => {
   const [cost, setCost] = useState("");
-  const [currency, setCurrency] = useState("blood");
-  const [max, setMax] = useState(99);
+  const [currency, setCurrency] = useState(CURRENCIES[0]);
   const { setCostTF } = props;
 
   useEffect(() => {
@@ -17,16 +16,18 @@ const DynamicCost = (props) => {
 
     // For as long as we have valid assets (up to 10), use them
     if (cost <= 10) {
-      setCostTF(`l_Inscryber:Costs:v2:${currency}_${cost}/t_cost/`);
+      setCostTF(`l_Inscryber:Costs:v2:${currency.filename}_${cost}/t_cost/`);
       return;
     }
 
     // For larger costs, generate them dynamically by rendering
     // a wide background, then each character of the number in line
     setCostTF(
-      `t_v2_${currency}-bg-wide/` +
-        `l_Inscryber:Costs:v2:${currency}:${String(cost[0])}/t_v2_cost-ten/` +
-        `l_Inscryber:Costs:v2:${currency}:${String(cost[1])}/t_v2_cost-unit/`
+      `t_v2_${currency.filename}-bg-wide/` +
+        `l_Inscryber:Costs:v2:${currency.filename}:${String(cost[0])}` +
+        "/t_v2_cost-ten/" +
+        `l_Inscryber:Costs:v2:${currency.filename}:${String(cost[1])}` +
+        "/t_v2_cost-unit/"
     );
   }, [cost, currency, setCostTF]);
 
@@ -47,7 +48,7 @@ const DynamicCost = (props) => {
           onChange={(e) => {
             // Accepted values are from 0 (free) to 99, as we support
             // max. 2 chars of cost.
-            if (e.target.value >= 0 && e.target.value <= max) {
+            if (e.target.value >= 0 && e.target.value <= currency.max) {
               setCost(e.target.value);
             }
           }}
@@ -62,8 +63,8 @@ const DynamicCost = (props) => {
                   name="cost-radio"
                   id={type.filename}
                   className="peer"
-                  checked={currency == type.filename}
-                  onChange={() => setCurrency(type.filename)}
+                  checked={currency == type}
+                  onChange={() => setCurrency(type)}
                 />
 
                 <label htmlFor={type.filename} className="check-label">
@@ -75,7 +76,7 @@ const DynamicCost = (props) => {
         </div>
       </section>
 
-      <small>0 minimum, {max} maximum</small>
+      <small>0 minimum, {currency.max} maximum</small>
     </section>
   );
 };
