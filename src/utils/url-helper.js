@@ -15,7 +15,6 @@ export const generateUrl = (transformations = {}, cardBase = "vladde") => {
 
   for (const type in transformations) {
     let tf = TransformationFactory.build(type, transformations[type]);
-    console.log(tf.toString(), type);
 
     tfString += tf.toString();
   }
