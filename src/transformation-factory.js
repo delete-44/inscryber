@@ -1,5 +1,5 @@
-import { NameTransformation } from "./transformations/name";
-import { StatTransformation } from "./transformations/stat";
+import { NameTransformation } from "src/transformations/name";
+import { StatTransformation } from "src/transformations/stat";
 
 export class TransformationFactory {
   /**

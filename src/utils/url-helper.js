@@ -1,4 +1,4 @@
-import { TransformationFactory } from "../transformation-factory";
+import { TransformationFactory } from "src/transformation-factory";
 import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
 
 /**
