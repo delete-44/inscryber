@@ -1,9 +1,9 @@
 import { NameTransformation } from "./transformations/name";
 
 export class TransformationFactory {
-  static createTransformation(type, value) {
+  static build(type, value) {
     switch (type) {
-      case "NAME":
+      case "name":
         return new NameTransformation(value);
       default:
         throw new Error("Undefined Transformation");

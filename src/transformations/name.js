@@ -3,7 +3,7 @@ import { HEAVYWEIGHT } from "components/constants";
 
 export class NameTransformation extends Transformation {
   constructor(value, _type) {
-    super(value, "NAME");
+    super(value, "name");
   }
 
   toString() {

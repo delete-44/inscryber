@@ -1,6 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { generateUrl } from "utils/url-helper.js"
+import { generateUrl } from "src/utils/url-helper.js";
 
-export default function handler(req, res) {
-  res.status(200).json({ name: generateUrl() })
+export default function handler(_req, res) {
+  res
+    .status(200)
+    .json({
+      transformation: generateUrl({ name: "test name transformation" }),
+    });
 }
