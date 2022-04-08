@@ -1,3 +1,6 @@
+import { TransformationFactory } from "../transformation-factory";
+import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
+
 /*
  * Accepts an object of changes in the format
  * {
@@ -9,16 +12,15 @@
  * }
  */
 
-import { TransformationFactory } from "../transformation-factory";
-
-export const generateUrl = (transformations = {}) => {
+export const generateUrl = (transformations = {}, cardBase = "vladde") => {
   let tfString = "";
 
   for (const type in transformations) {
     let tf = TransformationFactory.build(type, transformations[type]);
+    console.log(tf.toString(), type)
 
     tfString += tf.toString();
   }
 
-  return tfString;
+  return `${CLOUDINARY_BASE}${tfString}${CARD_BASE}${cardBase}`;
 };

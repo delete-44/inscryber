@@ -2,9 +2,11 @@
 import { generateUrl } from "src/utils/url-helper.js";
 
 export default function handler(_req, res) {
-  res
-    .status(200)
-    .json({
-      transformation: generateUrl({ name: "test name transformation" }),
-    });
+  res.status(200).json({
+    url: generateUrl({
+      name: "test name transformation",
+      power: 100,
+      health: "20",
+    }),
+  });
 }

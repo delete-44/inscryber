@@ -2,8 +2,8 @@ import { Transformation } from "../transformation";
 import { HEAVYWEIGHT } from "components/constants";
 
 export class StatTransformation extends Transformation {
-  constructor(value, _type) {
-    super(value, "name");
+  constructor(value, type) {
+    super(value, type);
   }
 
   toString() {
