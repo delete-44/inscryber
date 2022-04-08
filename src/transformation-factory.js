@@ -19,7 +19,7 @@ export class TransformationFactory {
       case "health":
         return new StatTransformation(value, type);
       default:
-        throw new Error("Undefined Transformation");
+        throw new Error(`Undefined Transformation: ${type}`);
     }
   }
 }
