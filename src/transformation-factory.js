@@ -15,7 +15,6 @@ export class TransformationFactory {
       case "name":
         return new NameTransformation(value);
       case "power":
-        return new StatTransformation(value, type);
       case "health":
         return new StatTransformation(value, type);
       default:
