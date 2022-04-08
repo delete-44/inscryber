@@ -1,6 +1,7 @@
 export class Transformation {
-  constructor(value) {
+  constructor(value, type) {
     this.value = value;
+    this.type = type;
   }
 
   toString() {
