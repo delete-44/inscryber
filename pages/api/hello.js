@@ -11,6 +11,7 @@ export default function handler(_req, res) {
         currency: "blood",
         value: 20,
       },
+      sigils: ["Kaycee:double_strike", "PO3:dead_byte"],
     }),
   });
 }
