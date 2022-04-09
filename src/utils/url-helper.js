@@ -9,9 +9,10 @@ import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
  * @param {string}  transformations.name            "Name" of the card, written at the top.
  * @param {string}  transformations.power           "Power" of the card, bottom left.
  * @param {string}  transformations.health          "Health" of the card, bottom right.
- * @param {Object}  transformations.cost            Details on costs transformation
- * @param {string}  transformations.cost.currency   Currency of the cost to be shown, ie blood/bones/energy
- * @param {string}  transformations.cost.value      Numerical value of the cost
+ * @param {Object}  transformations.cost            Details on costs transformation.
+ * @param {string}  transformations.cost.currency   Currency of the cost to be shown, ie blood/bones/energy.
+ * @param {string}  transformations.cost.value      Numerical value of the cost.
+ * @param {array}   transformations.sigils          Array of strings, the filenames of sigils to apply.
  *
  * @return {String} A valid cloudinary URL for the transformed image.
  */
