@@ -1,5 +1,6 @@
 import { Transformation } from "../transformation";
 
+// FIXME: This could be merged with ./sigils and ./patches as one generic "array-transformation"
 export class TribesTransformation extends Transformation {
   constructor(value, _type) {
     super(value, "tribes");
