@@ -7,6 +7,8 @@ export class NameTransformation extends Transformation {
   }
 
   toString() {
+    console.log("[NameTransformation] Generating transformation string");
+
     return (
       `l_text:${HEAVYWEIGHT}_128:` +
       `${encodeURIComponent(this.value)}/` +

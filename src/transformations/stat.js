@@ -7,6 +7,10 @@ export class StatTransformation extends Transformation {
   }
 
   toString() {
+    console.log(
+      `[StatTransformation] Generating transformation string for ${this.type}`
+    );
+
     return (
       `l_text:${HEAVYWEIGHT}_196:` +
       `${encodeURIComponent(this.value)},` +
