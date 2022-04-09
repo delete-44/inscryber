@@ -3,6 +3,12 @@ import { HEAVYWEIGHT } from "components/constants";
 
 describe("StatTransformation", () => {
   describe("#toString", () => {
+    it("removes string when transformation is empty", () => {
+      const tf = new StatTransformation("");
+
+      expect(tf.toString()).toEqual("");
+    });
+
     it("generates correct width for values of 1", () => {
       const tf = new StatTransformation("1", "test");
 
@@ -25,12 +31,6 @@ describe("StatTransformation", () => {
       expect(tf.toString()).toEqual(
         `l_text:${HEAVYWEIGHT}_196:100,c_scale,w_100/t_test/`
       );
-    });
-
-    it("removes string when transformation is empty", () => {
-      const tf = new StatTransformation("");
-
-      expect(tf.toString()).toEqual("");
     });
   });
 });
