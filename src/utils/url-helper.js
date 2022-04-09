@@ -14,6 +14,7 @@ import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
  * @param {string}  transformations.cost.value      Numerical value of the cost.
  * @param {array}   transformations.sigils          Array of strings, the filenames of sigils to apply.
  * @param {array}   transformations.patches         Array of strings, the filenames of patches to apply.
+ * @param {array}   transformations.tribes          Array of strings, the filenames of tribes to apply.
  *
  * @return {String} A valid cloudinary URL for the transformed image.
  */

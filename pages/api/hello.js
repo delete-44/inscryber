@@ -18,6 +18,7 @@ export default function handler(_req, res) {
         "Magnificus:blue_mox",
         "loose_tail",
       ],
+      tribes: ["bird", "reptile"],
     }),
   });
 }
