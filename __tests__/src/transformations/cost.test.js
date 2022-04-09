@@ -42,5 +42,21 @@ describe("CostTransformation", () => {
 
       expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-3_5/t_cost/");
     });
+
+    it("generates shorthand transformations from known assets for values up to 10", () => {
+      const tf = new CostTransformation({ currency: "test-1", value: 10 });
+
+      expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-1_10/t_cost/");
+    });
+
+    it("generates dynamic costs up to the max supported by currency", () => {
+      const tf = new CostTransformation({ currency: "test-1", value: 99 });
+
+      expect(tf.toString()).toEqual(
+        "t_v2_test-1-bg-wide/" +
+          "l_Inscryber:Costs:v2:test-1:9/t_v2_cost-ten/" +
+          "l_Inscryber:Costs:v2:test-1:9/t_v2_cost-unit/"
+      );
+    });
   });
 });
