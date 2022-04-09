@@ -26,5 +26,11 @@ describe("StatTransformation", () => {
         `l_text:${HEAVYWEIGHT}_196:100,c_scale,w_100/t_test/`
       );
     });
+
+    it("removes string when transformation is empty", () => {
+      const tf = new StatTransformation("");
+
+      expect(tf.toString()).toEqual("");
+    });
   });
 });
