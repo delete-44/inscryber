@@ -13,6 +13,7 @@ import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
  * @param {string}  transformations.cost.currency   Currency of the cost to be shown, ie blood/bones/energy.
  * @param {string}  transformations.cost.value      Numerical value of the cost.
  * @param {array}   transformations.sigils          Array of strings, the filenames of sigils to apply.
+ * @param {array}   transformations.patches         Array of strings, the filenames of patches to apply.
  *
  * @return {String} A valid cloudinary URL for the transformed image.
  */

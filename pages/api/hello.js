@@ -12,6 +12,12 @@ export default function handler(_req, res) {
         value: 20,
       },
       sigils: ["Kaycee:double_strike", "PO3:dead_byte"],
+      patches: [
+        "PO3:null_conduit",
+        "Additional:blank",
+        "Magnificus:blue_mox",
+        "loose_tail",
+      ],
     }),
   });
 }
