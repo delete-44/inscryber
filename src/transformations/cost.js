@@ -13,15 +13,14 @@ export class CostTransformation extends Transformation {
     const currencyDetails = CURRENCIES.find((c) => c.filename === currency);
     const { max, filename } = currencyDetails;
 
-    // If switching to a currency with a lower max value,
-    // ie blood to energy, it is possible to input a value
-    // greater than the max. This eliminates that risk.
+    // Remove transformation if card is free
+    if (value === "" || value < 1) return "";
+
+    // Cap transformations to the max value supported
+    // by the chosen currency
     if (value > max) {
       return this.#generateTransformation(max, filename);
     }
-
-    // Remove transformation if card is free
-    if (value === "" || value < 1) return "";
 
     return this.#generateTransformation(value, filename);
   }
