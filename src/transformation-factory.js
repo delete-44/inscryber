@@ -1,6 +1,7 @@
 import { NameTransformation } from "src/transformations/name";
 import { StatTransformation } from "src/transformations/stat";
 import { CostTransformation } from "src/transformations/cost";
+import { SigilsTransformation } from "src/transformations/sigils";
 
 export class TransformationFactory {
   /**
@@ -20,6 +21,8 @@ export class TransformationFactory {
         return new StatTransformation(value, type);
       case "cost":
         return new CostTransformation(value);
+      case "sigils":
+        return new SigilsTransformation(value);
       default:
         throw new Error(`Undefined Transformation: ${type}`);
     }
