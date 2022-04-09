@@ -12,7 +12,7 @@ export class SigilsTransformation extends Transformation {
 
     // Single sigils are larger and central than multiple sigils
     if (this.value.length === 1)
-      return `l_Inscryber:Sigils:v1:${this.value[0].value}/t_sigil/`;
+      return `l_Inscryber:Sigils:v1:${this.value[0]}/t_sigil/`;
 
     // Add transformation for each sigil. Transformations
     // are named in Cloudinary in the form sigil_x
