@@ -7,6 +7,10 @@ export default function handler(_req, res) {
       name: "test name transformation",
       power: 100,
       health: "20",
+      cost: {
+        currency: "blood",
+        value: 20,
+      },
     }),
   });
 }
