@@ -2,8 +2,6 @@ import { NameTransformation } from "src/transformations/name";
 import { StatTransformation } from "src/transformations/stat";
 import { CostTransformation } from "src/transformations/cost";
 import { SigilsTransformation } from "src/transformations/sigils";
-import { PatchesTransformation } from "src/transformations/patches";
-import { TribesTransformation } from "src/transformations/tribes";
 import { OverlayArrayTransformation } from "src/transformations/overlay-array";
 
 export class TransformationFactory {
@@ -27,7 +25,9 @@ export class TransformationFactory {
       case "sigils":
         return new SigilsTransformation(value);
       case "patches":
-        return new PatchesTransformation(value);
+        return new OverlayArrayTransformation(value, type, {
+          positionalTransformation: "t_patch_",
+        });
       case "tribes":
         return new OverlayArrayTransformation(value, type, {
           positionalTransformation: "t_tribe_",
