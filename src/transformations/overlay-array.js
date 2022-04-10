@@ -9,7 +9,7 @@ export class OverlayArrayTransformation extends Transformation {
 
   toString() {
     console.log(
-      "[OverlayArrayTransformation] Generating transformation string"
+      `[OverlayArrayTransformation] Generating transformation string for ${this.type}`
     );
 
     if (this.value.length === 0) return "";
