@@ -10,8 +10,12 @@ export class PortraitTransformation extends Transformation {
 
     const { filename, manipulations } = this.value;
 
-    if (filename === "") return "";
+    if (!filename) return "";
 
-    return `l_${filename}/${manipulations.join("/")}/t_portrait/`;
+    let tfString = `l_${filename}/t_portrait/`;
+
+    if (manipulations) tfString += `${manipulations.join("/")}/`;
+
+    return tfString;
   }
 }
