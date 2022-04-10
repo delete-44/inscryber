@@ -50,6 +50,12 @@ describe("TransformationFactory", () => {
       expect(tf.toString()).not.toMatch(/tst\/.*1/);
     });
 
+    it("returns a PortraitTransformation for portrait", () => {
+      const tf = TransformationFactory.build("portrait");
+
+      expect(tf.constructor.name).toEqual("PortraitTransformation");
+    });
+
     it("throws an exception if type is unknown", () => {
       try {
         TransformationFactory.build("invalid type");

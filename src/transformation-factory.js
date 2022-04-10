@@ -3,6 +3,7 @@ import { StatTransformation } from "src/transformations/stat";
 import { CostTransformation } from "src/transformations/cost";
 import { SigilsTransformation } from "src/transformations/sigils";
 import { OverlayArrayTransformation } from "src/transformations/overlay-array";
+import { PortraitTransformation } from "src/transformations/portrait";
 
 export class TransformationFactory {
   /**
@@ -34,6 +35,8 @@ export class TransformationFactory {
         });
       case "overlays":
         return new OverlayArrayTransformation(value, type);
+      case "portrait":
+        return new PortraitTransformation(value);
       default:
         throw new Error(`Undefined Transformation: ${type}`);
     }
