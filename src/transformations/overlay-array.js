@@ -1,12 +1,14 @@
 import { Transformation } from "../transformation";
 
-export class OverlaysTransformation extends Transformation {
-  constructor(value, _type) {
-    super(value, "overlays");
+export class OverlayArrayTransformation extends Transformation {
+  constructor(value, type) {
+    super(value, type);
   }
 
   toString() {
-    console.log("[OverlaysTransformation] Generating transformation string");
+    console.log(
+      "[OverlayArrayTransformation] Generating transformation string"
+    );
 
     if (this.value.length === 0) return "";
 
@@ -15,7 +17,7 @@ export class OverlaysTransformation extends Transformation {
     let transformation = "";
 
     this.value.forEach((t, i) => {
-      transformation += `l_Inscryber:Overlays:v1:${t}/`;
+      transformation += `l_Inscryber:${this.type}:v1:${t}/`;
     });
 
     return transformation;

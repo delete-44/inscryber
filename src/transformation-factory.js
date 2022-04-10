@@ -4,7 +4,7 @@ import { CostTransformation } from "src/transformations/cost";
 import { SigilsTransformation } from "src/transformations/sigils";
 import { PatchesTransformation } from "src/transformations/patches";
 import { TribesTransformation } from "src/transformations/tribes";
-import { OverlaysTransformation } from "src/transformations/overlays";
+import { OverlayArrayTransformation } from "src/transformations/overlay-array";
 
 export class TransformationFactory {
   /**
@@ -31,7 +31,7 @@ export class TransformationFactory {
       case "tribes":
         return new TribesTransformation(value);
       case "overlays":
-        return new OverlaysTransformation(value);
+        return new OverlayArrayTransformation(value, type);
       default:
         throw new Error(`Undefined Transformation: ${type}`);
     }
