@@ -20,6 +20,10 @@ export default function handler(_req, res) {
       ],
       tribes: ["bird", "reptile"],
       overlays: ["blood_1", "fungus", "stitches"],
+      portrait: {
+        filename: "Inscryber:Uploads:fypni5svl58dcrxke5oc",
+        manipulations: ["t_bleach_colour", "t_distort_edges"],
+      },
     }),
   });
 }
