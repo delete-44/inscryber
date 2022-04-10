@@ -29,7 +29,9 @@ export class TransformationFactory {
       case "patches":
         return new PatchesTransformation(value);
       case "tribes":
-        return new TribesTransformation(value);
+        return new OverlayArrayTransformation(value, type, {
+          positionalTransformation: "t_tribe_",
+        });
       case "overlays":
         return new OverlayArrayTransformation(value, type);
       default:
