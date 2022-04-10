@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { HEAVYWEIGHT } from "components/constants";
 
 const Name = (props) => {
   const [name, setName] = useState("");
   const { setNameTF } = props;
 
   useEffect(() => {
-    // If name is empty, clear transformation to save load on API
-    name === ""
-      ? setNameTF("")
-      : setNameTF(
-          `l_text:${HEAVYWEIGHT}_128:` +
-            `${encodeURIComponent(name)}/` +
-            `t_name_${name.length < 12 ? "short" : "long"}/`
-        );
+    setNameTF(name ? { name: name } : {});
   }, [name, setNameTF]);
 
   return (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { generateUrl } from "src/utils/url-helper.js";
 import {
   CARD_BASE,
   CLOUDINARY_BASE,
@@ -18,7 +19,7 @@ import DynamicCost from "@form-fields/dynamic-cost";
 
 const Form = (props) => {
   // Transformations to be applied to the image
-  const [nameTF, setNameTF] = useState("");
+  const [nameTF, setNameTF] = useState({});
   const [powerTF, setPowerTF] = useState("");
   const [healthTF, setHealthTF] = useState("");
   const [sigilsTF, setSigilsTF] = useState("");
@@ -45,15 +46,23 @@ const Form = (props) => {
         portraitTF,
         tribesTF,
         costTF,
-        nameTF,
-        powerTF,
-        healthTF,
+        // nameTF,
+        // powerTF,
+        // healthTF,
         sigilsTF,
         overlaysTF,
         patchesTF,
       ].join("");
 
-      setUrl(`${CLOUDINARY_BASE}${transformations}${CARD_BASE}${cardBase}`);
+      const transformationObject = {
+        ...nameTF,
+        ...powerTF,
+        ...healthTF,
+      };
+
+      console.log("TFObject: ", transformationObject)
+
+      setUrl(generateUrl(transformationObject));
     }, DEBOUNCE_TIMER);
     return () => clearTimeout(timer);
   }, [
