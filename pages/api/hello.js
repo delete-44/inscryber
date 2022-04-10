@@ -19,6 +19,7 @@ export default function handler(_req, res) {
         "loose_tail",
       ],
       tribes: ["bird", "reptile"],
+      overlays: ["blood_1", "fungus", "stitches"],
     }),
   });
 }

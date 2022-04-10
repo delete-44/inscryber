@@ -15,6 +15,7 @@ import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
  * @param {array}   transformations.sigils          Array of strings, the filenames of sigils to apply.
  * @param {array}   transformations.patches         Array of strings, the filenames of patches to apply.
  * @param {array}   transformations.tribes          Array of strings, the filenames of tribes to apply.
+ * @param {array}   transformations.overlays        Array of strings, the filenames of overlays to apply.
  *
  * @return {String} A valid cloudinary URL for the transformed image.
  */
