@@ -31,7 +31,7 @@ describe("Inscryber", () => {
 
     userEvent.click(bleachField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith("t_bleach_colour/");
+    expect(mockCallback).toHaveBeenLastCalledWith(["t_bleach_colour"]);
   });
 
   it("correctly unsets specific transformations", () => {
@@ -42,71 +42,21 @@ describe("Inscryber", () => {
 
     userEvent.click(bleachField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith("t_bleach_colour/");
+    expect(mockCallback).toHaveBeenLastCalledWith(["t_bleach_colour"]);
 
     userEvent.click(distortField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_bleach_colour/t_distort_edges/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith([
+      "t_bleach_colour",
+      "t_distort_edges",
+    ]);
 
     userEvent.click(distortField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith("t_bleach_colour/");
-  });
-
-  it("correctly sets all transformations when all selected", () => {
-    const bleachField = screen.getByRole("checkbox", { name: /Bleach Colour/ });
-    const distortField = screen.getByRole("checkbox", {
-      name: /Distort Edges/,
-    });
-    const removeBGField = screen.getByRole("checkbox", {
-      name: /Remove Background/,
-    });
-
-    userEvent.click(bleachField);
-    userEvent.click(distortField);
-    userEvent.click(removeBGField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_bleach_colour/t_distort_edges/t_remove_background/"
-    );
-  });
-
-  it("removes the transformation when all transformations deselected", () => {
-    const bleachField = screen.getByRole("checkbox", { name: /Bleach Colour/ });
-    const distortField = screen.getByRole("checkbox", {
-      name: /Distort Edges/,
-    });
-    const removeBGField = screen.getByRole("checkbox", {
-      name: /Remove Background/,
-    });
-
-    userEvent.click(distortField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith("t_distort_edges/");
+    expect(mockCallback).toHaveBeenLastCalledWith(["t_bleach_colour"]);
 
     userEvent.click(bleachField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_bleach_colour/t_distort_edges/"
-    );
-
-    userEvent.click(removeBGField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_bleach_colour/t_distort_edges/t_remove_background/"
-    );
-
-    userEvent.click(bleachField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "t_distort_edges/t_remove_background/"
-    );
-
-    userEvent.click(distortField);
-    userEvent.click(removeBGField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith("");
+    expect(mockCallback).toHaveBeenLastCalledWith([]);
   });
 });
