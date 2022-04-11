@@ -29,42 +29,6 @@ describe("Name", () => {
     expect(nameLabel).toBeInTheDocument();
   });
 
-  it("uses fit cropping for short strings", () => {
-    const nameField = screen.getByRole("textbox", {
-      name: /Name/,
-    });
-
-    userEvent.type(nameField, "123456789");
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      `l_text:${HEAVYWEIGHT}_128:123456789/t_name_short/`
-    );
-  });
-
-  it("uses scale cropping for long strings", () => {
-    const nameField = screen.getByRole("textbox", {
-      name: /Name/,
-    });
-
-    userEvent.type(nameField, "123456789012");
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      `l_text:${HEAVYWEIGHT}_128:123456789012/t_name_long/`
-    );
-  });
-
-  it("encodes special characters in transformation", () => {
-    const nameField = screen.getByRole("textbox", {
-      name: /Name/,
-    });
-
-    userEvent.type(nameField, "Test String");
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      `l_text:${HEAVYWEIGHT}_128:Test%20String/t_name_short/`
-    );
-  });
-
   it("completely removes the transformation when field is empty", () => {
     const nameField = screen.getByRole("textbox", {
       name: /Name/,
@@ -72,12 +36,10 @@ describe("Name", () => {
 
     userEvent.type(nameField, "123456789");
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      `l_text:${HEAVYWEIGHT}_128:123456789/t_name_short/`
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ name: "123456789" });
 
     userEvent.type(nameField, "{selectall}{backspace}");
 
-    expect(mockCallback).toHaveBeenLastCalledWith("");
+    expect(mockCallback).toHaveBeenLastCalledWith({});
   });
 });

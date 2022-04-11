@@ -15,5 +15,7 @@ describe("NameTransformation", () => {
         "l_text:Inscryber:HEAVYWEIGHT.ttf_128:Test%20Transformation/t_name_long/"
       );
     });
+
+    // FIXME: Tests for long/short/urlencoded text.
   });
 });
