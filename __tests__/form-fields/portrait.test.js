@@ -76,7 +76,7 @@ describe("Portrait", () => {
 
     expect(fetch).toHaveBeenCalledTimes(0);
     expect(mockCallback).toHaveBeenCalledTimes(1);
-    expect(mockCallback).toHaveBeenLastCalledWith("");
+    expect(mockCallback).toHaveBeenLastCalledWith({});
 
     expect(fileField).not.toBeDisabled();
     expect(error).toHaveClass("hidden");
@@ -110,9 +110,9 @@ describe("Portrait", () => {
       await waitFor(() => {
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(mockCallback).toHaveBeenCalledTimes(1);
-        expect(mockCallback).toHaveBeenLastCalledWith(
-          "l_fake:image:returned/t_portrait/"
-        );
+        expect(mockCallback).toHaveBeenLastCalledWith({
+          portrait: { filename: "fake:image:returned", manipulations: [] },
+        });
 
         expect(fileField).not.toBeDisabled();
         expect(error).toHaveClass("hidden");
@@ -131,24 +131,33 @@ describe("Portrait", () => {
       await waitFor(() => {
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(mockCallback).toHaveBeenCalledTimes(1);
-        expect(mockCallback).toHaveBeenLastCalledWith(
-          "l_fake:image:returned/t_portrait/"
-        );
+        expect(mockCallback).toHaveBeenLastCalledWith({
+          portrait: {
+            filename: "fake:image:returned",
+            manipulations: [],
+          },
+        });
       });
 
       userEvent.click(bleachCheck);
 
       expect(mockCallback).toHaveBeenCalledTimes(2);
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        "l_fake:image:returned/t_bleach_colour/t_portrait/"
-      );
+      expect(mockCallback).toHaveBeenLastCalledWith({
+        portrait: {
+          filename: "fake:image:returned",
+          manipulations: ["t_bleach_colour"],
+        },
+      });
 
       userEvent.click(bleachCheck);
 
       expect(mockCallback).toHaveBeenCalledTimes(3);
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        "l_fake:image:returned/t_portrait/"
-      );
+      expect(mockCallback).toHaveBeenLastCalledWith({
+        portrait: {
+          filename: "fake:image:returned",
+          manipulations: [],
+        },
+      });
     });
 
     it("correctly replaces invalid chars from response", async () => {
@@ -159,9 +168,12 @@ describe("Portrait", () => {
       await waitFor(() => {
         expect(fetch).toHaveBeenCalledTimes(1);
 
-        expect(mockCallback).toHaveBeenLastCalledWith(
-          "l_fake:image:returned/t_portrait/"
-        );
+        expect(mockCallback).toHaveBeenLastCalledWith({
+          portrait: {
+            filename: "fake:image:returned",
+            manipulations: [],
+          },
+        });
       });
     });
   });

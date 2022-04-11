@@ -38,23 +38,12 @@ const Form = (props) => {
     const timer = setTimeout(() => {
       setBusy(true);
 
-      // Compile all transformations into one string
+      // Compile all transformations into one object
       // Order this array by layers, ie the first element
       // will appear under all others, the last element
       // will appear over.
-      const transformations = [
-        portraitTF,
-        // tribesTF,
-        // costTF,
-        // nameTF,
-        // powerTF,
-        // healthTF,
-        // sigilsTF,
-        // overlaysTF,
-        // patchesTF,
-      ].join("");
-
       const transformationObject = {
+        ...portraitTF,
         ...tribesTF,
         ...costTF,
         ...nameTF,
