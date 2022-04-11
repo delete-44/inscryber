@@ -45,7 +45,7 @@ const Form = (props) => {
       const transformations = [
         portraitTF,
         tribesTF,
-        costTF,
+        // costTF,
         // nameTF,
         // powerTF,
         // healthTF,
@@ -55,12 +55,13 @@ const Form = (props) => {
       ].join("");
 
       const transformationObject = {
+        ...costTF,
         ...nameTF,
         ...powerTF,
         ...healthTF,
       };
 
-      console.log("TFObject: ", transformationObject)
+      console.log("TFObject: ", transformationObject);
 
       setUrl(generateUrl(transformationObject));
     }, DEBOUNCE_TIMER);
