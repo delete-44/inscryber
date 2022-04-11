@@ -8,7 +8,7 @@ const Sigils = (props) => {
 
   useEffect(() => {
     if (sigils.length === 0) {
-      setSigilsTF("");
+      setSigilsTF({});
       return;
     }
 
