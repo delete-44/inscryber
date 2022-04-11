@@ -38,6 +38,7 @@ const Form = (props) => {
     const timer = setTimeout(() => {
       setBusy(true);
 
+      // TODO: Move ordering logic into backend
       // Compile all transformations into one object
       // Order this array by layers, ie the first element
       // will appear under all others, the last element
@@ -54,7 +55,7 @@ const Form = (props) => {
         ...patchesTF,
       };
 
-      setUrl(generateUrl(transformationObject));
+      setUrl(generateUrl(transformationObject, cardBase));
     }, DEBOUNCE_TIMER);
     return () => clearTimeout(timer);
   }, [
