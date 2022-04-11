@@ -8,14 +8,28 @@ describe("NameTransformation", () => {
       expect(tf.toString()).toEqual("");
     });
 
-    it("generates correct transformation string", () => {
-      const tf = new NameTransformation("Test Transformation");
+    it("generates correct transformation string for short strings", () => {
+      const tf = new NameTransformation("123456789");
 
       expect(tf.toString()).toEqual(
-        "l_text:Inscryber:HEAVYWEIGHT.ttf_128:Test%20Transformation/t_name_long/"
+        "l_text:Inscryber:HEAVYWEIGHT.ttf_128:123456789/t_name_short/"
       );
     });
 
-    // FIXME: Tests for long/short/urlencoded text.
+    it("generates correct transformation string for long strings", () => {
+      const tf = new NameTransformation("123456789012");
+
+      expect(tf.toString()).toEqual(
+        "l_text:Inscryber:HEAVYWEIGHT.ttf_128:123456789012/t_name_long/"
+      );
+    });
+
+    it("encodes special characters in transformation", () => {
+      const tf = new NameTransformation("Test String");
+
+      expect(tf.toString()).toEqual(
+        `l_text:Inscryber:HEAVYWEIGHT.ttf_128:Test%20String/t_name_short/`
+      );
+    });
   });
 });
