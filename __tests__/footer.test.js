@@ -44,6 +44,9 @@ describe("Footer", () => {
     const avgUserText = screen.getByText(
       "© [additional cost assets, including the blood font type]"
     );
+    const annieplyerText = screen.getByText(
+      "© Annieplyer[act 1 themed energy assets]"
+    );
     const dmullinsText = screen.getByText(
       "© [designs, IP. Used & distributed with permission]"
     );
@@ -58,6 +61,8 @@ describe("Footer", () => {
     expect(avgUserLink).toBeInTheDocument();
     expect(avgUserText).toBeInTheDocument();
     expect(avgUserLink).toHaveAttribute("href", LINKS.avgUser);
+
+    expect(annieplyerText).toBeInTheDocument();
 
     expect(dmullinsLink).toBeInTheDocument();
     expect(dmullinsText).toBeInTheDocument();
