@@ -14,7 +14,8 @@ export class PortraitTransformation extends Transformation {
 
     let tfString = `l_${filename}/`;
 
-    if (manipulations) tfString += `${manipulations.join("/")}/`;
+    if (manipulations && manipulations.length > 0)
+      tfString += `${manipulations.join("/")}/`;
 
     tfString += "t_portrait/";
 
