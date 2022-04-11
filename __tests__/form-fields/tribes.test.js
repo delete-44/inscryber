@@ -40,9 +40,7 @@ describe("Tribes", () => {
 
     userEvent.click(birdField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:bird/t_tribe_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ tribes: ["bird"] });
   });
 
   it("correctly unsets specific transformations", () => {
@@ -51,134 +49,28 @@ describe("Tribes", () => {
 
     userEvent.click(birdField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:bird/t_tribe_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ tribes: ["bird"] });
 
     userEvent.click(canineField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
-        "l_Inscryber:Tribes:v1:canine/t_tribe_2/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({
+      tribes: ["bird", "canine"],
+    });
 
     userEvent.click(canineField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:bird/t_tribe_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ tribes: ["bird"] });
   });
 
-  it("sorts selected tribes alphabetically regardless of selection order", () => {
+  it("removes the transformation when deselected", () => {
     const birdField = screen.getByRole("checkbox", { name: /Bird/ });
-    const hoovedField = screen.getByRole("checkbox", { name: /Hooved/ });
-    const reptileField = screen.getByRole("checkbox", { name: /Reptile/ });
-
-    userEvent.click(reptileField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:reptile/t_tribe_1/"
-    );
 
     userEvent.click(birdField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
-        "l_Inscryber:Tribes:v1:reptile/t_tribe_2/"
-    );
-
-    userEvent.click(hoovedField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
-        "l_Inscryber:Tribes:v1:hooved/t_tribe_2/" +
-        "l_Inscryber:Tribes:v1:reptile/t_tribe_3/"
-    );
-  });
-
-  it("correctly sets all transformations when all selected", () => {
-    const birdField = screen.getByRole("checkbox", { name: /Bird/ });
-    const canineField = screen.getByRole("checkbox", { name: /Canine/ });
-    const hoovedField = screen.getByRole("checkbox", { name: /Hooved/ });
-    const insectField = screen.getByRole("checkbox", { name: /Insect/ });
-    const reptileField = screen.getByRole("checkbox", { name: /Reptile/ });
-
-    userEvent.click(birdField);
-    userEvent.click(canineField);
-    userEvent.click(hoovedField);
-    userEvent.click(insectField);
-    userEvent.click(reptileField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
-        "l_Inscryber:Tribes:v1:canine/t_tribe_2/" +
-        "l_Inscryber:Tribes:v1:hooved/t_tribe_3/" +
-        "l_Inscryber:Tribes:v1:insect/t_tribe_4/" +
-        "l_Inscryber:Tribes:v1:reptile/t_tribe_5/"
-    );
-  });
-
-  it("removes the transformation when all transformations deselected", () => {
-    const birdField = screen.getByRole("checkbox", { name: /Bird/ });
-    const canineField = screen.getByRole("checkbox", { name: /Canine/ });
-    const hoovedField = screen.getByRole("checkbox", { name: /Hooved/ });
-    const insectField = screen.getByRole("checkbox", { name: /Insect/ });
-    const reptileField = screen.getByRole("checkbox", { name: /Reptile/ });
-
-    userEvent.click(canineField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:canine/t_tribe_1/"
-    );
-
-    userEvent.click(reptileField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:canine/t_tribe_1/" +
-        "l_Inscryber:Tribes:v1:reptile/t_tribe_2/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ tribes: ["bird"] });
 
     userEvent.click(birdField);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
-        "l_Inscryber:Tribes:v1:canine/t_tribe_2/" +
-        "l_Inscryber:Tribes:v1:reptile/t_tribe_3/"
-    );
-
-    userEvent.click(insectField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
-        "l_Inscryber:Tribes:v1:canine/t_tribe_2/" +
-        "l_Inscryber:Tribes:v1:insect/t_tribe_3/" +
-        "l_Inscryber:Tribes:v1:reptile/t_tribe_4/"
-    );
-
-    userEvent.click(hoovedField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:bird/t_tribe_1/" +
-        "l_Inscryber:Tribes:v1:canine/t_tribe_2/" +
-        "l_Inscryber:Tribes:v1:hooved/t_tribe_3/" +
-        "l_Inscryber:Tribes:v1:insect/t_tribe_4/" +
-        "l_Inscryber:Tribes:v1:reptile/t_tribe_5/"
-    );
-
-    userEvent.click(birdField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Tribes:v1:canine/t_tribe_1/" +
-        "l_Inscryber:Tribes:v1:hooved/t_tribe_2/" +
-        "l_Inscryber:Tribes:v1:insect/t_tribe_3/" +
-        "l_Inscryber:Tribes:v1:reptile/t_tribe_4/"
-    );
-
-    userEvent.click(canineField);
-    userEvent.click(hoovedField);
-    userEvent.click(insectField);
-    userEvent.click(reptileField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith("");
+    expect(mockCallback).toHaveBeenLastCalledWith({});
   });
 });

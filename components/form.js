@@ -44,7 +44,7 @@ const Form = (props) => {
       // will appear over.
       const transformations = [
         portraitTF,
-        tribesTF,
+        // tribesTF,
         // costTF,
         // nameTF,
         // powerTF,
@@ -55,6 +55,7 @@ const Form = (props) => {
       ].join("");
 
       const transformationObject = {
+        ...tribesTF,
         ...costTF,
         ...nameTF,
         ...powerTF,
