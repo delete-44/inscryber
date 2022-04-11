@@ -40,9 +40,7 @@ describe("Overlays", () => {
 
     userEvent.click(blood1Field);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ overlays: ["blood_1"] });
   });
 
   it("correctly unsets specific transformations", () => {
@@ -51,122 +49,28 @@ describe("Overlays", () => {
 
     userEvent.click(blood1Field);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ overlays: ["blood_1"] });
 
     userEvent.click(blood2Field);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_1/" + "l_Inscryber:Overlays:v1:blood_2/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({
+      overlays: ["blood_1", "blood_2"],
+    });
 
     userEvent.click(blood2Field);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ overlays: ["blood_1"] });
   });
 
-  it("correctly sets all transformations when all selected", () => {
+  it("removes the transformation when deselected", () => {
     const blood1Field = screen.getByRole("checkbox", { name: /Blood \[1\]/ });
-    const blood2Field = screen.getByRole("checkbox", { name: /Blood \[2\]/ });
-    const fungusField = screen.getByRole("checkbox", { name: /Fungus/ });
-    const gooField = screen.getByRole("checkbox", { name: /Goo/ });
-    const smokeField = screen.getByRole("checkbox", { name: /Smoke/ });
-    const stitchesField = screen.getByRole("checkbox", { name: /Stitches/ });
-
-    userEvent.click(blood1Field);
-    userEvent.click(blood2Field);
-    userEvent.click(fungusField);
-    userEvent.click(gooField);
-    userEvent.click(smokeField);
-    userEvent.click(stitchesField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_1/" +
-        "l_Inscryber:Overlays:v1:blood_2/" +
-        "l_Inscryber:Overlays:v1:fungus/" +
-        "l_Inscryber:Overlays:v1:goo/" +
-        "l_Inscryber:Overlays:v1:smoke/" +
-        "l_Inscryber:Overlays:v1:stitches/"
-    );
-  });
-
-  it("removes the transformation when all transformations deselected", () => {
-    const blood1Field = screen.getByRole("checkbox", { name: /Blood \[1\]/ });
-    const blood2Field = screen.getByRole("checkbox", { name: /Blood \[2\]/ });
-    const fungusField = screen.getByRole("checkbox", { name: /Fungus/ });
-    const gooField = screen.getByRole("checkbox", { name: /Goo/ });
-    const smokeField = screen.getByRole("checkbox", { name: /Smoke/ });
-    const stitchesField = screen.getByRole("checkbox", { name: /Stitches/ });
-
-    userEvent.click(blood2Field);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_2/"
-    );
-
-    userEvent.click(stitchesField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_2/" + "l_Inscryber:Overlays:v1:stitches/"
-    );
 
     userEvent.click(blood1Field);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_1/" +
-        "l_Inscryber:Overlays:v1:blood_2/" +
-        "l_Inscryber:Overlays:v1:stitches/"
-    );
-
-    userEvent.click(gooField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_1/" +
-        "l_Inscryber:Overlays:v1:blood_2/" +
-        "l_Inscryber:Overlays:v1:goo/" +
-        "l_Inscryber:Overlays:v1:stitches/"
-    );
-
-    userEvent.click(fungusField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_1/" +
-        "l_Inscryber:Overlays:v1:blood_2/" +
-        "l_Inscryber:Overlays:v1:fungus/" +
-        "l_Inscryber:Overlays:v1:goo/" +
-        "l_Inscryber:Overlays:v1:stitches/"
-    );
-
-    userEvent.click(smokeField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_1/" +
-        "l_Inscryber:Overlays:v1:blood_2/" +
-        "l_Inscryber:Overlays:v1:fungus/" +
-        "l_Inscryber:Overlays:v1:goo/" +
-        "l_Inscryber:Overlays:v1:smoke/" +
-        "l_Inscryber:Overlays:v1:stitches/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ overlays: ["blood_1"] });
 
     userEvent.click(blood1Field);
 
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Overlays:v1:blood_2/" +
-        "l_Inscryber:Overlays:v1:fungus/" +
-        "l_Inscryber:Overlays:v1:goo/" +
-        "l_Inscryber:Overlays:v1:smoke/" +
-        "l_Inscryber:Overlays:v1:stitches/"
-    );
-
-    userEvent.click(blood2Field);
-    userEvent.click(fungusField);
-    userEvent.click(gooField);
-    userEvent.click(smokeField);
-    userEvent.click(stitchesField);
-
-    expect(mockCallback).toHaveBeenLastCalledWith("");
+    expect(mockCallback).toHaveBeenLastCalledWith({});
   });
 });

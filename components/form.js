@@ -60,6 +60,7 @@ const Form = (props) => {
         ...powerTF,
         ...healthTF,
         ...sigilsTF,
+        ...overlaysTF,
       };
 
       console.log("TFObject: ", transformationObject);

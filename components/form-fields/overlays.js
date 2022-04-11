@@ -10,21 +10,10 @@ const Overlays = (props) => {
   // MultiCheckbox component sets selectedOverlays as
   // an array of filenames
   useEffect(() => {
-    if (selectedOverlays.length === 0) {
-      setOverlaysTF("");
-      return;
-    }
-
-    // Apply each one in a transformation
-    let transformation = "";
-
-    // Add transformation for each tribe. Transformations
-    // are named in Cloudinary in the form tribe_x
-    selectedOverlays.forEach((o) => {
-      transformation += `l_Inscryber:Overlays:v1:${o}/`;
-    });
-
-    setOverlaysTF(transformation);
+    console.log(selectedOverlays);
+    setOverlaysTF(
+      selectedOverlays.length < 1 ? {} : { overlays: selectedOverlays }
+    );
   }, [selectedOverlays, setOverlaysTF]);
 
   return (
