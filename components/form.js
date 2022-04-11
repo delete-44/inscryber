@@ -49,7 +49,7 @@ const Form = (props) => {
         // nameTF,
         // powerTF,
         // healthTF,
-        sigilsTF,
+        // sigilsTF,
         overlaysTF,
         patchesTF,
       ].join("");
@@ -59,6 +59,7 @@ const Form = (props) => {
         ...nameTF,
         ...powerTF,
         ...healthTF,
+        ...sigilsTF,
       };
 
       console.log("TFObject: ", transformationObject);
