@@ -8,22 +8,14 @@ const Patches = (props) => {
 
   useEffect(() => {
     if (patches.length === 0) {
-      setPatchesTF("");
+      setPatchesTF({});
       return;
     }
 
     // Build array of selected values,
     // ie ["airborne", "stinky"]
     const patchValues = patches.map((p) => p.value);
-    let transformation = "";
-
-    // Add transformation for each patch. Transformations
-    // are named in Cloudinary in the form patch_x
-    patchValues.forEach((p, i) => {
-      transformation += `l_Inscryber:Patches:v1:${p}/t_patch_${++i}/`;
-    });
-
-    setPatchesTF(transformation);
+    setPatchesTF({ patches: patchValues });
   }, [patches, setPatchesTF]);
 
   return (

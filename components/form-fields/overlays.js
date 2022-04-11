@@ -10,7 +10,6 @@ const Overlays = (props) => {
   // MultiCheckbox component sets selectedOverlays as
   // an array of filenames
   useEffect(() => {
-    console.log(selectedOverlays);
     setOverlaysTF(
       selectedOverlays.length < 1 ? {} : { overlays: selectedOverlays }
     );

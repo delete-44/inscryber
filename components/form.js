@@ -50,8 +50,8 @@ const Form = (props) => {
         // powerTF,
         // healthTF,
         // sigilsTF,
-        overlaysTF,
-        patchesTF,
+        // overlaysTF,
+        // patchesTF,
       ].join("");
 
       const transformationObject = {
@@ -61,9 +61,8 @@ const Form = (props) => {
         ...healthTF,
         ...sigilsTF,
         ...overlaysTF,
+        ...patchesTF,
       };
-
-      console.log("TFObject: ", transformationObject);
 
       setUrl(generateUrl(transformationObject));
     }, DEBOUNCE_TIMER);
