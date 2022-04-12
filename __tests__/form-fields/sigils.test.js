@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Sigils from "@form-fields/sigils";
 import selectEvent from "react-select-event";
-import userEvent from "@testing-library/user-event";
 
 describe("Sigils", () => {
   const mockCallback = jest.fn();
@@ -31,17 +30,7 @@ describe("Sigils", () => {
     expect(maxText).toBeInTheDocument();
   });
 
-  it("correctly sets a single transformation", async () => {
-    const sigilsField = screen.getByRole("combobox", {
-      "aria-label": /Sigils/,
-    });
-
-    await selectEvent.select(sigilsField, /Airborne/);
-
-    expect(mockCallback).toHaveBeenLastCalledWith({ sigils: ["airborne"] });
-  });
-
-  it("correctly sets multiple transformations", async () => {
+  it("correctly sets transformations", async () => {
     const sigilsField = screen.getByRole("combobox", {
       "aria-label": /Sigils/,
     });
@@ -69,22 +58,5 @@ describe("Sigils", () => {
     expect(mockCallback).toHaveBeenLastCalledWith({
       sigils: ["airborne", "bifurcated_strike"],
     });
-  });
-
-  it("removes the transformation when clear field is clicked", async () => {
-    const sigilsField = screen.getByRole("combobox", {
-      "aria-label": /Sigils/,
-    });
-
-    await selectEvent.select(sigilsField, /Airborne/);
-
-    expect(mockCallback).toHaveBeenLastCalledWith({ sigils: ["airborne"] });
-
-    const removeButton = screen.getByRole("button", {
-      name: "Remove Airborne",
-    });
-    userEvent.click(removeButton);
-
-    expect(mockCallback).toHaveBeenLastCalledWith({});
   });
 });
