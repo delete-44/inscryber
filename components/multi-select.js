@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Select from "react-select";
 import {
@@ -9,11 +9,12 @@ import {
   MAGNIFICUS_SIGILS,
   PO3_SIGILS,
   KAYCEE_SIGILS,
-  ADDITIONAL_SIGILS
+  ADDITIONAL_SIGILS,
 } from "components/constants";
 
 const MultiSelect = (props) => {
-  const { id, maxOptions, setSelected } = props;
+  const [selected, setSelected] = useState([]);
+  const { id, maxOptions, setTF } = props;
 
   const options = [
     { label: "Leshy", options: SIGILS },
@@ -24,15 +25,27 @@ const MultiSelect = (props) => {
     { label: "Additional", options: ADDITIONAL_SIGILS },
   ];
 
+  useEffect(() => {
+    if (selected.length === 0) {
+      setTF({});
+      return;
+    }
+
+    // Build array of selected values,
+    // ie ["airborne", "stinky"]
+    const selectedValues = selected.map((p) => p.value);
+    setTF({ [id]: selectedValues });
+  }, [selected, setTF]);
+
   return (
     <>
       {/* noOptions solution by @hrafaelveloso - https://github.com/JedWatson/react-select/issues/1341#issuecomment-521195152 */}
       <Select
         instanceId={`${id}-selector`}
         aria-label={id}
-        options={props.selected.length === maxOptions ? [] : options}
+        options={selected.length === maxOptions ? [] : options}
         noOptionsMessage={() => {
-          return props.selected.length === maxOptions
+          return selected.length === maxOptions
             ? `Only ${maxOptions} ${id} can be applied at once.`
             : "No options available.";
         }}
@@ -40,9 +53,9 @@ const MultiSelect = (props) => {
         isMulti
         styles={SELECT_STYLES}
         theme={SELECT_THEME}
-        value={props.selected}
+        value={selected}
         onChange={(e) => {
-          // Allow maximum of 4 options to be selected
+          // Cap maximum that can be selected at once
           if (e.length <= maxOptions) {
             setSelected(e);
           }
@@ -57,8 +70,7 @@ const MultiSelect = (props) => {
 MultiSelect.propTypes = {
   id: PropTypes.string.isRequired,
   maxOptions: PropTypes.number.isRequired,
-  setSelected: PropTypes.func.isRequired,
-  selected: PropTypes.array.isRequired,
+  setTF: PropTypes.func.isRequired,
 };
 
 export default MultiSelect;

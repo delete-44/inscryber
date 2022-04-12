@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Patches from "@form-fields/patches";
 import selectEvent from "react-select-event";
-import userEvent from "@testing-library/user-event";
 
 describe("Patches", () => {
   const mockCallback = jest.fn();
@@ -83,22 +82,5 @@ describe("Patches", () => {
         "stinky",
       ],
     });
-  });
-
-  it("removes the transformation when clear field is clicked", async () => {
-    const patchesField = screen.getByRole("combobox", {
-      "aria-label": /Patches/,
-    });
-
-    await selectEvent.select(patchesField, /Airborne/);
-
-    expect(mockCallback).toHaveBeenLastCalledWith({ patches: ["airborne"] });
-
-    const removeButton = screen.getByRole("button", {
-      name: "Remove Airborne",
-    });
-    userEvent.click(removeButton);
-
-    expect(mockCallback).toHaveBeenLastCalledWith({});
   });
 });

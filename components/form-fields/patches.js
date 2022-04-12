@@ -1,22 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import MultiSelect from "components/multi-select";
 
 const Patches = (props) => {
-  const [patches, setPatches] = useState([]);
   const { setPatchesTF } = props;
-
-  useEffect(() => {
-    if (patches.length === 0) {
-      setPatchesTF({});
-      return;
-    }
-
-    // Build array of selected values,
-    // ie ["airborne", "stinky"]
-    const patchValues = patches.map((p) => p.value);
-    setPatchesTF({ patches: patchValues });
-  }, [patches, setPatchesTF]);
 
   return (
     <section className="mb-10">
@@ -25,12 +12,7 @@ const Patches = (props) => {
         from...
       </p>
 
-      <MultiSelect
-        id="patches"
-        maxOptions={4}
-        setSelected={setPatches}
-        selected={patches}
-      />
+      <MultiSelect id="patches" maxOptions={4} setTF={setPatchesTF} />
     </section>
   );
 };
