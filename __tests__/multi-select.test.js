@@ -16,7 +16,7 @@ describe("MultiSelect", () => {
   constants.ADDITIONAL_SIGILS = [{ value: "additional", label: "GOTY" }];
 
   beforeEach(() => {
-    render(<MultiSelect id="TEST-ID" maxOptions={10} setTF={mockCallback} />);
+    render(<MultiSelect id="TEST-ID" maxOptions={5} setTF={mockCallback} />);
     jest.clearAllMocks();
   });
 
@@ -24,7 +24,7 @@ describe("MultiSelect", () => {
     const multiSelectField = screen.getByRole("combobox", {
       "aria-label": /TEST-ID/,
     });
-    const maxText = screen.getByText("10 maximum");
+    const maxText = screen.getByText("5 maximum");
 
     expect(multiSelectField).toBeInTheDocument();
     expect(maxText).toBeInTheDocument();
@@ -103,5 +103,23 @@ describe("MultiSelect", () => {
     expect(screen.getByText(/Technology/)).toBeInTheDocument();
     expect(screen.getByText(/Old Data/)).toBeInTheDocument();
     expect(screen.getByText(/GOTY/)).toBeInTheDocument();
+  });
+
+  it("prevents users selecting more than the max", async () => {
+    const multiSelectField = screen.getByRole("combobox", {
+      "aria-label": /TEST-ID/,
+    });
+
+    await selectEvent.select(multiSelectField, /Beasts/);
+    await selectEvent.select(multiSelectField, /Dead/);
+    await selectEvent.select(multiSelectField, /Magicks/);
+    await selectEvent.select(multiSelectField, /Technology/);
+    await selectEvent.select(multiSelectField, /Old Data/);
+
+    selectEvent.openMenu(multiSelectField);
+
+    expect(
+      screen.getByText(/Only 5 TEST-ID can be applied at once/)
+    ).toBeInTheDocument();
   });
 });
