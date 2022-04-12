@@ -66,6 +66,10 @@ const About = () => {
           </li>
 
           <li className="about-text mb-4">
+            Act 1 themed energy costs created by @Annieplyer.
+          </li>
+
+          <li className="about-text mb-4">
             &quot;HEAVYWEIGHT&quot; font created by Nerfect Type Laboratories.
           </li>
 

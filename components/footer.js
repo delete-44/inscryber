@@ -31,6 +31,12 @@ const Footer = () => {
         </li>
 
         <li className="mb-2">
+          &copy; Annieplyer
+          <br />
+          [act 1 themed energy assets]
+        </li>
+
+        <li className="mb-2">
           &copy; <a href={LINKS.dmullins}>Daniel Mullins Games</a>
           <br />
           [designs, IP. Used &amp; distributed with permission]
