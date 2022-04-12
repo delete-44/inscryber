@@ -13,9 +13,8 @@ import {
 } from "components/constants";
 
 const MultiSelect = (props) => {
-  const { id, maxOptions, setTF } = props;
-
   const [selected, setSelected] = useState([]);
+  const { id, maxOptions, setTF } = props;
 
   const options = [
     { label: "Leshy", options: SIGILS },
