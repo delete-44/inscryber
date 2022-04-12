@@ -7,8 +7,6 @@ export class CostTransformation extends Transformation {
   }
 
   toString() {
-    console.log("[CostTransformation] Generating transformation string");
-
     const { currency, value } = this.value;
     const currencyDetails = CURRENCIES.find((c) => c.filename === currency);
     const { max, filename } = currencyDetails;

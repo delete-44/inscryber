@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import Stats from "@form-fields/stats";
-import { HEAVYWEIGHT } from "components/constants";
 
 describe("Stats", () => {
   const mockCallback = jest.fn();
@@ -38,63 +37,6 @@ describe("Stats", () => {
     expect(healthLabel).toBeInTheDocument();
   });
 
-  describe("getWidth function", () => {
-    it("sets width at 50 for the character '1'", () => {
-      const powerField = screen.getByRole("spinbutton", {
-        name: /Power/,
-      });
-
-      userEvent.type(powerField, "1");
-
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:1,c_scale,w_50/t_power/`
-      );
-    });
-
-    it("sets width at 65 for numbers 2-9", () => {
-      const powerField = screen.getByRole("spinbutton", {
-        name: /Power/,
-      });
-
-      userEvent.type(powerField, "2");
-
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:2,c_scale,w_65/t_power/`
-      );
-    });
-
-    it("sets width at 80 for the characters 10 to 99", () => {
-      const powerField = screen.getByRole("spinbutton", {
-        name: /Power/,
-      });
-
-      userEvent.type(powerField, "10");
-
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:10,c_scale,w_80/t_power/`
-      );
-
-      userEvent.type(powerField, "{selectall}{backspace}");
-      userEvent.type(powerField, "99");
-
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:99,c_scale,w_80/t_power/`
-      );
-    });
-
-    it("expands width for larger numbers", () => {
-      const powerField = screen.getByRole("spinbutton", {
-        name: /Power/,
-      });
-
-      userEvent.type(powerField, "100");
-
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:100,c_scale,w_100/t_power/`
-      );
-    });
-  });
-
   describe("the power number field", () => {
     it("ignores non-numerical characters", () => {
       const powerField = screen.getByRole("spinbutton", {
@@ -113,13 +55,11 @@ describe("Stats", () => {
 
       userEvent.type(powerField, "9");
 
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/t_power/`
-      );
+      expect(mockCallback).toHaveBeenLastCalledWith({ power: "9" });
 
       userEvent.type(powerField, "{selectall}{backspace}");
 
-      expect(mockCallback).toHaveBeenLastCalledWith("");
+      expect(mockCallback).toHaveBeenLastCalledWith({});
     });
   });
 
@@ -141,13 +81,11 @@ describe("Stats", () => {
 
       userEvent.type(healthField, "9");
 
-      expect(mockCallback).toHaveBeenLastCalledWith(
-        `l_text:${HEAVYWEIGHT}_196:9,c_scale,w_65/t_health/`
-      );
+      expect(mockCallback).toHaveBeenLastCalledWith({ health: "9" });
 
       userEvent.type(healthField, "{selectall}{backspace}");
 
-      expect(mockCallback).toHaveBeenLastCalledWith("");
+      expect(mockCallback).toHaveBeenLastCalledWith({});
     });
   });
 });

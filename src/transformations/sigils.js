@@ -6,8 +6,6 @@ export class SigilsTransformation extends Transformation {
   }
 
   toString() {
-    console.log("[SigilsTransformation] Generating transformation string");
-
     if (this.value.length === 0) return "";
 
     // Single sigils are larger and central than multiple sigils

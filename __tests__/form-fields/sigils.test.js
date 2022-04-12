@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Sigils from "@form-fields/sigils";
 import selectEvent from "react-select-event";
-import userEvent from "@testing-library/user-event";
 
 describe("Sigils", () => {
   const mockCallback = jest.fn();
@@ -31,19 +30,7 @@ describe("Sigils", () => {
     expect(maxText).toBeInTheDocument();
   });
 
-  it("correctly sets a single transformation", async () => {
-    const sigilsField = screen.getByRole("combobox", {
-      "aria-label": /Sigils/,
-    });
-
-    await selectEvent.select(sigilsField, /Airborne/);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Sigils:v1:airborne/t_sigil/"
-    );
-  });
-
-  it("correctly sets multiple transformations", async () => {
+  it("correctly sets transformations", async () => {
     const sigilsField = screen.getByRole("combobox", {
       "aria-label": /Sigils/,
     });
@@ -51,17 +38,14 @@ describe("Sigils", () => {
     await selectEvent.select(sigilsField, /Airborne/);
 
     expect(mockCallback).toHaveBeenCalledTimes(1);
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Sigils:v1:airborne/t_sigil/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ sigils: ["airborne"] });
 
     await selectEvent.select(sigilsField, /Bifurcated Strike/);
 
     expect(mockCallback).toHaveBeenCalledTimes(2);
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Sigils:v1:airborne/t_v1_sigil_1/" +
-        "l_Inscryber:Sigils:v1:bifurcated_strike/t_v1_sigil_2/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({
+      sigils: ["airborne", "bifurcated_strike"],
+    });
 
     // It does not set additional sigils & renders warning to user
     await selectEvent.select(sigilsField, /Bifurcated Strike/);
@@ -71,28 +55,8 @@ describe("Sigils", () => {
     ).toBeInTheDocument();
 
     expect(mockCallback).toHaveBeenCalledTimes(2);
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Sigils:v1:airborne/t_v1_sigil_1/" +
-        "l_Inscryber:Sigils:v1:bifurcated_strike/t_v1_sigil_2/"
-    );
-  });
-
-  it("removes the transformation when clear field is clicked", async () => {
-    const sigilsField = screen.getByRole("combobox", {
-      "aria-label": /Sigils/,
+    expect(mockCallback).toHaveBeenLastCalledWith({
+      sigils: ["airborne", "bifurcated_strike"],
     });
-
-    await selectEvent.select(sigilsField, /Airborne/);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Sigils:v1:airborne/t_sigil/"
-    );
-
-    const removeButton = screen.getByRole("button", {
-      name: "Remove Airborne",
-    });
-    userEvent.click(removeButton);
-
-    expect(mockCallback).toHaveBeenLastCalledWith("");
   });
 });

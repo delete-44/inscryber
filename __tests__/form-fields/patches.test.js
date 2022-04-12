@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Patches from "@form-fields/patches";
 import selectEvent from "react-select-event";
-import userEvent from "@testing-library/user-event";
 
 describe("Patches", () => {
   const mockCallback = jest.fn();
@@ -31,19 +30,7 @@ describe("Patches", () => {
     expect(maxText).toBeInTheDocument();
   });
 
-  it("correctly sets a transformation", async () => {
-    const patchesField = screen.getByRole("combobox", {
-      "aria-label": /Patches/,
-    });
-
-    await selectEvent.select(patchesField, /Airborne/);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Patches:v1:airborne/t_patch_1/"
-    );
-  });
-
-  it("correctly sets multiple transformations", async () => {
+  it("correctly sets transformations", async () => {
     const patchesField = screen.getByRole("combobox", {
       "aria-label": /Patches/,
     });
@@ -51,36 +38,33 @@ describe("Patches", () => {
     await selectEvent.select(patchesField, /Airborne/);
 
     expect(mockCallback).toHaveBeenCalledTimes(1);
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Patches:v1:airborne/t_patch_1/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({ patches: ["airborne"] });
 
     await selectEvent.select(patchesField, /Bifurcated Strike/);
 
     expect(mockCallback).toHaveBeenCalledTimes(2);
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Patches:v1:airborne/t_patch_1/" +
-        "l_Inscryber:Patches:v1:bifurcated_strike/t_patch_2/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({
+      patches: ["airborne", "bifurcated_strike"],
+    });
 
     await selectEvent.select(patchesField, /Trifurcated Strike/);
 
     expect(mockCallback).toHaveBeenCalledTimes(3);
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Patches:v1:airborne/t_patch_1/" +
-        "l_Inscryber:Patches:v1:bifurcated_strike/t_patch_2/" +
-        "l_Inscryber:Patches:v1:trifurcated_strike/t_patch_3/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({
+      patches: ["airborne", "bifurcated_strike", "trifurcated_strike"],
+    });
 
     await selectEvent.select(patchesField, /Stinky/);
 
     expect(mockCallback).toHaveBeenCalledTimes(4);
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Patches:v1:airborne/t_patch_1/" +
-        "l_Inscryber:Patches:v1:bifurcated_strike/t_patch_2/" +
-        "l_Inscryber:Patches:v1:trifurcated_strike/t_patch_3/" +
-        "l_Inscryber:Patches:v1:stinky/t_patch_4/"
-    );
+    expect(mockCallback).toHaveBeenLastCalledWith({
+      patches: [
+        "airborne",
+        "bifurcated_strike",
+        "trifurcated_strike",
+        "stinky",
+      ],
+    });
 
     // It does not set additional sigils & renders warning to user
     await selectEvent.select(patchesField, /Bifurcated Strike/);
@@ -90,30 +74,13 @@ describe("Patches", () => {
     ).toBeInTheDocument();
 
     expect(mockCallback).toHaveBeenCalledTimes(4);
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Patches:v1:airborne/t_patch_1/" +
-        "l_Inscryber:Patches:v1:bifurcated_strike/t_patch_2/" +
-        "l_Inscryber:Patches:v1:trifurcated_strike/t_patch_3/" +
-        "l_Inscryber:Patches:v1:stinky/t_patch_4/"
-    );
-  });
-
-  it("removes the transformation when clear field is clicked", async () => {
-    const patchesField = screen.getByRole("combobox", {
-      "aria-label": /Patches/,
+    expect(mockCallback).toHaveBeenLastCalledWith({
+      patches: [
+        "airborne",
+        "bifurcated_strike",
+        "trifurcated_strike",
+        "stinky",
+      ],
     });
-
-    await selectEvent.select(patchesField, /Airborne/);
-
-    expect(mockCallback).toHaveBeenLastCalledWith(
-      "l_Inscryber:Patches:v1:airborne/t_patch_1/"
-    );
-
-    const removeButton = screen.getByRole("button", {
-      name: "Remove Airborne",
-    });
-    userEvent.click(removeButton);
-
-    expect(mockCallback).toHaveBeenLastCalledWith("");
   });
 });

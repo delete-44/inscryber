@@ -10,21 +10,7 @@ const Tribes = (props) => {
   // MultiCheckbox component sets selectedTribes as
   // an array of filenames
   useEffect(() => {
-    if (selectedTribes.length === 0) {
-      setTribesTF("");
-      return;
-    }
-
-    // Apply each one in a transformation
-    let transformation = "";
-
-    // Add transformation for each tribe. Transformations
-    // are named in Cloudinary in the form tribe_x
-    selectedTribes.forEach((t, i) => {
-      transformation += `l_Inscryber:Tribes:v1:${t}/t_tribe_${++i}/`;
-    });
-
-    setTribesTF(transformation);
+    setTribesTF(selectedTribes.length < 1 ? {} : { tribes: selectedTribes });
   }, [selectedTribes, setTribesTF]);
 
   return (

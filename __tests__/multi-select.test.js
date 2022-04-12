@@ -16,17 +16,7 @@ describe("MultiSelect", () => {
   constants.ADDITIONAL_SIGILS = [{ value: "additional", label: "GOTY" }];
 
   beforeEach(() => {
-    render(
-      <MultiSelect
-        id="TEST-ID"
-        maxOptions={10}
-        setSelected={mockCallback}
-        selected={[
-          { value: "ant_spawner", label: "Ant Spawner" },
-          { value: "fecundity", label: "Fecundity" },
-        ]}
-      />
-    );
+    render(<MultiSelect id="TEST-ID" maxOptions={5} setTF={mockCallback} />);
     jest.clearAllMocks();
   });
 
@@ -34,54 +24,63 @@ describe("MultiSelect", () => {
     const multiSelectField = screen.getByRole("combobox", {
       "aria-label": /TEST-ID/,
     });
-    const maxText = screen.getByText("10 maximum");
+    const maxText = screen.getByText("5 maximum");
 
     expect(multiSelectField).toBeInTheDocument();
     expect(maxText).toBeInTheDocument();
   });
 
-  it("correctly shows selected values", () => {
-    const removeAntButton = screen.getByRole("button", {
-      name: "Remove Ant Spawner",
-    });
-
-    const removeFecundityButton = screen.getByRole("button", {
-      name: "Remove Fecundity",
-    });
-
-    expect(removeAntButton).toBeInTheDocument();
-    expect(removeFecundityButton).toBeInTheDocument();
-
-    expect(screen.getByText(/Ant Spawner/)).toBeInTheDocument();
-    expect(screen.queryByText(/Bone King/)).toBeNull();
-    expect(screen.queryByText(/Mighty Leap/)).toBeNull();
-    expect(screen.getByText(/Fecundity/)).toBeInTheDocument();
-  });
-
-  it("calls setSelected when options change", async () => {
+  it("correctly shows selected values", async () => {
     const multiSelectField = screen.getByRole("combobox", {
       "aria-label": /TEST-ID/,
     });
 
-    const removeFecundityButton = screen.getByRole("button", {
-      name: "Remove Fecundity",
+    await selectEvent.select(multiSelectField, /Beasts/);
+    await selectEvent.select(multiSelectField, /Magicks/);
+    await selectEvent.select(multiSelectField, /Dead/);
+
+    const removeBeastsButton = screen.getByRole("button", {
+      name: "Remove Beasts",
     });
 
-    // Confirm adding options works
-    await selectEvent.select(multiSelectField, /Beasts/);
+    const removeMagicksButton = screen.getByRole("button", {
+      name: "Remove Magicks",
+    });
 
-    expect(mockCallback).toHaveBeenLastCalledWith([
-      { label: "Ant Spawner", value: "ant_spawner" },
-      { label: "Fecundity", value: "fecundity" },
-      { label: "Beasts", value: "leshy" },
-    ]);
+    const removeDeadButton = screen.getByRole("button", {
+      name: "Remove Dead",
+    });
 
-    userEvent.click(removeFecundityButton);
+    expect(removeBeastsButton).toBeInTheDocument();
+    expect(removeMagicksButton).toBeInTheDocument();
+    expect(removeDeadButton).toBeInTheDocument();
 
-    // Confirm removing options works
-    expect(mockCallback).toHaveBeenLastCalledWith([
-      { label: "Ant Spawner", value: "ant_spawner" },
-    ]);
+    expect(screen.getByText(/Beasts/)).toBeInTheDocument();
+    expect(screen.getByText(/Dead/)).toBeInTheDocument();
+    expect(screen.getByText(/Magicks/)).toBeInTheDocument();
+    expect(screen.queryByText(/Technology/)).toBeNull();
+    expect(screen.queryByText(/Old Data/)).toBeNull();
+    expect(screen.queryByText(/GOTY/)).toBeNull();
+  });
+
+  it("sets and unsets transformation when options change", async () => {
+    const multiSelectField = screen.getByRole("combobox", {
+      "aria-label": /TEST-ID/,
+    });
+
+    // Adding options
+    await selectEvent.select(multiSelectField, /Old Data/);
+
+    expect(mockCallback).toHaveBeenLastCalledWith({ "TEST-ID": ["kaycee"] });
+
+    // Removing options
+    const removeOldDataButton = screen.getByRole("button", {
+      name: "Remove Old Data",
+    });
+
+    userEvent.click(removeOldDataButton);
+
+    expect(mockCallback).toHaveBeenLastCalledWith({});
   });
 
   it("renders a group of options for each scrybe", async () => {
@@ -104,5 +103,23 @@ describe("MultiSelect", () => {
     expect(screen.getByText(/Technology/)).toBeInTheDocument();
     expect(screen.getByText(/Old Data/)).toBeInTheDocument();
     expect(screen.getByText(/GOTY/)).toBeInTheDocument();
+  });
+
+  it("prevents users selecting more than the max", async () => {
+    const multiSelectField = screen.getByRole("combobox", {
+      "aria-label": /TEST-ID/,
+    });
+
+    await selectEvent.select(multiSelectField, /Beasts/);
+    await selectEvent.select(multiSelectField, /Dead/);
+    await selectEvent.select(multiSelectField, /Magicks/);
+    await selectEvent.select(multiSelectField, /Technology/);
+    await selectEvent.select(multiSelectField, /Old Data/);
+
+    selectEvent.openMenu(multiSelectField);
+
+    expect(
+      screen.getByText(/Only 5 TEST-ID can be applied at once/)
+    ).toBeInTheDocument();
   });
 });

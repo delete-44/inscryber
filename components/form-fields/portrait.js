@@ -6,16 +6,15 @@ import Link from "next/link";
 
 const Portrait = (props) => {
   const [imageId, setImageId] = useState("");
-  const [inscrybedTFs, setInscrybedTFs] = useState("");
+  const [inscrybedTFs, setInscrybedTFs] = useState([]);
   const { setPortraitTF } = props;
 
   useEffect(() => {
-    if (imageId === "") {
-      setPortraitTF("");
-      return;
-    }
-
-    setPortraitTF(`l_${imageId}/${inscrybedTFs}t_portrait/`);
+    setPortraitTF(
+      imageId === ""
+        ? {}
+        : { portrait: { filename: imageId, manipulations: inscrybedTFs } }
+    );
   }, [imageId, inscrybedTFs, setPortraitTF]);
 
   return (

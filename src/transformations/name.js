@@ -7,8 +7,6 @@ export class NameTransformation extends Transformation {
   }
 
   toString() {
-    console.log("[NameTransformation] Generating transformation string");
-
     if (this.value === "") return "";
 
     return (

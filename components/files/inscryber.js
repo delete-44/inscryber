@@ -11,11 +11,7 @@ const Inscryber = (props) => {
   // If any of these are present, chain them with "/" characters
   // If not, remove the transformation completely
   useEffect(() => {
-    setInscrybedTFs(
-      selectedManipulations.length > 0
-        ? `${selectedManipulations.join("/")}/`
-        : ""
-    );
+    setInscrybedTFs(selectedManipulations);
   }, [selectedManipulations, setInscrybedTFs]);
 
   return (

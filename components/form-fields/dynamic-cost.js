@@ -19,23 +19,11 @@ const DynamicCost = (props) => {
 
     // Remove transformation if card is free
     if (cost === "" || cost < 1) {
-      setCostTF("");
+      setCostTF({});
       return;
     }
 
-    // For as long as we have valid assets (up to 10), use them
-    if (cost <= 10) {
-      setCostTF(`l_Inscryber:Costs:v2:${filename}_${cost}/t_cost/`);
-      return;
-    }
-
-    // For larger costs, generate them dynamically by rendering
-    // a wide background, then each character of the number in line
-    setCostTF(
-      `t_v2_${filename}-bg-wide/` +
-        `l_Inscryber:Costs:v2:${filename}:${String(cost)[0]}/t_v2_cost-ten/` +
-        `l_Inscryber:Costs:v2:${filename}:${String(cost)[1]}/t_v2_cost-unit/`
-    );
+    setCostTF({ cost: { currency: filename, value: cost } });
   }, [cost, currency, setCostTF]);
 
   return (

@@ -30,7 +30,7 @@ describe("PortraitTransformation", () => {
       });
 
       expect(tf.toString()).toEqual(
-        "l_test-portrait/t_portrait/test-manipulation-1/test-manipulation-2/"
+        "l_test-portrait/test-manipulation-1/test-manipulation-2/t_portrait/"
       );
     });
   });
