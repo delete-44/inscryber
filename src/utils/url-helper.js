@@ -25,11 +25,29 @@ import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
 export const generateUrl = (transformations = {}, cardBase = "vladde") => {
   let tfString = "";
 
-  for (const type in transformations) {
-    let tf = TransformationFactory.build(type, transformations[type]);
+  transformationLayers.forEach((layer) => {
+    if (transformations[layer]) {
+      let tf = TransformationFactory.build(layer, transformations[layer]);
 
-    tfString += tf.toString();
-  }
+      tfString += tf.toString();
+    }
+  });
 
   return `${CLOUDINARY_BASE}${tfString}${CARD_BASE}${cardBase}`;
 };
+
+// Order in which to apply transformation layers
+// Item at the beginning of the array is added first,
+// and will render under everything else. Item at the
+// end will render over the top of everything else
+const transformationLayers = [
+  "portrait",
+  "tribes",
+  "cost",
+  "name",
+  "power",
+  "health",
+  "sigils",
+  "overlays",
+  "patches",
+];
