@@ -6,8 +6,6 @@ export class PortraitTransformation extends Transformation {
   }
 
   toString() {
-    console.log("[PortraitTransformation] Generating transformation string");
-
     const { filename, manipulations } = this.value;
 
     if (!filename) return "";
