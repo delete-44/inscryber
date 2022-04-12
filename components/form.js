@@ -32,33 +32,7 @@ const Form = (props) => {
 
   const { setBusy, setUrl } = props;
 
-  // Stagger requests so they wait for a delay, defined
-  // in CONSTANTs, from user input before requesting new image
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setBusy(true);
-
-      // TODO: Move ordering logic into backend
-      // Compile all transformations into one object
-      // Order this array by layers, ie the first element
-      // will appear under all others, the last element
-      // will appear over.
-      const transformationObject = {
-        ...portraitTF,
-        ...tribesTF,
-        ...costTF,
-        ...nameTF,
-        ...powerTF,
-        ...healthTF,
-        ...sigilsTF,
-        ...overlaysTF,
-        ...patchesTF,
-      };
-
-      setUrl(generateUrl(transformationObject, cardBase));
-    }, DEBOUNCE_TIMER);
-    return () => clearTimeout(timer);
-  }, [
+  const transformations = [
     nameTF,
     powerTF,
     healthTF,
@@ -68,10 +42,25 @@ const Form = (props) => {
     tribesTF,
     overlaysTF,
     costTF,
-    cardBase,
-    setBusy,
-    setUrl,
-  ]);
+  ];
+
+  useEffect(
+    () => {
+      // Stagger requests so they wait for a delay, defined
+      // in CONSTANTs, from user input before requesting new image
+      const timer = setTimeout(() => {
+        setBusy(true);
+
+        // Merge array of transformation objects into one large object
+        const transformationObject = Object.assign({}, ...transformations);
+
+        setUrl(generateUrl(transformationObject, cardBase));
+      }, DEBOUNCE_TIMER);
+      return () => clearTimeout(timer);
+    },
+    // Add every transformation to the dependency array for this hook
+    [cardBase, setBusy, setUrl].concat(transformations)
+  );
 
   return (
     <div>
