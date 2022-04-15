@@ -14,6 +14,7 @@ import Link from "next/link";
 export default function Home() {
   // State management for this component
   const [busy, setBusy] = useState(true);
+  const [cardBase, setCardBase] = useState("vladde");
   const [url, setUrl] = useState(
     `${CLOUDINARY_BASE}c_scale,h_${CARD_HEIGHT},w_${CARD_WIDTH}/${CARD_BASE}blur`
   );
@@ -24,7 +25,12 @@ export default function Home() {
       heading="Inscryber"
     >
       {/* Left column */}
-      <Form setBusy={setBusy} setUrl={setUrl} />
+      <Form
+        setBusy={setBusy}
+        setUrl={setUrl}
+        cardBase={cardBase}
+        setCardBase={setCardBase}
+      />
 
       {/* Right column */}
       <div className="width-full flex flex-col justify-center relative mt-16 md:mt-0 h-min sticky top-24">

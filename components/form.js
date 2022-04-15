@@ -28,9 +28,8 @@ const Form = (props) => {
   const [tribesTF, setTribesTF] = useState("");
   const [overlaysTF, setOverlaysTF] = useState("");
   const [costTF, setCostTF] = useState("");
-  const [cardBase, setCardBase] = useState("vladde");
 
-  const { setBusy, setUrl } = props;
+  const { setBusy, setUrl, setCardBase } = props;
 
   const transformations = [
     nameTF,
@@ -54,12 +53,12 @@ const Form = (props) => {
         // Merge array of transformation objects into one large object
         const transformationObject = Object.assign({}, ...transformations);
 
-        setUrl(generateUrl(transformationObject, cardBase));
+        setUrl(generateUrl(transformationObject, props.cardBase));
       }, DEBOUNCE_TIMER);
       return () => clearTimeout(timer);
     },
     // Add every transformation to the dependency array for this hook
-    [cardBase, setBusy, setUrl].concat(transformations)
+    [props.cardBase, setBusy, setUrl].concat(transformations)
   );
 
   return (
@@ -86,7 +85,7 @@ const Form = (props) => {
       <Overlays setOverlaysTF={setOverlaysTF} />
 
       {/* Card back selector, ie rarity */}
-      <CardBase base={cardBase} setBase={setCardBase} />
+      <CardBase base={props.cardBase} setBase={setCardBase} />
 
       <Portrait setPortraitTF={setPortraitTF} />
     </div>
@@ -96,6 +95,8 @@ const Form = (props) => {
 Form.propTypes = {
   setBusy: PropTypes.func.isRequired,
   setUrl: PropTypes.func.isRequired,
+  setCardBase: PropTypes.func.isRequired,
+  cardBase: PropTypes.string.isRequired,
 };
 
 export default Form;
