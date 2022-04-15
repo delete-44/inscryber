@@ -11,7 +11,7 @@ export class CostTransformation extends Transformation {
   toString() {
     const { currency, value } = this.value;
     const currencyDetails = CURRENCIES.find((c) => c.filename === currency);
-    const { max, filename } = currencyDetails;
+    const { max, filename, rareVersion } = currencyDetails;
 
     // Remove transformation if card is free
     if (value === "" || value < 1) return "";
@@ -19,17 +19,17 @@ export class CostTransformation extends Transformation {
     // Cap transformations to the max value supported
     // by the chosen currency
     if (value > max) {
-      return this.#generateTransformation(max, filename);
+      return this.#generateTransformation(max, filename, rareVersion);
     }
 
-    return this.#generateTransformation(value, filename);
+    return this.#generateTransformation(value, filename, rareVersion);
   }
 
-  #generateTransformation(value, filename) {
+  #generateTransformation(value, filename, rareVersion) {
     // For as long as we have valid assets (up to 10), use them
     if (value <= 10) {
-      // Energy costs support a "rare" alternate version
-      return this.isRare && filename.match(/energy/)
+      // Certain costs support a "rare" alternate version for cheap costs
+      return this.isRare && rareVersion
         ? `l_Inscryber:Costs:v2:${filename}_rare_${value}/t_cost/`
         : `l_Inscryber:Costs:v2:${filename}_${value}/t_cost/`;
     }
