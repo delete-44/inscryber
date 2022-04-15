@@ -2,7 +2,7 @@ import { Transformation } from "../transformation";
 import { HEAVYWEIGHT } from "components/constants";
 
 export class NameTransformation extends Transformation {
-  constructor(value, _type) {
+  constructor(value) {
     super(value, "name");
   }
 
