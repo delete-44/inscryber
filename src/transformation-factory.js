@@ -14,7 +14,7 @@ export class TransformationFactory {
    *
    * @return {Transformation} An object of a specific subclass of Transformation.
    */
-  static build(type, value, cardBase) {
+  static build(type, value) {
     switch (type) {
       case "name":
         return new NameTransformation(value);
@@ -22,7 +22,7 @@ export class TransformationFactory {
       case "health":
         return new StatTransformation(value, type);
       case "cost":
-        return new CostTransformation(value, { isRare: cardBase === "rare" });
+        return new CostTransformation(value);
       case "sigils":
         return new SigilsTransformation(value);
       case "patches":
