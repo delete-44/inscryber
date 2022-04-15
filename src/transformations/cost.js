@@ -2,8 +2,10 @@ import { Transformation } from "../transformation";
 import { CURRENCIES } from "components/constants";
 
 export class CostTransformation extends Transformation {
-  constructor(value, _type) {
+  constructor(value, config = {}) {
     super(value, "cost");
+
+    this.isRare = config.isRare || false;
   }
 
   toString() {
@@ -25,7 +27,12 @@ export class CostTransformation extends Transformation {
 
   #generateTransformation(value, filename) {
     // For as long as we have valid assets (up to 10), use them
-    if (value <= 10) return `l_Inscryber:Costs:v2:${filename}_${value}/t_cost/`;
+    if (value <= 10) {
+      // Energy costs support a "rare" alternate version
+      return this.isRare && filename.match(/energy/)
+        ? `l_Inscryber:Costs:v2:${filename}_rare_${value}/t_cost/`
+        : `l_Inscryber:Costs:v2:${filename}_${value}/t_cost/`;
+    }
 
     // For larger costs, generate them dynamically by rendering
     // a wide background, then each character of the number in line
