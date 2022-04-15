@@ -7,19 +7,11 @@ import Form from "components/form";
 describe("Form", () => {
   const mockSetBusy = jest.fn();
   const mockSetUrl = jest.fn();
-  const mockSetCardBase = jest.fn();
 
   constants.CLOUDINARY_BASE = "https://test/";
 
   beforeEach(async () => {
-    render(
-      <Form
-        setBusy={mockSetBusy}
-        setUrl={mockSetUrl}
-        setCardBase={mockSetCardBase}
-        cardBase="vladde"
-      />
-    );
+    render(<Form setBusy={mockSetBusy} setUrl={mockSetUrl} />);
 
     jest.useFakeTimers();
     jest.clearAllMocks();
