@@ -23,12 +23,12 @@ describe("TransformationFactory", () => {
 
     describe("cost", () => {
       constants.CURRENCIES = [
-        { filename: "test-1", label: "TEST 1", max: 100, rareVersion: true },
+        { filename: "energy-test", label: "TEST 1", max: 100 },
       ];
 
       it("returns a CostTransformation with valid config for costs", () => {
         const tf = TransformationFactory.build("cost", {
-          currency: "test-1",
+          currency: "energy-test",
           value: "1",
         });
 
@@ -41,7 +41,7 @@ describe("TransformationFactory", () => {
         const tf = TransformationFactory.build(
           "cost",
           {
-            currency: "test-1",
+            currency: "energy-test",
             value: "1",
           },
           "rare"

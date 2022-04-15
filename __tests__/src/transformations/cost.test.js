@@ -5,7 +5,8 @@ describe("CostTransformation", () => {
   constants.CURRENCIES = [
     { filename: "test-1", label: "TEST 1", max: 100 },
     { filename: "test-2", label: "TEST 2", max: 30 },
-    { filename: "test-3", label: "TEST 3", max: 5, rareVersion: true },
+    { filename: "test-3", label: "TEST 3", max: 5 },
+    { filename: "test-energy", label: "TEST ENERGY", max: 25 },
   ];
 
   describe("#toString", () => {
@@ -43,7 +44,7 @@ describe("CostTransformation", () => {
       expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-3_5/t_cost/");
     });
 
-    it("does not select rare costs for currencies without rareVersion", () => {
+    it("does not select rare costs for non-energy currencies", () => {
       const tf = new CostTransformation({ currency: "test-1", value: 10 });
 
       expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-1_10/t_cost/");
@@ -51,21 +52,23 @@ describe("CostTransformation", () => {
 
     it("does not select rare costs for non-rare cards", () => {
       const tf = new CostTransformation(
-        { currency: "test-3", value: 1 },
+        { currency: "test-energy", value: 10 },
         { isRare: false }
       );
 
-      expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-3_1/t_cost/");
+      expect(tf.toString()).toEqual(
+        "l_Inscryber:Costs:v2:test-energy_10/t_cost/"
+      );
     });
 
-    it("sets rare costs for rare cards with currencies support rareVersion", () => {
+    it("sets rare costs for rare, energy cards", () => {
       const tf = new CostTransformation(
-        { currency: "test-3", value: 1 },
+        { currency: "test-energy", value: 10 },
         { isRare: true }
       );
 
       expect(tf.toString()).toEqual(
-        "l_Inscryber:Costs:v2:test-3_rare_1/t_cost/"
+        "l_Inscryber:Costs:v2:test-energy_rare_10/t_cost/"
       );
     });
 
