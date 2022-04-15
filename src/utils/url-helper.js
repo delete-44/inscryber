@@ -27,7 +27,11 @@ export const generateUrl = (transformations = {}, cardBase = "vladde") => {
 
   transformationLayers.forEach((layer) => {
     if (transformations[layer]) {
-      let tf = TransformationFactory.build(layer, transformations[layer]);
+      let tf = TransformationFactory.build(
+        layer,
+        transformations[layer],
+        cardBase
+      );
 
       tfString += tf.toString();
     }

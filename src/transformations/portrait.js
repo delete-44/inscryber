@@ -1,7 +1,7 @@
 import { Transformation } from "../transformation";
 
 export class PortraitTransformation extends Transformation {
-  constructor(value, _type) {
+  constructor(value) {
     super(value, "portrait");
   }
 

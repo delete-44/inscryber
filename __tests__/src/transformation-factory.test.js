@@ -1,4 +1,5 @@
 import { TransformationFactory } from "src/transformation-factory";
+import * as constants from "components/constants";
 
 describe("TransformationFactory", () => {
   describe("#build", () => {
@@ -18,6 +19,38 @@ describe("TransformationFactory", () => {
       const tf = TransformationFactory.build("health");
 
       expect(tf.constructor.name).toEqual("StatTransformation");
+    });
+
+    describe("cost", () => {
+      constants.CURRENCIES = [
+        { filename: "test-1", label: "TEST 1", max: 100, rareVersion: true },
+      ];
+
+      it("returns a CostTransformation with valid config for costs", () => {
+        const tf = TransformationFactory.build("cost", {
+          currency: "test-1",
+          value: "1",
+        });
+
+        expect(tf.constructor.name).toEqual("CostTransformation");
+        expect(tf.toString()).toMatch(/t_cost/);
+        expect(tf.toString()).not.toMatch(/rare/);
+      });
+
+      it("sets isRare for energy costs on rare card base", () => {
+        const tf = TransformationFactory.build(
+          "cost",
+          {
+            currency: "test-1",
+            value: "1",
+          },
+          "rare"
+        );
+
+        expect(tf.constructor.name).toEqual("CostTransformation");
+        expect(tf.toString()).toMatch(/t_cost/);
+        expect(tf.toString()).toMatch(/rare/);
+      });
     });
 
     it("returns a SigilsTransformation for sigils", () => {
