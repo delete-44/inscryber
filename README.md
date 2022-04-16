@@ -2,7 +2,7 @@
 
 Inscryber is a project intended to allow people to create custom [Inscryption](https://www.inscryption.com/) cards; various information is submitted and cloudinary is used to build an image of a card matching those requirements.
 
-It has a temporary URL at [https://inscryber.netlify.app/](https://inscryber.netlify.app/).
+Visit it at [https://www.inscryber.delete44.com/](https://www.inscryber.delete44.com/).
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -32,7 +32,9 @@ Styling is built using [Tailwind](https://tailwindcss.com/); designs should be c
 
 ## Deployment
 
-The app is hosted via [Netlify](https://www.netlify.com/), which runs helpful checks for dead links prior to deployment. It also spins up temporary instances for each pull request, which can be used to test changes in a live environment.
+The app is hosted via [Netlify](https://www.netlify.com/). It spins up temporary instances for each pull request, which can be used to test changes in a live environment.
+
+These preview deploys use production environment variables & connect to the production Cloudinary instance.
 
 ## GitHub Actions
 
@@ -76,7 +78,7 @@ This job runs every 6 hours. Emails will be sent to collaborators in event of fa
 
 Assets are, naturally, _fundamental_ to the success of this project. They are stored on Cloudinary.
 
-Scaling images _up_ if the datamine size is lower than the usable size can be done with CLIP STUDIO's `Change Image Resolution` feature or similar.
+Assets are scaled using `Nearest Neighbour` resizing, which is suitable for pixel art.
 
 |                  | Datamine size | Usable Size | Example Storage                       |
 | ---------------- | ------------- | ----------- | ------------------------------------- |
@@ -89,31 +91,12 @@ Scaling images _up_ if the datamine size is lower than the usable size can be do
 
 ### Fonts
 
-`VICIOUS HUNGER` is used for the names.
-
-`HEAVYWEIGHT` is used for everything else.
+`HEAVYWEIGHT` is used for Act 1 cards, `Daggersquare` is used for some Act 3 elements.
 
 Fonts can be found online or in the `inscribe-datamine`.
 
 They are uploaded using a custom `signed upload` configuration in Cloudinary, as described in [this blog post](https://www.learnwithjason.dev/blog/upload-custom-font-cloudinary-media-library).
 
-### Patches
+### For more asset information...
 
-Patches are created from existing sigils.
-
-1. Add the patch base from the datamine.
-2. Overlay & the sigil to transform.
-3. Scale the sigil down to fit within dimensions 149x183.
-4. Colour the sigil #d8fcd4.
-5. Duplicate this layer.
-6. On the **lower** layer, apply a Gaussian Blur effect of ~20px x & y.
-
-### Costs
-
-There are two types of "cost" stored; grouped and individual.
-
-Grouped assets consist of a narrow background, "currency x" indicator, and a number. They are stored in the root `Costs/vx/` directory. These exist up to a value of 10, after which we need to dynamically generate costs
-
-Individual costs are _just_ the specified number. Within the directory for individual costs also exists a `{currency}-bg-wide` asset that can be used as a backdrop.
-
-All cost assets not found within the base game created by @anAverageUsersName.
+All assets used are uploaded to the [Inscryber Assets](https://github.com/delete-44/inscryber-assets) repo, as well as information on creating new patches and building dynamic costs & further copyright information regarding ownership of specific assets.
