@@ -16,11 +16,11 @@ export class StatTransformation extends Transformation {
   actThreeString() {
     // Short strings use "fit" cropping so the numbers do not get distorted
     // Long strings use "scale" cropping so the numbers shrink to fit
-    const cropType = this.value.length < 5 ? "c_fit" : "c_scale";
+    const cropType = this.value.length < 5 ? "fit" : "scale";
 
     return (
       `l_text:${DAGGERSQUARE}_96_center:` +
-      `${this.value},${cropType},co_rgb:03FDF0,w_230/` +
+      `${this.value},c_${cropType},co_rgb:03FDF0,w_230/` +
       `t_act_3_${this.type}/`
     );
   }
