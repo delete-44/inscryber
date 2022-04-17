@@ -20,7 +20,9 @@ export class TransformationFactory {
         return new NameTransformation(value);
       case "power":
       case "health":
-        return new StatTransformation(value, type);
+        return new StatTransformation(value, type, {
+          isActThree: cardBase.match(/po3/),
+        });
       case "cost":
         return new CostTransformation(value, { isRare: cardBase === "rare" });
       case "sigils":

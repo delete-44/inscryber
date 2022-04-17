@@ -1,6 +1,8 @@
 // Standard transformation utilities
 export const HEAVYWEIGHT = "Inscryber:HEAVYWEIGHT.ttf";
 export const VICIOUS_HUNGER = "Inscryber:VICIOUSHUNGER.ttf";
+export const DAGGERSQUARE = "Inscryber:DAGGERSQUARE.otf";
+
 export const CLOUDINARY_BASE = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload/`;
 export const CLOUDINARY_API_BASE = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload`;
 export const CARD_BASE = "fl_attachment:inscryber-card/Inscryber/blank_";
@@ -124,6 +126,7 @@ export const BASES = [
   { filename: "vladde", label: "Normal" },
   { filename: "rare", label: "Rare" },
   { filename: "unsacrificable", label: "Unsacrificable" },
+  { filename: "po3_ubvks4", label: "TEST" },
 ];
 
 export const TRIBES = [
