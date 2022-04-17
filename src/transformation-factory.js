@@ -14,7 +14,7 @@ export class TransformationFactory {
    *
    * @return {Transformation} An object of a specific subclass of Transformation.
    */
-  static build(type, value, cardBase) {
+  static build(type, value, cardBase = "") {
     switch (type) {
       case "name":
         return new NameTransformation(value);
