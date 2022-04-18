@@ -1,8 +1,8 @@
 import { StatTransformation } from "src/transformations/stat";
-import { HEAVYWEIGHT } from "components/constants";
+import { HEAVYWEIGHT, DAGGERSQUARE } from "components/constants";
 
 describe("StatTransformation", () => {
-  describe("#toString", () => {
+  describe("#actOneString", () => {
     it("removes string when transformation is empty", () => {
       const tf = new StatTransformation("");
 
@@ -30,6 +30,28 @@ describe("StatTransformation", () => {
 
       expect(tf.toString()).toEqual(
         `l_text:${HEAVYWEIGHT}_196:100,c_scale,w_100/t_test/`
+      );
+    });
+  });
+
+  describe("#actThreeString", () => {
+    it("uses fit cropping for small numbers", () => {
+      const tf = new StatTransformation("1234", "test", { isActThree: true });
+
+      expect(tf.toString()).toEqual(
+        `l_text:${DAGGERSQUARE}_96_center:` +
+          `1234,c_fit,co_rgb:03FDF0,w_230/` +
+          `t_act_3_test/`
+      );
+    });
+
+    it("uses scale cropping for large numbers", () => {
+      const tf = new StatTransformation("12345", "test", { isActThree: true });
+
+      expect(tf.toString()).toEqual(
+        `l_text:${DAGGERSQUARE}_96_center:` +
+          `12345,c_scale,co_rgb:03FDF0,w_230/` +
+          `t_act_3_test/`
       );
     });
   });

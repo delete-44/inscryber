@@ -1,12 +1,8 @@
 import { Transformation } from "../transformation";
-import { HEAVYWEIGHT } from "components/constants";
+import { HEAVYWEIGHT, DAGGERSQUARE } from "components/constants";
 
 export class StatTransformation extends Transformation {
-  constructor(value, type) {
-    super(value, type);
-  }
-
-  toString() {
+  actOneString() {
     if (this.value === "") return "";
 
     return (
@@ -14,6 +10,18 @@ export class StatTransformation extends Transformation {
       `${encodeURIComponent(this.value)},` +
       `c_scale,w_${this.#getWidth(this.value)}` +
       `/t_${this.type}/`
+    );
+  }
+
+  actThreeString() {
+    // Short strings use "fit" cropping so the numbers do not get distorted
+    // Long strings use "scale" cropping so the numbers shrink to fit
+    const cropType = this.value.length < 5 ? "fit" : "scale";
+
+    return (
+      `l_text:${DAGGERSQUARE}_96_center:` +
+      `${this.value},c_${cropType},co_rgb:03FDF0,w_230/` +
+      `t_act_3_${this.type}/`
     );
   }
 

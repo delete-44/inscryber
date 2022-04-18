@@ -14,13 +14,15 @@ export class TransformationFactory {
    *
    * @return {Transformation} An object of a specific subclass of Transformation.
    */
-  static build(type, value, cardBase) {
+  static build(type, value, cardBase = "") {
     switch (type) {
       case "name":
         return new NameTransformation(value);
       case "power":
       case "health":
-        return new StatTransformation(value, type);
+        return new StatTransformation(value, type, {
+          isActThree: cardBase.match(/po3/),
+        });
       case "cost":
         return new CostTransformation(value, { isRare: cardBase === "rare" });
       case "sigils":
