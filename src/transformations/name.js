@@ -6,23 +6,19 @@ export class NameTransformation extends Transformation {
     super(value, "name", config);
   }
 
-  actOneString() {
+  toString() {
     if (this.value === "") return "";
 
-    return (
-      `l_text:${HEAVYWEIGHT}_128:` +
-      `${encodeURIComponent(this.value)}/` +
-      `t_name_${this.value.length < 12 ? "short" : "long"}/`
-    );
-  }
+    // Use act 3 transformations if needed
+    const actThreeModifier = this.isActThree ? "act_3_" : "";
 
-  actThreeString() {
-    if (this.value === "") return "";
+    // Prefer different transformation for short strings
+    const tfLength = this.value.length < 12 ? "short" : "long";
 
     return (
-      `l_text:${HEAVYWEIGHT}_96_center:` +
+      `l_text:${HEAVYWEIGHT}_128_center:` +
       `${encodeURIComponent(this.value)}/` +
-      `t_act_3_name_${this.value.length < 12 ? "short" : "long"}/`
+      `t_${actThreeModifier}name_${tfLength}/`
     );
   }
 }
