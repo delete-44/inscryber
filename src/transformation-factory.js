@@ -17,7 +17,9 @@ export class TransformationFactory {
   static build(type, value, cardBase = "") {
     switch (type) {
       case "name":
-        return new NameTransformation(value);
+        return new NameTransformation(value, {
+          isActThree: cardBase.match(/po3/),
+        });
       case "power":
       case "health":
         return new StatTransformation(value, type, {
