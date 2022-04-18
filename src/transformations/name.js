@@ -22,7 +22,7 @@ export class NameTransformation extends Transformation {
     return (
       `l_text:${HEAVYWEIGHT}_96_center:` +
       `${encodeURIComponent(this.value)}/` +
-      `t_name_${this.value.length < 12 ? "short" : "long"}/`
+      `t_act_3_name_${this.value.length < 12 ? "short" : "long"}/`
     );
   }
 }
