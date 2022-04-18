@@ -15,16 +15,14 @@ export class TransformationFactory {
    * @return {Transformation} An object of a specific subclass of Transformation.
    */
   static build(type, value, cardBase = "") {
+    const config = { isActThree: cardBase.match(/po3/) };
+
     switch (type) {
       case "name":
-        return new NameTransformation(value, {
-          isActThree: cardBase.match(/po3/),
-        });
+        return new NameTransformation(value, config);
       case "power":
       case "health":
-        return new StatTransformation(value, type, {
-          isActThree: cardBase.match(/po3/),
-        });
+        return new StatTransformation(value, type, config);
       case "cost":
         return new CostTransformation(value, { isRare: cardBase === "rare" });
       case "sigils":
