@@ -14,6 +14,8 @@ export class StatTransformation extends Transformation {
   }
 
   actThreeString() {
+    if (this.value === "") return "";
+
     // Short strings use "fit" cropping so the numbers do not get distorted
     // Long strings use "scale" cropping so the numbers shrink to fit
     const cropType = this.value.length < 5 ? "fit" : "scale";
