@@ -1,4 +1,5 @@
 import { NameTransformation } from "src/transformations/name";
+import { HEAVYWEIGHT } from "components/constants";
 
 describe("NameTransformation", () => {
   describe("#toString", () => {
@@ -12,7 +13,7 @@ describe("NameTransformation", () => {
       const tf = new NameTransformation("123456789");
 
       expect(tf.toString()).toEqual(
-        "l_text:Inscryber:HEAVYWEIGHT.ttf_128:123456789/t_name_short/"
+        `l_text:${HEAVYWEIGHT}_128_center:123456789/t_name_short/`
       );
     });
 
@@ -20,7 +21,15 @@ describe("NameTransformation", () => {
       const tf = new NameTransformation("123456789012");
 
       expect(tf.toString()).toEqual(
-        "l_text:Inscryber:HEAVYWEIGHT.ttf_128:123456789012/t_name_long/"
+        `l_text:${HEAVYWEIGHT}_128_center:123456789012/t_name_long/`
+      );
+    });
+
+    it("adds act three modifier if needed", () => {
+      const tf = new NameTransformation("123456789", { isActThree: true });
+
+      expect(tf.toString()).toEqual(
+        `l_text:${HEAVYWEIGHT}_128_center:123456789/t_act_3_name_short/`
       );
     });
 
@@ -28,7 +37,7 @@ describe("NameTransformation", () => {
       const tf = new NameTransformation("Test String");
 
       expect(tf.toString()).toEqual(
-        `l_text:Inscryber:HEAVYWEIGHT.ttf_128:Test%20String/t_name_short/`
+        `l_text:${HEAVYWEIGHT}_128_center:Test%20String/t_name_short/`
       );
     });
   });

@@ -35,6 +35,12 @@ describe("StatTransformation", () => {
   });
 
   describe("#actThreeString", () => {
+    it("removes string when transformation is empty", () => {
+      const tf = new StatTransformation("", "test", { isActThree: true });
+
+      expect(tf.toString()).toEqual("");
+    });
+
     it("uses fit cropping for small numbers", () => {
       const tf = new StatTransformation("1234", "test", { isActThree: true });
 
