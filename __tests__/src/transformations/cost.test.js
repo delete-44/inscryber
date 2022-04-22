@@ -43,6 +43,26 @@ describe("CostTransformation", () => {
       expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-3_5/t_cost/");
     });
 
+    it("does not select act 3 costs for act 1 cards", () => {
+      const tf = new CostTransformation(
+        { currency: "test-3", value: 1 },
+        { isActThree: false }
+      );
+
+      expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-3_1/t_cost/");
+    });
+
+    it("sets act 3 cost transformations for act 3 cards", () => {
+      const tf = new CostTransformation(
+        { currency: "test-3", value: 1 },
+        { isActThree: true }
+      );
+
+      expect(tf.toString()).toEqual(
+        "l_Inscryber:Costs:v2:test-3_1/t_act_3_cost/"
+      );
+    });
+
     it("generates dynamic costs up to the max supported by currency", () => {
       const tf = new CostTransformation({ currency: "test-1", value: 99 });
 

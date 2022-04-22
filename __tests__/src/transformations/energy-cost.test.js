@@ -38,15 +38,6 @@ describe("EnergyCostTransformation", () => {
       expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-3_5/t_cost/");
     });
 
-    it("does not select rare costs for currencies without rareVersion", () => {
-      const tf = new EnergyCostTransformation({
-        currency: "test-1",
-        value: 10,
-      });
-
-      expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-1_10/t_cost/");
-    });
-
     it("does not select rare costs for non-rare cards", () => {
       const tf = new EnergyCostTransformation(
         { currency: "test-3", value: 1 },
@@ -56,7 +47,7 @@ describe("EnergyCostTransformation", () => {
       expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-3_1/t_cost/");
     });
 
-    it("sets rare costs for rare cards with currencies support rareVersion", () => {
+    it("sets rare costs for rare cards", () => {
       const tf = new EnergyCostTransformation(
         { currency: "test-3", value: 1 },
         { isRare: true }
@@ -64,6 +55,26 @@ describe("EnergyCostTransformation", () => {
 
       expect(tf.toString()).toEqual(
         "l_Inscryber:Costs:v2:test-3_rare_1/t_cost/"
+      );
+    });
+
+    it("does not select act 3 costs for act 1 cards", () => {
+      const tf = new EnergyCostTransformation(
+        { currency: "test-3", value: 1 },
+        { isActThree: false }
+      );
+
+      expect(tf.toString()).toEqual("l_Inscryber:Costs:v2:test-3_1/t_cost/");
+    });
+
+    it("sets act 3 cost assets and transformations for act 3 cards", () => {
+      const tf = new EnergyCostTransformation(
+        { currency: "test-3", value: 1 },
+        { isActThree: true }
+      );
+
+      expect(tf.toString()).toEqual(
+        "l_Inscryber:Costs:v2:act_3_test-3_1/t_act_3_cost/"
       );
     });
 
