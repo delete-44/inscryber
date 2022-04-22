@@ -26,7 +26,7 @@ export class TransformationFactory {
       case "cost":
         return new CostTransformation(value, { isRare: cardBase === "rare" });
       case "sigils":
-        return new SigilsTransformation(value);
+        return new SigilsTransformation(value, config);
       case "patches":
         return new OverlayArrayTransformation(value, type, {
           positionalTransformation: "t_patch_",
