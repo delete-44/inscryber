@@ -2,8 +2,8 @@ import { Transformation } from "../transformation";
 import { CURRENCIES } from "components/constants";
 
 export class CostTransformation extends Transformation {
-  constructor(value) {
-    super(value, "cost");
+  constructor(value, config) {
+    super(value, "cost", config);
   }
 
   toString() {
@@ -24,8 +24,12 @@ export class CostTransformation extends Transformation {
   }
 
   generateTransformation(value, filename) {
+    // Use act 3 transformations if needed
+    const actThreeModifier = this.isActThree ? "act_3_" : "";
+
     // For as long as we have valid assets (up to 10), use them
-    if (value <= 10) return `l_Inscryber:Costs:v2:${filename}_${value}/t_cost/`;
+    if (value <= 10)
+      return `l_Inscryber:Costs:v2:${filename}_${value}/t_${actThreeModifier}cost/`;
 
     // For larger costs, generate them dynamically by rendering
     // a wide background, then each character of the number in line

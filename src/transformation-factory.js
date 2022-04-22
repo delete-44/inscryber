@@ -26,8 +26,11 @@ export class TransformationFactory {
         return new StatTransformation(value, type, config);
       case "cost":
         return value.currency.match(/energy/)
-          ? new EnergyCostTransformation(value, { isRare: cardBase === "rare" })
-          : new CostTransformation(value);
+          ? new EnergyCostTransformation(value, {
+              ...config,
+              ...{ isRare: cardBase === "rare" },
+            })
+          : new CostTransformation(value, config);
       case "sigils":
         return new SigilsTransformation(value, config);
       case "patches":
