@@ -23,7 +23,8 @@ describe("TransformationFactory", () => {
 
     describe("cost", () => {
       constants.CURRENCIES = [
-        { filename: "test-1", label: "TEST 1", max: 100, rareVersion: true },
+        { filename: "test-1", label: "TEST 1", max: 100 },
+        { filename: "test-energy-2", label: "TEST ENERGY 2", max: 250 },
       ];
 
       it("returns a CostTransformation with valid config for costs", () => {
@@ -37,17 +38,28 @@ describe("TransformationFactory", () => {
         expect(tf.toString()).not.toMatch(/rare/);
       });
 
+      it("returns an EnergyCostTransformation with valid config for energy costs", () => {
+        const tf = TransformationFactory.build("cost", {
+          currency: "test-energy-2",
+          value: "1",
+        });
+
+        expect(tf.constructor.name).toEqual("EnergyCostTransformation");
+        expect(tf.toString()).toMatch(/t_cost/);
+        expect(tf.toString()).not.toMatch(/rare/);
+      });
+
       it("sets isRare for energy costs on rare card base", () => {
         const tf = TransformationFactory.build(
           "cost",
           {
-            currency: "test-1",
+            currency: "test-energy-2",
             value: "1",
           },
           "rare"
         );
 
-        expect(tf.constructor.name).toEqual("CostTransformation");
+        expect(tf.constructor.name).toEqual("EnergyCostTransformation");
         expect(tf.toString()).toMatch(/t_cost/);
         expect(tf.toString()).toMatch(/rare/);
       });
