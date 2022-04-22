@@ -126,7 +126,7 @@ export const BASES = [
   { filename: "vladde", label: "Normal" },
   { filename: "rare", label: "Rare" },
   { filename: "unsacrificable", label: "Unsacrificable" },
-  // { filename: "po3_ubvks4", label: "TEST" },
+  { filename: "po3_ubvks4", label: "TEST" },
 ];
 
 export const TRIBES = [
@@ -149,7 +149,7 @@ export const OVERLAYS = [
 export const CURRENCIES = [
   { filename: "blood", label: "Blood", max: 99 },
   { filename: "bone", label: "Bone", max: 99 },
-  { filename: "act_1_energy", label: "Energy", max: 6, rareVersion: true },
+  { filename: "energy", label: "Energy", max: 6 },
 ];
 
 export const PORTRAIT_MANIPULATIONS = [
