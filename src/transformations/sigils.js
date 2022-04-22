@@ -20,7 +20,7 @@ export class SigilsTransformation extends Transformation {
     let transformation = "";
 
     this.value.forEach((s, i) => {
-      transformation += `l_Inscryber:Sigils:v1:${s}/t_v1_sigil_${++i}/`;
+      transformation += `l_Inscryber:Sigils:v1:${s}/t_v1_${actThreeModifier}sigil_${++i}/`;
     });
 
     return transformation;
