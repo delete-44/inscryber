@@ -11,11 +11,16 @@ module.exports = {
           100: "#fff1e7",
           400: "#cc6f33",
         },
+        blue: {
+          100: "#8afff9",
+          400: "#7DCBDA",
+        },
         red: "#b72e38",
         gray: "#424242",
       },
       fontFamily: {
         title: ["Heavyweight"],
+        po3: ["Daggersquare"],
       },
     },
   },
