@@ -149,7 +149,7 @@ export const OVERLAYS = [
 export const CURRENCIES = [
   { filename: "blood", label: "Blood", max: 99 },
   { filename: "bone", label: "Bone", max: 99 },
-  { filename: "act_1_energy", label: "Energy", max: 6, rareVersion: true },
+  { filename: "energy", label: "Energy", max: 6 },
 ];
 
 export const PORTRAIT_MANIPULATIONS = [

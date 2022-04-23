@@ -2,16 +2,14 @@ import { Transformation } from "../transformation";
 import { CURRENCIES } from "components/constants";
 
 export class CostTransformation extends Transformation {
-  constructor(value, config = {}) {
-    super(value, "cost");
-
-    this.isRare = config.isRare || false;
+  constructor(value, config) {
+    super(value, "cost", config);
   }
 
   toString() {
     const { currency, value } = this.value;
     const currencyDetails = CURRENCIES.find((c) => c.filename === currency);
-    const { max, filename, rareVersion } = currencyDetails;
+    const { max, filename } = currencyDetails;
 
     // Remove transformation if card is free
     if (value === "" || value < 1) return "";
@@ -19,20 +17,19 @@ export class CostTransformation extends Transformation {
     // Cap transformations to the max value supported
     // by the chosen currency
     if (value > max) {
-      return this.#generateTransformation(max, filename, rareVersion);
+      return this.generateTransformation(max, filename);
     }
 
-    return this.#generateTransformation(value, filename, rareVersion);
+    return this.generateTransformation(value, filename);
   }
 
-  #generateTransformation(value, filename, rareVersion) {
+  generateTransformation(value, filename) {
+    // Use act 3 transformations if needed
+    const actThreeModifier = this.isActThree ? "act_3_" : "";
+
     // For as long as we have valid assets (up to 10), use them
-    if (value <= 10) {
-      // Certain costs support a "rare" alternate version for cheap costs
-      return this.isRare && rareVersion
-        ? `l_Inscryber:Costs:v2:${filename}_rare_${value}/t_cost/`
-        : `l_Inscryber:Costs:v2:${filename}_${value}/t_cost/`;
-    }
+    if (value <= 10)
+      return `l_Inscryber:Costs:v2:${filename}_${value}/t_${actThreeModifier}cost/`;
 
     // For larger costs, generate them dynamically by rendering
     // a wide background, then each character of the number in line

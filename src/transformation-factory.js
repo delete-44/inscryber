@@ -1,6 +1,7 @@
 import { NameTransformation } from "src/transformations/name";
 import { StatTransformation } from "src/transformations/stat";
 import { CostTransformation } from "src/transformations/cost";
+import { EnergyCostTransformation } from "src/transformations/energy-cost";
 import { SigilsTransformation } from "src/transformations/sigils";
 import { OverlayArrayTransformation } from "src/transformations/overlay-array";
 import { PortraitTransformation } from "src/transformations/portrait";
@@ -24,7 +25,12 @@ export class TransformationFactory {
       case "health":
         return new StatTransformation(value, type, config);
       case "cost":
-        return new CostTransformation(value, { isRare: cardBase === "rare" });
+        return value.currency.match(/energy/)
+          ? new EnergyCostTransformation(value, {
+              ...config,
+              ...{ isRare: cardBase === "rare" },
+            })
+          : new CostTransformation(value, config);
       case "sigils":
         return new SigilsTransformation(value, config);
       case "patches":
