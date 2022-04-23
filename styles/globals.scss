@@ -120,7 +120,8 @@
   }
 
   input[type="text"],
-  input[type="number"] {
+  input[type="number"],
+  input[type="file"] {
     @apply bg-orange-100;
     @apply border-2;
     @apply border-orange-100;
@@ -175,6 +176,13 @@
 
   input[type="radio"] {
     @apply rounded-full;
+  }
+
+  input[type="file"] {
+    @apply px-3;
+    @apply py-1.5;
+    @apply text-base;
+    @apply rounded-sm;
   }
 
   button {
