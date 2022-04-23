@@ -18,7 +18,7 @@
 }
 
 .text-shadow-blue {
-  text-shadow: 0 0 0.07em #8afff9;
+  text-shadow: 0 0 0.07em #bbfff7;
 }
 
 @layer components {
@@ -27,6 +27,11 @@
 
     @apply selection:text-black;
     @apply selection:bg-orange-400;
+  }
+
+  .po3 {
+    @apply selection:text-black;
+    @apply selection:bg-blue-400;
   }
 
   // -----------------------------
@@ -78,6 +83,10 @@
 
   small {
     @apply text-orange-100;
+
+    .po3 & {
+      @apply text-blue-100;
+    }
   }
 
   // -----------------------------
@@ -103,6 +112,11 @@
     @apply focus:outline-none;
     @apply focus:border-orange-400;
     @apply focus:outline-orange-400;
+
+    .po3 & {
+      @apply focus:border-blue-400;
+      @apply focus:outline-blue-400;
+    }
   }
 
   input[type="text"],
@@ -117,6 +131,12 @@
     @apply text-black;
     @apply placeholder-gray;
     @apply rounded-sm;
+
+    .po3 & {
+      @apply bg-blue-100;
+      @apply border-blue-100;
+      @apply border-b-blue-400;
+    }
   }
 
   input[type="checkbox"],
@@ -140,6 +160,13 @@
     @apply bg-orange-100;
     @apply checked:bg-orange-400;
     @apply checked:border-orange-100;
+
+    .po3 & {
+      @apply border-blue-400;
+      @apply bg-blue-100;
+      @apply checked:bg-blue-400;
+      @apply checked:border-blue-100;
+    }
   }
 
   input[type="checkbox"] {
@@ -165,6 +192,12 @@
     @apply hover:border-transparent;
     @apply bg-transparent;
     @apply hover:bg-orange-400;
+
+    .po3 & {
+      @apply text-blue-100;
+      @apply border-blue-400;
+      @apply hover:bg-blue-400;
+    }
   }
 
   .check-label {
@@ -173,9 +206,13 @@
     @apply md:text-2xl;
     @apply text-orange-100;
 
-    @apply peer-checked:text-orange-400;
+    @apply peer-checked:text-red;
     @apply transition;
     @apply duration-200;
+
+    .po3 & {
+      @apply text-blue-100;
+    }
   }
 
   // -----------------------------
