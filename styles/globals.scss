@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url("https://fonts.cdnfonts.com/css/heavyweight");
+@import url("http://fonts.cdnfonts.com/css/daggersquare");
 
 // -----------------------------
 // Text decorators
@@ -14,6 +15,10 @@
 
 .text-shadow-red {
   text-shadow: 0 0 0.07em #e04852;
+}
+
+.text-shadow-blue {
+  text-shadow: 0 0 0.07em #8afff9;
 }
 
 @layer components {
@@ -34,6 +39,12 @@
     @apply text-orange-400;
     @apply font-title;
     @apply text-shadow-orange;
+
+    .po3 & {
+      @apply font-po3;
+      @apply text-blue-400;
+      @apply text-shadow-blue;
+    }
   }
 
   h1 {
@@ -47,6 +58,10 @@
 
   p {
     @apply text-5xl;
+
+    .po3 & {
+      @apply text-4xl;
+    }
   }
 
   label,
