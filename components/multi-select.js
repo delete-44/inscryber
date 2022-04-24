@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Select from "react-select";
 import {
-  SELECT_STYLES,
-  SELECT_THEME,
   SIGILS,
   GRIMORA_SIGILS,
   MAGNIFICUS_SIGILS,
@@ -11,6 +9,13 @@ import {
   KAYCEE_SIGILS,
   ADDITIONAL_SIGILS,
 } from "components/constants";
+
+import {
+  SELECT_STYLES,
+  SELECT_THEME,
+  PO3_SELECT_STYLES,
+  PO3_SELECT_THEME,
+} from "components/multi-select-theme";
 
 const MultiSelect = (props) => {
   const [selected, setSelected] = useState([]);
@@ -51,8 +56,8 @@ const MultiSelect = (props) => {
         }}
         isSearchable
         isMulti
-        styles={SELECT_STYLES}
-        theme={SELECT_THEME}
+        styles={PO3_SELECT_STYLES}
+        theme={PO3_SELECT_THEME}
         value={selected}
         onChange={(e) => {
           // Cap maximum that can be selected at once
@@ -71,6 +76,7 @@ MultiSelect.propTypes = {
   id: PropTypes.string.isRequired,
   maxOptions: PropTypes.number.isRequired,
   setTF: PropTypes.func.isRequired,
+  cardBase: PropTypes.string.isRequired,
 };
 
 export default MultiSelect;
