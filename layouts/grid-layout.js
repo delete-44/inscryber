@@ -10,7 +10,9 @@ const GridLayout = (props) => {
       </Head>
 
       <main
-        className={`min-h-screen ${props.cardBase.match(/po3/) ? "po3" : ""}`}
+        className={`min-h-screen ${
+          props.cardBase && props.cardBase.match(/po3/) ? "po3" : ""
+        }`}
       >
         <h1 className="mt-5 mb-10">{props.heading}</h1>
 
