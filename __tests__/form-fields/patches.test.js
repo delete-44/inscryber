@@ -7,7 +7,7 @@ describe("Patches", () => {
   const mockCallback = jest.fn();
 
   beforeEach(() => {
-    render(<Patches setPatchesTF={mockCallback} />);
+    render(<Patches setPatchesTF={mockCallback} cardBase="test" />);
     jest.clearAllMocks();
   });
 

@@ -16,7 +16,14 @@ describe("MultiSelect", () => {
   constants.ADDITIONAL_SIGILS = [{ value: "additional", label: "GOTY" }];
 
   beforeEach(() => {
-    render(<MultiSelect id="TEST-ID" maxOptions={5} setTF={mockCallback} />);
+    render(
+      <MultiSelect
+        id="TEST-ID"
+        maxOptions={5}
+        setTF={mockCallback}
+        cardBase="test"
+      />
+    );
     jest.clearAllMocks();
   });
 
