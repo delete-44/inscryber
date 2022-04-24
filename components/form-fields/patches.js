@@ -12,13 +12,19 @@ const Patches = (props) => {
         from...
       </p>
 
-      <MultiSelect id="patches" maxOptions={4} setTF={setPatchesTF} />
+      <MultiSelect
+        id="patches"
+        maxOptions={4}
+        setTF={setPatchesTF}
+        cardBase={props.cardBase}
+      />
     </section>
   );
 };
 
 Patches.propTypes = {
   setPatchesTF: PropTypes.func.isRequired,
+  cardBase: PropTypes.string.isRequired,
 };
 
 export default Patches;

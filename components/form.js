@@ -73,10 +73,10 @@ const Form = (props) => {
       <DynamicCost setCostTF={setCostTF} />
 
       {/* Sigils form field */}
-      <Sigils setSigilsTF={setSigilsTF} />
+      <Sigils setSigilsTF={setSigilsTF} cardBase={props.cardBase} />
 
       {/* Patches form field */}
-      <Patches setPatchesTF={setPatchesTF} />
+      <Patches setPatchesTF={setPatchesTF} cardBase={props.cardBase} />
 
       {/* Tribes form fields */}
       <Tribes setTribesTF={setTribesTF} />

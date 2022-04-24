@@ -11,13 +11,19 @@ const Sigils = (props) => {
         Does this creature have any <label htmlFor="sigils">sigils</label>?
       </p>
 
-      <MultiSelect id="sigils" maxOptions={2} setTF={setSigilsTF} />
+      <MultiSelect
+        id="sigils"
+        maxOptions={2}
+        setTF={setSigilsTF}
+        cardBase={props.cardBase}
+      />
     </section>
   );
 };
 
 Sigils.propTypes = {
   setSigilsTF: PropTypes.func.isRequired,
+  cardBase: PropTypes.string.isRequired,
 };
 
 export default Sigils;

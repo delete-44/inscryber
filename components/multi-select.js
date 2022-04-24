@@ -10,12 +10,7 @@ import {
   ADDITIONAL_SIGILS,
 } from "components/constants";
 
-import {
-  SELECT_STYLES,
-  SELECT_THEME,
-  PO3_SELECT_STYLES,
-  PO3_SELECT_THEME,
-} from "components/multi-select-theme";
+import { styleBuilder, themeBuilder } from "components/multi-select-theme";
 
 const MultiSelect = (props) => {
   const [selected, setSelected] = useState([]);
@@ -56,8 +51,8 @@ const MultiSelect = (props) => {
         }}
         isSearchable
         isMulti
-        styles={PO3_SELECT_STYLES}
-        theme={PO3_SELECT_THEME}
+        styles={styleBuilder(props.cardBase.match(/po3/) ? "blue" : "orange")}
+        theme={themeBuilder(props.cardBase.match(/po3/) ? "blue" : "orange")}
         value={selected}
         onChange={(e) => {
           // Cap maximum that can be selected at once
