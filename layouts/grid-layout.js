@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Head from "next/head";
 import Footer from "components/footer";
 
@@ -10,9 +11,7 @@ const GridLayout = (props) => {
       </Head>
 
       <main
-        className={`min-h-screen ${
-          props.cardBase && props.cardBase.match(/po3/) ? "po3" : ""
-        }`}
+        className={`min-h-screen ${props.cardBase.match(/po3/) ? "po3" : ""}`}
       >
         <h1 className="mt-5 mb-10">{props.heading}</h1>
 
@@ -24,6 +23,16 @@ const GridLayout = (props) => {
       <Footer />
     </>
   );
+};
+
+GridLayout.propTypes = {
+  title: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  cardBase: PropTypes.string,
+};
+
+GridLayout.defaultProps = {
+  cardBase: "",
 };
 
 export default GridLayout;
