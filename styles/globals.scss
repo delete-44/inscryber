@@ -29,11 +29,6 @@
     @apply selection:bg-orange-400;
   }
 
-  .po3 {
-    @apply selection:text-black;
-    @apply selection:bg-blue-400;
-  }
-
   // -----------------------------
   // Text defaults for main page
   // -----------------------------
@@ -44,12 +39,6 @@
     @apply text-orange-400;
     @apply font-title;
     @apply text-shadow-orange;
-
-    .po3 & {
-      @apply font-po3;
-      @apply text-blue-400;
-      @apply text-shadow-blue;
-    }
   }
 
   h1 {
@@ -63,10 +52,6 @@
 
   p {
     @apply text-5xl;
-
-    .po3 & {
-      @apply text-4xl;
-    }
   }
 
   label,
@@ -83,10 +68,6 @@
 
   small {
     @apply text-orange-100;
-
-    .po3 & {
-      @apply text-blue-100;
-    }
   }
 
   // -----------------------------
@@ -112,11 +93,6 @@
     @apply focus:outline-none;
     @apply focus:border-orange-400;
     @apply focus:outline-orange-400;
-
-    .po3 & {
-      @apply focus:border-blue-400;
-      @apply focus:outline-blue-400;
-    }
   }
 
   input[type="text"],
@@ -132,12 +108,6 @@
     @apply text-black;
     @apply placeholder-gray;
     @apply rounded-sm;
-
-    .po3 & {
-      @apply bg-blue-100;
-      @apply border-blue-100;
-      @apply border-b-blue-400;
-    }
   }
 
   input[type="checkbox"],
@@ -161,13 +131,6 @@
     @apply bg-orange-100;
     @apply checked:bg-orange-400;
     @apply checked:border-orange-100;
-
-    .po3 & {
-      @apply border-blue-400;
-      @apply bg-blue-100;
-      @apply checked:bg-blue-400;
-      @apply checked:border-blue-100;
-    }
   }
 
   input[type="checkbox"] {
@@ -200,12 +163,6 @@
     @apply hover:border-transparent;
     @apply bg-transparent;
     @apply hover:bg-orange-400;
-
-    .po3 & {
-      @apply text-blue-100;
-      @apply border-blue-400;
-      @apply hover:bg-blue-400;
-    }
   }
 
   .check-label {
@@ -217,8 +174,70 @@
     @apply peer-checked:text-red;
     @apply transition;
     @apply duration-200;
+  }
 
-    .po3 & {
+  // -----------------------------
+  // Overrides for PO3 theme
+  // -----------------------------
+
+  .po3 {
+    @apply selection:text-black;
+    @apply selection:bg-blue-400;
+
+    // -----------------------------
+    // Text defaults for main page
+    // -----------------------------
+
+    h1,
+    h2,
+    p {
+      @apply font-po3;
+      @apply text-blue-400;
+      @apply text-shadow-blue;
+    }
+
+    p {
+      @apply text-4xl;
+    }
+
+    small {
+      @apply text-blue-100;
+    }
+
+    // -----------------------------
+    // Input defaults
+    // -----------------------------
+
+    input,
+    button,
+    a {
+      @apply focus:border-blue-400;
+      @apply focus:outline-blue-400;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"] {
+      @apply bg-blue-100;
+      @apply border-blue-100;
+      @apply border-b-blue-400;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      @apply border-blue-400;
+      @apply bg-blue-100;
+      @apply checked:bg-blue-400;
+      @apply checked:border-blue-100;
+    }
+
+    button {
+      @apply text-blue-100;
+      @apply border-blue-400;
+      @apply hover:bg-blue-400;
+    }
+
+    .check-label {
       @apply text-blue-100;
     }
   }
