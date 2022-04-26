@@ -39,6 +39,9 @@
     @apply text-orange-400;
     @apply font-title;
     @apply text-shadow-orange;
+
+    @apply transition;
+    @apply duration-200;
   }
 
   h1 {
@@ -197,7 +200,8 @@
     }
 
     p {
-      @apply text-4xl;
+      font-size: 2.6rem;
+      padding-top: 6.8px;
     }
 
     small {
