@@ -16,7 +16,7 @@ const Tribes = (props) => {
   return (
     <section className="mb-10">
       <p className="mb-3">
-        Does this creature belong to any <label htmlFor="tribes">tribes</label>?
+        Does it belong to any <label htmlFor="tribes">tribes</label>?
       </p>
 
       <MultiCheckbox

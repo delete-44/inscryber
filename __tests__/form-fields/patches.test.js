@@ -21,7 +21,7 @@ describe("Patches", () => {
   });
 
   it("renders a flavourful description & help text", () => {
-    const patchesFlavour = screen.getByText("Or ? I won't ask where from...");
+    const patchesFlavour = screen.getByText("Or ? I won't ask how...");
     const patchesLabel = screen.getByText("patches");
     const maxText = screen.getByText("4 maximum");
 

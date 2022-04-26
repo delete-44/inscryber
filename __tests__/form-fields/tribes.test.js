@@ -27,7 +27,7 @@ describe("Tribes", () => {
 
   it("renders a flavourful description", () => {
     const tribesFlavour = screen.getByText(
-      "Does this creature belong to any ?"
+      "Does it belong to any ?"
     );
     const tribesLabel = screen.getByText("tribes");
 

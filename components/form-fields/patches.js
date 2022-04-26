@@ -8,8 +8,7 @@ const Patches = (props) => {
   return (
     <section className="mb-10">
       <p className="mb-3">
-        Or <label htmlFor="patches">patches</label>? I won&apos;t ask where
-        from...
+        Or <label htmlFor="patches">patches</label>? I won&apos;t ask how...
       </p>
 
       <MultiSelect
