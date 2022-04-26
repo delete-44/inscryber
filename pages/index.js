@@ -23,6 +23,7 @@ export default function Home() {
     <GridLayout
       title="Inscryber | Inscryption Card Generator"
       heading="Inscryber"
+      cardBase={cardBase}
     >
       {/* Left column */}
       <Form

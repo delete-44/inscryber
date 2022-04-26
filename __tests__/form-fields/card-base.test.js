@@ -16,7 +16,7 @@ describe("CardBase", () => {
     const normalRadio = screen.getByRole("radio", { name: /Normal/ });
     const rareRadio = screen.getByRole("radio", { name: /Rare/ });
     const unsacrificableRadio = screen.getByRole("radio", {
-      name: /Unsacrificable/,
+      name: /Terrain/,
     });
 
     expect(normalRadio).toBeInTheDocument();
@@ -50,7 +50,7 @@ describe("CardBase", () => {
     const normalRadio = screen.getByRole("radio", { name: /Normal/ });
     const rareRadio = screen.getByRole("radio", { name: /Rare/ });
     const unsacrificableRadio = screen.getByRole("radio", {
-      name: /Unsacrificable/,
+      name: /Terrain/,
     });
 
     userEvent.click(rareRadio);

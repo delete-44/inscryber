@@ -7,7 +7,7 @@ describe("Sigils", () => {
   const mockCallback = jest.fn();
 
   beforeEach(() => {
-    render(<Sigils setSigilsTF={mockCallback} />);
+    render(<Sigils setSigilsTF={mockCallback} cardBase="test" />);
     jest.clearAllMocks();
   });
 
