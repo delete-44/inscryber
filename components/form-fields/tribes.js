@@ -15,7 +15,7 @@ const Tribes = (props) => {
   }, [selectedTribes, setTribesTF]);
 
   return (
-    <FormFieldLayout>
+    <FormFieldLayout readonly={props.readonly}>
       <p className="mb-3">
         Does it belong to any <label htmlFor="tribes">tribes</label>?
       </p>
@@ -24,6 +24,7 @@ const Tribes = (props) => {
         options={TRIBES}
         setSelectedFilenames={setSelectedTribes}
         formName="tribes"
+        readonly={props.readonly}
       />
     </FormFieldLayout>
   );
@@ -31,6 +32,7 @@ const Tribes = (props) => {
 
 Tribes.propTypes = {
   setTribesTF: PropTypes.func.isRequired,
+  readonly: PropTypes.bool,
 };
 
 export default Tribes;
