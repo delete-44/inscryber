@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import FormFieldLayout from "layouts/form-field-layout";
 import { OVERLAYS } from "components/constants";
 import MultiCheckbox from "components/multi-checkbox";
 
@@ -16,7 +17,7 @@ const Overlays = (props) => {
   }, [selectedOverlays, setOverlaysTF]);
 
   return (
-    <section className="mb-10">
+    <FormFieldLayout>
       <p className="mb-3">
         ...Or have any <label htmlFor="overlays">overlays</label>?
       </p>
@@ -26,7 +27,7 @@ const Overlays = (props) => {
         setSelectedFilenames={setSelectedOverlays}
         formName="overlays"
       />
-    </section>
+    </FormFieldLayout>
   );
 };
 

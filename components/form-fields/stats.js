@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import FormFieldLayout from "layouts/form-field-layout";
 
 const Stats = (props) => {
   const [power, setPower] = useState("");
@@ -15,7 +16,7 @@ const Stats = (props) => {
   }, [health, setHealthTF]);
 
   return (
-    <section className="mb-10">
+    <FormFieldLayout>
       <p className="mb-3">
         How about their <label htmlFor="power">power</label> and{" "}
         <label htmlFor="health">health</label>?
@@ -42,7 +43,7 @@ const Stats = (props) => {
           }}
         />
       </section>
-    </section>
+    </FormFieldLayout>
   );
 };
 

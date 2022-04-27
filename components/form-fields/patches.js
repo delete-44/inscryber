@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import FormFieldLayout from "layouts/form-field-layout";
 import MultiSelect from "components/multi-select";
 
 const Patches = (props) => {
   const { setPatchesTF } = props;
 
   return (
-    <section className="mb-10">
+    <FormFieldLayout>
       <p className="mb-3">
         Or <label htmlFor="patches">patches</label>? I won&apos;t ask how...
       </p>
@@ -17,7 +18,7 @@ const Patches = (props) => {
         setTF={setPatchesTF}
         cardBase={props.cardBase}
       />
-    </section>
+    </FormFieldLayout>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { BASES } from "components/constants";
 import FormFieldLayout from "layouts/form-field-layout";
+import { BASES } from "components/constants";
 
 const CardBase = (props) => {
   const { setBase } = props;

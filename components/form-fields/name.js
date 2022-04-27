@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import FormFieldLayout from "layouts/form-field-layout";
 
 const Name = (props) => {
   const [name, setName] = useState("");
@@ -10,7 +11,7 @@ const Name = (props) => {
   }, [name, setNameTF]);
 
   return (
-    <section className="mb-10">
+    <FormFieldLayout>
       <p className="mb-3">
         Tell me this creature&apos;s <label htmlFor="name">name</label>.
       </p>
@@ -23,7 +24,7 @@ const Name = (props) => {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-    </section>
+    </FormFieldLayout>
   );
 };
 

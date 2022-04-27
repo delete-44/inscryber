@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import FormFieldLayout from "layouts/form-field-layout";
 import Uploader from "components/files/uploader";
 import Inscryber from "components/files/inscryber";
-import PropTypes from "prop-types";
 import Link from "next/link";
 
 const Portrait = (props) => {
@@ -18,7 +19,7 @@ const Portrait = (props) => {
   }, [imageId, inscrybedTFs, setPortraitTF]);
 
   return (
-    <section>
+    <FormFieldLayout>
       <Uploader setImageId={setImageId} />
 
       <small>
@@ -34,7 +35,7 @@ const Portrait = (props) => {
       </small>
 
       <Inscryber setInscrybedTFs={setInscrybedTFs} />
-    </section>
+    </FormFieldLayout>
   );
 };
 
