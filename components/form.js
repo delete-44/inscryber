@@ -89,7 +89,10 @@ const Form = (props) => {
       />
 
       {/* Overlays form fields */}
-      <Overlays setOverlaysTF={setOverlaysTF} />
+      <Overlays
+        setOverlaysTF={setOverlaysTF}
+        readonly={props.cardBase.match(/po3/)}
+      />
 
       {/* Card back selector, ie rarity */}
       <CardBase base={props.cardBase} setBase={setCardBase} />

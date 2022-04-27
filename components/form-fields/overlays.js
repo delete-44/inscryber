@@ -17,7 +17,7 @@ const Overlays = (props) => {
   }, [selectedOverlays, setOverlaysTF]);
 
   return (
-    <FormFieldLayout>
+    <FormFieldLayout readonly={props.readonly}>
       <p className="mb-3">
         ...Or have any <label htmlFor="overlays">overlays</label>?
       </p>
@@ -26,6 +26,7 @@ const Overlays = (props) => {
         options={OVERLAYS}
         setSelectedFilenames={setSelectedOverlays}
         formName="overlays"
+        readonly={props.readonly}
       />
     </FormFieldLayout>
   );
@@ -33,6 +34,7 @@ const Overlays = (props) => {
 
 Overlays.propTypes = {
   setOverlaysTF: PropTypes.func.isRequired,
+  readonly: PropTypes.bool,
 };
 
 export default Overlays;
