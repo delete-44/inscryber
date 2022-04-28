@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import FormFieldLayout from "layouts/form-field-layout";
 import { BASES } from "components/constants";
 
 const CardBase = (props) => {
   const { setBase } = props;
   return (
-    <section className="mb-10">
+    <FormFieldLayout>
       <p className="mb-3">
         Which <label htmlFor="card-base">card base</label> do you want?
       </p>
@@ -31,7 +32,7 @@ const CardBase = (props) => {
           );
         })}
       </span>
-    </section>
+    </FormFieldLayout>
   );
 };
 

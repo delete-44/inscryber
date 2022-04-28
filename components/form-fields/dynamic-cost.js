@@ -1,6 +1,7 @@
-import { CURRENCIES } from "components/constants";
-import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import FormFieldLayout from "layouts/form-field-layout";
+import { CURRENCIES } from "components/constants";
 
 const DynamicCost = (props) => {
   const [cost, setCost] = useState("");
@@ -27,7 +28,7 @@ const DynamicCost = (props) => {
   }, [cost, currency, setCostTF]);
 
   return (
-    <section className="mb-10">
+    <FormFieldLayout>
       <p className="mb-3">
         And every creature has a <label htmlFor="cost">cost</label>
         ...
@@ -72,7 +73,7 @@ const DynamicCost = (props) => {
       </section>
 
       <small>0 minimum, {currency.max} maximum</small>
-    </section>
+    </FormFieldLayout>
   );
 };
 

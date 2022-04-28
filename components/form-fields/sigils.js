@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import FormFieldLayout from "layouts/form-field-layout";
 import MultiSelect from "components/multi-select";
 
 const Sigils = (props) => {
   const { setSigilsTF } = props;
 
   return (
-    <section className="mb-10">
+    <FormFieldLayout>
       <p className="mb-3">
         Does this creature have any <label htmlFor="sigils">sigils</label>?
       </p>
@@ -17,7 +18,7 @@ const Sigils = (props) => {
         setTF={setSigilsTF}
         cardBase={props.cardBase}
       />
-    </section>
+    </FormFieldLayout>
   );
 };
 
