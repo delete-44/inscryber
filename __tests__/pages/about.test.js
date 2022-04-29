@@ -40,6 +40,7 @@ describe("About", () => {
     const annieplyerText = screen.getByText(
       "Act 1 themed energy costs created by @Annieplyer."
     );
+    const dmizuomoLink = screen.getByRole("link", { name: "@DMizuomo" });
     const dmullinsLink = screen.getByRole("link", { name: "Daniel Mullins" });
 
     expect(inscryptionLink).toBeInTheDocument();
@@ -61,6 +62,9 @@ describe("About", () => {
     expect(avgUserLink).toHaveAttribute("href", LINKS.avgUser);
 
     expect(annieplyerText).toBeInTheDocument();
+
+    expect(dmizuomoLink).toBeInTheDocument();
+    expect(dmizuomoLink).toHaveAttribute("href", LINKS.dmizuomo);
 
     expect(dmullinsLink).toBeInTheDocument();
     expect(dmullinsLink).toHaveAttribute("href", LINKS.dmullins);
