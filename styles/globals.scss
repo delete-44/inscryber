@@ -21,6 +21,10 @@
   text-shadow: 0 0 0.07em #bbfff7;
 }
 
+.text-shadow-none {
+  text-shadow: none;
+}
+
 @layer components {
   body {
     @apply bg-black;
@@ -248,6 +252,22 @@
 
     .check-label {
       @apply text-blue-100;
+    }
+  }
+
+  // -----------------------------
+  // Overrides for readonly elements
+  // -----------------------------
+
+  .readonly {
+    // -----------------------------
+    // Text defaults for main page
+    // -----------------------------
+
+    p,
+    label {
+      @apply text-neutral-400;
+      @apply text-shadow-none;
     }
   }
 

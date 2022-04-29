@@ -7,7 +7,7 @@ const Patches = (props) => {
   const { setPatchesTF } = props;
 
   return (
-    <FormFieldLayout>
+    <FormFieldLayout readonly={props.readonly}>
       <p className="mb-3">
         Or <label htmlFor="patches">patches</label>? I won&apos;t ask how...
       </p>
