@@ -126,7 +126,7 @@ export const BASES = [
   { filename: "vladde", label: "Normal" },
   { filename: "rare", label: "Rare" },
   { filename: "unsacrificable", label: "Terrain" },
-  { filename: "po3", label: "PO3" },
+  // { filename: "po3", label: "PO3" },
 ];
 
 export const TRIBES = [
