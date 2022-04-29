@@ -14,6 +14,7 @@ import { styleBuilder, themeBuilder } from "components/multi-select-theme";
 
 const MultiSelect = (props) => {
   const [selected, setSelected] = useState([]);
+  const [theme, setTheme] = useState("orange");
   const { id, maxOptions, setTF } = props;
 
   const options = [
@@ -37,6 +38,16 @@ const MultiSelect = (props) => {
     setTF({ [id]: selectedValues });
   }, [selected, setTF]);
 
+  useEffect(() => {
+    if (props.readonly) {
+      setTheme("neutral");
+    } else if (props.cardBase.match(/po3/)) {
+      setTheme("blue");
+    } else {
+      setTheme("orange");
+    }
+  }, [props.readonly, props.cardBase, setTheme]);
+
   return (
     <>
       {/* noOptions solution by @hrafaelveloso - https://github.com/JedWatson/react-select/issues/1341#issuecomment-521195152 */}
@@ -51,8 +62,8 @@ const MultiSelect = (props) => {
         }}
         isSearchable
         isMulti
-        styles={styleBuilder(props.cardBase.match(/po3/) ? "blue" : "orange")}
-        theme={themeBuilder(props.cardBase.match(/po3/) ? "blue" : "orange")}
+        styles={styleBuilder(theme)}
+        theme={themeBuilder(theme)}
         value={selected}
         onChange={(e) => {
           // Cap maximum that can be selected at once
@@ -60,6 +71,7 @@ const MultiSelect = (props) => {
             setSelected(e);
           }
         }}
+        isDisabled={props.readonly}
       />
 
       <small>{maxOptions} maximum</small>
@@ -72,6 +84,7 @@ MultiSelect.propTypes = {
   maxOptions: PropTypes.number.isRequired,
   setTF: PropTypes.func.isRequired,
   cardBase: PropTypes.string.isRequired,
+  readonly: PropTypes.bool,
 };
 
 export default MultiSelect;
