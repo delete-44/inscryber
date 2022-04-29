@@ -27,7 +27,7 @@ const MultiSelect = (props) => {
   ];
 
   useEffect(() => {
-    if (selected.length === 0) {
+    if (selected.length === 0 || props.readonly) {
       setTF({});
       return;
     }
