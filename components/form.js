@@ -76,7 +76,11 @@ const Form = (props) => {
       <Sigils setSigilsTF={setSigilsTF} cardBase={props.cardBase} />
 
       {/* Patches form field */}
-      <Patches setPatchesTF={setPatchesTF} cardBase={props.cardBase} />
+      <Patches
+        setPatchesTF={setPatchesTF}
+        cardBase={props.cardBase}
+        readonly={!!props.cardBase.match(/po3/)}
+      />
 
       {/* Tribes form fields */}
       <Tribes setTribesTF={setTribesTF} />

@@ -28,13 +28,14 @@ export class TransformationFactory {
         return value.currency.match(/energy/)
           ? new EnergyCostTransformation(value, {
               ...config,
-              ...{ isRare: cardBase === "rare" },
+              isRare: cardBase === "rare",
             })
           : new CostTransformation(value, config);
       case "sigils":
         return new SigilsTransformation(value, config);
       case "patches":
         return new OverlayArrayTransformation(value, type, {
+          ...config,
           positionalTransformation: "t_patch_",
         });
       case "tribes":

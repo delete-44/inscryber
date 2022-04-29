@@ -7,7 +7,7 @@ const Patches = (props) => {
   const { setPatchesTF } = props;
 
   return (
-    <FormFieldLayout>
+    <FormFieldLayout readonly={props.readonly}>
       <p className="mb-3">
         Or <label htmlFor="patches">patches</label>? I won&apos;t ask how...
       </p>
@@ -17,6 +17,7 @@ const Patches = (props) => {
         maxOptions={4}
         setTF={setPatchesTF}
         cardBase={props.cardBase}
+        readonly={props.readonly}
       />
     </FormFieldLayout>
   );
@@ -25,6 +26,7 @@ const Patches = (props) => {
 Patches.propTypes = {
   setPatchesTF: PropTypes.func.isRequired,
   cardBase: PropTypes.string.isRequired,
+  readonly: PropTypes.bool,
 };
 
 export default Patches;
