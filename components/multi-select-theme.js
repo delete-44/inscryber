@@ -26,12 +26,12 @@ export const themeBuilder = (color) => {
       ...theme.colors,
       neutral0: colors[color]["100"], // Background color
       neutral5: colors[color]["100"], // Background color for readonly control
-      primary25: colors[color]["200"], // Hover color
       neutral10: colors[color]["300"], // Multi-select selected options background
-      primary: colors[color]["400"], // Border & option highlight color
       neutral40: "#424242", // "No options" message color
       neutral50: "#424242", // Placeholder color
       neutral80: "#000000", // Multi-select selected options text
+      primary: colors[color]["400"], // Border & option highlight color
+      primary25: colors[color]["200"], // Hover color
     },
   });
 };
