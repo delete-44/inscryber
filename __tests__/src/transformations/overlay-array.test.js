@@ -8,6 +8,16 @@ describe("OverlayArrayTransformation", () => {
       expect(tf.toString()).toEqual("");
     });
 
+    it("removes string when transformation isActThree", () => {
+      const tf = new OverlayArrayTransformation(
+        ["test-overlay-1", "test-overlay-2"],
+        "test-overlay",
+        { isActThree: true }
+      );
+
+      expect(tf.toString()).toEqual("");
+    });
+
     it("generates correct transformation string for multiple overlays", () => {
       const tf = new OverlayArrayTransformation(
         ["test-overlay-1", "test-overlay-2"],

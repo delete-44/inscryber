@@ -2,13 +2,13 @@ import { Transformation } from "../transformation";
 
 export class OverlayArrayTransformation extends Transformation {
   constructor(value, type, config = {}) {
-    super(value, type);
+    super(value, type, config);
 
     this.positionalTransformation = config.positionalTransformation || "";
   }
 
   toString() {
-    if (this.value.length === 0) return "";
+    if (this.value.length === 0 || this.isActThree) return "";
 
     // Add transformation for each overlay. Transformations
     // are named in Cloudinary in the form overlay_x
