@@ -46,7 +46,7 @@ export class TransformationFactory {
       case "overlays":
         return new OverlayArrayTransformation(value, type, config);
       case "portrait":
-        return new PortraitTransformation(value);
+        return new PortraitTransformation(value, config);
       default:
         throw new Error(`Undefined Transformation: ${type}`);
     }

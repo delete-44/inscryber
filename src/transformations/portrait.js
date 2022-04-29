@@ -1,8 +1,8 @@
 import { Transformation } from "../transformation";
 
 export class PortraitTransformation extends Transformation {
-  constructor(value) {
-    super(value, "portrait");
+  constructor(value, config) {
+    super(value, "portrait", config);
   }
 
   toString() {
@@ -15,7 +15,7 @@ export class PortraitTransformation extends Transformation {
     if (manipulations && manipulations.length > 0)
       tfString += `${manipulations.join("/")}/`;
 
-    tfString += "t_portrait/";
+    tfString += this.isActThree ? "t_act_3_portrait_v1/" : "t_portrait_v1/";
 
     return tfString;
   }

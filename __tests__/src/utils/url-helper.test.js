@@ -22,7 +22,7 @@ describe("generateUrl", () => {
 
     expect(tfString).toEqual(
       `${CLOUDINARY_BASE}` +
-        "l_test_portrait_1/test_manipulation_1/t_portrait/" +
+        "l_test_portrait_1/test_manipulation_1/t_portrait_v1/" +
         "l_Inscryber:tribes:v1:test_tribe_1/t_tribe_1/" +
         "l_Inscryber:Costs:v2:blood_5/t_cost/" +
         "l_text:Inscryber:HEAVYWEIGHT.ttf_128_center:TEST%20CARD/t_name_short/" +
