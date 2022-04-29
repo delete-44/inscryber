@@ -25,6 +25,7 @@ export const themeBuilder = (color) => {
     colors: {
       ...theme.colors,
       neutral0: colors[color]["100"], // Background color
+      neutral5: colors[color]["100"], // Background color for readonly control
       primary25: colors[color]["200"], // Hover color
       neutral10: colors[color]["300"], // Multi-select selected options background
       primary: colors[color]["400"], // Border & option highlight color
