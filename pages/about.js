@@ -70,6 +70,11 @@ const About = () => {
           </li>
 
           <li className="about-text mb-4">
+            Act 3 card template adapted from the design created by{" "}
+            <a href={LINKS.dmizuomo}>@DMizuomo</a>.
+          </li>
+
+          <li className="about-text mb-4">
             &quot;HEAVYWEIGHT&quot; font created by Nerfect Type Laboratories.
           </li>
 
