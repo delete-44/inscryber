@@ -33,5 +33,19 @@ describe("PortraitTransformation", () => {
         "l_test-portrait/test-manipulation-1/test-manipulation-2/t_portrait_v1/"
       );
     });
+
+    it("adds act 3 modifier if required", () => {
+      const tf = new PortraitTransformation(
+        {
+          filename: "test-portrait",
+          manipulations: ["test-manipulation-1", "test-manipulation-2"],
+        },
+        { isActThree: true }
+      );
+
+      expect(tf.toString()).toEqual(
+        "l_test-portrait/test-manipulation-1/test-manipulation-2/t_act_3_portrait_v1/"
+      );
+    });
   });
 });
