@@ -41,7 +41,7 @@ const MultiSelect = (props) => {
   useEffect(() => {
     if (props.readonly) {
       setTheme("neutral");
-    } else if (props.cardBase.match(/po3/)) {
+    } else if (props.cardBase === "po3") {
       setTheme("blue");
     } else {
       setTheme("orange");
