@@ -154,9 +154,9 @@ describe("Form", () => {
         "aria-label": /Patches/,
       })[1];
 
-      const birdTribe = screen.getByRole("checkbox", { name: /Bird/ });
+      let birdTribe = screen.queryByRole("checkbox", { name: /Bird/ });
 
-      const gooOverlay = screen.getByRole("checkbox", { name: /Goo/ });
+      let gooOverlay = screen.queryByRole("checkbox", { name: /Goo/ });
 
       const rareCardBack = screen.getByRole("radio", { name: /Rare/ });
 
@@ -169,8 +169,8 @@ describe("Form", () => {
       expect(health).toBeInTheDocument();
       expect(sigils).toBeInTheDocument();
       expect(patches).toBeUndefined();
-      expect(birdTribe).toBeInTheDocument();
-      expect(gooOverlay).toBeInTheDocument();
+      expect(birdTribe).toBeNull();
+      expect(gooOverlay).toBeNull();
       expect(rareCardBack).toBeInTheDocument();
       expect(cost).toBeInTheDocument();
       expect(portrait).toBeInTheDocument();
@@ -180,7 +180,13 @@ describe("Form", () => {
         hidden: true,
       })[1];
 
+      birdTribe = screen.getByRole("checkbox", { name: /Bird/, hidden: true });
+
+      gooOverlay = screen.getByRole("checkbox", { name: /Goo/, hidden: true });
+
       expect(patches).toBeInTheDocument();
+      expect(birdTribe).toBeInTheDocument();
+      expect(gooOverlay).toBeInTheDocument();
     });
   });
 });

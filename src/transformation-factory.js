@@ -40,10 +40,11 @@ export class TransformationFactory {
         });
       case "tribes":
         return new OverlayArrayTransformation(value, type, {
+          ...config,
           positionalTransformation: "t_tribe_",
         });
       case "overlays":
-        return new OverlayArrayTransformation(value, type);
+        return new OverlayArrayTransformation(value, type, config);
       case "portrait":
         return new PortraitTransformation(value);
       default:

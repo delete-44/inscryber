@@ -27,12 +27,13 @@ describe("MultiSelectTheme", () => {
       expect(res({ colors: {} })).toEqual({
         colors: {
           neutral0: colors["blue"]["100"],
-          primary25: colors["blue"]["200"],
+          neutral5: colors["blue"]["100"],
           neutral10: colors["blue"]["300"],
-          primary: colors["blue"]["400"],
           neutral40: "#424242",
           neutral50: "#424242",
           neutral80: "#000000",
+          primary: colors["blue"]["400"],
+          primary25: colors["blue"]["200"],
         },
       });
     });

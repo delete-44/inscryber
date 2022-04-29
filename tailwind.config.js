@@ -22,7 +22,7 @@ module.exports = {
         red: "#b72e38",
         gray: "#424242",
         neutral: {
-          100: "#f5f5f5",
+          100: "#d4d4d4",
           200: "#e5e5e5",
           300: "#d4d4d4",
           400: "#a3a3a3",

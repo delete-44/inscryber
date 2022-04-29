@@ -38,6 +38,7 @@ const MultiCheckbox = (props) => {
                   [filename]: e.target.checked,
                 });
               }}
+              disabled={props.readonly}
             />
             <label htmlFor={filename} className="check-label">
               {label}
@@ -53,6 +54,7 @@ MultiCheckbox.propTypes = {
   options: PropTypes.array.isRequired,
   setSelectedFilenames: PropTypes.func.isRequired,
   formName: PropTypes.string.isRequired,
+  readonly: PropTypes.bool,
 };
 
 export default MultiCheckbox;

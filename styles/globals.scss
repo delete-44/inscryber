@@ -269,6 +269,17 @@
       @apply text-neutral-400;
       @apply text-shadow-none;
     }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      @apply border-neutral-400;
+      @apply bg-neutral-400;
+
+      @apply checked:bg-neutral-400;
+      @apply checked:border-neutral-400;
+
+      @apply cursor-default;
+    }
   }
 
   // -----------------------------
