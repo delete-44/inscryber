@@ -85,13 +85,13 @@ const Form = (props) => {
       {/* Tribes form fields */}
       <Tribes
         setTribesTF={setTribesTF}
-        readonly={props.cardBase.match(/po3/)}
+        readonly={!!props.cardBase.match(/po3/)}
       />
 
       {/* Overlays form fields */}
       <Overlays
         setOverlaysTF={setOverlaysTF}
-        readonly={props.cardBase.match(/po3/)}
+        readonly={!!props.cardBase.match(/po3/)}
       />
 
       {/* Card back selector, ie rarity */}
