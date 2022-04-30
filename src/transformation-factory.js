@@ -16,7 +16,7 @@ export class TransformationFactory {
    * @return {Transformation} An object of a specific subclass of Transformation.
    */
   static build(type, value, cardBase = "") {
-    const config = { isActThree: cardBase === "po3" };
+    const config = { isActThree: cardBase === "botopia" };
 
     switch (type) {
       case "name":
