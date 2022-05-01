@@ -37,6 +37,12 @@ const Footer = () => {
         </li>
 
         <li className="mb-2">
+          &copy; <a href={LINKS.dmizuomo}>DMizuomo</a>
+          <br />
+          [original act 3 card template]
+        </li>
+
+        <li className="mb-2">
           &copy; <a href={LINKS.dmullins}>Daniel Mullins Games</a>
           <br />
           [designs, IP. Used &amp; distributed with permission]

@@ -79,19 +79,16 @@ const Form = (props) => {
       <Patches
         setPatchesTF={setPatchesTF}
         cardBase={props.cardBase}
-        readonly={!!props.cardBase.match(/po3/)}
+        readonly={props.cardBase === "botopia"}
       />
 
       {/* Tribes form fields */}
-      <Tribes
-        setTribesTF={setTribesTF}
-        readonly={!!props.cardBase.match(/po3/)}
-      />
+      <Tribes setTribesTF={setTribesTF} readonly={props.cardBase === "botopia"} />
 
       {/* Overlays form fields */}
       <Overlays
         setOverlaysTF={setOverlaysTF}
-        readonly={!!props.cardBase.match(/po3/)}
+        readonly={props.cardBase === "botopia"}
       />
 
       {/* Card back selector, ie rarity */}

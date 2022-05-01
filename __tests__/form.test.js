@@ -128,7 +128,7 @@ describe("Form", () => {
           setBusy={mockSetBusy}
           setUrl={mockSetUrl}
           setCardBase={mockSetCardBase}
-          cardBase="po3"
+          cardBase="botopia"
         />
       );
     });

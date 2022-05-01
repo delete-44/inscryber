@@ -126,7 +126,7 @@ export const BASES = [
   { filename: "vladde", label: "Normal" },
   { filename: "rare", label: "Rare" },
   { filename: "unsacrificable", label: "Terrain" },
-  // { filename: "po3_ubvks4", label: "TEST" },
+  { filename: "botopia", label: "Botopian" },
 ];
 
 export const TRIBES = [
@@ -164,6 +164,7 @@ export const LINKS = {
   delete44_twitter: "https://twitter.com/_delete44",
   vladde: "https://cards.vladde.me/",
   avgUser: "https://www.reddit.com/user/The_Enlightened_Guy",
+  dmizuomo: "https://twitter.com/DMizuomo",
   dmullins: "https://www.danielmullinsgames.com/",
   inscryption: "https://www.inscryption.com/",
   inscryber_github: "https://github.com/delete-44/inscryber",

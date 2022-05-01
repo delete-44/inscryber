@@ -35,6 +35,9 @@ describe("Footer", () => {
     const avgUserLink = screen.getByRole("link", {
       name: "anAverageUsersName",
     });
+    const dmizuomoLink = screen.getByRole("link", {
+      name: "DMizuomo",
+    });
     const dmullinsLink = screen.getByRole("link", {
       name: "Daniel Mullins Games",
     });
@@ -47,6 +50,7 @@ describe("Footer", () => {
     const annieplyerText = screen.getByText(
       "© Annieplyer[act 1 themed energy assets]"
     );
+    const dmizuomoText = screen.getByText("© [original act 3 card template]");
     const dmullinsText = screen.getByText(
       "© [designs, IP. Used & distributed with permission]"
     );
@@ -63,6 +67,10 @@ describe("Footer", () => {
     expect(avgUserLink).toHaveAttribute("href", LINKS.avgUser);
 
     expect(annieplyerText).toBeInTheDocument();
+
+    expect(dmizuomoLink).toBeInTheDocument();
+    expect(dmizuomoText).toBeInTheDocument();
+    expect(dmizuomoLink).toHaveAttribute("href", LINKS.dmizuomo);
 
     expect(dmullinsLink).toBeInTheDocument();
     expect(dmullinsText).toBeInTheDocument();

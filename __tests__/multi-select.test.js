@@ -158,7 +158,7 @@ describe("MultiSelect", () => {
           id="TEST-ID"
           maxOptions={5}
           setTF={mockCallback}
-          cardBase="po3"
+          cardBase="botopia"
         />
       );
 
@@ -170,7 +170,7 @@ describe("MultiSelect", () => {
           id="TEST-ID"
           maxOptions={5}
           setTF={mockCallback}
-          cardBase="po3"
+          cardBase="botopia"
           readonly
         />
       );
