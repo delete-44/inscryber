@@ -18,6 +18,7 @@ export const CARD_HEIGHT = 1050;
 // Standard customisation options
 export const SIGILS = [
   { value: "airborne", label: "Airborne" },
+  { value: "random", label: "Amorphous" },
   { value: "ant_spawner", label: "Ant Spawner" },
   { value: "bees_within", label: "Bees Within" },
   { value: "bellist", label: "Bellist" },
@@ -38,7 +39,6 @@ export const SIGILS = [
   { value: "mighty_leap", label: "Mighty Leap" },
   { value: "moon_strike", label: "Moon Strike" },
   { value: "rabbithole", label: "Rabbithole" },
-  { value: "random", label: "Random" },
   { value: "repulsive", label: "Repulsive" },
   { value: "sharp_quills", label: "Sharp Quills" },
   { value: "sprinter", label: "Sprinter" },
