@@ -17,7 +17,7 @@ export class NameTransformation extends Transformation {
 
     return (
       `l_text:${HEAVYWEIGHT}_128_center:` +
-      `${encodeURIComponent(this.value)}/` +
+      `${encodeURIComponent(encodeURIComponent(this.value))}/` +
       `t_${actThreeModifier}name_${tfLength}/`
     );
   }
