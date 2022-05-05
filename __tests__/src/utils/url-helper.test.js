@@ -25,7 +25,7 @@ describe("generateUrl", () => {
         "l_test_portrait_1/test_manipulation_1/t_portrait_v1/" +
         "l_Inscryber:tribes:v1:test_tribe_1/t_tribe_1/" +
         "l_Inscryber:Costs:v2:blood_5/t_cost/" +
-        "l_text:Inscryber:HEAVYWEIGHT.ttf_128_center:TEST%20CARD/t_name_short/" +
+        "l_text:Inscryber:HEAVYWEIGHT.ttf_128_center:TEST%2520CARD/t_name_short/" +
         "l_text:Inscryber:HEAVYWEIGHT.ttf_196:0,c_scale,w_65/t_power/" +
         "l_text:Inscryber:HEAVYWEIGHT.ttf_196:120,c_scale,w_100/t_health/" +
         "l_Inscryber:Sigils:v1:test_sigil_1/t_sigil/" +
