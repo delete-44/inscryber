@@ -33,11 +33,11 @@ describe("NameTransformation", () => {
       );
     });
 
-    it("encodes special characters in transformation", () => {
+    it("twice-encodes special characters in transformation", () => {
       const tf = new NameTransformation("Test String");
 
       expect(tf.toString()).toEqual(
-        `l_text:${HEAVYWEIGHT}_128_center:Test%20String/t_name_short/`
+        `l_text:${HEAVYWEIGHT}_128_center:Test%2520String/t_name_short/`
       );
     });
   });
