@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  CARD_BASE,
-  CLOUDINARY_BASE,
-  CARD_WIDTH,
-  CARD_HEIGHT,
-} from "components/constants";
+import { blurUrl } from "src/utils/url-helper.js";
 import Form from "components/form";
 import GridLayout from "layouts/grid-layout";
 import ImagePreview from "components/image-preview";
@@ -13,9 +8,7 @@ export default function Home() {
   // State management for this component
   const [busy, setBusy] = useState(true);
   const [cardBase, setCardBase] = useState("vladde");
-  const [url, setUrl] = useState(
-    `${CLOUDINARY_BASE}c_scale,h_${CARD_HEIGHT},w_${CARD_WIDTH}/${CARD_BASE}blur`
-  );
+  const [url, setUrl] = useState(blurUrl());
 
   return (
     <GridLayout
