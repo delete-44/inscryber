@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { generateUrl } from "src/utils/url-helper.js";
-import {
-  CARD_BASE,
-  CLOUDINARY_BASE,
-  DEBOUNCE_TIMER,
-} from "components/constants";
+import { DEBOUNCE_TIMER } from "components/constants";
 
 import Name from "@form-fields/name";
 import Stats from "@form-fields/stats";
@@ -83,7 +79,10 @@ const Form = (props) => {
       />
 
       {/* Tribes form fields */}
-      <Tribes setTribesTF={setTribesTF} readonly={props.cardBase === "botopia"} />
+      <Tribes
+        setTribesTF={setTribesTF}
+        readonly={props.cardBase === "botopia"}
+      />
 
       {/* Overlays form fields */}
       <Overlays
