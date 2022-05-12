@@ -29,8 +29,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        title: ["Heavyweight"],
-        po3: ["Daggersquare"],
+        title: ["Heavyweight", "Impact", "sans-serif"],
+        po3: ["Daggersquare", "Lucida Console", "Impact", "sans-serif"],
       },
     },
   },
