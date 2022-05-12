@@ -1,5 +1,10 @@
 import { TransformationFactory } from "src/transformation-factory";
-import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
+import {
+  CARD_BASE,
+  CLOUDINARY_BASE,
+  CARD_HEIGHT,
+  CARD_WIDTH,
+} from "components/constants";
 
 /**
  * Generate a complete card URL from given transformations.
@@ -38,6 +43,15 @@ export const generateUrl = (transformations = {}, cardBase = "vladde") => {
   });
 
   return `${CLOUDINARY_BASE}${tfString}${CARD_BASE}${cardBase}`;
+};
+
+/**
+ * Generate a "blur" URL to show during loading.
+ *
+ * @return {String} A valid cloudinary URL for the blur image.
+ */
+export const blurUrl = () => {
+  return `${CLOUDINARY_BASE}c_scale,h_${CARD_HEIGHT},w_${CARD_WIDTH}/${CARD_BASE}blur`;
 };
 
 // Order in which to apply transformation layers

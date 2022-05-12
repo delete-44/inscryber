@@ -49,7 +49,7 @@ const Uploader = (props) => {
         setImageId(uploaded.public_id.replace(/\//g, ":"));
         setBusy(false);
       } catch (e) {
-        console.log(e);
+        console.error(e);
 
         setError(true);
         setBusy(false);

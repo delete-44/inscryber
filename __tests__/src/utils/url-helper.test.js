@@ -1,5 +1,10 @@
-import { generateUrl } from "src/utils/url-helper";
-import { CARD_BASE, CLOUDINARY_BASE } from "components/constants";
+import { generateUrl, blurUrl } from "src/utils/url-helper";
+import {
+  CARD_BASE,
+  CLOUDINARY_BASE,
+  CARD_HEIGHT,
+  CARD_WIDTH,
+} from "components/constants";
 
 describe("generateUrl", () => {
   it("compiles strings from multiple transformation objects & orders them as per the transformationLayers constant", () => {
@@ -39,5 +44,15 @@ describe("generateUrl", () => {
     const tfString = generateUrl();
 
     expect(tfString).toEqual(`${CLOUDINARY_BASE}${CARD_BASE}vladde`);
+  });
+});
+
+describe("blurUrl", () => {
+  it("returns a static string for the blur url with appropriate transformations", () => {
+    const blurString = blurUrl();
+
+    expect(blurString).toEqual(
+      `${CLOUDINARY_BASE}c_scale,h_${CARD_HEIGHT},w_${CARD_WIDTH}/${CARD_BASE}blur`
+    );
   });
 });
