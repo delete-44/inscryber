@@ -20,7 +20,7 @@ describe("PortraitTransformation", () => {
     it("generates un-manipulated TF string correctly", () => {
       const tf = new PortraitTransformation({ filename: "test-portrait" });
 
-      expect(tf.toString()).toEqual("l_test-portrait/t_portrait_v1/");
+      expect(tf.toString()).toEqual("l_test-portrait/t_portrait_v2/");
     });
 
     it("adds image manipulations if required", () => {
@@ -30,7 +30,7 @@ describe("PortraitTransformation", () => {
       });
 
       expect(tf.toString()).toEqual(
-        "l_test-portrait/test-manipulation-1/test-manipulation-2/t_portrait_v1/"
+        "l_test-portrait/test-manipulation-1/test-manipulation-2/t_portrait_v2/"
       );
     });
 
@@ -44,7 +44,7 @@ describe("PortraitTransformation", () => {
       );
 
       expect(tf.toString()).toEqual(
-        "l_test-portrait/test-manipulation-1/test-manipulation-2/t_act_3_portrait_v1/"
+        "l_test-portrait/test-manipulation-1/test-manipulation-2/t_act_3_portrait_v2/"
       );
     });
   });

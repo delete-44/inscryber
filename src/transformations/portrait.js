@@ -15,7 +15,7 @@ export class PortraitTransformation extends Transformation {
     if (manipulations && manipulations.length > 0)
       tfString += `${manipulations.join("/")}/`;
 
-    tfString += this.isActThree ? "t_act_3_portrait_v1/" : "t_portrait_v1/";
+    tfString += this.isActThree ? "t_act_3_portrait_v2/" : "t_portrait_v2/";
 
     return tfString;
   }
