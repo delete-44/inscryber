@@ -9,18 +9,17 @@ export class SigilsTransformation extends Transformation {
     if (this.value.length < 1) return "";
 
     // Use act 3 transformations if needed
-    const actThreeModifier = this.isActThree ? "act_3_" : "";
-
-    // Single sigils are larger and central than multiple sigils
-    if (this.value.length < 2)
-      return `l_Inscryber:Sigils:v1:${this.value[0]}/t_${actThreeModifier}sigil/`;
+    const actThreeModifier = this.isActThree ? "po3_" : "";
 
     // Add transformation for each sigil. Transformations
-    // are named in Cloudinary in the form sigil_x
+    // are named in Cloudinary in the form sigil_x_of_y
     let transformation = "";
+    const max = this.value.length;
 
     this.value.forEach((s, i) => {
-      transformation += `l_Inscryber:Sigils:v1:${s}/t_v1_${actThreeModifier}sigil_${++i}/`;
+      transformation +=
+        `l_Inscryber:Sigils:v1:${s}/` +
+        `t_${actThreeModifier}sigil_${++i}_of_${max}/`;
     });
 
     return transformation;
