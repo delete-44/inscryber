@@ -23,7 +23,7 @@ describe("Sigils", () => {
   it("renders a flavourful description & help text", () => {
     const sigilsFlavour = screen.getByText("Does this creature have any ?");
     const sigilsLabel = screen.getByText("sigils");
-    const maxText = screen.getByText("2 maximum");
+    const maxText = screen.getByText("3 maximum");
 
     expect(sigilsFlavour).toBeInTheDocument();
     expect(sigilsLabel).toBeInTheDocument();
@@ -47,16 +47,23 @@ describe("Sigils", () => {
       sigils: ["airborne", "bifurcated_strike"],
     });
 
+    await selectEvent.select(sigilsField, /Trifurcated Strike/);
+
+    expect(mockCallback).toHaveBeenCalledTimes(3);
+    expect(mockCallback).toHaveBeenLastCalledWith({
+      sigils: ["airborne", "bifurcated_strike", "trifurcated_strike"],
+    });
+
     // It does not set additional sigils & renders warning to user
-    await selectEvent.select(sigilsField, /Bifurcated Strike/);
+    await selectEvent.select(sigilsField, /Airborne/);
 
     expect(
-      screen.getByText(/Only 2 sigils can be applied at once./)
+      screen.getByText(/Only 3 sigils can be applied at once./)
     ).toBeInTheDocument();
 
-    expect(mockCallback).toHaveBeenCalledTimes(2);
+    expect(mockCallback).toHaveBeenCalledTimes(3);
     expect(mockCallback).toHaveBeenLastCalledWith({
-      sigils: ["airborne", "bifurcated_strike"],
+      sigils: ["airborne", "bifurcated_strike", "trifurcated_strike"],
     });
   });
 });
