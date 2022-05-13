@@ -14,7 +14,7 @@ const Sigils = (props) => {
 
       <MultiSelect
         id="sigils"
-        maxOptions={2}
+        maxOptions={3}
         setTF={setSigilsTF}
         cardBase={props.cardBase}
       />

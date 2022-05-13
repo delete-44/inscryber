@@ -13,7 +13,7 @@ describe("SigilsTransformation", () => {
         const tf = new SigilsTransformation(["test-sigil-1"]);
 
         expect(tf.toString()).toEqual(
-          "l_Inscryber:Sigils:v1:test-sigil-1/t_sigil/"
+          "l_Inscryber:Sigils:v1:test-sigil-1/t_sigil_1_of_1/"
         );
       });
 
@@ -23,7 +23,7 @@ describe("SigilsTransformation", () => {
         });
 
         expect(tf.toString()).toEqual(
-          "l_Inscryber:Sigils:v1:test-sigil-1/t_act_3_sigil/"
+          "l_Inscryber:Sigils:v1:test-sigil-1/t_po3_sigil_1_of_1/"
         );
       });
     });
@@ -33,8 +33,8 @@ describe("SigilsTransformation", () => {
         const tf = new SigilsTransformation(["test-sigil-1", "test-sigil-2"]);
 
         expect(tf.toString()).toEqual(
-          "l_Inscryber:Sigils:v1:test-sigil-1/t_v1_sigil_1/" +
-            "l_Inscryber:Sigils:v1:test-sigil-2/t_v1_sigil_2/"
+          "l_Inscryber:Sigils:v1:test-sigil-1/t_sigil_1_of_2/" +
+            "l_Inscryber:Sigils:v1:test-sigil-2/t_sigil_2_of_2/"
         );
       });
 
@@ -44,8 +44,8 @@ describe("SigilsTransformation", () => {
         });
 
         expect(tf.toString()).toEqual(
-          "l_Inscryber:Sigils:v1:test-sigil-1/t_v1_act_3_sigil_1/" +
-            "l_Inscryber:Sigils:v1:test-sigil-2/t_v1_act_3_sigil_2/"
+          "l_Inscryber:Sigils:v1:test-sigil-1/t_po3_sigil_1_of_2/" +
+            "l_Inscryber:Sigils:v1:test-sigil-2/t_po3_sigil_2_of_2/"
         );
       });
     });
