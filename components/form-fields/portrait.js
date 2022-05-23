@@ -29,9 +29,11 @@ const Portrait = (props) => {
         </Link>{" "}
         before uploading.
         <br />
-        Images are scaled to fit dimensions 625x514. For best results, use an
-        image at least this size, with a transparent background.
+        For best results, use an image 656x514px or larger, with a transparent
+        background.
         <br />
+        Images are <strong>not</strong> scaled up to fill this. If your image
+        seems small, manually scale it up using &quot;Nearest Neighbour&quot;.
       </small>
 
       <Inscryber setInscrybedTFs={setInscrybedTFs} />
