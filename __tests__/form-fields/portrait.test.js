@@ -56,14 +56,18 @@ describe("Portrait", () => {
       /Please review how we handle images in the privacy section of our before uploading./
     );
     const aboutLink = screen.getByRole("link", { name: "about page" });
-    const helpText = screen.getByText(
-      /Images are scaled to fit dimensions 625x514. For best results, use an image at least this size, with a transparent background./
+    const dimensionsHelpText = screen.getByText(
+      /For best results, use an image 656x514px or larger, with a transparent background./
+    );
+    const scaleHelpText = screen.getByText(
+      /If your image seems small, manually scale it up using "Nearest Neighbour"./
     );
 
     expect(privacyText).toBeInTheDocument();
     expect(aboutLink).toBeInTheDocument();
     expect(aboutLink).toHaveAttribute("href", "/about");
-    expect(helpText).toBeInTheDocument();
+    expect(dimensionsHelpText).toBeInTheDocument();
+    expect(scaleHelpText).toBeInTheDocument();
   });
 
   it("does not set inscrybed transformations when no image uploaded", () => {
