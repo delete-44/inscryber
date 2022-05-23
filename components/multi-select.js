@@ -36,7 +36,7 @@ const MultiSelect = (props) => {
     // ie ["airborne", "stinky"]
     const selectedValues = selected.map((p) => p.value);
     setTF({ [id]: selectedValues });
-  }, [selected, setTF]);
+  }, [selected, setTF, id, props.readonly]);
 
   useEffect(() => {
     if (props.readonly) {

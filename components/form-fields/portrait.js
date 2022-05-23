@@ -33,7 +33,7 @@ const Portrait = (props) => {
         background.
         <br />
         Images are <strong>not</strong> scaled up to fill this. If your image
-        seems small, manually scale it up using "Nearest Neighbour".
+        seems small, manually scale it up using &quot;Nearest Neighbour&quot;.
       </small>
 
       <Inscryber setInscrybedTFs={setInscrybedTFs} />
