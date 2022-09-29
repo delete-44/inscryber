@@ -135,6 +135,8 @@ export const TRIBES = [
   { filename: "hooved", label: "Hooved" },
   { filename: "insect", label: "Insect" },
   { filename: "reptile", label: "Reptile" },
+  // FIXME: Do not release this to prod
+  { filename: "rodent_guzdat", label: "Rodent" },
 ];
 
 export const OVERLAYS = [
