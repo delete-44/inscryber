@@ -5,6 +5,7 @@ import { EnergyCostTransformation } from "src/transformations/energy-cost";
 import { SigilsTransformation } from "src/transformations/sigils";
 import { OverlayArrayTransformation } from "src/transformations/overlay-array";
 import { PortraitTransformation } from "src/transformations/portrait";
+import { TribesTransformation } from "src/transformations/tribes";
 
 export class TransformationFactory {
   /**
@@ -39,10 +40,7 @@ export class TransformationFactory {
           positionalTransformation: "t_patch_",
         });
       case "tribes":
-        return new OverlayArrayTransformation(value, type, {
-          ...config,
-          positionalTransformation: "t_tribe_",
-        });
+        return new TribesTransformation(value, type, { ...config });
       case "overlays":
         return new OverlayArrayTransformation(value, type, config);
       case "portrait":
