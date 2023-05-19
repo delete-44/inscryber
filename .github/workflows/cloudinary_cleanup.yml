@@ -19,6 +19,7 @@ jobs:
       # retry a maximum of 3 times if the request fails.
       - name: Retry retrieving files in cloudinary
         uses: nick-invision/retry@v2
+        id: get-request
         with:
           timeout_minutes: 1
           max_attempts: 3
