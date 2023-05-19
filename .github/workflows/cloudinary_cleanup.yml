@@ -15,19 +15,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # The "expression" body argument is built using the Cloudinary search API
-      # It translates to "find images in the Inscryber/Uploads folder that are
-      # more than 6 hours old.
-      # https://cloudinary.com/documentation/search_api#expressions
-      - name: Retrieve files in cloudinary
-        id: get-request
-        uses: fjogeleit/http-request-action@master
+      # Wraps the request with a retry action so it will
+      # retry a maximum of 3 times if the request fails.
+      - name: Retry retrieving files in cloudinary
+        uses: nick-invision/retry@v2
         with:
-          url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
-          data: '{ "expression": "folder=Inscryber/Uploads AND uploaded_at<=6h", "max_results": 100, "sort_by": [{"uploaded_at": "asc"}] }'
-          method: 'POST'
-          username: ${{ secrets.CLOUDINARY_API_KEY }}
-          password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+          timeout_minutes: 1
+          max_attempts: 3
+          retry_on: error
+          # The "expression" body argument is built using the Cloudinary search API
+          # It translates to "find images in the Inscryber/Uploads folder that are
+          # more than 6 hours old.
+          # https://cloudinary.com/documentation/search_api#expressions
+          command: |
+            - name: Retrieve files in cloudinary
+              id: get-request
+              uses: fjogeleit/http-request-action@master
+              with:
+                url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
+                data: '{ "expression": "folder=Inscryber/Uploads AND uploaded_at<=6h", "max_results": 100, "sort_by": [{"uploaded_at": "asc"}] }'
+                method: 'POST'
+                username: ${{ secrets.CLOUDINARY_API_KEY }}
+                password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
 
       # Output of this response returns full metadata for each image. We don't need
       # most of it, so use command line tool JQ to build an array of public IDs.
