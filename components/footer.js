@@ -5,15 +5,23 @@ import { LINKS } from "./constants";
 const Footer = () => {
   return (
     <footer className="bg-neutral-900 w-full inline-flex mt-12 py-3">
-      <nav className="px-4 border-r-2 border-orange-400 flex flex-col text-right">
-        <Link href="/">
-          <a className="font-title text-orange-400 text-shadow-orange text-4xl">
-            Inscryber
-          </a>
-        </Link>
+      <nav className="px-4 border-r-2 border-orange-400 flex flex-col text-right justify-between">
+        <section className="flex flex-col">
+          <Link href="/">
+            <a className="font-title text-orange-400 text-shadow-orange text-4xl">
+              Inscryber
+            </a>
+          </Link>
 
-        <Link href="/about">
-          <a>About</a>
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+        </section>
+
+        <Link href="https://ko-fi.com/L4L64GJSW">
+          <a target='_blank'>
+            <img height='36' style={{border: '0px', height: '36px'}} src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+          </a>
         </Link>
       </nav>
 
