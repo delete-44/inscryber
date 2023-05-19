@@ -15,26 +15,36 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # The "expression" body argument is built using the Cloudinary search API
-      # It translates to "find images in the Inscryber/Uploads folder that are
-      # more than 6 hours old.
-      # https://cloudinary.com/documentation/search_api#expressions
-      - name: Retrieve files in cloudinary
+      # Wraps the request with a retry action so it will
+      # retry a maximum of 3 times if the request fails.
+      - name: Retry retrieving files in cloudinary
         id: get-request
-        uses: fjogeleit/http-request-action@master
+        uses: nick-invision/retry@v2
         with:
-          url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
-          data: '{ "expression": "folder=Inscryber/Uploads AND uploaded_at<=6h", "max_results": 100, "sort_by": [{"uploaded_at": "asc"}] }'
-          method: 'POST'
-          username: ${{ secrets.CLOUDINARY_API_KEY }}
-          password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+          timeout_minutes: 1
+          max_attempts: 3
+          retry_on: error
+          # The "expression" body argument is built using the Cloudinary search API
+          # It translates to "find images in the Inscryber/Uploads folder that are
+          # more than 6 hours old.
+          # https://cloudinary.com/documentation/search_api#expressions
+          command: |
+            echo ::set-output name=RESPONSE::$(curl -s -u ${{ secrets.CLOUDINARY_API_KEY }}:${{ secrets.CLOUDINARY_API_SECRET_KEY }} \
+                -X POST \
+                -H "Content-Type: application/json" \
+                -d '{
+                      "expression": "folder=Inscryber/Uploads AND uploaded_at<=6h",
+                      "max_results": 100,
+                      "sort_by": [{"uploaded_at": "asc"}]
+                    }' \
+                https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search)
 
       # Output of this response returns full metadata for each image. We don't need
       # most of it, so use command line tool JQ to build an array of public IDs.
       # This is stored as an output so we can use in later steps
       - name: Filter output with jq
         id: jq-filter
-        run: echo ::set-output name=RESOURCES::$(echo ${{ toJSON(steps.get-request.outputs.response) }} | jq '.resources | [.[].public_id]')
+        run: echo ::set-output name=RESOURCES::$(echo ${{ toJSON(steps.get-request.outputs.RESPONSE) }} | jq '.resources | [.[].public_id]')
 
       - name: LOG all IDs to be deleted
         run: echo ${{ steps.jq-filter.outputs.RESOURCES }}
@@ -44,16 +54,19 @@ jobs:
 
       # Send request with ids to delete as 'application/x-www-form-urlencoded' content.
       # IDs are joined with the `public_ids[]` key.
-      - name: Delete selected files
-        uses: fjogeleit/http-request-action@master
+      - name: Retry deleting selected files
         id: delete-request
+        uses: nick-invision/retry@v2
         with:
-          url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/image/upload
-          data: "public_ids[]=${{ join(fromJSON(steps.jq-filter.outputs.RESOURCES), '&public_ids[]=') }}"
-          contentType: 'application/x-www-form-urlencoded'
-          method: 'DELETE'
-          username: ${{ secrets.CLOUDINARY_API_KEY }}
-          password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+          timeout_minutes: 1
+          max_attempts: 3
+          retry_on: error
+          command: |
+            echo ::set-output name=RESPONSE::$(curl -s -u ${{ secrets.CLOUDINARY_API_KEY }}:${{ secrets.CLOUDINARY_API_SECRET_KEY }} \
+                -X DELETE \
+                -H "Content-Type: application/x-www-form-urlencoded" \
+                -d "public_ids[]=${{ join(fromJSON(steps.jq-filter.outputs.RESOURCES), '&public_ids[]=') }}" \
+                https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/image/upload)
 
       - name: LOG response from DELETE request
-        run: echo ${{ steps.delete-request.outputs.response }}
+        run: echo ${{ steps.delete-request.outputs.RESPONSE }}
