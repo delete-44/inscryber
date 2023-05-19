@@ -54,16 +54,19 @@ jobs:
 
       # Send request with ids to delete as 'application/x-www-form-urlencoded' content.
       # IDs are joined with the `public_ids[]` key.
-      - name: Delete selected files
-        uses: fjogeleit/http-request-action@master
+      - name: Retry deleting selected files
         id: delete-request
+        uses: nick-invision/retry@v2
         with:
-          url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/image/upload
-          data: "public_ids[]=${{ join(fromJSON(steps.jq-filter.outputs.RESOURCES), '&public_ids[]=') }}"
-          contentType: 'application/x-www-form-urlencoded'
-          method: 'DELETE'
-          username: ${{ secrets.CLOUDINARY_API_KEY }}
-          password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+          timeout_minutes: 1
+          max_attempts: 3
+          retry_on: error
+          command: |
+            echo ::set-output name=RESPONSE::$(curl -s -u ${{ secrets.CLOUDINARY_API_KEY }}:${{ secrets.CLOUDINARY_API_SECRET_KEY }} \
+                -X DELETE \
+                -H "Content-Type: application/x-www-form-urlencoded" \
+                -d "public_ids[]=${{ join(fromJSON(steps.jq-filter.outputs.RESOURCES), '&public_ids[]=') }}" \
+                https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/image/upload)
 
       - name: LOG response from DELETE request
-        run: echo ${{ steps.delete-request.outputs.response }}
+        run: echo ${{ steps.delete-request.outputs.RESPONSE }}
