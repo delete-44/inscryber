@@ -28,15 +28,15 @@ jobs:
           # more than 6 hours old.
           # https://cloudinary.com/documentation/search_api#expressions
           command: |
-            - name: Retrieve files in cloudinary
-              id: get-request
-              uses: fjogeleit/http-request-action@master
-              with:
-                url: https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
-                data: '{ "expression": "folder=Inscryber/Uploads AND uploaded_at<=6h", "max_results": 100, "sort_by": [{"uploaded_at": "asc"}] }'
-                method: 'POST'
-                username: ${{ secrets.CLOUDINARY_API_KEY }}
-                password: ${{ secrets.CLOUDINARY_API_SECRET_KEY }}
+            curl -u ${{ secrets.CLOUDINARY_API_KEY }}:${{ secrets.CLOUDINARY_API_SECRET_KEY }} \
+                -X POST \
+                -H "Content-Type: application/json" \
+                -d '{
+                      "expression": "folder=Inscryber/Uploads AND uploaded_at<=6h",
+                      "max_results": 100,
+                      "sort_by": [{"uploaded_at": "asc"}]
+                    }' \
+                https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
 
       # Output of this response returns full metadata for each image. We don't need
       # most of it, so use command line tool JQ to build an array of public IDs.
