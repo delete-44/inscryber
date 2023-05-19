@@ -18,8 +18,8 @@ jobs:
       # Wraps the request with a retry action so it will
       # retry a maximum of 3 times if the request fails.
       - name: Retry retrieving files in cloudinary
-        uses: nick-invision/retry@v2
         id: get-request
+        uses: nick-invision/retry@v2
         with:
           timeout_minutes: 1
           max_attempts: 3
@@ -29,7 +29,7 @@ jobs:
           # more than 6 hours old.
           # https://cloudinary.com/documentation/search_api#expressions
           command: |
-            curl -u ${{ secrets.CLOUDINARY_API_KEY }}:${{ secrets.CLOUDINARY_API_SECRET_KEY }} \
+            echo ::set-output name=RESPONSE::$(curl -s -u ${{ secrets.CLOUDINARY_API_KEY }}:${{ secrets.CLOUDINARY_API_SECRET_KEY }} \
                 -X POST \
                 -H "Content-Type: application/json" \
                 -d '{
@@ -37,14 +37,14 @@ jobs:
                       "max_results": 100,
                       "sort_by": [{"uploaded_at": "asc"}]
                     }' \
-                https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search
+                https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/resources/search)
 
       # Output of this response returns full metadata for each image. We don't need
       # most of it, so use command line tool JQ to build an array of public IDs.
       # This is stored as an output so we can use in later steps
       - name: Filter output with jq
         id: jq-filter
-        run: echo ::set-output name=RESOURCES::$(echo ${{ toJSON(steps.get-request.outputs.response) }} | jq '.resources | [.[].public_id]')
+        run: echo ::set-output name=RESOURCES::$(echo ${{ toJSON(steps.get-request.outputs.RESPONSE) }} | jq '.resources | [.[].public_id]')
 
       - name: LOG all IDs to be deleted
         run: echo ${{ steps.jq-filter.outputs.RESOURCES }}
