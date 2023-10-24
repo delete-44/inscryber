@@ -11,7 +11,7 @@
     "test-ci": "jest"
   },
   "dependencies": {
-    "next": "12.1.0",
+    "next": "13.5.0",
     "next-seo": "^5.1.0",
     "next-sitemap": "^2.4.3",
     "prop-types": "^15.8.1",
