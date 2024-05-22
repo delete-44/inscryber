@@ -21,7 +21,7 @@ describe("Sigils", () => {
   });
 
   it("renders a flavourful description & help text", () => {
-    const sigilsFlavour = screen.getByText("Does this creature have any ?");
+    const sigilsFlavour = screen.getByText("Does this creature bear any ?");
     const sigilsLabel = screen.getByText("sigils");
     const maxText = screen.getByText("4 maximum");
 
