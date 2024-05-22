@@ -9,7 +9,7 @@ const Sigils = (props) => {
   return (
     <FormFieldLayout>
       <p className="mb-3">
-        Does this creature have any <label htmlFor="sigils">sigils</label>?
+        Does this creature bear any <label htmlFor="sigils">sigils</label>?
       </p>
 
       <MultiSelect
