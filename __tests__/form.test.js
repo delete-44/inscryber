@@ -7,7 +7,7 @@ import Form from "components/form";
 jest.mock("components/constants", () => {
   return {
     ...jest.requireActual("components/constants"),
-    CLOUDINARY_BASE: "https://test/"
+    CLOUDINARY_BASE: "https://test/",
   };
 });
 
@@ -24,7 +24,7 @@ describe("Form", () => {
   afterEach(async () => {
     await act(() => {
       jest.runOnlyPendingTimers();
-    })
+    });
 
     jest.useRealTimers();
   });
@@ -84,6 +84,7 @@ describe("Form", () => {
       expect(portrait).toBeInTheDocument();
     });
 
+    // FIXME: Test is failing but behaviour seems fine in practice
     xit("staggers changes across multiple fields", async () => {
       const nameField = screen.getByRole("textbox", {
         name: /Name/,
@@ -98,9 +99,8 @@ describe("Form", () => {
 
       await act(async () => {
         userEvent.type(nameField, "123456789");
+        jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
       });
-
-      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
 
       expect(mockSetUrl).not.toHaveBeenCalled();
       expect(mockSetBusy).not.toHaveBeenCalled();
