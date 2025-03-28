@@ -10,7 +10,7 @@ const ImagePreview = (props) => {
   const [error, setError] = useState(false);
 
   return (
-    <div className="width-full flex flex-col justify-center relative mt-16 md:mt-0 h-min sticky top-8">
+    <div className="width-full md:mt-0 h-min top-8 relative sticky flex flex-col items-center justify-center mt-16">
       <Spinner hidden={!props.busy} />
 
       <ErrorFlash
@@ -26,7 +26,7 @@ const ImagePreview = (props) => {
         objectFit="contain"
         objectPosition="center top"
         priority
-        onLoadingComplete={() => {
+        onLoad={() => {
           setBusy(false);
           setError(false);
         }}
@@ -38,16 +38,16 @@ const ImagePreview = (props) => {
         }}
       />
 
-      <Link href={props.url}>
-        <a
-          target="_blank"
-          className={`mx-auto mt-8 mb-2 text-center ${
-            props.busy || error ? "hidden" : ""
-          }`}
-          tabIndex={-1}
-        >
+      <Link
+        href={props.url}
+        target="_blank"
+        className={`mx-auto mt-8 mb-2 text-center ${
+          props.busy || error ? "hidden" : ""
+        }`}
+        tabIndex={-1}
+        passHref
+      >
           <button>Download Image</button>
-        </a>
       </Link>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import GridLayout from "layouts/grid-layout";
 import { LINKS } from "components/constants";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -11,7 +12,7 @@ const About = () => {
 
         <p className="about-text">
           Inscryber is a fan-made project celebrating Daniel Mullins&apos;{" "}
-          <a href={LINKS.inscryption}>Inscryption</a>. This game captivated me
+          <Link href={LINKS.inscryption}>Inscryption</Link>. This game captivated me
           from day one, and after seeing other fans make their own custom cards
           I decided this would be a fun project to make the process easier.
         </p>
@@ -22,9 +23,8 @@ const About = () => {
 
         <p className="about-text">
           It is far from a perfect piece of kit. If you find bugs with it, let
-          me know via <a href={LINKS.delete44_twitter}>Twitter</a>. If there are
-          more bugs than I am prepared for, I&apos;ll make a formal process for
-          reporting them.
+          me know. If there are more bugs than I am prepared for, I&apos;ll make
+          a formal process for reporting them.
         </p>
 
         <h2>Privacy</h2>
@@ -48,21 +48,21 @@ const About = () => {
 
         <p className="about-text">
           This tool is completely open source and transparent. If you want to
-          inspect the code, do so on <a href={LINKS.inscryber_github}>GitHub</a>
+          inspect the code, do so on <Link href={LINKS.inscryber_github}>GitHub</Link>
           . Or, if you want to see how badly managed it is, find it on{" "}
-          <a href={LINKS.inscryber_trello}>Trello</a>.
+          <Link href={LINKS.inscryber_trello}>Trello</Link>.
         </p>
 
         <h2>Ownership</h2>
 
         <ul>
           <li className="about-text mb-4">
-            Card base created by <a href={LINKS.vladde}>@vladdeSV</a>.
+            Card base created by <Link href={LINKS.vladde}>@vladdeSV</Link>.
           </li>
 
           <li className="about-text mb-4">
             Blood font type, additional cost numbers, blank cost background
-            created by <a href={LINKS.avgUser}>@anAverageUsersName</a>.
+            created by <Link href={LINKS.avgUser}>@anAverageUsersName</Link>.
           </li>
 
           <li className="about-text mb-4">
@@ -71,7 +71,7 @@ const About = () => {
 
           <li className="about-text mb-4">
             Act 3 card template adapted from the design created by{" "}
-            <a href={LINKS.dmizuomo}>@DMizuomo</a>.
+            <Link href={LINKS.dmizuomo}>@DMizuomo</Link>.
           </li>
 
           <li className="about-text mb-4">
@@ -84,12 +84,12 @@ const About = () => {
           </li>
 
           <li className="about-text mb-4">
-            This website created by <a href={LINKS.delete44}>@delete44</a>
+            This website created by <Link href={LINKS.delete44}>@delete44</Link>
           </li>
 
           <li className="about-text">
             And, of course, Inscryption created by{" "}
-            <a href={LINKS.dmullins}>Daniel Mullins</a>
+            <Link href={LINKS.dmullins}>Daniel Mullins</Link>
           </li>
         </ul>
       </div>

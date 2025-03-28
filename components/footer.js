@@ -4,36 +4,51 @@ import { LINKS } from "./constants";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-900 w-full inline-flex mt-12 py-3">
-      <nav className="px-4 border-r-2 border-orange-400 flex flex-col text-right justify-between">
+    <footer className="bg-neutral-900 inline-flex w-full py-3 mt-12">
+      <nav className="flex flex-col justify-between px-4 text-right border-r-2 border-orange-400">
         <section className="flex flex-col">
-          <Link href="/">
-            <a className="font-title text-orange-400 text-shadow-orange text-4xl">
-              Inscryber
-            </a>
+          <Link
+            href="/"
+            className="font-title text-shadow-orange text-4xl text-orange-400"
+          >
+            Inscryber
           </Link>
 
-          <Link href="/about">
-            <a>About</a>
-          </Link>
+          <Link href="/about">About</Link>
         </section>
 
-        <Link href="https://ko-fi.com/L4L64GJSW">
-          <a target='_blank'>
-            <img height='36' style={{border: '0px', height: '36px'}} src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' />
-          </a>
+        <Link
+          href="https://ko-fi.com/L4L64GJSW"
+          target="_blank"
+          rel="noreferer noopener"
+          passHref
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://storage.ko-fi.com/cdn/kofi1.png?v=3"
+            alt="Buy Me a Coffee at ko-fi.com"
+            height={36}
+            width={174}
+            style={{ border: "0px" }}
+          />
         </Link>
       </nav>
 
-      <ul className="px-4 text-orange-100 inline">
+      <ul className="inline px-4 text-orange-100">
         <li className="mb-2">
-          &copy; <a href={LINKS.vladde}>vladdeSV</a>
+          &copy;{" "}
+          <Link target="_blank" rel="noreferer noopener" href={LINKS.vladde}>
+            vladdeSV
+          </Link>
           <br />
           [&quot;normal&quot; card base asset]
         </li>
 
         <li className="mb-2">
-          &copy; <a href={LINKS.avgUser}>anAverageUsersName</a>
+          &copy;{" "}
+          <Link target="_blank" rel="noreferer noopener" href={LINKS.avgUser}>
+            anAverageUsersName
+          </Link>
           <br />
           [additional cost assets, including the blood font type]
         </li>
@@ -45,19 +60,28 @@ const Footer = () => {
         </li>
 
         <li className="mb-2">
-          &copy; <a href={LINKS.dmizuomo}>DMizuomo</a>
+          &copy;{" "}
+          <Link target="_blank" rel="noreferer noopener" href={LINKS.dmizuomo}>
+            DMizuomo
+          </Link>
           <br />
           [original act 3 card template]
         </li>
 
         <li className="mb-2">
-          &copy; <a href={LINKS.dmullins}>Daniel Mullins Games</a>
+          &copy;{" "}
+          <Link target="_blank" rel="noreferer noopener" href={LINKS.dmullins}>
+            Daniel Mullins Games
+          </Link>
           <br />
           [designs, IP. Used &amp; distributed with permission]
         </li>
 
         <li>
-          &copy; <a href={LINKS.delete44}>delete44</a>
+          &copy;{" "}
+          <Link target="_blank" rel="noreferer noopener" href={LINKS.delete44}>
+            delete44
+          </Link>
           <br />
           [this website]
         </li>

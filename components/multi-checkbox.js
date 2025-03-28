@@ -22,7 +22,7 @@ const MultiCheckbox = (props) => {
   }, [setSelectedFilenames, selectedOptions]);
 
   return (
-    <span className="grid grid-cols-2 md:grid-cols-3 w-full md:w-5/6">
+    <span className="md:grid-cols-3 2xl:w-5/6 grid w-full grid-cols-1">
       {props.options.map(({ filename, label }) => {
         return (
           <div key={filename}>
