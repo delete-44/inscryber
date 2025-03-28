@@ -1,13 +1,18 @@
 import { EnergyCostTransformation } from "src/transformations/energy-cost";
 import * as constants from "components/constants";
 
-describe("EnergyCostTransformation", () => {
-  constants.CURRENCIES = [
-    { filename: "test-1", label: "TEST 1", max: 100 },
-    { filename: "test-2", label: "TEST 2", max: 30 },
-    { filename: "test-3", label: "TEST 3", max: 5 },
-  ];
+jest.mock("components/constants", () => {
+  return {
+    ...jest.requireActual("components/constants"),
+    CURRENCIES: [
+      { filename: "test-1", label: "TEST 1", max: 100 },
+      { filename: "test-2", label: "TEST 2", max: 30 },
+      { filename: "test-3", label: "TEST 3", max: 5 },
+    ],
+  };
+});
 
+describe("EnergyCostTransformation", () => {
   describe("#toString", () => {
     it("removes string when value is 0", () => {
       const tf = new EnergyCostTransformation({ currency: "test-1", value: 0 });
