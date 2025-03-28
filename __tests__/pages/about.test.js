@@ -30,7 +30,6 @@ describe("About", () => {
 
   it("renders links to different sources", () => {
     const inscryptionLink = screen.getByRole("link", { name: "Inscryption" });
-    const twitterLink = screen.getByRole("link", { name: "Twitter" });
     const githubLink = screen.getByRole("link", { name: "GitHub" });
     const trelloLink = screen.getByRole("link", { name: "Trello" });
     const vladdeLink = screen.getByRole("link", { name: "@vladdeSV" });
@@ -45,9 +44,6 @@ describe("About", () => {
 
     expect(inscryptionLink).toBeInTheDocument();
     expect(inscryptionLink).toHaveAttribute("href", LINKS.inscryption);
-
-    expect(twitterLink).toBeInTheDocument();
-    expect(twitterLink).toHaveAttribute("href", LINKS.delete44_twitter);
 
     expect(githubLink).toBeInTheDocument();
     expect(githubLink).toHaveAttribute("href", LINKS.inscryber_github);

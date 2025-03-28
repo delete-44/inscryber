@@ -9,8 +9,8 @@ const ErrorFlash = (props) => {
       }`}
       role="alert"
     >
-      <strong className="font-bold mr-2">Error:</strong>
-      <span className="block sm:inline">{props.message}</span>
+      <strong className="mr-2 font-bold">Error:</strong>
+      <span className="sm:inline block">{props.message}</span>
     </div>
   );
 };
