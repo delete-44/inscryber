@@ -2,15 +2,20 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import DynamicCost from "@form-fields/dynamic-cost";
 import userEvent from "@testing-library/user-event";
-import * as constants from "components/constants";
+
+jest.mock("components/constants", () => {
+  return {
+    ...jest.requireActual("components/constants"),
+    CURRENCIES: [
+      { filename: "test-1", label: "TEST 1", max: 100 },
+      { filename: "test-2", label: "TEST 2", max: 30 },
+      { filename: "test-3", label: "TEST 3", max: 5 },
+    ],
+  };
+});
 
 describe("DynamicCost", () => {
   const mockCallback = jest.fn();
-  constants.CURRENCIES = [
-    { filename: "test-1", label: "TEST 1", max: 100 },
-    { filename: "test-2", label: "TEST 2", max: 30 },
-    { filename: "test-3", label: "TEST 3", max: 5 },
-  ];
 
   beforeEach(() => {
     render(<DynamicCost setCostTF={mockCallback} />);

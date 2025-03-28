@@ -27,20 +27,20 @@ const Form = (props) => {
 
   const { setBusy, setUrl, setCardBase } = props;
 
-  const transformations = [
-    nameTF,
-    powerTF,
-    healthTF,
-    sigilsTF,
-    portraitTF,
-    patchesTF,
-    tribesTF,
-    overlaysTF,
-    costTF,
-  ];
-
   useEffect(
     () => {
+        const transformations = [
+          nameTF,
+          powerTF,
+          healthTF,
+          sigilsTF,
+          portraitTF,
+          patchesTF,
+          tribesTF,
+          overlaysTF,
+          costTF,
+        ];
+
       // Stagger requests so they wait for a delay, defined
       // in CONSTANTs, from user input before requesting new image
       const timer = setTimeout(() => {
@@ -54,7 +54,20 @@ const Form = (props) => {
       return () => clearTimeout(timer);
     },
     // Add every transformation to the dependency array for this hook
-    [props.cardBase, setBusy, setUrl].concat(transformations)
+    [
+      props.cardBase,
+      setBusy,
+      setUrl,
+      nameTF,
+      powerTF,
+      healthTF,
+      sigilsTF,
+      portraitTF,
+      patchesTF,
+      tribesTF,
+      overlaysTF,
+      costTF,
+    ]
   );
 
   return (

@@ -5,9 +5,14 @@ import * as constants from "components/constants";
 import Home from "pages/index";
 import selectEvent from "react-select-event";
 
-describe("Home", () => {
-  constants.CLOUDINARY_BASE = "https://test/";
+jest.mock("components/constants", () => {
+  return {
+    ...jest.requireActual("components/constants"),
+    CLOUDINARY_BASE: "https://test/",
+  };
+});
 
+describe("Home", () => {
   beforeEach(async () => {
     render(<Home />);
 
@@ -15,8 +20,10 @@ describe("Home", () => {
     jest.clearAllMocks();
   });
 
-  afterEach(() => {
-    jest.runOnlyPendingTimers();
+  afterEach(async () => {
+    await act(() => {
+      jest.runOnlyPendingTimers();
+    });
     jest.useRealTimers();
   });
 
@@ -291,7 +298,10 @@ describe("Home", () => {
 
       userEvent.click(rareRadio);
 
-      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
+      await act(async () => {
+        jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
+      });
+
       expect(image.src).not.toMatch(/rare/);
 
       await act(async () => {

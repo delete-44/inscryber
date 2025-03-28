@@ -3,18 +3,30 @@ import "@testing-library/jest-dom";
 import MultiSelect from "components/multi-select";
 import selectEvent from "react-select-event";
 import userEvent from "@testing-library/user-event";
-import * as constants from "components/constants";
 import * as themeBuilders from "components/multi-select-theme";
+
+jest.mock("components/constants", () => {
+  return {
+    ...jest.requireActual("components/constants"),
+    SIGILS: [{ value: "leshy", label: "Beasts" }],
+    GRIMORA_SIGILS: [{ value: "grimora", label: "Dead" }],
+    MAGNIFICUS_SIGILS: [{ value: "magnificus", label: "Magicks" }],
+    PO3_SIGILS: [{ value: "PO3", label: "Technology" }],
+    KAYCEE_SIGILS: [{ value: "kaycee", label: "Old Data" }],
+    ADDITIONAL_SIGILS: [{ value: "additional", label: "GOTY" }],
+  };
+});
+
+jest.mock("components/multi-select-theme", () => {
+  return {
+    ...jest.requireActual("components/multi-select-theme"),
+    styleBuilder: jest.fn(),
+    themeBuilder: jest.fn(),
+  };
+});
 
 describe("MultiSelect", () => {
   const mockCallback = jest.fn();
-
-  constants.SIGILS = [{ value: "leshy", label: "Beasts" }];
-  constants.GRIMORA_SIGILS = [{ value: "grimora", label: "Dead" }];
-  constants.MAGNIFICUS_SIGILS = [{ value: "magnificus", label: "Magicks" }];
-  constants.PO3_SIGILS = [{ value: "PO3", label: "Technology" }];
-  constants.KAYCEE_SIGILS = [{ value: "kaycee", label: "Old Data" }];
-  constants.ADDITIONAL_SIGILS = [{ value: "additional", label: "GOTY" }];
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -137,9 +149,6 @@ describe("MultiSelect", () => {
   });
 
   describe("setTheme", () => {
-    themeBuilders.styleBuilder = jest.fn();
-    themeBuilders.themeBuilder = jest.fn();
-
     it("changes theme based on state", () => {
       const { rerender } = render(
         <MultiSelect

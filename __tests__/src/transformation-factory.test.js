@@ -1,5 +1,14 @@
 import { TransformationFactory } from "src/transformation-factory";
-import * as constants from "components/constants";
+
+jest.mock("components/constants", () => {
+  return {
+    ...jest.requireActual("components/constants"),
+    CURRENCIES: [
+      { filename: "test-1", label: "TEST 1", max: 100 },
+      { filename: "test-energy-2", label: "TEST ENERGY 2", max: 250 },
+    ],
+  };
+});
 
 describe("TransformationFactory", () => {
   describe("#build", () => {
@@ -22,11 +31,6 @@ describe("TransformationFactory", () => {
     });
 
     describe("cost", () => {
-      constants.CURRENCIES = [
-        { filename: "test-1", label: "TEST 1", max: 100 },
-        { filename: "test-energy-2", label: "TEST ENERGY 2", max: 250 },
-      ];
-
       it("returns a CostTransformation with valid config for costs", () => {
         const tf = TransformationFactory.build("cost", {
           currency: "test-1",

@@ -25,7 +25,7 @@ const Portrait = (props) => {
       <small>
         Please review how we handle images in the privacy section of our{" "}
         <Link href="/about">
-          <a>about page</a>
+          about page
         </Link>{" "}
         before uploading.
         <br />

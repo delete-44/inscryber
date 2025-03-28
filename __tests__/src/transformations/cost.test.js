@@ -1,13 +1,17 @@
 import { CostTransformation } from "src/transformations/cost";
-import * as constants from "components/constants";
+
+jest.mock("components/constants", () => {
+  return {
+    ...jest.requireActual("components/constants"),
+    CURRENCIES: [
+      { filename: "test-1", label: "TEST 1", max: 100 },
+      { filename: "test-2", label: "TEST 2", max: 30 },
+      { filename: "test-3", label: "TEST 3", max: 5 },
+    ],
+  };
+});
 
 describe("CostTransformation", () => {
-  constants.CURRENCIES = [
-    { filename: "test-1", label: "TEST 1", max: 100 },
-    { filename: "test-2", label: "TEST 2", max: 30 },
-    { filename: "test-3", label: "TEST 3", max: 5 },
-  ];
-
   describe("#toString", () => {
     it("removes string when value is 0", () => {
       const tf = new CostTransformation({ currency: "test-1", value: 0 });
