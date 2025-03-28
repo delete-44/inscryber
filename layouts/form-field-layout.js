@@ -1,23 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const FormFieldLayout = (props) => {
+const FormFieldLayout = ({ readonly = false, children}) => {
   return (
     <section
-      className={`mb-10 ${props.readonly ? "readonly" : ""}`}
-      aria-hidden={props.readonly}
+      className={`mb-10 ${readonly ? "readonly" : ""}`}
+      aria-hidden={readonly}
     >
-      {props.children}
+      {children}
     </section>
   );
 };
 
 FormFieldLayout.propTypes = {
   readonly: PropTypes.bool,
-};
-
-FormFieldLayout.defaultProps = {
-  readonly: false,
 };
 
 export default FormFieldLayout;

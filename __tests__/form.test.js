@@ -21,8 +21,11 @@ describe("Form", () => {
     jest.clearAllMocks();
   });
 
-  afterEach(() => {
-    jest.runOnlyPendingTimers();
+  afterEach(async () => {
+    await act(() => {
+      jest.runOnlyPendingTimers();
+    })
+
     jest.useRealTimers();
   });
 

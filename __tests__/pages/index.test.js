@@ -20,8 +20,10 @@ describe("Home", () => {
     jest.clearAllMocks();
   });
 
-  afterEach(() => {
-    jest.runOnlyPendingTimers();
+  afterEach(async () => {
+    await act(() => {
+      jest.runOnlyPendingTimers();
+    });
     jest.useRealTimers();
   });
 
@@ -296,7 +298,10 @@ describe("Home", () => {
 
       userEvent.click(rareRadio);
 
-      jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
+      await act(async () => {
+        jest.advanceTimersByTime(constants.DEBOUNCE_TIMER - 1);
+      });
+
       expect(image.src).not.toMatch(/rare/);
 
       await act(async () => {
