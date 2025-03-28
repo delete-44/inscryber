@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Spinner from "components/spinner";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import ErrorFlash from "components/error-flash";
 import { CARD_WIDTH, CARD_HEIGHT } from "components/constants";
 
